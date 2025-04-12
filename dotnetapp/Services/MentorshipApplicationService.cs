@@ -20,13 +20,13 @@ namespace dotnetapp.Services
 
         public async Task<IEnumerable<MentorshipApplication>> GetAllMentorshipApplications()
         {
-            return await _context.MentorshipApplication
+            return await _context.MentorshipApplications
                     .Include(ma => ma.User)
                     .Include(ma => ma.MentorshipProgram)
                     .ToListAsync();
         }
         
-        public async Task<IEnumerable<MentorshipApplication>> GetAllMentorshipApplicationsByUserId(int userId)
+        public async Task<IEnumerable<MentorshipApplication>> GetMentorshipApplicationsByUserId(int userId)
         {
             return await _context.MentorshipApplications
                     .Where(ma => ma.UserId == userId)
@@ -36,12 +36,12 @@ namespace dotnetapp.Services
 
         public async Task<bool> AddMentorshipApplication(MentorshipApplication mentorshipApplication)
         {
-            bool alreadyApplied = await _context.MentorshipApplication.AnyAsync(ma => 
-                    ma.UserId = mentorshipApplication.UserId && ma.MentorshipProgramId == mentorshipApplication.MentorshipProgramId);
+            bool alreadyApplied = await _context.MentorshipApplications.AnyAsync(ma => 
+                    ma.UserId == mentorshipApplication.UserId && (ma.MentorshipProgramId == mentorshipApplication.MentorshipProgramId));
 
             if(alreadyApplied)
             {
-                throw new MentorshipException("User already applied for this mentorship");
+                throw new MentorshipProgramException("User already applied for this mentorship");
             }
 
             mentorshipApplication.ApplicationDate = DateTime.UtcNow;
