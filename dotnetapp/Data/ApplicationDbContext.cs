@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using dotnetapp.Models;
 
 namespace dotnetapp.Data
 {
@@ -9,7 +11,7 @@ namespace dotnetapp.Data
     {
         public ApplicationDbContext() : base() {}
 
-        public ApplicationDbContext(DbContext<ApplicationDbContext> options) : base(options) {}
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
         public DbSet<User> Users {get; set;}
 
