@@ -8,7 +8,7 @@ using dotnetapp.Services;
 namespace dotnetapp.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/")]
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthService _authService;
@@ -27,9 +27,16 @@ namespace dotnetapp.Controllers
       try
 
       {
-        var token = await _authService.Login(model);
-        return Ok(new { Token = token });
+        var (status, result) = await _authService.Login(model);
+        if(status == 0)
+          return BadRequest(result);
+        return Ok(new { Token = result });
       }
+
+      // {
+      //   var token = await _authService.Login(model);
+      //   return Ok(new { Token = token });
+      // }
 
       catch (Exception ex)
 

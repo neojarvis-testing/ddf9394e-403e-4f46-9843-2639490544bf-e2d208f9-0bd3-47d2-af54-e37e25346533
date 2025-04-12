@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace dotnetapp.Controllers
 {
     [ApiController]
@@ -36,7 +38,7 @@ namespace dotnetapp.Controllers
             try
             {
                 var feedbacks = await _feedbackService.GetFeedbacksByUserId(userId);
-                return Ok(feedback);
+                return Ok(feedbacks);
             }
             catch (Exception ex)
             {

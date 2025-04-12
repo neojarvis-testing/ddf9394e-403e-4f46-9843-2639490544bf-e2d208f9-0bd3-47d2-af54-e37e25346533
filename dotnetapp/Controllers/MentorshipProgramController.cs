@@ -7,11 +7,12 @@ using Microsoft.EntityFrameworkCore;
 using dotnetapp.Models;
 using dotnetapp.Data;
 using dotnetapp.Services;
-
+using Microsoft.AspNetCore.Authorization;
 namespace dotnetapp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class MentorshipProgramController : ControllerBase
     {
         private readonly MentorshipProgramService _mentorshipProgramService;
