@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using dotnetapp.Models;
 using dotnetapp.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace dotnetapp.Services
 {
     public class FeedbackService

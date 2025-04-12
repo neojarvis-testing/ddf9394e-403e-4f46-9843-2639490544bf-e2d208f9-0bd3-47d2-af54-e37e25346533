@@ -8,7 +8,7 @@ using dotnetapp.Services;
 namespace dotnetapp.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/")]
     public class MentorshipApplicationController : ControllerBase
     {
         private readonly MentorshipApplicationService _mentorshipApplicationService;
