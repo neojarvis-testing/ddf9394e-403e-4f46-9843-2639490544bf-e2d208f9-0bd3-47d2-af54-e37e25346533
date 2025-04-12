@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using dotnetapp.Data; 
+using dotnetapp.Models;
+using dotnetapp.Exceptions;
 
 namespace dotnetapp.Services
 {
@@ -67,12 +71,23 @@ namespace dotnetapp.Services
             existing.PortfolioLink = mentorshipApplication.PortfolioLink;
 
             _context.MentorshipApplications.Update(existing);
-
             await _context.SaveChangesAsync();
             return true;
 
         }
 
-        
+        public async Task<bool> DeleteMentorshipApplication(int mentorshipApplicationId)
+        {
+            var application = await _context.MentorshipApplications.FindAsync(mentorshipApplicationId);
+
+            if (application == null)
+            {
+                return false;
+            }
+
+            _context.MentorshipApplications.Remove(application);
+            await _context.SaveChangesAsync();
+            return true;        
+        }
     }
 }
