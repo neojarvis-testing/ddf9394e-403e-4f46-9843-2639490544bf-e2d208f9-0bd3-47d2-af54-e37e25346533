@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace dotnetapp.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext() : base() {}
+
+        public ApplicationDbContext(DbContext<ApplicationDbContext> options) : base(options) {}
+
+        public DbSet<User> Users {get; set;}
+
+        public DbSet<MentorshipProgram> MentorshipPrograms {get; set;}
+
+        public DbSet<MentorshipApplication> MentorshipApplications {get; set;}
+
+        public DbSet<Feedback> Feedbacks {get; set;}
+    }
+}
