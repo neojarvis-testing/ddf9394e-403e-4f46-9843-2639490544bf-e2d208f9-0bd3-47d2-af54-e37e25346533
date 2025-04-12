@@ -61,13 +61,9 @@ namespace dotnetapp.Services
             }
 
             existing.ApplicationStatus = mentorshipApplication.ApplicationStatus;
-
             existing.ReasonForApplying = mentorshipApplication.ReasonForApplying;
-
             existing.CareerGoals = mentorshipApplication.CareerGoals;
-
             existing.ProfileImage = mentorshipApplication.ProfileImage;
-
             existing.PortfolioLink = mentorshipApplication.PortfolioLink;
 
             _context.MentorshipApplications.Update(existing);
