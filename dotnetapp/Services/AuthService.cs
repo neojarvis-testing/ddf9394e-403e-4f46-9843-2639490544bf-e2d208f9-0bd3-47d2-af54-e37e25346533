@@ -14,7 +14,7 @@ using dotnetapp.Models;
 
 namespace dotnetapp.Services
 {
-    public class AuthService
+    public class AuthService : IAuthService
     {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
@@ -63,38 +63,38 @@ namespace dotnetapp.Services
       await _userManager.AddToRoleAsync(newUser, role);
       return (1, "User created successfully!");
     }
-    public async Task<string> Login(LoginModel model)
+
+public async Task<(int, string)> Login(LoginModel model)
+{
+    var user = await _userManager.FindByEmailAsync(model.Email);
+    if (user == null)
     {
-      var user = await _userManager.FindByEmailAsync(model.Email);
-      if (user == null)
-      {
-        return "Invalid email";
-      }
- 
-      var isPasswordValid = await _userManager.CheckPasswordAsync(user, model.Password);
-      if (!isPasswordValid)
-      {
-        return "Invalid password";
-      }
-      var userRoles = await _userManager.GetRolesAsync(user);
-      var authClaims = new List<Claim>
-      {
-        new Claim(ClaimTypes.Name, user.UserName),
- 
-        new Claim(ClaimTypes.NameIdentifier, user.Id),
- 
-        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-      };
- 
-      foreach (var role in userRoles)
-      {
-        authClaims.Add(new Claim(ClaimTypes.Role, role));
-      }
-      var token = GenerateToken(authClaims);
- 
-      return token;
- 
+        return (0, "Invalid email");
     }
+
+    var isPasswordValid = await _userManager.CheckPasswordAsync(user, model.Password);
+    if (!isPasswordValid)
+    {
+        return (0, "Invalid password");
+    }
+
+    var userRoles = await _userManager.GetRolesAsync(user);
+    var authClaims = new List<Claim>
+    {
+        new Claim(ClaimTypes.Name, user.UserName),
+        new Claim(ClaimTypes.NameIdentifier, user.Id),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+
+    foreach (var role in userRoles)
+    {
+        authClaims.Add(new Claim(ClaimTypes.Role, role));
+    }
+
+    var token = GenerateToken(authClaims);
+
+    return (1, token); // Returning status code and the token as a tuple
+}
     private string GenerateToken(IEnumerable<Claim> claims)
  
     {

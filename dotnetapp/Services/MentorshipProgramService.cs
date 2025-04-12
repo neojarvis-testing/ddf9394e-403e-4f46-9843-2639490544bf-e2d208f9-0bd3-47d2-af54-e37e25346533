@@ -41,7 +41,7 @@ namespace dotnetapp.Services
 
             if (existingProgram != null)
             {
-                throw new MentorshipProgramException("Program with the same name already exists.");
+                throw new MentorshipProgramException("Program with the same name already exists");
             }
 
             _context.MentorshipPrograms.Add(mentorshipProgram);
@@ -66,7 +66,7 @@ namespace dotnetapp.Services
 
             if (duplicateProgram != null)
             {
-                throw new MentorshipProgramException("Program with the same name already exists.");
+                throw new MentorshipProgramException("Program with the same name already exists");
             }
 
             existingProgram.ProgramName = mentorshipProgram.ProgramName;
