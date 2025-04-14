@@ -6,13 +6,14 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { UsernavComponent } from './components/usernav/usernav.component';
 import { AuthGuard } from './components/auth.guard';
-
+import { CreatementorshipprogramComponent } from './components/creatementorshipprogram/creatementorshipprogram.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'adminnav', component: AdminnavComponent, canActivate: [AuthGuard] },
   { path: 'usernav', component: UsernavComponent, canActivate: [AuthGuard]},
+  {path: 'creatementorshipprogram', component: CreatementorshipprogramComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
