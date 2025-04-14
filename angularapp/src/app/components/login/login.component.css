@@ -1,0 +1,126 @@
+/* Login Container Styling */
+.login-container {
+    background-color: #ffffff; /* White background */
+    padding: 15px; /* Reduced padding */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 90%; /* Adjust width */
+    max-width: 350px; /* Smaller max-width */
+    margin: auto; /* Center horizontally */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center vertically */
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Centered heading */
+  .login-container h1 {
+    color: #333333; /* Dark grey heading */
+    text-align: center;
+    margin-bottom: 15px; /* Reduced margin */
+    font-weight: 600;
+  }
+  
+  /* Form Styling */
+  form .form-group {
+    margin-bottom: 12px; /* Reduce spacing between form fields */
+  }
+  
+  form label {
+    font-size: 14px; /* Smaller label text */
+    font-weight: 600;
+    color: #333333; /* Dark grey label */
+    display: block;
+    margin-bottom: 6px; /* Smaller spacing */
+  }
+  
+  form input {
+    width: 95%; /* Slightly smaller input width */
+    padding: 8px; /* Reduced padding */
+    border: 1px solid #bbbbbb; /* Neutral grey border */
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 10px; /* Reduced margin */
+    transition: border-color 0.3s;
+  }
+  
+  form input:focus {
+    border-color: #777777; /* Slightly darker grey on focus */
+    outline: none;
+  }
+  
+  /* Error Message Styling */
+  .text-danger {
+    color: #ff4d4d; /* Red for errors */
+    font-size: 12px;
+    margin-top: -6px;
+    margin-bottom: 6px;
+  }
+  
+  /* Button Styling */
+  form button {
+    background-color: #777777; /* Grey button */
+    color: white;
+    border: none;
+    padding: 10px; /* Reduced button padding */
+    border-radius: 4px;
+    font-size: 14px; /* Smaller button text */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 15px; /* Reduced spacing above button */
+  }
+  
+  form button:hover {
+    background-color: #555555; /* Darker grey hover effect */
+  }
+  
+  form button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  /* Additional Information */
+  form p {
+    text-align: center;
+    font-size: 12px; /* Smaller text for links */
+    margin-top: 15px; /* Reduced spacing */
+  }
+  
+  form p a {
+    color: #007bff; /* Blue for link */
+    text-decoration: none;
+  }
+  
+  form p a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .login-container {
+      padding: 10px; /* Reduced padding for small screens */
+      width: 90%;
+      max-width: 95%;
+    }
+  
+    form label {
+      font-size: 13px;
+    }
+  
+    form input {
+      font-size: 13px;
+      padding: 6px; /* Reduced padding for small screens */
+    }
+  
+    form button {
+      font-size: 13px;
+    }
+  
+    form p {
+      font-size: 11px; /* Adjusted for small screens */
+    }
+  }
+  
