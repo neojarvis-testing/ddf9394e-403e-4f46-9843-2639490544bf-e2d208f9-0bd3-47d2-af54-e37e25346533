@@ -44,13 +44,15 @@ namespace dotnetapp.Services
       {
         return (0, "User already exists");
       }
-      var newUser = new ApplicationUser
+      ApplicationUser user = new ()
       {
-        UserName = model.Email,
+        UserName = model.Username,
+        SecurityStamp = Guid.NewGuid().ToString(),
         Email = model.Email,
-        Name = model.Username
+        Name = model.Username.Length>30?model.Username.Substring(0,30):model.Username,
+        PhoneNumber = model.MobileNumber
       };
-      var result = await _userManager.CreateAsync(newUser, model.Password);
+      var result = await _userManager.CreateAsync(user, model.Password);
       if (!result.Succeeded)
       {
         return (0, "User creation failed! Please check user details and try again");
@@ -60,7 +62,21 @@ namespace dotnetapp.Services
       {
         await _roleManager.CreateAsync(new IdentityRole(role));
       }
-      await _userManager.AddToRoleAsync(newUser, role);
+
+      var newUser = new User
+      {
+        Email = model.Email,
+        Password = model.Password,
+        Username = model.Username,
+        MobileNumber = model.MobileNumber,
+        UserRole = role
+      };
+
+      await _context.Users.AddAsync(newUser);
+      await _context.SaveChangesAsync();
+
+      await _userManager.AddToRoleAsync(user, role);
+
       return (1, "User created successfully!");
     }
 
