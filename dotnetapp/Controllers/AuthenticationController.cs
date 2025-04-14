@@ -2,72 +2,48 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
+using Microsoft.AspNetCore.Mvc;
+ 
 namespace dotnetapp.Controllers
 {
     [ApiController]
-    [Route("api/")]
+    [Route("api")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthService _authService;
-    public AuthenticationController(IAuthService authService)
-    {
-
-      _authService = authService;
-
-    }
-    [HttpPost("login")]
-
-    public async Task<IActionResult> Login([FromBody] LoginModel model)
-
-    {
-
-      try
-
-      {
-        var (status, result) = await _authService.Login(model);
-        if(status == 0)
-          return BadRequest(result);
-        return Ok(new { Token = result });
-      }
-
-      // {
-      //   var token = await _authService.Login(model);
-      //   return Ok(new { Token = token });
-      // }
-
-      catch (Exception ex)
-
-      {
-
-        return StatusCode(500, $"Internal server error: {ex.Message}");
-
-      }
-    }
-
-    [HttpPost("register")]
-
-    public async Task<IActionResult> Register([FromBody] User model)
-
-    {
-
-      if (!ModelState.IsValid)
-
-      {
-        return BadRequest(ModelState);
-      }
-      try
-      {
-        await _authService.Registration(model, model.UserRole);
-        return Ok("User registered successfully.");
-      }
-      catch (Exception ex)
-
-      {
-        return StatusCode(500, $"Internal server error: {ex.Message}");
-      }
-    }
+        private readonly AuthService _service;
+        public AuthenticationController(AuthService service)
+        {
+            _service = service;
+        }
+ 
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(User user)
+        {
+            (int code, string message) = await _service.Registration(user, user.UserRole);
+            if (code == 1)
+            {
+                return Ok(message);
+            }
+            else
+            {
+                return BadRequest(message);
+            }
+        }
+ 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginModel loginModel)
+        {
+          (int code, string tokenOrMessage) = await _service.Login(loginModel);
+          if(code == 1)
+          {
+            return Ok(tokenOrMessage);
+          }
+          else
+          {
+            return BadRequest(tokenOrMessage);
+          }
+        }
     }
 }

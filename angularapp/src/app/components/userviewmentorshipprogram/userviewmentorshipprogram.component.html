@@ -1,1 +1,91 @@
-<p>userviewmentorshipprogram works!</p>
+<!-- <div class="container">
+
+    <h2 class="title">Available Mentorship Programs</h2>
+  
+  
+  
+    <input
+  
+      type="text"
+  
+      placeholder="Search by Program Name or Mentor Name"
+  
+      [(ngModel)]="searchTerm"
+  
+      (input)="searchPrograms()"
+  
+      class="search-box"
+  
+    />
+  
+  
+  
+    <div *ngIf="filteredList.length === 0" class="no-records">Oops! No records found.</div>
+  
+  
+  
+    <table *ngIf="filteredList.length > 0" class="mentorship-table">
+  
+      <thead>
+  
+        <tr>
+  
+          <th>S.No</th>
+  
+          <th>Program Name</th>
+  
+          <th>Field of Mentorship</th>
+  
+          <th>Duration (Months)</th>
+  
+          <th>Mentor Name</th>
+  
+          <th>Experience Level</th>
+  
+          <th>Mode of Mentorship</th>
+  
+          <th>Description</th>
+  
+          <th>Action</th>
+  
+        </tr>
+  
+      </thead>
+  
+      <tbody>
+  
+        <tr *ngFor="let program of filteredList; let i = index">
+  
+          <td>{{ i + 1 }}</td>
+  
+          <td>{{ program.programName }}</td>
+  
+          <td>{{ program.field }}</td>
+  
+          <td>{{ program.duration }}</td>
+  
+          <td>{{ program.mentorName }}</td>
+  
+          <td>{{ program.experienceLevel }}</td>
+  
+          <td>{{ program.mode }}</td>
+  
+          <td>{{ program.description }}</td>
+  
+          <td>
+  
+            <button [disabled]="isApplied(program.id)">
+  
+              {{ isApplied(program.id) ? 'Applied' : 'Apply' }}
+  
+            </button>
+  
+          </td>
+  
+        </tr>
+  
+      </tbody>
+  
+    </table>
+  
+  </div> -->

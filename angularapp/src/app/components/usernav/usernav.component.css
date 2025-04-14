@@ -1,0 +1,91 @@
+.navbar {
+
+    background-color: #a62828;
+   
+    color: white;
+   
+    padding: 10px 20px;
+   
+    display: flex;
+   
+    justify-content: space-between;
+   
+    align-items: center;
+   
+   }
+   
+   
+   
+   .title {
+   
+    font-weight: bold;
+   
+    font-size: 1.2rem;
+   
+   }
+   
+   
+   
+   .nav-links a {
+   
+    color: white;
+   
+    margin: 0 10px;
+   
+    text-decoration: none;
+   
+   }
+   
+   
+   
+   .nav-links button {
+   
+    background-color: #e74c3c;
+   
+    border: none;
+   
+    color: white;
+   
+    padding: 5px 10px;
+   
+    margin-left: 10px;
+   
+    cursor: pointer;
+   
+   }
+   
+   
+   
+   .user-info {
+   
+    margin-left: 20px;
+   
+    font-style: italic;
+   
+   }
+   
+   
+   
+   .home-container {
+   
+    padding: 30px;
+   
+    text-align: center;
+   
+   }
+   
+   
+   
+   .home-container h1 {
+   
+    font-weight: bold;
+   
+    margin-bottom: 20px;
+   
+   }
+   
+   
+   
+   
+   
+   

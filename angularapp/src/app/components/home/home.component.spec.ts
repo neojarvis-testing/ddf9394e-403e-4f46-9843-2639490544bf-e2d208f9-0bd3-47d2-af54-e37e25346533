@@ -19,7 +19,12 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+fit('Frontend_should_create_home_component', () => {
+  expect(component).toBeTruthy();
+});
+
+fit('Frontend_should_contain_mentorship_program_application_heading_in_the_home_component', () => {
+  const componentHTML = fixture.debugElement.nativeElement.outerHTML;
+  expect(componentHTML).toContain('Mentorship Program Application');
+});
 });
