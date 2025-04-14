@@ -21,9 +21,6 @@ import { UsernavComponent } from './components/usernav/usernav.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UserviewmentorshipprogramComponent } from './components/userviewmentorshipprogram/userviewmentorshipprogram.component';
 import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -50,9 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
