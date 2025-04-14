@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="login-container">
+    <h1>Login</h1>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+     <div class="form-group">
+      <label for="email">Email<span class="text-danger">*</span></label>
+      <input 
+       type="email" 
+       id="email" 
+       name="email" 
+       class="form-control" 
+       [(ngModel)]="loginData.Email" 
+       required 
+       email
+       #emailField="ngModel"
+       placeholder="Enter your email"
+      />
+      <div *ngIf="emailField.invalid && emailField.touched" class="text-danger">
+       <div *ngIf="emailField.errors?.required">Email is required</div>
+       <div *ngIf="emailField.errors?.email">Enter a valid email</div>
+      </div>
+     </div>
+     <div class="form-group">
+      <label for="password">Password<span class="text-danger">*</span></label>
+      <input 
+       type="password" 
+       id="password" 
+       name="password" 
+       class="form-control" 
+       [(ngModel)]="loginData.Password" 
+       required 
+       #passwordField="ngModel"
+       placeholder="Enter your password"
+      />
+      <div *ngIf="passwordField.invalid && passwordField.touched" class="text-danger">
+       <div *ngIf="passwordField.errors?.required">Password is required</div>
+      </div>
+     </div>
+     <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+     <div *ngIf="loginError" class="text-danger mt-2">
+      {{ loginError }}
+     </div>
+     <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+    </form> 
+   </div>
