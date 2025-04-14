@@ -12,7 +12,6 @@ namespace dotnetapp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
     public class MentorshipProgramController : ControllerBase
     {
         private readonly MentorshipProgramService _mentorshipProgramService;
@@ -23,6 +22,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<MentorshipProgram>>> GetAllMentorshipPrograms()
         {
             try
@@ -55,6 +55,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddMentorshipProgram([FromBody] MentorshipProgram mentorshipProgram)
         {
             try
