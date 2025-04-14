@@ -1,62 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
-
-  user: User = {
-    UserId: 0,
+export class RegistrationComponent {
+  user = {
+    Username: '',
     Email: '',
     Password: '',
-    Username: '',
     MobileNumber: '',
     UserRole: '',
     SecretKey: ''
   };
+  confirmPassword = '';
+  secretKeyRequired = false;
+  secretKeyMisMatch = false;
 
-  confirmPassword:'';
-  passwordMisMatch: boolean = false;
-  secretKeyMisMatch: boolean = false;
-  secretKeyRequired: boolean = false;
-  adminSecretKey = 'Zion'; //Hardcode
+  constructor(private router: Router) {}
 
-  constructor(private router: Router, private authService: AuthService) { }
-
-  ngOnInit(): void {
+  checkRole() {
+    this.secretKeyRequired = this.user.UserRole === 'Admin';
   }
 
-  checkRole()
-  {
-    if(this.user.UserRole == 'Admin')
-    {
-      this.secretKeyRequired = true;
-    }
-  }
+  register() {
+    if (this.user.Password === this.confirmPassword) {
+      // Logic for registration (e.g., API call)
+      console.log('User registered successfully:', this.user);
 
-  register()
-  {
-    alert('added successfully');
-    if(this.user.Password != this.confirmPassword && this.user.SecretKey != this.adminSecretKey)
-    {
-      this.passwordMisMatch = true;
-      this.secretKeyMisMatch = true;
-      return;
-    }
-
-    this.authService.register(this.user).subscribe( data =>{
-      this.user = data;
+      // Navigate to login page after registration
       this.router.navigate(['/login']);
-    });
+    } else {
+      console.log('Passwords do not match.');
+    }
   }
 }
-
-
-
-
