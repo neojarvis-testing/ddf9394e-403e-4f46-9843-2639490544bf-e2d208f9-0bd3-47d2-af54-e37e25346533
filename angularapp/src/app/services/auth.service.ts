@@ -11,7 +11,7 @@ import { Login } from '../models/login.model';
 })
 export class AuthService {
 
-  public apiUrl = 'https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+  public apiUrl = 'https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
 
   private userRoleSubject = new BehaviorSubject<string | null>(null);
  
