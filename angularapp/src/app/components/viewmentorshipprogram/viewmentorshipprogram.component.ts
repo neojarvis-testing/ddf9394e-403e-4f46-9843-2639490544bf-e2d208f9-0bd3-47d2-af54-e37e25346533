@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MentorshipService } from 'src/app/services/mentorship.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-viewmentorshipprogram',
@@ -7,9 +11,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewmentorshipprogramComponent implements OnInit {
 
-  constructor() { }
+  programs: any[] = [];
+  filterPrograms: any[] = [];
+  searchProgram: string = '';
+  programId:number;
+
+  constructor(private router: Router, private mentService: MentorshipService ) { }
 
   ngOnInit(): void {
+    this.getMentorshipPrograms();
+  }
+
+  getMentorshipPrograms()
+  {
+    this.mentService.getAllMentorshipPrograms().subscribe(data =>{
+      this.programs = data;
+    });
+  }
+
+  search()
+  {
+    this.filterPrograms = this.programs.filter(p => p.ProgramName.toLowerCase().includes(this.searchProgram.toLowerCase()) ||  
+                                                p.MentorName.toLowerCase().includes(this.searchProgram.toLowerCase()));
+  }
+
+  editProgram(id:number):void
+  {
+    alert('Entered Edit');
+    this.router.navigate([`/${id}`]); //Write Routing
+  }
+
+  deleteProgram(id:number)
+  {
+    
   }
 
 }
