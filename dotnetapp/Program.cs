@@ -28,7 +28,7 @@ builder.Services.AddSwaggerGen();
 // });
 builder.Services.AddDbContext<ApplicationDbContext>(db =>
 {
-    db.UseSqlServer(builder.Configuration.GetConnectionString("myconn"));
+    db.UseSqlServer(builder.Configuration.GetConnectionString("conn"));
 });
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
