@@ -39,7 +39,7 @@ namespace dotnetapp.Services
  
     public async Task<(int, string)> Registration(User model, string role)
     {
-      var existingUser = await _userManager.FindByEmailAsync(model.Email);
+      var existingUser = await _userManager.FindByEmailAsync(model.Email);il
       if (existingUser != null)
       {
         return (0, "User already exists");
