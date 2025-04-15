@@ -1,1 +1,9 @@
-<p>useraddfeedback works!</p>
+<h2>Add Feedback</h2>
+<textarea [(ngModel)]="feedbackText" placeholder="Enter your feedback"></textarea>
+<br>
+<button (click)="submitFeedback()">Submit</button>
+<p *ngIf="showValidation" style="color:red">Feedback is required</p>
+<div *ngIf="showPopup" class="popup">
+  <p>Successfully Added!</p>
+  <button (click)="closePopup()">OK</button>
+</div>
