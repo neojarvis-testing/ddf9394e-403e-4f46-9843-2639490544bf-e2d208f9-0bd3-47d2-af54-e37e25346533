@@ -9,6 +9,7 @@ import { UserviewmentorshipprogramComponent } from './components/userviewmentors
 import { UserappliedmentorshipapplicationComponent } from './components/userappliedmentorshipapplication/userappliedmentorshipapplication.component';
 import { MentorshipapplicationformComponent } from './components/mentorshipapplicationform/mentorshipapplicationform.component';
 import { AdmineditmentorshipprogramComponent } from './components/admineditmentorshipprogram/admineditmentorshipprogram.component';
+import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
  
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,10 +18,11 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'adminnav', component: AdminnavComponent },
   { path: 'usernav', component: UsernavComponent },
-  {path:'', component:AdmineditmentorshipprogramComponent},
   { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
-  { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent}
+  { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
+  { path: 'viewmentorshipprogram', component: ViewmentorshipprogramComponent },
+  { path: 'admineditmentorshipprogram/:id', component: AdmineditmentorshipprogramComponent}
 ];
 
   @NgModule({
