@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MentorshipService } from 'src/app/services/mentorship.service';
-// import {MatSnackBar} from '@angular/material/snack-bar';
+
 import { MentorshipProgram } from 'src/app/models/mentorshipprogram.model';
 
 @Component({
@@ -10,20 +10,23 @@ import { MentorshipProgram } from 'src/app/models/mentorshipprogram.model';
   styleUrls: ['./creatementorshipprogram.component.css']
 })
 export class CreatementorshipprogramComponent implements OnInit {
-  // mentorshipForm: FormGroup;
-  // isSubmitting = false;
-  // constructor(private fb: FormBuilder, private mentorshipService: MentorshipService, private snackBar: MatSnackBar) 
-  // {
-  //   this.mentorshipForm = this.fb.group({
-  //     programName: ['',Validators.required],
-  //     description: ['',Validators.required],
-  //     fieldOfMentorship: ['',Validators.required],
-  //     durationInMonths: ['',[Validators.required, Validators.min(1)]],
-  //     mentorName: ['',Validators.required],
-  //     experienceLevel: ['',Validators.required],
-  //     modelOfMentorship: ['',Validators.required]
-  //   });
-  // }
+
+
+  mentorshipForm: FormGroup;
+  isSubmitting = false;
+  constructor(private fb: FormBuilder, private mentorshipService: MentorshipService) 
+  {
+    this.mentorshipForm = this.fb.group({
+      programName: ['',Validators.required],
+      description: ['',Validators.required],
+      fieldOfMentorship: ['',Validators.required],
+      durationInMonths: ['',[Validators.required, Validators.min(1)]],
+      mentorName: ['',Validators.required],
+      experienceLevel: ['',Validators.required],
+      modelOfMentorship: ['',Validators.required]
+    });
+  }
+
 
   // onSubmit():void{
   //   if(this.mentorshipForm.invalid){

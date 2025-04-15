@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace dotnetapp.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/mentorship-program")]
     public class MentorshipProgramController : ControllerBase
     {
         private readonly MentorshipProgramService _mentorshipProgramService;
@@ -44,7 +44,7 @@ namespace dotnetapp.Controllers
                 var program = await _mentorshipProgramService.GetMentorshipProgramById(mentorshipProgramId);
                 if (program == null)
                 {
-                    return NotFound("Cannot find any mentorship program.");
+                    return NotFound(new{message = "Cannot find any mentorship program."});
                 }
                 return Ok(program);
             }
@@ -63,7 +63,7 @@ namespace dotnetapp.Controllers
                 var result = await _mentorshipProgramService.AddMentorshipProgram(mentorshipProgram);
                 if (result)
                 {
-                    return Ok("Mentorship Program added successfully.");
+                    return Ok(new{message = "Mentorship Program added successfully."});
                 }
                 return StatusCode(500, "Failed to add mentorship program.");
             }
@@ -81,9 +81,9 @@ namespace dotnetapp.Controllers
                 var result = await _mentorshipProgramService.UpdateMentorshipProgram(mentorshipProgramId, mentorshipProgram);
                 if (result)
                 {
-                    return Ok("Mentorship Program updated successfully.");
+                    return Ok(new{message = "Mentorship Program updated successfully."});
                 }
-                return NotFound("Cannot find any mentorship program.");
+                return NotFound(new{message = "Cannot find any mentorship program."});
             }
             catch (Exception ex)
             {
@@ -99,9 +99,9 @@ namespace dotnetapp.Controllers
                 var result = await _mentorshipProgramService.DeleteMentorshipProgram(mentorshipProgramId);
                 if (result)
                 {
-                    return Ok("Mentorship Program deleted successfully.");
+                    return Ok(new{message = "Mentorship Program deleted successfully."});
                 }
-                return NotFound("Cannot find any mentorship program.");
+                return NotFound(new{message = "Cannot find any mentorship program."});
             }
             catch (Exception ex)
             {

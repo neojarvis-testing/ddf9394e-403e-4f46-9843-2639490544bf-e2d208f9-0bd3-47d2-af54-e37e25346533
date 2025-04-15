@@ -2,48 +2,51 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
-using Microsoft.AspNetCore.Mvc;
  
 namespace dotnetapp.Controllers
 {
     [ApiController]
-    [Route("api")]
+    [Route("api/")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly AuthService _service;
-        public AuthenticationController(AuthService service)
+        private readonly IAuthService _authService;
+        public AuthenticationController(IAuthService authService)
         {
-            _service = service;
+            _authService = authService;
         }
- 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register(User user)
-        {
-            (int code, string message) = await _service.Registration(user, user.UserRole);
-            if (code == 1)
-            {
-                return Ok(message);
-            }
-            else
-            {
-                return BadRequest(message);
-            }
-        }
- 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginModel loginModel)
+        public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-          (int code, string tokenOrMessage) = await _service.Login(loginModel);
-          if(code == 1)
-          {
-            return Ok(tokenOrMessage);
-          }
-          else
-          {
-            return BadRequest(tokenOrMessage);
-          }
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(new { Message = "Invalid login request." });
+            }
+            var (statusCode, responseMessage) = await _authService.Login(model);
+            if(statusCode == 1)
+            {
+                return Ok(new { token = responseMessage});
+            }
+            return Unauthorized(new{message = responseMessage});
+        }
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] User model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(new { Message = "Invalid registration request."});
+            }
+            var (statusCode, responseMessage) = await _authService.Registration(model, model.UserRole);
+            Console.WriteLine(statusCode);
+            Console.WriteLine(responseMessage);
+            if(statusCode == 1)
+            {
+                return Ok(new {message = responseMessage});
+            }
+            Console.WriteLine(responseMessage);
+            return BadRequest(new{message = responseMessage});
         }
     }
 }
