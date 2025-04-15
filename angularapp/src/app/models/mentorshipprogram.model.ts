@@ -1,5 +1,7 @@
 export interface MentorshipProgram
 {
+    applied: any;
+    id: any;
     MentorshipProgramId?: number;
     ProgramName: string;
     Description: string;

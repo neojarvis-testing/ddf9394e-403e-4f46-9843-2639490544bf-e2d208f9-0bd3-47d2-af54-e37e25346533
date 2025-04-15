@@ -4,51 +4,52 @@
 
   <div>
     <label>Username<span class="text-danger">*</span></label>
-    <input type="text" name="Username" [(ngModel)]="user.Username" required #username="ngModel" #usernameNgModel="ngModel">
-    <div *ngIf="usernameNgModel.invalid && (usernameNgModel.dirty || usernameNgModel.touched)">Username is required.</div>
+    <input type="text" name="Username" [(ngModel)]="user.Username" required #username="ngModel">
+    <div *ngIf="username.invalid && (username.dirty || username.touched)">Username is required.</div>
   </div>
 
   <div>
     <label>Email<span class="text-danger">*</span></label>
-    <input type="email" name="Email" [(ngModel)]="user.Email" required email #emailNgModel="ngModel">
-    <div *ngIf="emailNgModel.invalid && (emailNgModel.dirty || emailNgModel.touched)">Valid Email is required.</div>
+    <input type="email" name="Email" [(ngModel)]="user.Email" required email #email="ngModel">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)">Valid Email is required.</div>
   </div>
 
   <div>
     <label>Password<span class="text-danger">*</span></label>
-    <input type="password" name="Password" [(ngModel)]="user.Password" required #passwordNgModel="ngModel"
+    <input type="password" name="Password" [(ngModel)]="user.Password" required #password="ngModel"
       pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}">
-    <div *ngIf="passwordNgModel.invalid && (passwordNgModel.dirty || passwordNgModel.touched)">Password is required.</div>
-    <div *ngIf="passwordNgModel.errors?.pattern">Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character</div>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)">Password is required.</div>
+    <div *ngIf="password.errors?.pattern">Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character.</div>
   </div>
 
   <div>
     <label>Confirm Password<span class="text-danger">*</span></label>
-    <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" required #cnfPasswordNgModel="ngModel" [ngModelOptions]="{standalone:true}">
-    <div *ngIf="cnfPasswordNgModel.invalid && (cnfPasswordNgModel.dirty || cnfPasswordNgModel.touched)">Confirm Password is required.</div>
+    <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" required #confirmPasswordNgModel="ngModel" [ngModelOptions]="{standalone: true}">
+    <div *ngIf="confirmPasswordNgModel.invalid && (confirmPasswordNgModel.dirty || confirmPasswordNgModel.touched)">Confirm Password is required.</div>
     <div *ngIf="confirmPassword && confirmPassword !== user.Password">Passwords do not match.</div>
   </div>
 
   <div>
     <label>Mobile Number<span class="text-danger">*</span></label>
-    <input type="text" name="MobileNumber" [(ngModel)]="user.MobileNumber" required pattern="^[0-9]{10}$" #mobileNgModel="ngModel">
-    <div *ngIf="mobileNgModel.invalid && (mobileNgModel.dirty || mobileNgModel.touched)">Enter a valid 10-digit mobile number.</div>
+    <input type="text" name="MobileNumber" [(ngModel)]="user.MobileNumber" required pattern="^[0-9]{10}$" #mobile="ngModel">
+    <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">Enter a valid 10-digit mobile number.</div>
   </div>
 
   <div>
     <label>Role<span class="text-danger">*</span></label>
-    <select id="userRole" name="userRole" [(ngModel)]="user.UserRole" (change)="checkRole()" #roleNgModel="ngModel" required>
+    <select id="userRole" name="userRole" [(ngModel)]="user.UserRole" (change)="checkRole()" #role="ngModel" required>
       <option value="User">User</option>
       <option value="Admin">Admin</option>
     </select>
   </div>
 
-
   <div *ngIf="secretKeyRequired">
     <label>Secret Key<span class="text-danger">*</span></label>
     <input type="text" name="SecretKey" [(ngModel)]="user.SecretKey" required />
+    <div *ngIf="secretKeyMisMatch">Invalid secret key for Admin role.</div>
   </div>
 
-  <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+  <!-- Button now dynamically disabled and submits the form -->
+  <button type="submit" [disabled]="registrationForm.invalid">Registration</button>
 
 </form>
