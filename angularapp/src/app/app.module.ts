@@ -24,13 +24,13 @@ import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogr
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     AdmineditmentorshipprogramComponent,
     AdminnavComponent,
     AdminviewfeedbackComponent,
-    CreatementorshipprogramComponent,
     ErrorComponent,
     HomeComponent,
     LoginComponent,
@@ -44,14 +44,18 @@ import { HttpClientModule } from '@angular/common/http';
     UsernavComponent,
     UserviewfeedbackComponent,
     UserviewmentorshipprogramComponent,
-    ViewmentorshipprogramComponent
+    ViewmentorshipprogramComponent,
+    CreatementorshipprogramComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
+
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

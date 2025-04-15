@@ -1,1 +1,34 @@
-<p>mentorshipapplicationform works!</p>
+<h2>Mentorship Application Form</h2>
+
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+
+ <label>Reason for Applying:</label>
+
+ <input name="reason" [(ngModel)]="application.reason" required />
+
+  
+
+ <label>Career Goal:</label>
+
+ <input name="goal" [(ngModel)]="application.goal" required />
+
+
+
+ <label>Profile Image:</label>
+
+ <input type="file" name="image" (change)="onFileChange($event)" />
+
+
+
+ <label>Portfolio Link:</label>
+
+ <input name="portfolio" [(ngModel)]="application.portfolio" required />
+
+
+
+ <button type="submit">Submit</button>
+
+ <button type="button" (click)="goBack()">Back</button>
+
+</form>
+

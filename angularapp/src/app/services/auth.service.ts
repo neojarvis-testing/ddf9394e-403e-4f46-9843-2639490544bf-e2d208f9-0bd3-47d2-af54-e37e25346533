@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders} from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import { User } from '../models/user.model';
 import { Login } from '../models/login.model';
-
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  public apiUrl ='';
+  public baseUrl = 'https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+  public isAuthenticated = new BehaviorSubject<boolean>(this.isLoggedIn());
+   public apiUrl ='';
 
   private userRoleSubject = new BehaviorSubject<string | null>(null);
  
@@ -19,55 +19,54 @@ export class AuthService {
  
   userRole$ = this.userRoleSubject.asObservable();
   userId$ = this.userIdSubject.asObservable();
- 
   constructor(private http: HttpClient) {}
-  private getAuthHeaders(): HttpHeaders {
-   const token = localStorage.getItem('jwtToken');
-   return new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
- 
-   });
- 
+
+  register(newUser: User): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/register`, newUser).pipe(
+      catchError(this.handleError<User>('register'))
+    );
   }
- 
-  register(user: User): Observable<any> {
-   return this.http.post(`${this.apiUrl}/register`, user, {
-    headers: this.getAuthHeaders()
-   });
+
+  login(loginUser: Login): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/login`, loginUser).pipe(
+      tap(response => {
+        this.storeUserData(response);
+        this.updateAuthenticationStatus(true);
+      }),
+      catchError(this.handleError<any>('login'))
+    );
   }
- 
-  login(login: Login): Observable<any> {
- 
-   return this.http.post<any>(`${this.apiUrl}/login`, login).pipe(
- 
-    tap(response => {
- 
-     if (response && response.token) {
- 
-      localStorage.setItem('jwtToken', response.token);
-      const payload = JSON.parse(atob(response.token.split('.')[1]));
- 
-      const roles = payload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
- 
-      const userId = payload['nameid'];
-      this.userRoleSubject.next(Array.isArray(roles) ? roles[0] : roles);
-      this.userIdSubject.next(userId);
-     }
-    })
-   );
-  }
- 
+
   logout(): void {
-   localStorage.removeItem('jwtToken');
-   this.userRoleSubject.next(null);
-   this.userIdSubject.next(null);
+    localStorage.clear();
+    this.updateAuthenticationStatus(false);
   }
 
   isLoggedIn(): boolean {
-   return !!localStorage.getItem('jwtToken');
+    return !!localStorage.getItem('token');
   }
-  getToken(): string | null {
-   return localStorage.getItem('jwtToken');
+
+  isAdmin(): boolean {
+    return localStorage.getItem('role') === 'Admin';
+  }
+
+  isOrganizer(): boolean {
+    return localStorage.getItem('role') === 'User';
+  }
+
+  updateAuthenticationStatus(isAuthenticated: boolean): void {
+    this.isAuthenticated.next(isAuthenticated);
+  }
+
+  private storeUserData(user: any): void {
+    localStorage.setItem('token', user.token);
+    localStorage.setItem('role', user.role);
+  }
+
+  private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 }

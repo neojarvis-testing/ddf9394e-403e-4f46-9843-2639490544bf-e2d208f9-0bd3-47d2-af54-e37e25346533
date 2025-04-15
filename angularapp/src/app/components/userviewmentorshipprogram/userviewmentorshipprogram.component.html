@@ -1,1 +1,34 @@
-<p>userviewmentorshipprogram works!</p>
+<div class="container">
+  <h2>Available Mentorship Programs</h2>
+  <input [(ngModel)]="searchTerm" (input)="filterPrograms()" placeholder="Search by Program or Mentor Name" />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Program Name</th>
+        <th>Field</th>
+        <th>Mentor</th>
+        <th>Experience</th>
+        <th>Mode</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="filteredPrograms.length === 0">
+        <td colspan="7">Oops! No records found</td>
+      </tr>
+      <tr *ngFor="let program of filteredPrograms; let i = index">
+        <td>{{ program.name }}</td>
+        <td>{{ program.field }}</td>
+        <td>{{ program.mentor }}</td>
+        <td>{{ program.experience }}</td>
+        <td>{{ program.mode }}</td>
+        <td>{{ program.description }}</td>
+        <td>
+          <button [disabled]="program.applied" (click)="apply(program)">{{ program.applied ? 'Applied' : 'Apply' }}</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
