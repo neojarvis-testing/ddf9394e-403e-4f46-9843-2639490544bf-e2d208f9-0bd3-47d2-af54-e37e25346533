@@ -20,7 +20,8 @@ export class AdmineditmentorshipprogramComponent implements OnInit {
     DurationInMonths: 0,
     MentorName: '',
     ExperienceLevel: '',
-    ModeOfMentorship: ''
+    ModeOfMentorship: '',
+    
   };
 
   constructor(private route: ActivatedRoute, private router: Router, private mentorshipService: MentorshipService) { }
