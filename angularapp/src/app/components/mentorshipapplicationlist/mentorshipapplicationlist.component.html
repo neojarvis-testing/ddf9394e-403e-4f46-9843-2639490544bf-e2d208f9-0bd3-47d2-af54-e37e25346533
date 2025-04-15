@@ -1,1 +1,30 @@
-<p>mentorshipapplicationlist works!</p>
+<div>
+
+<button type="button" >Back</button>
+
+<p>Program Name: {{programApplicationMap.ProgramName}}({{programApplicationMap.length}} Applicants)</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Reason for Applying</th>
+            <th>Career Goals</th>
+            <th>Application Date</th>
+            <th>Portfolio Link</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of programApplicationMap" >
+            <td>{{u.UserName}}</td>
+            <td>{{u.ReasonForApplying}}</td>
+            <td>{{u.CareerGoals}}</td>
+            <td>{{u.ApplicationDate}}</td>
+            <td>{{u.PortfolioLink}}</td>
+            <td>{{u.ApplicationStatus}}</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
