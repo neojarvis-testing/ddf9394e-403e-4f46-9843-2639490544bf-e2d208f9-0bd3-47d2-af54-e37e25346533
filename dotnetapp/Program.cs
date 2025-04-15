@@ -11,8 +11,6 @@ using dotnetapp.Services;
 var builder = WebApplication.CreateBuilder(args);
  
 builder.Services.AddControllers();
-builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(builder.Configuration.GetConnectionString("myconn")));
-
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
@@ -31,7 +29,7 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]);
+    // var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]);
 
     var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
  

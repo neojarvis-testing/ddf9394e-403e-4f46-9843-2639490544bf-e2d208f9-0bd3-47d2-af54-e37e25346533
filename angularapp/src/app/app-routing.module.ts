@@ -16,19 +16,18 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'adminnav', component: AdminnavComponent },
   { path: 'usernav', component: UsernavComponent },
+  {path:'', component:AdmineditmentorshipprogramComponent},
   { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent}
 ]; 
-=======
-import { RegistrationComponent } from './components/registration/registration.component';
+
+
 import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
+import { MentorshipapplicationlistComponent } from './components/mentorshipapplicationlist/mentorshipapplicationlist.component';
+import { AdmineditmentorshipprogramComponent } from './components/admineditmentorshipprogram/admineditmentorshipprogram.component';
 
-const routes: Routes = [
-  // {path:'', component:RegistrationComponent},
-  {path:'', component:ViewmentorshipprogramComponent}
 
-];
 
 
 
