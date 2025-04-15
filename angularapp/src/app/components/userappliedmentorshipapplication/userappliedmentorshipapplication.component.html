@@ -1,1 +1,85 @@
-<p>userappliedmentorshipapplication works!</p>
+<div class="container">
+
+    <h1>Applied Mentorships</h1>
+   
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Program Name" class="search-bar" />
+   
+   
+   
+    <table *ngIf="filteredMentorships.length > 0; else noData" class="mentorship-table">
+   
+     <thead>
+   
+      <tr>
+   
+       <th>S.No</th>
+   
+       <th>Program Name</th>
+   
+       <th>Profile Image</th>
+   
+       <th>Application Date</th>
+   
+       <th>Status</th>
+   
+       <th>Action</th>
+   
+      </tr>
+   
+     </thead>
+   
+     <tbody>
+   
+      <tr *ngFor="let mentorship of filteredMentorships; let i = index">
+   
+       <td>{{ i + 1 }}</td>
+   
+       <td>{{ mentorship.programName }}</td>
+   
+       <td>
+   
+        <button (click)="viewImage(mentorship.profileImage)">View Image</button>
+   
+       </td>
+   
+       <td>{{ mentorship.applicationDate }}</td>
+   
+       <td>{{ mentorship.status }}</td>
+   
+       <td>
+   
+        <button (click)="confirmDelete(i)">Delete</button>
+   
+       </td>
+   
+      </tr>
+   
+     </tbody>
+   
+    </table>
+   
+   
+   
+    <ng-template #noData>
+   
+     <p class="no-records">Oops! No records found</p>
+   
+    </ng-template>
+   
+   
+   
+    <!-- Image Popup -->
+   
+    <div class="popup" *ngIf="popupImage">
+   
+     <div class="popup-content">
+   
+      <span class="close" (click)="popupImage = null">&times;</span>
+   
+      <img [src]="popupImage" alt="Profile Image" />
+   
+     </div>
+   
+    </div>
+   
+   </div>

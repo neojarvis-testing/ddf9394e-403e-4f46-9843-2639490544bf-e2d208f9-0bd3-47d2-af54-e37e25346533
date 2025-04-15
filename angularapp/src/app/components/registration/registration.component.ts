@@ -2,62 +2,65 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormsModule } from '@angular/forms';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
-  user: User = {
-    UserId: 0,
-    Email: '',
-    Password: '',
-    Username: '',
-    MobileNumber: '',
-    UserRole: '',
-    SecretKey: ''
-  };
-
-  confirmPassword:'';
-  passwordMisMatch: boolean = false;
-  secretKeyMisMatch: boolean = false;
-  secretKeyRequired: boolean = false;
-  adminSecretKey = 'Zion'; //Hardcode
-
-  constructor(private router: Router, private authService: AuthService) { }
-
+ 
+  newUser:User={
+    Email:"",
+    Password:"",
+    Username:"",
+    MobileNumber:"",
+    UserRole:""
+  }
+  err:string="";
+  showPassword:boolean=false;
+  confirmPassword:string="";
+  inputSecretKey:string='';
+  SECRETKEY:string= '@RegisterAdmin@'
+  checkUserExists:boolean=false;
+  constructor(private authService:AuthService,private router:Router) { }
+ 
   ngOnInit(): void {
   }
-
-  checkRole()
-  {
-    if(this.user.UserRole == 'Admin')
-    {
-      this.secretKeyRequired = true;
-    }
-  }
-
-  register()
-  {
-    alert('added successfully');
-    if(this.user.Password != this.confirmPassword && this.user.SecretKey != this.adminSecretKey)
-    {
-      this.passwordMisMatch = true;
-      this.secretKeyMisMatch = true;
-      return;
-    }
-
-    this.authService.register(this.user).subscribe( data =>{
-      this.user = data;
-      this.router.navigate(['/login']);
-      
+ 
+  register(){
+  
+    this.authService.register(this.newUser).subscribe((res)=>{
+      console.log(res);
+      this.router.navigate(["/login"]);
+      Swal.fire({
+        title: 'Success!',
+        text: 'Registration Successful!',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false
+      });
+      this.router.navigate([`/login`]);
+    },
+    (error)=>{
+      this.checkUserExists=true;
+      this.err=error.error;
+      Swal.fire({
+        title: 'Error!',
+        text: 'Registration Failed. Please try again.',
+        icon: 'error',
+        timer: 1500,
+        showConfirmButton: false
+      });
     });
+ 
   }
+
+  matchSecretKey():boolean
+  {
+   
+    return (this.SECRETKEY === this.inputSecretKey);
+  }
+
+ 
 }
-
-
-
-

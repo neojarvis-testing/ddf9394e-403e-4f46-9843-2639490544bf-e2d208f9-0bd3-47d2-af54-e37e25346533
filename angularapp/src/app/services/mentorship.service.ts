@@ -8,7 +8,9 @@ import { MentorshipApplication } from '../models/mentorshipapplication.model';
   providedIn: 'root',
 })
 export class MentorshipService {
+
   private apiUrl = 'https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+
   private authToken = `Bearer ${localStorage.getItem('authToken')}`;
   private headers = new HttpHeaders({
     Authorization: this.authToken,

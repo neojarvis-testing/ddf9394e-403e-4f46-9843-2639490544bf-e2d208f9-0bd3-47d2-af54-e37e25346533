@@ -1,71 +1,68 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { Login } from 'src/app/models/login.model';
+import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
+ 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  loginData = {
-    Email: '',
-    Password: ''
-   };
-  
-  
-  
-   loginError: string = '';
-  
-  ngOnInit(): void {
-    
+ 
+  userLogin:Login={
+    "Email":"",
+    "Password":""
   }
-  
-   constructor(private authService: AuthService, private router: Router) {}
-  
-  
-  
-   onSubmit(form: any): void {
-  
-    if (form.valid) {
-  
-     this.authService.login(this.loginData).subscribe({
-  
-      next: (response) => {
-  
-       if (response.token) {
-  
-        localStorage.setItem('token', response.token);
-  
-        localStorage.setItem('role', response.role);
-  
-        localStorage.setItem('userId', response.userId);
-  
-  
-  
-        if (response.role === 'Admin') {
-  
-         this.router.navigate(['/admin/home']);
-  
-        } else {
-  
-         this.router.navigate(['/user/home']);
-  
-        }
-  
-       }
-  
-      },
-  
-      error: () => {
-  
-       this.loginError = "Invalid email or password";
-  
+  checkEmailandPassword:boolean=false;
+  role:string='';
+  showPassword:boolean=false;
+  constructor(private authService:AuthService,private router:Router) { }
+ 
+  ngOnInit(): void {
+  }
+ 
+  addlogin()
+  {
+    this.authService.login(this.userLogin).subscribe((res)=>{
+      console.log(res);
+      localStorage.setItem("Token",res.token);
+      this.authService.isRole();
+      this.role = localStorage.getItem('userRole');
+      if(this.role ==="Admin")
+      {
+        this.router.navigate([`/adminnav`]);
       }
-  
-     });
-  
-    }
-  
-   }
+      else
+      {
+        this.router.navigate([`/usernav`]);
+      }
+      // console.log(this.role);
+      // if(this.role=="Admin")
+      // this.router.navigate([`/admin`]);
+      // else
+      // this.router.navigate(['/user']);
+      Swal.fire({
+        title: 'Success!',
+        text: 'Login Successful!',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false
+      });
+ 
+    },
+    error=>{
+      this.checkEmailandPassword=true;
+      Swal.fire({
+        title: 'Error!',
+        text: 'Login Failed. Please try again.',
+        icon: 'error',
+        timer: 1500,
+        showConfirmButton: false
+      });
+    })
+  }
+ 
+ 
 }

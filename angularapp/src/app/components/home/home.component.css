@@ -1,0 +1,57 @@
+.landing-page {
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+    padding: 40px;
+   
+    background-color: #f4f4f4;
+   
+    min-height: calc(100vh - 80px); /* Adjust based on navbar height if needed */
+   
+   }
+   
+   
+   
+   .content {
+   
+    background-color: white;
+   
+    padding: 30px;
+   
+    border-radius: 12px;
+   
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+   
+   }
+   
+   
+   
+   .content h2 {
+   
+    font-size: 28px;
+   
+    font-weight: 600;
+   
+    color: #b24526;
+   
+    margin-bottom: 20px;
+   
+   }
+   
+   
+   
+   .content p {
+   
+    font-size: 16px;
+   
+    line-height: 1.6;
+   
+    color: #333;
+   
+    margin-bottom: 15px;
+   
+   }
+   
+   
+   
+   

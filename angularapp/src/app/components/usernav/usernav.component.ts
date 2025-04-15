@@ -1,15 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { Router } from '@angular/router';
+
+
 
 @Component({
-  selector: 'app-usernav',
-  templateUrl: './usernav.component.html',
-  styleUrls: ['./usernav.component.css']
+
+ selector: 'app-usernav',
+
+ templateUrl: './usernav.component.html',
+
+ styleUrls: ['./usernav.component.css']
+
 })
-export class UsernavComponent implements OnInit {
 
-  constructor() { }
+export class UsernavComponent {
 
-  ngOnInit(): void {
-  }
+ constructor(private router: Router) {}
+
+
+
+ logout(): void {
+
+  // Clear user session or token
+
+  localStorage.clear();
+
+  this.router.navigate(['/login']);
+
+ }
+
 
 }
