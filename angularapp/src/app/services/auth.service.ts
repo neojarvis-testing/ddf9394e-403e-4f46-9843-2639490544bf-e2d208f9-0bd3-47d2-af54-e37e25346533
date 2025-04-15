@@ -10,12 +10,14 @@ import { tap, catchError } from 'rxjs/operators';
 })
 export class AuthService {
 
+  public baseUrl = '';
   private userRoleSubject = new BehaviorSubject<string | null>(null);
  
   private userIdSubject = new BehaviorSubject<string | null>(null);
  
   userRole$ = this.userRoleSubject.asObservable();
   userId$ = this.userIdSubject.asObservable();
+  isAuthenticated: any;
   constructor(private http: HttpClient) {}
 
   register(newUser: User): Observable<User> {

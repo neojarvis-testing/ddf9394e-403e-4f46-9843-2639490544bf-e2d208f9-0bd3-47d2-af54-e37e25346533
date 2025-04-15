@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
  styleUrls: ['./adminnav.component.css']
 })
 export class AdminnavComponent implements OnInit {
+userName: any;
+logout() {
+throw new Error('Method not implemented.');
+}
 
   constructor() { }
 
