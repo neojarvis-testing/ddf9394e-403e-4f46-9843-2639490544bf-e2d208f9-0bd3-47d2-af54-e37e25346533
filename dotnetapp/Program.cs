@@ -29,7 +29,6 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    // var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]);
 
     var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
  
@@ -60,6 +59,7 @@ builder.Services.AddCors(options =>
  
 // Add Controllers
 builder.Services.AddControllers();
+
  
 // Swagger + JWT Support
 builder.Services.AddSwaggerGen(c =>

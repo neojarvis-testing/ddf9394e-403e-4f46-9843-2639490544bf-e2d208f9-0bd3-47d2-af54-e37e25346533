@@ -1,1 +1,51 @@
-<p>requestedmentorshipapplication works!</p>
+<div class="container">
+  <h1>Mentorship Applications for Approval</h1>
+  <div *ngIf="applications.length === 0">
+   <p>Oops! No records Found</p>
+  </div>
+  <div *ngIf="applications.length > 0">
+   <input type="text" placeholder="Search by Career Goals..." [(ngModel)]="searchTerm" (input)="searchApplications()" />
+   <select [(ngModel)]="filterStatus" (change)="filterApplications()">
+    <option value="">Filter by Status</option>
+    <option value="Pending">Pending</option>
+    <option value="Approved">Approved</option>
+    <option value="Rejected">Rejected</option>
+   </select>
+   <table>
+    <thead>
+     <tr>
+      <th>S.No</th>
+      <th>Username</th>
+      <th>Reason for Applying</th>
+      <th>Career Goals</th>
+      <th>Application Date</th>
+      <th>Portfolio Link</th>
+      <th>Status</th>
+      <th>Action</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let application of filteredApplications; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ application.username }}</td>
+      <td>{{ application.reason }}</td>
+      <td>{{ application.careerGoals }}</td>
+      <td>{{ application.applicationDate | date }}</td>
+      <td><a [href]="application.portfolioLink" target="_blank">View Portfolio</a></td>
+      <td>{{ application.status }}</td>
+      <td>
+       <button (click)="approveApplication(application)">Approve</button>
+       <button (click)="rejectApplication(application)">Reject</button>
+       <button (click)="viewProfileImage(application)">View Profile Image</button>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <button (click)="viewAllDetails()">View All Details</button>
+  </div>
+  <!-- Profile Image Popup -->
+  <div *ngIf="showProfileImagePopup" class="popup">
+   <span class="close" (click)="closeProfileImagePopup()">&times;</span>
+   <img [src]="selectedProfileImage" alt="Profile Image" />
+  </div>
+ </div>

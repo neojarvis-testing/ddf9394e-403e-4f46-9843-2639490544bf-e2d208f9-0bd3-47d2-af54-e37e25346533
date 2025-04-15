@@ -94,70 +94,7 @@ namespace dotnetapp.Services
             }
             return (0, "Invalid Password");
         }
- 
-    // public async Task<(int, string)> Registration(User model, string role)
-    // {
-    //   var userExists = _context.Users.FirstOrDefault(u => u.Email == model.Email);
 
-    //   if (userExists != null)
-    //   {
-    //     return (0, "User already exists");
-    //   }
-  
-    //   _context.Users.Add(model);
-    //   _context.SaveChanges();
-  
-    //   return (1, "User Created successfully!");
-    // }
-
-    // public async Task<(int, string)> Login(LoginModel model)
-    // {
-    //   var user =  _context.Users.FirstOrDefault(u => u.Email == model.Email);
-
-    //   if (user == null)
-    //   {
-    //     return (0, "Invalid email");
-    //   }
-
-    //   var result = _context.Users.FirstOrDefault(u => u.Email == model.Email && u.Password==model.Password);
-
-    //   if (result == null)
-    //   {
-    //     return (0, "Invalid password");
-    //   }
-
-    //   string token = await GenerateToken(user);
-
-    //   return (1, token);
-    // }
-
-    // public async Task<string> GenerateToken(User user)
-    // {
-    //   var claims = new List<Claim>
-    //   {
-    //     new Claim(ClaimTypes.Name, user.Username),
-    //     new Claim(ClaimTypes.Email, user.Email),
-    //     new Claim(ClaimTypes.Role, user.UserRole)
-    //   };
-
-    //   var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
-    //   var credentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
-    //   var tokenDesc = new SecurityTokenDescriptor
-    //   {
-    //     Issuer = _configuration["JWT:Issuer"],
-    //     Audience = _configuration["JWT:Audience"],
-    //     Expires = DateTime.Now.AddMinutes(30),
-    //     SigningCredentials = credentials,
-    //     Subject = new ClaimsIdentity(claims)
-    //   };
-
-    //   var handler = new JwtSecurityTokenHandler();
-    //   var token = handler.CreateToken(tokenDesc);
-
-    //   return handler.WriteToken(token);
-
- 
         private string GenerateToken(IEnumerable<Claim> claims)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
