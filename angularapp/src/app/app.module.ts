@@ -21,9 +21,10 @@ import { UsernavComponent } from './components/usernav/usernav.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UserviewmentorshipprogramComponent } from './components/userviewmentorshipprogram/userviewmentorshipprogram.component';
 import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthGuard } from './components/auth.guard';
+// import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -32,7 +33,6 @@ import { AuthGuard } from './components/auth.guard';
     AdmineditmentorshipprogramComponent,
     AdminnavComponent,
     AdminviewfeedbackComponent,
-    CreatementorshipprogramComponent,
     ErrorComponent,
     HomeComponent,
     LoginComponent,
@@ -46,16 +46,20 @@ import { AuthGuard } from './components/auth.guard';
     UsernavComponent,
     UserviewfeedbackComponent,
     UserviewmentorshipprogramComponent,
-    ViewmentorshipprogramComponent
+    ViewmentorshipprogramComponent,
+    CreatementorshipprogramComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    // MatSnackBarModule
+
   ],
-  providers: [AuthGuard],
+  
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

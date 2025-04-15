@@ -1,92 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { MentorshipService } from 'src/app/services/mentorship.service';
 import { HttpClient } from '@angular/common/http';
-
-
+import { Router } from '@angular/router';
 
 @Component({
-
- selector: 'app-userviewmentorshipprogram',
-
- templateUrl: './userviewmentorshipprogram.component.html',
-
- styleUrls: ['./userviewmentorshipprogram.component.css']
-
+  selector: 'app-userviewmentorshipprogram',
+  templateUrl: './userviewmentorshipprogram.component.html',
+  styleUrls: ['./userviewmentorshipprogram.component.css']
 })
-
 export class UserviewmentorshipprogramComponent implements OnInit {
-
-
-
-  mentorshipList: any[] = [];
-
-  filteredList: any[] = [];
-
   searchTerm: string = '';
+  mentorshipPrograms = [
+    {
+      name: 'Leadership Mentorship',
+      field: 'Management',
+      duration: '3 Months',
+      mentor: 'John Doe',
+      experience: '5+ Years',
+      mode: 'Online',
+      description: 'A program to develop leadership skills.',
+      applied: false
+    },
+    // Add more dummy programs as needed
+  ];
 
-  userAppliedPrograms: number[] = [];
+  filteredPrograms = this.mentorshipPrograms;
 
-
-
-  constructor(private http: HttpClient) {}
-
-
+  constructor(private mentorshipService: MentorshipService, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-
-    this.loadMentorshipPrograms();
-
+    // Initialize your component here
   }
 
-
-
-  loadMentorshipPrograms() {
-
-    this.http.get<any[]>('your-api-url/mentorshipapplication').subscribe(data => {
-
-      this.mentorshipList = data;
-
-      this.filteredList = data;
-
-    });
-
-  }
-
-
-
-  searchPrograms() {
-
-    const term = this.searchTerm.toLowerCase();
-
-    this.filteredList = this.mentorshipList.filter(item =>
-
-      item.programName.toLowerCase().includes(term) ||
-
-      item.mentorName.toLowerCase().includes(term)
-
+  filterPrograms() {
+    this.filteredPrograms = this.mentorshipPrograms.filter(program =>
+      program.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      program.mentor.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
-
   }
 
 
-
-  apply(programId: number) {
-
-    if (!this.userAppliedPrograms.includes(programId)) {
-
-      this.userAppliedPrograms.push(programId);
-
+  apply(program: any): void {
+      this.router.navigate(['/mentorshipapplicationform'], { state: { program } });
     }
-
-  }
-
-
-
-  isApplied(programId: number): boolean {
-
-    return this.userAppliedPrograms.includes(programId);
-
-  }
-
+    
 }
-

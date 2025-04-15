@@ -1,10 +1,14 @@
-.navbar {
+.usernav-container {
 
-    background-color: #a62828;
+    font-family: Arial, sans-serif;
    
-    color: white;
+   }
    
-    padding: 10px 20px;
+   
+   
+   .navbar {
+   
+    background-color: #8b0000;
    
     display: flex;
    
@@ -12,15 +16,33 @@
    
     align-items: center;
    
+    padding: 10px 20px;
+   
+    color: white;
+   
    }
    
    
    
-   .title {
+   .logo {
    
     font-weight: bold;
    
-    font-size: 1.2rem;
+    font-size: 18px;
+   
+    color: gold;
+   
+   }
+   
+   
+   
+   .nav-links {
+   
+    display: flex;
+   
+    gap: 15px;
+   
+    align-items: center;
    
    }
    
@@ -30,25 +52,23 @@
    
     color: white;
    
-    margin: 0 10px;
-   
     text-decoration: none;
    
    }
    
    
    
-   .nav-links button {
+   .logout-btn {
    
-    background-color: #e74c3c;
+    background-color: #cc0000;
    
     border: none;
    
+    padding: 6px 12px;
+   
     color: white;
    
-    padding: 5px 10px;
-   
-    margin-left: 10px;
+    border-radius: 4px;
    
     cursor: pointer;
    
@@ -56,17 +76,7 @@
    
    
    
-   .user-info {
-   
-    margin-left: 20px;
-   
-    font-style: italic;
-   
-   }
-   
-   
-   
-   .home-container {
+   .content {
    
     padding: 30px;
    
@@ -76,16 +86,24 @@
    
    
    
-   .home-container h1 {
+   .content h1 {
    
-    font-weight: bold;
+    font-size: 26px;
    
-    margin-bottom: 20px;
+    margin-bottom: 15px;
    
    }
    
    
    
+   .content p {
    
+    font-size: 16px;
    
+    line-height: 1.6;
    
+    max-width: 800px;
+   
+    margin: auto;
+   
+   }

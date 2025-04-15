@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-userappliedmentorshipapplication',
@@ -6,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./userappliedmentorshipapplication.component.css']
 })
 export class UserappliedmentorshipapplicationComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit(): void {
-  }
 
-}
+  }
+    
+  }
