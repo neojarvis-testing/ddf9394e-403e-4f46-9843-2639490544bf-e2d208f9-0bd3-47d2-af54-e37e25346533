@@ -10,26 +10,22 @@ import { Router } from '@angular/router';
 })
 export class UserviewmentorshipprogramComponent implements OnInit {
   searchTerm: string = '';
-  mentorshipPrograms = [
-    {
-      name: 'Leadership Mentorship',
-      field: 'Management',
-      duration: '3 Months',
-      mentor: 'John Doe',
-      experience: '5+ Years',
-      mode: 'Online',
-      description: 'A program to develop leadership skills.',
-      applied: false
-    },
-    // Add more dummy programs as needed
-  ];
-
-  filteredPrograms = this.mentorshipPrograms;
+  mentorshipPrograms: any[] = [];
+  filteredPrograms: any[] = [];
+  noRecordsFound: boolean = false;
 
   constructor(private mentorshipService: MentorshipService, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    // Initialize your component here
+    this.fetchMentorshipPrograms();
+  }
+
+  fetchMentorshipPrograms(): void {
+    this.mentorshipService.getAllMentorshipPrograms().subscribe((programs: any[]) => {
+      this.mentorshipPrograms = programs;
+      this.filteredPrograms = programs;
+      this.noRecordsFound = programs.length === 0;
+    });
   }
 
   filterPrograms() {
@@ -37,11 +33,10 @@ export class UserviewmentorshipprogramComponent implements OnInit {
       program.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
       program.mentor.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
+    this.noRecordsFound = this.filteredPrograms.length === 0;
   }
 
-
   apply(program: any): void {
-      this.router.navigate(['/mentorshipapplicationform'], { state: { program } });
-    }
-    
+    this.router.navigate(['/mentorshipapplicationform'], { state: { program } });
+  }
 }
