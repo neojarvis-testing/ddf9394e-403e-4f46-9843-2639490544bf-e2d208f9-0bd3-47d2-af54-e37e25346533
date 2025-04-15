@@ -9,32 +9,35 @@ import { UserviewmentorshipprogramComponent } from './components/userviewmentors
 import { UserappliedmentorshipapplicationComponent } from './components/userappliedmentorshipapplication/userappliedmentorshipapplication.component';
 import { MentorshipapplicationformComponent } from './components/mentorshipapplicationform/mentorshipapplicationform.component';
 import { AdmineditmentorshipprogramComponent } from './components/admineditmentorshipprogram/admineditmentorshipprogram.component';
+import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
+import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
+import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 
 const routes: Routes = [
 
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
-  // { path: 'home', component: HomeComponent },
-  // { path: 'login', component: LoginComponent },
-  // { path: 'register', component: RegistrationComponent },
-  // { path: 'adminnav', component: AdminnavComponent },
-  // { path: 'usernav', component: UsernavComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent },
+  { path: 'adminnav', component: AdminnavComponent },
+  { path: 'usernav', component: UsernavComponent },
 
-  // {path:'', component:ViewmentorshipprogramComponent},
-  // { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
-  // { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
-  // { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
-  // {path:'', component:AdmineditmentorshipprogramComponent},
-  // { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
-  // { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
-  // { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent}
-     { path:'adminviewfeedback', component:AdminviewfeedbackComponent}
+  { path: 'viewmentorshipprogram', component:ViewmentorshipprogramComponent},
+  { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
+  { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
+  { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
+  {path: 'admineditmentorshipprogram', component:AdmineditmentorshipprogramComponent},
+  { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
+  { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
+  { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
+  { path:'adminviewfeedback', component:AdminviewfeedbackComponent},
+  { path: 'feedback', component: UseraddfeedbackComponent}
 
 ];
 
 
 
-import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
-import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
+
 
 
 

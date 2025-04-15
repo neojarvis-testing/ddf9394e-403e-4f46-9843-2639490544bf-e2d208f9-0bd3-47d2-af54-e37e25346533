@@ -18,7 +18,7 @@ export class MentorshipService {
   constructor(private http: HttpClient) {}
 
   getAllMentorshipPrograms(): Observable<MentorshipProgram[]> {
-    return this.http.get<MentorshipProgram[]>(`${this.apiUrl}mentorship-program`, {
+    return this.http.get<MentorshipProgram[]>(`${this.apiUrl}api/mentorship-program`, {
       headers: this.headers,
     });
   }
@@ -60,7 +60,7 @@ export class MentorshipService {
   }
 
   addMentorshipApplication(data: MentorshipApplication): Observable<MentorshipApplication> {
-    return this.http.post<MentorshipApplication>(`${this.apiUrl}mentorship-application`, data, {
+    return this.http.post<MentorshipApplication>(`${this.apiUrl}api/mentorship-application`, data, {
       headers: this.headers,
     });
   }
