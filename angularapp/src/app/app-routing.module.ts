@@ -20,16 +20,6 @@ const routes: Routes = [
   { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent}
 ]; 
-=======
-import { RegistrationComponent } from './components/registration/registration.component';
-import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
-
-const routes: Routes = [
-  // {path:'', component:RegistrationComponent},
-  {path:'', component:ViewmentorshipprogramComponent}
-
-];
-
 
 
 @NgModule({
