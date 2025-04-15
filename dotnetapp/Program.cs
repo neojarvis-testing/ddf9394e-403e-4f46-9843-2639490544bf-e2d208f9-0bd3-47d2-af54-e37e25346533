@@ -59,6 +59,7 @@ builder.Services.AddCors(options =>
  
 // Add Controllers
 builder.Services.AddControllers();
+
  
 // Swagger + JWT Support
 builder.Services.AddSwaggerGen(c =>
