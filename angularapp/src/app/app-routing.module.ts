@@ -16,11 +16,14 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'adminnav', component: AdminnavComponent },
   { path: 'usernav', component: UsernavComponent },
+  {path:'', component:AdmineditmentorshipprogramComponent},
   { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent}
+
 ];
  
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
