@@ -3,14 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Observable } from 'rxjs';
 import { Login } from '../models/login.model';
-import { environment } from 'src/environments/environment';
  
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  public apiUrl:string="https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080";
+  public apiUrl:string="https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
  
   constructor(private http:HttpClient) { }
  
