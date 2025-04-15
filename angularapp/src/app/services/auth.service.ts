@@ -9,16 +9,15 @@ import { tap, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  public baseUrl = 'https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
-  public isAuthenticated = new BehaviorSubject<boolean>(this.isLoggedIn());
-   public apiUrl ='';
 
+  public baseUrl = '';
   private userRoleSubject = new BehaviorSubject<string | null>(null);
  
   private userIdSubject = new BehaviorSubject<string | null>(null);
  
   userRole$ = this.userRoleSubject.asObservable();
   userId$ = this.userIdSubject.asObservable();
+  isAuthenticated: any;
   constructor(private http: HttpClient) {}
 
   register(newUser: User): Observable<User> {
