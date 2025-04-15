@@ -10,7 +10,7 @@ import { tap, catchError } from 'rxjs/operators';
 })
 export class AuthService {
 
-  public baseUrl = '';
+  public baseUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
   private userRoleSubject = new BehaviorSubject<string | null>(null);
  
   private userIdSubject = new BehaviorSubject<string | null>(null);
