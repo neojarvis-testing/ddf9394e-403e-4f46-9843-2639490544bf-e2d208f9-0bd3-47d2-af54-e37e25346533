@@ -10,14 +10,15 @@ import { tap, catchError } from 'rxjs/operators';
 })
 export class AuthService {
 
-  public baseUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+  public baseUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/api';
   private userRoleSubject = new BehaviorSubject<string | null>(null);
- 
   private userIdSubject = new BehaviorSubject<string | null>(null);
- 
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false); 
+
   userRole$ = this.userRoleSubject.asObservable();
   userId$ = this.userIdSubject.asObservable();
-  isAuthenticated: any;
+  isAuthenticated$ = this.isAuthenticatedSubject.asObservable(); 
+
   constructor(private http: HttpClient) {}
 
   register(newUser: User): Observable<User> {
@@ -54,7 +55,7 @@ export class AuthService {
   }
 
   updateAuthenticationStatus(isAuthenticated: boolean): void {
-    this.isAuthenticated.next(isAuthenticated);
+    this.isAuthenticatedSubject.next(isAuthenticated); // Use the initialized subject
   }
 
   private storeUserData(user: any): void {
