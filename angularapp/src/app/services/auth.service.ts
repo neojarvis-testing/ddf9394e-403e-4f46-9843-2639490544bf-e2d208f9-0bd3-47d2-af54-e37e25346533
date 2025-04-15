@@ -11,6 +11,7 @@ import { Login } from '../models/login.model';
 })
 export class AuthService {
 
+  public apiUrl ='';
 
   private userRoleSubject = new BehaviorSubject<string | null>(null);
  
