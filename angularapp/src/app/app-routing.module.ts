@@ -9,8 +9,9 @@ import { UserviewmentorshipprogramComponent } from './components/userviewmentors
 import { UserappliedmentorshipapplicationComponent } from './components/userappliedmentorshipapplication/userappliedmentorshipapplication.component';
 import { MentorshipapplicationformComponent } from './components/mentorshipapplicationform/mentorshipapplicationform.component';
 import { AdmineditmentorshipprogramComponent } from './components/admineditmentorshipprogram/admineditmentorshipprogram.component';
- 
+
 const routes: Routes = [
+
   // { path: '', redirectTo: '/home', pathMatch: 'full' },
   // { path: 'home', component: HomeComponent },
   // { path: 'login', component: LoginComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
   // { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   // { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   // { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent}
-  {path:'adminviewfeedback', component:AdminviewfeedbackComponent}
+     { path:'adminviewfeedback', component:AdminviewfeedbackComponent}
+
 ];
 
 

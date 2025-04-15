@@ -1,39 +1,68 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent {
-  user = {
-    Username: '',
-    Email: '',
-    Password: '',
-    MobileNumber: '',
-    UserRole: '',
-    SecretKey: ''
-  };
-  confirmPassword = '';
-  secretKeyRequired = false;
-  secretKeyMisMatch = false;
 
-  constructor(private router: Router) {}
-
-  checkRole() {
-    this.secretKeyRequired = this.user.UserRole === 'Admin';
+export class RegistrationComponent implements OnInit {
+ 
+  newUser:User={
+    Email:"",
+    Password:"",
+    Username:"",
+    MobileNumber:"",
+    UserRole:""
+  }
+  err:string="";
+  showPassword:boolean=false;
+  confirmPassword:string="";
+  inputSecretKey:string='';
+  SECRETKEY:string= '@RegisterAdmin@'
+  checkUserExists:boolean=false;
+  constructor(private authService:AuthService,private router:Router) { }
+ 
+  ngOnInit(): void {
+  }
+ 
+  register(){
+  
+    this.authService.register(this.newUser).subscribe((res)=>{
+      console.log(res);
+      this.router.navigate(["/login"]);
+      Swal.fire({
+        title: 'Success!',
+        text: 'Registration Successful!',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false
+      });
+      this.router.navigate([`/login`]);
+    },
+    (error)=>{
+      this.checkUserExists=true;
+      this.err=error.error;
+      Swal.fire({
+        title: 'Error!',
+        text: 'Registration Failed. Please try again.',
+        icon: 'error',
+        timer: 1500,
+        showConfirmButton: false
+      });
+    });
+ 
   }
 
-  register() {
-    if (this.user.Password === this.confirmPassword) {
-      // Logic for registration (e.g., API call)
-      console.log('User registered successfully:', this.user);
-
-      // Navigate to login page after registration
-      this.router.navigate(['/login']);
-    } else {
-      console.log('Passwords do not match.');
-    }
+  matchSecretKey():boolean
+  {
+   
+    return (this.SECRETKEY === this.inputSecretKey);
   }
+
+ 
 }
