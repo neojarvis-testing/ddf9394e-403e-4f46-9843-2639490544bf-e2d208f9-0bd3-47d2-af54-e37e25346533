@@ -11,8 +11,6 @@ using dotnetapp.Services;
 var builder = WebApplication.CreateBuilder(args);
  
 builder.Services.AddControllers();
-builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
-
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
@@ -61,6 +59,7 @@ builder.Services.AddCors(options =>
  
 // Add Controllers
 builder.Services.AddControllers();
+
  
 // Swagger + JWT Support
 builder.Services.AddSwaggerGen(c =>
