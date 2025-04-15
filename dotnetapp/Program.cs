@@ -11,11 +11,18 @@ using dotnetapp.Services;
 var builder = WebApplication.CreateBuilder(args);
  
 builder.Services.AddControllers();
-
-builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
-
+// Add DbContext
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
+ 
+// Add Identity
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+ 
 builder.Services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
-
+ 
+// Add Authentication - JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -23,7 +30,7 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]);
+    var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
  
     options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -36,7 +43,8 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
 });
-
+ 
+// Add CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -48,9 +56,11 @@ builder.Services.AddCors(options =>
                 .AllowAnyHeader();
         });
 });
-
+ 
+// Add Controllers
 builder.Services.AddControllers();
-
+ 
+// Swagger + JWT Support
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
@@ -76,17 +86,18 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-
+ 
+// Register Custom Services
 builder.Services.AddTransient<IAuthService, AuthService>();
-builder.Services.AddTransient<AuthService>();
 builder.Services.AddTransient<MentorshipApplicationService>();
-builder.Services.AddTransient<FeedbackService>();
 builder.Services.AddTransient<MentorshipProgramService>();
+builder.Services.AddScoped<FeedbackService>();
  
 builder.Services.AddEndpointsApiExplorer();
  
 var app = builder.Build();
-
+ 
+// Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
