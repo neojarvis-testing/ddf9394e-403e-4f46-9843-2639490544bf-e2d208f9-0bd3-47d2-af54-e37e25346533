@@ -13,6 +13,8 @@ import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogr
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
+import { CreatementorshipprogramComponent } from './components/creatementorshipprogram/creatementorshipprogram.component';
+import { RequestedmentorshipapplicationComponent } from './components/requestedmentorshipapplication/requestedmentorshipapplication.component';
  
 const routes: Routes = [
  
@@ -32,7 +34,9 @@ const routes: Routes = [
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
   { path:'adminviewfeedback', component:AdminviewfeedbackComponent},
   { path: 'useraddfeedback', component: UseraddfeedbackComponent},
-  { path: 'userviewfeedback', component: UserviewfeedbackComponent}
+  { path: 'userviewfeedback', component: UserviewfeedbackComponent},
+  {path:'creatementorshipprogram', component:CreatementorshipprogramComponent},
+  {path:'requestedmentorshipapplication', component:RequestedmentorshipapplicationComponent},
 
 ];
  
