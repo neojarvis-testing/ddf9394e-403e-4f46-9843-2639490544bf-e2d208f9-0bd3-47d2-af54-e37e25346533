@@ -26,15 +26,14 @@ const routes: Routes = [
   { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
-  { path: 'admineditmentorshipprogram', component:AdmineditmentorshipprogramComponent},
+  { path: 'admineditmentorshipprogram/:id', component:AdmineditmentorshipprogramComponent},
   { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
   { path:'adminviewfeedback', component:AdminviewfeedbackComponent},
   { path: 'useraddfeedback', component: UseraddfeedbackComponent},
   { path: 'userviewfeedback', component: UserviewfeedbackComponent}
- 
- 
+
 ];
  
  
