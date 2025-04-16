@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Observable } from 'rxjs';
 import { Login } from '../models/login.model';
-import { environment } from 'src/environments/environment';
  
 @Injectable({
   providedIn: 'root'
@@ -54,7 +53,6 @@ export class AuthService {
  
   isAdmin():boolean
   {
-    var role = localStorage.getItem('userRole');
     return localStorage.getItem('userRole')==="Admin";
   }
  

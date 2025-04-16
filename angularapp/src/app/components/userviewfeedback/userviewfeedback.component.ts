@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Feedback } from 'src/app/models/feedback.model';
+import { AuthService } from 'src/app/services/auth.service';
+import { FeedbackService } from 'src/app/services/feedback.service';
 
 @Component({
   selector: 'app-userviewfeedback',
@@ -6,29 +10,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./userviewfeedback.component.css']
 })
 export class UserviewfeedbackComponent implements OnInit {
-  feedbacks = ['Feedback 1', 'Feedback 2']; // Should be fetched from API
-  selectedFeedback = '';
-  showDeleteConfirm = false;
-  constructor() { }
+  feedbackIdtoDelete: number;
+  feedbacks: Feedback[] = [];
+  selectedFeedbackId: number;
+  isPopUpOpen: boolean;
+  UserId: number;
+
+  constructor(private feedbackService: FeedbackService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.UserId = +localStorage.getItem('userId'); 
+    console.log(this.UserId);
+
+    this.feedbackService.getAllFeedbacksByUserid(this.UserId).subscribe(data => { 
+      this.feedbacks = data;
+    });
   }
-  confirmDelete(feedback: string)
-  {
-    this.selectedFeedback = feedback;
-    this.showDeleteConfirm = true;
+  
+  openDeletePopUp(feedbackId: number): void {
+    this.feedbackIdtoDelete = feedbackId;
+    this.isPopUpOpen = true;
   }
-  deleteFeedback()
-  {
-    this.feedbacks = this.feedbacks.filter(f => f !== this.selectedFeedback);
-    this.showDeleteConfirm = false;
-    this.selectedFeedback = '';
+
+  closeDeletePopUp(): void {
+    this.isPopUpOpen = false;
+    this.feedbackIdtoDelete = null;
   }
-  cancelDelete() 
-  {
-  this.showDeleteConfirm = false;
+
+  deleteFeedback() {
+    if (this.feedbackIdtoDelete !== null) {
+      this.feedbackService.deleteFeedback(this.feedbackIdtoDelete).subscribe(() => {
+        this.feedbacks = this.feedbacks.filter(feedback => feedback.FeedbackId !== this.feedbackIdtoDelete);
+        this.closeDeletePopUp();
+      });
+    }
   }
 }
-
-
-

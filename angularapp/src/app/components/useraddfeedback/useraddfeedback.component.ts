@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Feedback } from 'src/app/models/feedback.model';
+import { FeedbackService } from 'src/app/services/feedback.service';
 
 @Component({
   selector: 'app-useraddfeedback',
@@ -7,27 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UseraddfeedbackComponent implements OnInit {
 
-  constructor() { }
-  feedbackText = '';
-  showValidation = false;
-  showPopup = false;
+  feedback:Feedback={
+    UserId: 0,
+    FeedbackText: '',
+    Date: undefined,
+  
+  };
+  constructor(private feedbackService:FeedbackService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.feedback.UserId = +localStorage.getItem('userId');
+    this.feedback.Date = new Date();
+
   }
-  submitFeedback() {
-    if (!this.feedbackText.trim())
-    {
-      this.showValidation = true;
-    }
-    else
-    {
-      this.showValidation = false;
-      this.showPopup = true;
-    }
-  }
-  closePopup()
+
+  addFeedback()
   {
-    this.showPopup = false;
-    this.feedbackText = '';
+    this.feedbackService.sendFeedback(this.feedback).subscribe(()=>
+    {
+      this.router.navigate(['customer/viewFeedback']);
+    });
   }
 }

@@ -31,14 +31,13 @@ export class ViewmentorshipprogramComponent implements OnInit {
 
   search()
   {
-    this.filterPrograms = this.programs.filter(p => p.ProgramName.toLowerCase().includes(this.searchProgram.toLowerCase()) ||  
-                                                p.MentorName.toLowerCase().includes(this.searchProgram.toLowerCase()));
+    this.filterPrograms = this.programs.filter(p => p.ProgramName.toLowerCase().includes(this.searchProgram.toLowerCase()) || p.MentorName.toLowerCase().includes(this.searchProgram.toLowerCase()));
   }
 
   editProgram(id:number):void
   {
     alert('Entered Edit');
-    this.router.navigate([`/${id}`]); //Write Routing
+    this.router.navigate([`/editmentorshipprogram/${id}`]); //Write Routing
   }
 
   deleteProgram(id:number)

@@ -1,9 +1,11 @@
-<h2>Add Feedback</h2>
-<textarea [(ngModel)]="feedbackText" placeholder="Enter your feedback"></textarea>
-<br>
-<button (click)="submitFeedback()">Submit</button>
-<p *ngIf="showValidation" style="color:red">Feedback is required</p>
-<div *ngIf="showPopup" class="popup">
-  <p>Successfully Added!</p>
-  <button (click)="closePopup()">OK</button>
+<app-usernav></app-usernav>
+<div class="container">
+  <div class="feedback-box">
+    <h3>Add Feedback</h3>
+    <form>
+      <label>You can write your feedback here:<span style="color:red">*</span></label><br>
+      <textarea placeholder="Feedback" name="feedback" [(ngModel)]="feedback.FeedbackText"></textarea><br>
+      <button (click)="addFeedback()">Submit</button>
+    </form>
+  </div>
 </div>
