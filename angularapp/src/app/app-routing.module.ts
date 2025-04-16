@@ -12,6 +12,7 @@ import { AdmineditmentorshipprogramComponent } from './components/admineditmento
 import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
+import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 
 const routes: Routes = [
 
@@ -21,17 +22,18 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'adminnav', component: AdminnavComponent },
   { path: 'usernav', component: UsernavComponent },
-
   { path: 'viewmentorshipprogram', component:ViewmentorshipprogramComponent},
   { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
-  {path: 'admineditmentorshipprogram', component:AdmineditmentorshipprogramComponent},
+  { path: 'admineditmentorshipprogram', component:AdmineditmentorshipprogramComponent},
   { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
   { path:'adminviewfeedback', component:AdminviewfeedbackComponent},
-  { path: 'feedback', component: UseraddfeedbackComponent}
+  { path: 'useraddfeedback', component: UseraddfeedbackComponent},
+  { path: 'userviewfeedback', component: UserviewfeedbackComponent}
+
 
 ];
 
