@@ -11,7 +11,7 @@ export class AuthService {
 
 
 
-  public apiUrl:string="https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
+  public apiUrl:string="https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
 
 
  

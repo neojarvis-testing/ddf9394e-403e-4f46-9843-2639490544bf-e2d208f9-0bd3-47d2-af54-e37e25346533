@@ -45,8 +45,10 @@ export class AdminviewfeedbackComponent implements OnInit {
       FeedbackText: this.feedbackText,
       Date: new Date()
     };
+
     // this.feedbackService.sendFeedback(feedback).subscribe({
       this.feedbackService.sendFeedback(feedback,{}).subscribe({
+
       next: () => {
         this.showPopup = true;
         this.feedbackText = '';

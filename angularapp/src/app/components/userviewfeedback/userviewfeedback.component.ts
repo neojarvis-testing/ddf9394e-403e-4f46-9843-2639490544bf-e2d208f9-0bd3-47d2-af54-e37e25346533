@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
 import { Feedback } from 'src/app/models/feedback.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FeedbackService } from 'src/app/services/feedback.service';
-
 
 @Component({
   selector: 'app-userviewfeedback',
@@ -45,6 +43,7 @@ export class UserviewfeedbackComponent implements OnInit {
       this.feedbackService.deleteFeedback(this.feedbackIdtoDelete).subscribe(() => {
         this.feedbacks = this.feedbacks.filter(feedback => feedback.FeedbackId !== this.feedbackIdtoDelete);
         this.closeDeletePopUp();
+        this.router.navigate(['/user/viewFeedback']); // Navigate to viewFeedback component
       });
     }
   }

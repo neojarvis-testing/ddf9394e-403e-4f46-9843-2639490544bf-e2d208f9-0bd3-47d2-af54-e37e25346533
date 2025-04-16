@@ -15,6 +15,7 @@ import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfe
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 
 
+
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
 
 
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegistrationComponent },
+
   {path: 'admin', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'user', component:HomeComponent, canActivate: [AuthGuard]},
   {path: 'user/addFeedback', component: UseraddfeedbackComponent, canActivate: [AuthGuard]},
@@ -40,6 +42,7 @@ const routes: Routes = [
   {path: '/user/mentorshipapplicationform', component: MentorshipapplicationformComponent, canActivate: [AuthGuard]},
   {path: 'admin/creatementorshipprogram',component:CreatementorshipprogramComponent,canActivate: [AuthGuard]},
   {path: 'admin/editmentorshipprogram',component: AdmineditmentorshipprogramComponent, canActivate: [AuthGuard]},
+
 
 
   {path: 'admin/viewmentorshipprogram', component:ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
@@ -55,6 +58,7 @@ const routes: Routes = [
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
   {path:'mentorshipapplicationlist',component:MentorshipapplicationlistComponent}
   // {path: 'creatementorshipprogram', component: CreatementorshipprogramComponent}
+
 ];
 
   @NgModule({
