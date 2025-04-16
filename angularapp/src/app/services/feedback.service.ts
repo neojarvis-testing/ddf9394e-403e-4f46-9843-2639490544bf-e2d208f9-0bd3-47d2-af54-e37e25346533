@@ -8,8 +8,7 @@ import { Feedback } from '../models/feedback.model';
 })
 export class FeedbackService {
 
-  public  apiUrl = 'https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
-
+  public apiUrl = 'https://8080-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/';
   constructor(private http: HttpClient) { }
 
   private getAuthHeaders():HttpHeaders {
@@ -21,25 +20,25 @@ export class FeedbackService {
   }
 
   sendFeedback(feedback: Feedback):Observable<Feedback>{
-    return this.http.post<Feedback>(`${this.apiUrl}`,feedback, {
+    return this.http.post<Feedback>(`${this.apiUrl}api/Feedback`,feedback, {
       headers: this.getAuthHeaders()
     });
   }
 
   getAllFeedbacksByUserid(userId: number):Observable<Feedback[]>{
-    return this.http.get<Feedback[]>(`${this.apiUrl}/user/${userId}`,{
+    return this.http.get<Feedback[]>(`${this.apiUrl}api/Feedback/user/${userId}`,{
       headers: this.getAuthHeaders()
     });
   }
 
   getFeedbacks():Observable<Feedback[]>{
-    return this.http.get<Feedback[]>(`${this.apiUrl}`,{
+    return this.http.get<Feedback[]>(`${this.apiUrl}api/Feedback`,{
       headers: this.getAuthHeaders()
     });
   }
 
   deleteFeedback(feedbackId: number):Observable<void>{
-    return this.http.delete<void>(`${this.apiUrl}/${feedbackId}`,{
+    return this.http.delete<void>(`${this.apiUrl}api/Feedback/${feedbackId}`,{
       headers: this.getAuthHeaders()
     });
   }

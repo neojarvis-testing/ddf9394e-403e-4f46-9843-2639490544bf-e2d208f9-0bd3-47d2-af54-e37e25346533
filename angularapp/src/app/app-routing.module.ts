@@ -9,13 +9,17 @@ import { UserviewmentorshipprogramComponent } from './components/userviewmentors
 import { UserappliedmentorshipapplicationComponent } from './components/userappliedmentorshipapplication/userappliedmentorshipapplication.component';
 import { MentorshipapplicationformComponent } from './components/mentorshipapplicationform/mentorshipapplicationform.component';
 import { AdmineditmentorshipprogramComponent } from './components/admineditmentorshipprogram/admineditmentorshipprogram.component';
+
 import { CreatementorshipprogramComponent } from './components/creatementorshipprogram/creatementorshipprogram.component';
 import { AuthGuard } from './components/authguard/auth.guard';
+
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
  
 const routes: Routes = [
+
   { path: '', component: HomeComponent },
+
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
@@ -33,6 +37,7 @@ const routes: Routes = [
 
   { path: 'adminnav', component: AdminnavComponent },
   { path: 'usernav', component: UsernavComponent },
+
   // {path:'editmentorshipprogram', component:AdmineditmentorshipprogramComponent},
   // { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   // { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
@@ -40,8 +45,21 @@ const routes: Routes = [
   // {path: 'creatementorshipprogram', component: CreatementorshipprogramComponent}
 ];
 
+
+];
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+ 

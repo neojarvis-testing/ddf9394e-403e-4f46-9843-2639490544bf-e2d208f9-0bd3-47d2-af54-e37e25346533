@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { Feedback } from 'src/app/models/feedback.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FeedbackService } from 'src/app/services/feedback.service';
+
 
 @Component({
   selector: 'app-userviewfeedback',
@@ -10,6 +12,7 @@ import { FeedbackService } from 'src/app/services/feedback.service';
   styleUrls: ['./userviewfeedback.component.css']
 })
 export class UserviewfeedbackComponent implements OnInit {
+
   feedbackIdtoDelete: number;
   feedbacks: Feedback[] = [];
   selectedFeedbackId: number;

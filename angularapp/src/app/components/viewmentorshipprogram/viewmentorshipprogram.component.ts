@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MentorshipService } from 'src/app/services/mentorship.service';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-viewmentorshipprogram',
   templateUrl: './viewmentorshipprogram.component.html',
@@ -14,20 +12,20 @@ export class ViewmentorshipprogramComponent implements OnInit {
   programs: any[] = [];
   filterPrograms: any[] = [];
   searchProgram: string = '';
-  programId:number;
+  programId: number;
 
-  constructor(private router: Router, private mentService: MentorshipService ) { }
+  constructor(private router: Router, private mentService: MentorshipService) { }
 
   ngOnInit(): void {
     this.getMentorshipPrograms();
   }
 
-  getMentorshipPrograms()
-  {
-    this.mentService.getAllMentorshipPrograms().subscribe(data =>{
+  getMentorshipPrograms() {
+    this.mentService.getAllMentorshipPrograms().subscribe(data => {
       this.programs = data;
     });
   }
+
 
   search()
   {
@@ -38,11 +36,15 @@ export class ViewmentorshipprogramComponent implements OnInit {
   {
     alert('Entered Edit');
     this.router.navigate([`/editmentorshipprogram/${id}`]); //Write Routing
+
   }
 
-  deleteProgram(id:number)
-  {
-    
+  deleteProgram(id: number) {
+    const confirmed = window.confirm("Are you sure you want to delete?");
+    if (confirmed) {
+      this.mentService.deleteMentorshipProgram(id).subscribe(() => {
+        this.getMentorshipPrograms(); // Refresh the list after deletion
+      });
+    }
   }
-
 }
