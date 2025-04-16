@@ -9,8 +9,14 @@ import { UserviewmentorshipprogramComponent } from './components/userviewmentors
 import { UserappliedmentorshipapplicationComponent } from './components/userappliedmentorshipapplication/userappliedmentorshipapplication.component';
 import { MentorshipapplicationformComponent } from './components/mentorshipapplicationform/mentorshipapplicationform.component';
 import { AdmineditmentorshipprogramComponent } from './components/admineditmentorshipprogram/admineditmentorshipprogram.component';
- 
+import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
+import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
+import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
+import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
+
+
 const routes: Routes = [
+
   // { path: '', redirectTo: '/home', pathMatch: 'full' },
   // { path: 'home', component: HomeComponent },
   // { path: 'login', component: LoginComponent },
@@ -26,20 +32,23 @@ const routes: Routes = [
   // { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   // { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   // { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent}
-  {path:'adminviewfeedback', component:AdminviewfeedbackComponent}
+  
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent },
+  { path: 'adminnav', component: AdminnavComponent },
+  { path: 'usernav', component: UsernavComponent },
+  { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
+  { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
+  { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
+  { path: 'useraddfeedback' , component:UseraddfeedbackComponent},
+  { path: 'userviewfeedback', component:UserviewfeedbackComponent},
+  { path:'adminviewfeedback', component:AdminviewfeedbackComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
+
 ];
 
-
-
-import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
-import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
-
-
-
- 
-
-
-  @NgModule({
+ @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
