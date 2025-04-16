@@ -50,8 +50,7 @@ const routes: Routes = [
   
   // { path: 'transaction-form/:type/:accid', component: TransactionformComponent,canActivate: [AuthGuard] },
 
-  { path: 'adminnav', component: AdminnavComponent },
-  { path: 'usernav', component: UsernavComponent },
+
   {path:'admin/editmentorshipprogram/:id', component:AdmineditmentorshipprogramComponent},
   // { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   // { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
