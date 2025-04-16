@@ -1,56 +1,57 @@
 <div>
     <button type="button" (click)="goBack()">Back</button>
-
+  
     <h1>Edit Mentorship Program</h1>
-
+  
     <form #editForm="ngForm" (ngSubmit)="onSubmit()">
-
-        <div>
-            <label>Program Name<span class="text-danger">*</span></label>
-            <input type="text" name="programName" [(ngModel)]="program.ProgramName" required />
-            <div *ngIf="editForm.submitted && !program.ProgramName">Program Name is required.</div>
-        </div>
-
-        <div>
-            <label>Description<span class="text-danger">*</span></label>
-            <textarea name="description" [(ngModel)]="program.Description" required></textarea>
-            <div *ngIf="editForm.submitted && !program.Description">Description is required.</div>
-        </div>
-
-        <div>
-            <label>Field of Mentorship<span class="text-danger">*</span></label>
-            <input type="text" name="fieldOfMentorship" [(ngModel)]="program.FieldOfMentorship" required />
-            <div *ngIf="editForm.submitted && !program.FieldOfMentorship">Field of Mentorship is required.</div>
-        </div>
-
-        <div>
-            <label>Duration (in Months)<span class="text-danger">*</span></label>
-            <input type="text" name="durationInMonths" [(ngModel)]="program.DurationInMonths" required />
-            <div *ngIf="editForm.submitted && !program.DurationInMonths">Duration is required.</div>
-        </div>
-
-        <div>
-            <label>Mentor Name<span class="text-danger">*</span></label>
-            <input type="text" name="mentorName" [(ngModel)]="program.MentorName" required />
-            <div *ngIf="editForm.submitted && !program.MentorName">Mentor Name is required.</div>
-        </div>
-
-        <div>
-            <label>Experience Level<span class="text-danger">*</span></label>
-            <input type="text" name="experienceLevel" [(ngModel)]="program.ExperienceLevel" required />
-            <div *ngIf="editForm.submitted && !program.ExperienceLevel">Experience Level is required.</div>
-        </div>
-
-        <div>
-            <label>Mode of Mentorship<span class="text-danger">*</span></label>
-            <select [(ngModel)]="program.ModeOfMentorship">
-                <option value="online">Online</option>
-                <option value="offline">Offline</option>
-            </select>
-            <div *ngIf="editForm.submitted && !program.ModeOfMentorship">Mode of Mentorship is required.</div>
-        </div>
-
-        <button type="submit">Update Mentorship Program</button>
-
+  
+      <div>
+        <label>Program Name<span class="text-danger">*</span></label>
+        <input type="text" name="programName" [(ngModel)]="program.ProgramName" required />
+        <div *ngIf="editForm.submitted && !program.ProgramName">Program Name is required.</div>
+      </div>
+  
+      <div>
+        <label>Description<span class="text-danger">*</span></label>
+        <textarea name="description" [(ngModel)]="program.Description" required></textarea>
+        <div *ngIf="editForm.submitted && !program.Description">Description is required.</div>
+      </div>
+  
+      <div>
+        <label>Field of Mentorship<span class="text-danger">*</span></label>
+        <input type="text" name="fieldOfMentorship" [(ngModel)]="program.FieldOfMentorship" required />
+        <div *ngIf="editForm.submitted && !program.FieldOfMentorship">Field of Mentorship is required.</div>
+      </div>
+  
+      <div>
+        <label>Duration (in Months)<span class="text-danger">*</span></label>
+        <input type="text" name="durationInMonths" [(ngModel)]="program.DurationInMonths" required />
+        <div *ngIf="editForm.submitted && !program.DurationInMonths">Duration is required.</div>
+      </div>
+  
+      <div>
+        <label>Mentor Name<span class="text-danger">*</span></label>
+        <input type="text" name="mentorName" [(ngModel)]="program.MentorName" required />
+        <div *ngIf="editForm.submitted && !program.MentorName">Mentor Name is required.</div>
+      </div>
+  
+      <div>
+        <label>Experience Level<span class="text-danger">*</span></label>
+        <input type="text" name="experienceLevel" [(ngModel)]="program.ExperienceLevel" required />
+        <div *ngIf="editForm.submitted && !program.ExperienceLevel">Experience Level is required.</div>
+      </div>
+  
+      <div>
+        <label>Mode of Mentorship<span class="text-danger">*</span></label>
+        <select name="modeOfMentorship" [(ngModel)]="program.ModeOfMentorship" required>
+          <option value="online">Online</option>
+          <option value="offline">Offline</option>
+        </select>
+        <div *ngIf="editForm.submitted && !program.ModeOfMentorship">Mode of Mentorship is required.</div>
+      </div>
+  
+      <button type="submit">Update Mentorship Program</button>
+  
     </form>
-</div>
+  </div>
+  
