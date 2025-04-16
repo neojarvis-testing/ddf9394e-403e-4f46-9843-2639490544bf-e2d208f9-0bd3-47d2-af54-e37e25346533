@@ -6,28 +6,16 @@ import { Router } from '@angular/router';
  styleUrls: ['./adminnav.component.css']
 })
 export class AdminnavComponent implements OnInit {
-  username: string = 'Admin';
-
-  role: string = 'Admin';
+userName: any;
+logout(): void {
+  // Clear user session or token
+  localStorage.clear();
+  this.router.navigate(['/login']);
+}
  
+  constructor(private router:Router) { }
  
- 
-  constructor(private router: Router) {}
- 
- ngOnInit(): void {
-   
- }
- 
-  logout() {
- 
-   // Logic to clear session and redirect to login
- 
-   // For example:
- 
-   localStorage.clear();
- 
-   this.router.navigate(['/login']);
- 
+  ngOnInit(): void {
   }
-
+ 
 }
