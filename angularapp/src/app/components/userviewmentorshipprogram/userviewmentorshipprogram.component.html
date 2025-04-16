@@ -1,3 +1,4 @@
+<app-usernav></app-usernav>
 <div class="container">
   <h2>Available Mentorship Programs</h2>
   <input [(ngModel)]="searchTerm" (input)="filterPrograms()" placeholder="Search by Program or Mentor Name" />
@@ -19,16 +20,16 @@
         <td colspan="7">Oops! No records found</td>
       </tr>
       <tr *ngFor="let program of filteredPrograms; let i = index">
-        <td>{{ program.name }}</td>
-        <td>{{ program.field }}</td>
-        <td>{{ program.mentor }}</td>
-        <td>{{ program.experience }}</td>
-        <td>{{ program.mode }}</td>
-        <td>{{ program.description }}</td>
+        <td>{{ program.ProgramName }}</td>
+        <td>{{ program.FieldOfMentorship }}</td>
+        <td>{{ program.MentorName }}</td>
+        <td>{{ program.ExperienceLevel }}</td>
+        <td>{{ program.ModeOfMentorship }}</td>
+        <td>{{ program.Description }}</td>
         <td>
           <button [disabled]="program.applied" (click)="apply(program)">{{ program.applied ? 'Applied' : 'Apply' }}</button>
         </td>
       </tr>
     </tbody>
   </table>
-</div>
+</div>  
