@@ -6,18 +6,14 @@ import { Router } from '@angular/router';
  styleUrls: ['./adminnav.component.css']
 })
 export class AdminnavComponent implements OnInit {
-
-  username: string = 'Admin';
-  role: string = 'Admin';
-  
-  constructor(private router: Router) {}
-  
+userName: any;
+logout() {
+throw new Error('Method not implemented.');
+}
+ 
+  constructor() { }
+ 
   ngOnInit(): void {
-
-  }
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['/login']);
   }
  
 }

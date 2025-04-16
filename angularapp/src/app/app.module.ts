@@ -24,6 +24,10 @@ import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogr
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';;
 import { HttpClientModule } from '@angular/common/http';
 
+
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,14 +55,14 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,  
+    AppRoutingModule, 
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule
- 
   ],
  
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
