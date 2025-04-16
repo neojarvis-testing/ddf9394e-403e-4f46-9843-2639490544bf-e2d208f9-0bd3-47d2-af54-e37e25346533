@@ -32,8 +32,7 @@ export class ViewmentorshipprogramComponent implements OnInit {
   }
 
   editProgram(id: number): void {
-    alert('Entered Edit');
-    this.router.navigate([`/admineditmentorshipprogram/${id}`]);
+    this.router.navigate([`admineditmentorshipprogram/${id}`]);
   }
 
   deleteProgram(id: number) {
