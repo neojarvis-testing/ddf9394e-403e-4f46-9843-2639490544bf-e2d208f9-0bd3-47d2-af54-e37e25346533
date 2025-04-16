@@ -82,6 +82,7 @@ export class UseraddfeedbackComponent implements OnInit {
         console.error('Error adding feedback:', error);
       }
     );
+
   }
 }
 

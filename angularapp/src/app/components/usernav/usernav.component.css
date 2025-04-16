@@ -40,9 +40,11 @@
   cursor: pointer;
 }
 
+ 
 .logout-btn:hover {
   background-color: darkred;
 }
+ 
 
 .content {
   padding: 30px;
@@ -76,7 +78,9 @@
   cursor: pointer;
 }
 
+ 
 .dropdown select option {
   background-color: white;
   color: black;
 }
+

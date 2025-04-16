@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+ 
 @Component({
   selector: 'app-usernav',
   templateUrl: './usernav.component.html',
@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
 export class UsernavComponent {
 
   constructor(private router: Router) {}
-
+ 
   confirmLogout() {
     const confirmed = window.confirm('Are you sure you want to logout?');
     if (confirmed) {
       this.logout();
     }
   }
-
+ 
   logout(): void {
     // Clear user session or token
     // Navigate to login or home page after logout
