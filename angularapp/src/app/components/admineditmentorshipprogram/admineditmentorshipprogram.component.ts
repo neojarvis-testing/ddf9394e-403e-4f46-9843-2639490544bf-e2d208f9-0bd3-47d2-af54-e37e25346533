@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MentorshipService } from 'src/app/services/mentorship.service';
 import { MentorshipProgram } from 'src/app/models/mentorshipprogram.model';
-
+import { ViewmentorshipprogramComponent } from '../viewmentorshipprogram/viewmentorshipprogram.component';
 
 @Component({
   selector: 'app-admineditmentorshipprogram',
@@ -13,6 +13,7 @@ export class AdmineditmentorshipprogramComponent implements OnInit {
 
   programId!: number;
 
+
   program: MentorshipProgram = {
     ProgramName: '',
     Description: '',
@@ -21,7 +22,6 @@ export class AdmineditmentorshipprogramComponent implements OnInit {
     MentorName: '',
     ExperienceLevel: '',
     ModeOfMentorship: '',
-    
   };
 
   constructor(private route: ActivatedRoute, private router: Router, private mentorshipService: MentorshipService) { }
@@ -34,15 +34,19 @@ export class AdmineditmentorshipprogramComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.mentorshipService.updateMentorshipProgram(this.programId, this.program).subscribe(() => {
-      alert('Program updated successfully!');
-      this.router.navigate(['/viewmentorshipprogram']);
-    });
-
+    if (this.program.ProgramName && this.program.Description && this.program.FieldOfMentorship &&
+        this.program.DurationInMonths && this.program.MentorName && this.program.ExperienceLevel &&
+        this.program.ModeOfMentorship) {
+      this.mentorshipService.updateMentorshipProgram(this.programId, this.program).subscribe(() => {
+        alert('Program updated successfully!');
+        this.router.navigate(['/viewmentorshipprogram']);
+      });
+    } else {
+      alert('Please fill in all required fields.');
+    }
   }
 
   goBack(): void {
     this.router.navigate(['/viewmentorshipprogram']);
   }
 }
-
