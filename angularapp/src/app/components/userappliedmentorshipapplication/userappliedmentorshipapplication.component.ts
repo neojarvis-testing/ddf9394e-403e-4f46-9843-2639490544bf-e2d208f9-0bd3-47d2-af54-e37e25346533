@@ -9,25 +9,9 @@ import { Router } from '@angular/router';
 })
 export class UserappliedmentorshipapplicationComponent implements OnInit {
   ngOnInit(): void {
+    
   }
-  mentorships = [
-
-    {
-  
-     programName: 'Data Career Mentorship',
-  
-     profileImage: 'assets/profile1.png',
-  
-     applicationDate: '2025-04-10',
-  
-     status: 'Pending'
-  
-    }
-  
-   ];
-  
-  
-  
+  mentorships: any[] = [];
    searchTerm = '';
   
    popupImage: string | null = null;
