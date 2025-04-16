@@ -13,6 +13,7 @@ export class AdminnavComponent implements OnInit {
   userRole:string;
   constructor(private router:Router, private authService:AuthService) { }
 
+ 
   ngOnInit(): void {
     this.userName=localStorage.getItem('userName');
     this.userRole=localStorage.getItem('userRole');

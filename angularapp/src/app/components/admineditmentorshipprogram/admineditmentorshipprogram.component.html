@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="program">
     <button type="button" (click)="goBack()">Back</button>
   
     <h1>Edit Mentorship Program</h1>
@@ -50,7 +50,7 @@
         <div *ngIf="editForm.submitted && !program.ModeOfMentorship">Mode of Mentorship is required.</div>
       </div>
   
-      <button type="submit">Update Mentorship Program</button>
+      <button type="submit" >Update Mentorship Program</button>
   
     </form>
   </div>

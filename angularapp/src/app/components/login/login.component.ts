@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/models/login.model';
 import { AuthService } from 'src/app/services/auth.service';
-import Swal from 'sweetalert2';
+import  Swal  from 'sweetalert2';
  
 @Component({
   selector: 'app-login',

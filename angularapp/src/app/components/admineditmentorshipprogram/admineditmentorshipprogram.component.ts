@@ -11,9 +11,8 @@ import { ViewmentorshipprogramComponent } from '../viewmentorshipprogram/viewmen
 })
 export class AdmineditmentorshipprogramComponent implements OnInit {
 
-  programId!: number;
-
-
+  programId: number;
+  
   program: MentorshipProgram = {
     ProgramName: '',
     Description: '',
@@ -21,17 +20,21 @@ export class AdmineditmentorshipprogramComponent implements OnInit {
     DurationInMonths: 0,
     MentorName: '',
     ExperienceLevel: '',
-    ModeOfMentorship: '',
+    ModeOfMentorship: ''
   };
 
   constructor(private route: ActivatedRoute, private router: Router, private mentorshipService: MentorshipService) { }
 
   ngOnInit(): void {
-    this.programId = Number(this.route.snapshot.paramMap.get('id'));
-    this.mentorshipService.getMentorshipProgramById(this.programId).subscribe((data) => {
+    this.programId = +this.route.snapshot.paramMap.get('id');
+    console.log(this.programId);
+
+    this.mentorshipService.getMentorshipProgramById(this.programId).subscribe(data => {
       this.program = data;
     });
+    console.log(this.program);
   }
+
 
   onSubmit(): void {
     if (this.program.ProgramName && this.program.Description && this.program.FieldOfMentorship &&
@@ -39,7 +42,7 @@ export class AdmineditmentorshipprogramComponent implements OnInit {
         this.program.ModeOfMentorship) {
       this.mentorshipService.updateMentorshipProgram(this.programId, this.program).subscribe(() => {
         alert('Program updated successfully!');
-        this.router.navigate(['/viewmentorshipprogram']);
+        this.router.navigate(['admin/viewmentorshipprogram']);
       });
     } else {
       alert('Please fill in all required fields.');
@@ -47,6 +50,6 @@ export class AdmineditmentorshipprogramComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/viewmentorshipprogram']);
+    this.router.navigate(['admin/viewmentorshipprogram']);
   }
 }

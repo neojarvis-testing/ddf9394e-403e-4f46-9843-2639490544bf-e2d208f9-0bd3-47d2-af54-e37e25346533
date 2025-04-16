@@ -8,7 +8,9 @@ import { Feedback } from '../models/feedback.model';
 })
 export class FeedbackService {
 
-  public apiUrl = 'https://8080-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/';
+
+  public apiUrl = 'https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+
   constructor(private http: HttpClient) { }
 
   private getAuthHeaders():HttpHeaders {
@@ -19,11 +21,15 @@ export class FeedbackService {
     });
   }
 
-  sendFeedback(feedback: Feedback):Observable<Feedback>{
-    return this.http.post<Feedback>(`${this.apiUrl}api/Feedback`,feedback, {
-      headers: this.getAuthHeaders()
-    });
-  }
+  // sendFeedback(feedback: Feedback):Observable<Feedback>{
+  //   return this.http.post<Feedback>(`${this.apiUrl}api/Feedback`,feedback, {
+  //     headers: this.getAuthHeaders()
+  //   });
+  // }
+  sendFeedback(feedback: Feedback, options: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.apiUrl}api/Feedback`, feedback, { headers, ...options });
+    }
 
   getAllFeedbacksByUserid(userId: number):Observable<Feedback[]>{
     return this.http.get<Feedback[]>(`${this.apiUrl}api/Feedback/user/${userId}`,{
