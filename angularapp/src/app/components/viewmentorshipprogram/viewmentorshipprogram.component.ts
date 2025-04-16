@@ -12,7 +12,8 @@ export class ViewmentorshipprogramComponent implements OnInit {
   programs: any[] = [];
   filterPrograms: any[] = [];
   searchProgram: string = '';
-  programId: number;
+  programIdToDelete: number | null = null;
+  showModal: boolean = false;
 
   constructor(private router: Router, private mentService: MentorshipService) { }
 
@@ -21,25 +22,43 @@ export class ViewmentorshipprogramComponent implements OnInit {
   }
 
   getMentorshipPrograms() {
+    console.log('In');
     this.mentService.getAllMentorshipPrograms().subscribe(data => {
       this.programs = data;
+      this.filterPrograms = data; // Initialize filterPrograms with all programs
     });
   }
 
   search() {
-    this.filterPrograms = this.programs.filter(p => p.ProgramName.toLowerCase().includes(this.searchProgram.toLowerCase()) ||  
-                                                p.MentorName.toLowerCase().includes(this.searchProgram.toLowerCase()));
+    if (this.searchProgram.trim() === '') {
+      this.filterPrograms = this.programs;
+    } else {
+      this.filterPrograms = this.programs.filter(p => 
+        p.ProgramName.toLowerCase().includes(this.searchProgram.toLowerCase()) || 
+        p.MentorName.toLowerCase().includes(this.searchProgram.toLowerCase())
+      );
+    }
   }
 
   editProgram(id: number): void {
-    this.router.navigate([`admineditmentorshipprogram/${id}`]);
+    this.router.navigate([`admin/editmentorshipprogram/${id}`]);
   }
 
-  deleteProgram(id: number) {
-    const confirmed = window.confirm("Are you sure you want to delete?");
-    if (confirmed) {
-      this.mentService.deleteMentorshipProgram(id).subscribe(() => {
+  openConfirmationModal(id: number): void {
+    this.programIdToDelete = id;
+    this.showModal = true;
+  }
+
+  closeConfirmationModal(): void {
+    this.showModal = false;
+    this.programIdToDelete = null;
+  }
+
+  confirmDelete(): void {
+    if (this.programIdToDelete !== null) {
+      this.mentService.deleteMentorshipProgram(this.programIdToDelete).subscribe(() => {
         this.getMentorshipPrograms(); // Refresh the list after deletion
+        this.closeConfirmationModal();
       });
     }
   }

@@ -1,18 +1,18 @@
-<h2>Mentorship Application Form</h2>
+<h1>Mentorship Application Form</h1>
 
-<form (ngSubmit)="onSubmit()" #form="ngForm">
+<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
 
   <label>Reason for Applying:</label>
-  <input name="reason" [(ngModel)]="application.reason" required />
+  <input formControlName="reason" required />
 
   <label>Career Goal:</label>
-  <input name="goal" [(ngModel)]="application.goal" required />
+  <input formControlName="goal" required />
 
   <label>Profile Image:</label>
-  <input type="file" name="image" (change)="onFileChange($event)" />
+  <input type="file" (change)="onFileChange($event)" />
 
   <label>Portfolio Link:</label>
-  <input name="portfolio" [(ngModel)]="application.portfolio" required />
+  <input formControlName="portfolio" required />
 
   <button type="submit">Submit</button>
   <button type="button" (click)="goBack()">Back</button>
