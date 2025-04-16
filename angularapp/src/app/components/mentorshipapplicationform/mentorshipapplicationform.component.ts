@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,23 +9,29 @@ import { Router } from '@angular/router';
 })
 export class MentorshipapplicationformComponent implements OnInit {
 
-  application = {
-    reason: '',
-    goal: '',
-    portfolio: ''
-  };
+  applicationForm: FormGroup;
 
-  constructor(private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.applicationForm = this.fb.group({
+      reason: ['', Validators.required],
+      goal: ['', Validators.required],
+      portfolio: ['', Validators.required],
+      image: [null]
+    });
+  }
 
   onFileChange(event: any): void {
     const file = event.target.files[0];
+    this.applicationForm.patchValue({
+      image: file
+    });
     console.log('Selected File:', file);
   }
 
   onSubmit(): void {
-    if (!this.application.reason || !this.application.goal || !this.application.portfolio) {
+    if (this.applicationForm.invalid) {
       alert('All fields are required');
     } else {
       alert('Successfully Submitted!');

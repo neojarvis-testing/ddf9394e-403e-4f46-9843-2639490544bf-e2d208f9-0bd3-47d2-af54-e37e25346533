@@ -8,8 +8,10 @@ import { Login } from '../models/login.model';
   providedIn: 'root'
 })
 export class AuthService {
-  
-  public apiUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+
+
+  public apiUrl:string="https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080";
+
  
   constructor(private http:HttpClient) { }
  
@@ -50,10 +52,9 @@ export class AuthService {
     }
     return false;
   }
-
+ 
   isAdmin():boolean
   {
-    var role = localStorage.getItem('userRole');
     return localStorage.getItem('userRole')==="Admin";
   }
  
