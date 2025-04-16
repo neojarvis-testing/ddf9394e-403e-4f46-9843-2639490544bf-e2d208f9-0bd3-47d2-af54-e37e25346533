@@ -21,7 +21,6 @@ export class AdmineditmentorshipprogramComponent implements OnInit {
     MentorName: '',
     ExperienceLevel: '',
     ModeOfMentorship: '',
-    
   };
 
   constructor(private route: ActivatedRoute, private router: Router, private mentorshipService: MentorshipService) { }
