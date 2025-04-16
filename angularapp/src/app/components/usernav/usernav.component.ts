@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./usernav.component.css']
 })
 export class UsernavComponent {
+
   constructor(private router: Router) {}
 
   confirmLogout() {
@@ -18,13 +19,14 @@ export class UsernavComponent {
 
   logout(): void {
     // Clear user session or token
-    localStorage.clear();
+    // Navigate to login or home page after logout
     this.router.navigate(['/login']);
   }
 
-  navigate(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    const selectedValue = selectElement.value;
-    this.router.navigate([selectedValue]);
+  onDropdownChange(event: any): void {
+    const selectedValue = event.target.value;
+    if (selectedValue) {
+      this.router.navigate([`/user/${selectedValue}`]);
+    }
   }
 }

@@ -19,11 +19,12 @@ export class FeedbackService {
     });
   }
 
-  sendFeedback(feedback: Feedback):Observable<Feedback>{
-    return this.http.post<Feedback>(`${this.apiUrl}api/Feedback`,feedback, {
-      headers: this.getAuthHeaders()
-    });
-  }
+  
+  sendFeedback(feedback: Feedback, options: any): Observable<any> {
+     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+     return this.http.post(`${this.apiUrl}api/Feedback`, feedback, { headers, ...options });
+     }
+  
 
   getAllFeedbacksByUserid(userId: number):Observable<Feedback[]>{
     return this.http.get<Feedback[]>(`${this.apiUrl}api/Feedback/user/${userId}`,{

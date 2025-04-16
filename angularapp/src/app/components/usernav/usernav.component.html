@@ -4,11 +4,11 @@
     <li><a routerLink="/home">Home</a></li>
     <li><a routerLink="/user/viewmentorshipprogram">Mentorship Programs</a></li>
     <li><a routerLink="/user/appliedmentorshipapplication">Applied Mentorship Application</a></li>
-    <li>
-      <label for="feedback">Feedback</label>
-      <select id="feedback" (change)="navigate($event)">
-        <option value="/user/addfeedback">Post Feedback</option>
-        <option value="/user/viewfeedback">My Feedbacks</option>
+    <li class="dropdown">
+      <select (change)="onDropdownChange($event)">
+        <option value="" disabled selected>Feedback</option>
+        <option value="addFeedback">Post Feedback</option>
+        <option value="viewFeedback">My Feedbacks</option>
       </select>
     </li>
     <li><button class="logout-btn" (click)="confirmLogout()">Logout</button></li>

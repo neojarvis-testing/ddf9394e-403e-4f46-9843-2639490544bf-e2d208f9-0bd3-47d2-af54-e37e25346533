@@ -1,7 +1,6 @@
 <app-usernav></app-usernav>
 
 <div class="container1">
-
   <div class="container mt-5" [ngClass]="{'blur-background': isPopUpOpen}">
     <h1 style="text-align: center; margin: 10px; font-family: 'Gilroy-Bold', sans-serif;">My Feedback</h1>
     <hr>
@@ -34,19 +33,14 @@
 </div>
 
 <!-- Delete Confirmation Modal -->
-<div *ngIf="isPopUpOpen">
-  <div class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" style="display: block;">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          Are you sure you want to delete?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" (click)="deleteFeedback()">Yes, Delete</button>
-          <button type="button" class="button-red-border" (click)="closeDeletePopUp()">Cancel</button>
-        </div>
-      </div>
+<div *ngIf="isPopUpOpen" class="popup">
+  <div class="popup-content">
+    <div class="modal-body">
+      Are you sure you want to delete?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="deleteFeedback()">Yes, Delete</button>
+      <button type="button" class="btn btn-danger" (click)="closeDeletePopUp()">Cancel</button>
     </div>
   </div>
 </div>
-

@@ -35,11 +35,11 @@ export class MentorshipapplicationformComponent implements OnInit {
       alert('All fields are required');
     } else {
       alert('Successfully Submitted!');
-      this.router.navigate(['/userviewmentorshipprogram']);
+      this.router.navigate(['/user/viewmentorshipprogram']);
     }
   }
 
   goBack(): void {
-    this.router.navigate(['/userviewmentorshipprogram']);
+    this.router.navigate(['/user/viewmentorshipprogram']);
   }
 }

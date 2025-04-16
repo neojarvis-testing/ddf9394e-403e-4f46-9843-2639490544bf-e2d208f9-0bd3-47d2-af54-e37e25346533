@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'user/viewmentorshipprogram/:id',component: UserviewmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'admin/creatementorshipprogram',component:CreatementorshipprogramComponent,canActivate: [AuthGuard]},
   {path: 'admin/editmentorshipprogram',component: AdmineditmentorshipprogramComponent, canActivate: [AuthGuard]},
-  { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
+  { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent}
 
 ];
 
