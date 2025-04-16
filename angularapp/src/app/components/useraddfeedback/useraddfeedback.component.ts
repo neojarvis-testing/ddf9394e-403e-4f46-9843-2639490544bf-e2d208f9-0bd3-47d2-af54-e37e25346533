@@ -35,7 +35,7 @@ export class UseraddfeedbackComponent implements OnInit {
   {
     this.feedbackService.sendFeedback(this.feedback, {}).subscribe(()=>
     {
-      this.router.navigate(['customer/viewFeedback']);
+      this.router.navigate(['user/viewFeedback']);
     });
   }
 }
