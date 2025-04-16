@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; // 1. Import Router
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { Feedback } from 'src/app/models/feedback.model';
 
@@ -8,14 +9,11 @@ import { Feedback } from 'src/app/models/feedback.model';
   styleUrls: ['./userviewfeedback.component.css']
 })
 export class UserviewfeedbackComponent implements OnInit {
-  feedbackText: string = '';
-  showValidation: boolean = false;
-  showPopup: boolean = false;
-  showDeleteConfirm: boolean = false;
   feedbacks: Feedback[] = [];
+  showDeleteConfirm: boolean = false;
   selectedFeedback: Feedback | null = null;
 
-  constructor(private feedbackService: FeedbackService) { }
+  constructor(private feedbackService: FeedbackService, private router: Router) { } // 2. Inject Router
 
   ngOnInit(): void {
     this.loadFeedback();
@@ -27,30 +25,6 @@ export class UserviewfeedbackComponent implements OnInit {
     });
   }
 
-  submitFeedback(): void {
-    if (!this.feedbackText.trim()) {
-      this.showValidation = true;
-      return;
-    }
-    const userId = Number(localStorage.getItem('userId'));
-    const feedback: Feedback = {
-      UserId: userId,
-      FeedbackText: this.feedbackText,
-      Date: new Date()
-    };
-    this.feedbackService.sendFeedback(feedback).subscribe({
-      next: () => {
-        this.showPopup = true;
-        this.feedbackText = '';
-        this.showValidation = false;
-        this.loadFeedback(); // Refresh the feedback list
-      },
-      error: (err) => {
-        console.error('Error submitting feedback:', err);
-      }
-    });
-  }
-
   confirmDelete(feedback: Feedback): void {
     this.selectedFeedback = feedback;
     this.showDeleteConfirm = true;
@@ -58,25 +32,19 @@ export class UserviewfeedbackComponent implements OnInit {
 
   deleteFeedback(): void {
     if (this.selectedFeedback) {
-      this.feedbackService.deleteFeedback(this.selectedFeedback.FeedbackId).subscribe({
-        next: () => {
-          this.loadFeedback(); // Refresh the feedback list
+      this.feedbackService.deleteFeedback(this.selectedFeedback.FeedbackId).subscribe(()=>{
           this.showDeleteConfirm = false;
           this.selectedFeedback = null;
-        },
-        error: (err) => {
+          this.router.navigate(['/userviewfeedback']); // 3. Navigate to userviewfeedback
+        (err: any) => {
           console.error('Error deleting feedback:', err);
         }
-      });
+    });
     }
   }
 
   cancelDelete(): void {
     this.showDeleteConfirm = false;
     this.selectedFeedback = null;
-  }
-
-  closePopup(): void {
-    this.showPopup = false;
   }
 }
