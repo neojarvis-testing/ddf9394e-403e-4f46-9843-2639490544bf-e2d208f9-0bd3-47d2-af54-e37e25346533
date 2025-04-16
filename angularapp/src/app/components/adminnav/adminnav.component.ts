@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 export class AdminnavComponent implements OnInit {
 userName: any;
 
+
 logout(): void {
   // Clear user session or token
   localStorage.clear();
@@ -16,8 +17,9 @@ logout(): void {
 
  
   constructor(private router:Router) { }
+
  
   ngOnInit(): void {
   }
-
+ 
 }
