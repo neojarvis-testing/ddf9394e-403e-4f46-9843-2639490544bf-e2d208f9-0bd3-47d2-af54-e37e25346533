@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MentorshipService } from 'src/app/services/mentorship.service';
 import { MentorshipProgram } from 'src/app/models/mentorshipprogram.model';
+import { ViewmentorshipprogramComponent } from '../viewmentorshipprogram/viewmentorshipprogram.component';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { MentorshipProgram } from 'src/app/models/mentorshipprogram.model';
 export class AdmineditmentorshipprogramComponent implements OnInit {
 
   programId!: number;
+
 
   program: MentorshipProgram = {
     ProgramName: '',

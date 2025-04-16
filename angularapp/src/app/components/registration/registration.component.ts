@@ -1,64 +1,69 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { NgForm } from '@angular/forms';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent {
-  user = {
-    Username: '',
-    Email: '',
-    Password: '',
-    MobileNumber: '',
-    UserRole: '',
-    SecretKey: ''
-  };
-  confirmPassword = '';
-  secretKeyRequired = false;
-  secretKeyMisMatch = false;
-  errorMessage: string = '';
-  readonly adminSecretKey = 'Zion';
 
-  constructor(private router: Router, private authService: AuthService) {}
-
-  checkRole() {
-    this.secretKeyRequired = this.user.UserRole === 'Admin';
+export class RegistrationComponent implements OnInit {
+ 
+  newUser:User={
+    Email:"",
+    Password:"",
+    Username:"",
+    MobileNumber:"",
+    UserRole:""
   }
-
-  // register() {
-  //   if (this.user.Password === this.confirmPassword) {
-  //     // Logic for registration (e.g., API call)
-  //     console.log('User registered successfully:', this.user);
-
-  //     // Navigate to login page after registration
-  //     this.router.navigate(['/login']);
-  //   } else {
-  //     console.log('Passwords do not match.');
-  //   }
-  // }
-
-  onSubmit(form: NgForm): void {
-    if (this.user.Password !== this.confirmPassword) {
-      this.errorMessage = 'Passwords do not match';
-      return;
-    }
-
-    if (this.user.UserRole === 'Admin' && this.user.SecretKey !== this.adminSecretKey) {
-      this.errorMessage = 'Invalid Secret Key';
-      return;
-    }
-
-    this.authService.register(this.user).subscribe({
-      next: () => this.router.navigate(['/login']),
-      error: (err) => {
-        this.errorMessage = err.status === 409 ? 'User already exists' : 'Registration failed';
-      }
+  err:string="";
+  showPassword:boolean=false;
+  confirmPassword:string="";
+  inputSecretKey:string='';
+  SECRETKEY:string= '@RegisterAdmin@'
+  checkUserExists:boolean=false;
+  constructor(private authService:AuthService,private router:Router) { }
+ 
+  ngOnInit(): void {
+  }
+ 
+  register(){
+  
+    this.authService.register(this.newUser).subscribe((res)=>{
+      console.log(res);
+      this.router.navigate(["/login"]);
+      Swal.fire({
+        title: 'Success!',
+        text: 'Registration Successful!',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false
+      });
+      this.router.navigate([`/login`]);
+    },
+    (error)=>{
+      this.checkUserExists=true;
+      this.err=error.error;
+      Swal.fire({
+        title: 'Error!',
+        text: 'Registration Failed. Please try again.',
+        icon: 'error',
+        timer: 1500,
+        showConfirmButton: false
+      });
     });
+ 
   }
+
+  matchSecretKey():boolean
+  {
+   
+    return (this.SECRETKEY === this.inputSecretKey);
+  }
+
+ 
 }
 

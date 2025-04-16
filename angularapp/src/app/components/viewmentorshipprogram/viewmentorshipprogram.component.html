@@ -1,6 +1,6 @@
 <h1>Mentorship Program Listings</h1>
 
-<input type="text" [(ngModel)]="searchProgram" placeholder="Search by Prgram Name or Mentor Name" (input)="search()" />
+<input type="text" [(ngModel)]="searchProgram" placeholder="Search by Program Name or Mentor Name" (input)="search()" />
 
 <table>
     <thead>
@@ -28,10 +28,9 @@
             <td>{{prog.ModeOfMentorship}}</td>
             <td>{{prog.Description}}</td>
             <td>
-                <button type="submit" id="edit-button"  (click)="editProgram(prog.MentorshipProgramId)" >Edit</button>
-                <button type="submit" id="delete-button" (click)="deleteProgram(prog.MentorshipProgramId)" >Delete</button>
+                <button type="submit" id="edit-button" (click)="editProgram(prog.MentorshipProgramId)">Edit</button>
+                <button type="submit" id="delete-button" (click)="deleteProgram(prog.MentorshipProgramId)">Delete</button>
             </td>
         </tr>
     </tbody>
-
 </table>
