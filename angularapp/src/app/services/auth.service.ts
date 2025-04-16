@@ -10,7 +10,7 @@ import { Login } from '../models/login.model';
 export class AuthService {
 
 
-  public apiUrl:string="https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080";
+  public apiUrl:string="https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
 
  
   constructor(private http:HttpClient) { }

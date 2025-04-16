@@ -71,6 +71,11 @@ namespace dotnetapp.Services
 
             existingProgram.ProgramName = mentorshipProgram.ProgramName;
             existingProgram.Description = mentorshipProgram.Description;
+            existingProgram.FieldOfMentorship = mentorshipProgram.FieldOfMentorship;
+            existingProgram.DurationInMonths = mentorshipProgram.DurationInMonths;
+            existingProgram.MentorName = mentorshipProgram.MentorName;
+            existingProgram.ExperienceLevel = mentorshipProgram.ExperienceLevel;
+            existingProgram.ModeOfMentorship = mentorshipProgram.ModeOfMentorship;
             await _context.SaveChangesAsync();
 
             return true;
