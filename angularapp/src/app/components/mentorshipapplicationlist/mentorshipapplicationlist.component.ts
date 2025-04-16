@@ -21,18 +21,14 @@ export class MentorshipapplicationlistComponent implements OnInit {
   }
 
   loadApplicationsAndPrograms(): void {
-
     this.mentService.getAllMentorshipApplications().subscribe((data) => {
       this.applications = data;
 
       this.mentService.getAllMentorshipPrograms().subscribe((programs) => {
         this.programs = programs;
         this.groupApplicationsByProgram();
-
       });
-
     });
-
   }
 
   groupApplicationsByProgram(): void

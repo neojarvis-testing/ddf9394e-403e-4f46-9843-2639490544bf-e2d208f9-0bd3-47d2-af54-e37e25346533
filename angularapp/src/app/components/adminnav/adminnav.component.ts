@@ -7,11 +7,17 @@ import { Router } from '@angular/router';
 })
 export class AdminnavComponent implements OnInit {
 userName: any;
-logout() {
-throw new Error('Method not implemented.');
+
+
+logout(): void {
+  // Clear user session or token
+  localStorage.clear();
+  this.router.navigate(['/login']);
 }
+
  
-  constructor() { }
+  constructor(private router:Router) { }
+
  
   ngOnInit(): void {
   }
