@@ -49,11 +49,10 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,  
+    AppRoutingModule, 
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule
- 
   ],
  
   providers: [],

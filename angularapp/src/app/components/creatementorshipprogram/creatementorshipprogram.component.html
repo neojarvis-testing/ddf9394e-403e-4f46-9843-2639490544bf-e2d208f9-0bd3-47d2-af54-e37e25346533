@@ -1,40 +1,40 @@
 <div class="container mt-4">
   <h2>Create New Mentorship Program</h2>
-  <form [formGroup]="mentorshipForm" (ngSubmit)="onSubmit()">
+  <form #mentorshipForm="ngForm" (ngSubmit)="onSubmit(mentorshipForm)">
 
     <div class="form-group">
       <label>Program Name</label>
-      <input formControlName="programName" class="form-control" />
+      <input name="programName" ngModel required class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Description</label>
-      <input formControlName="description" class="form-control" />
+      <input name="description" ngModel required class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Field of Mentorship</label>
-      <input formControlName="fieldOfMentorship" class="form-control" />
+      <input name="fieldOfMentorship" ngModel required class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Duration (Months)</label>
-      <input type="number" formControlName="durationInMonths" class="form-control" />
+      <input type="number" name="durationInMonths" ngModel required min="1" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Mentor Name</label>
-      <input formControlName="mentorName" class="form-control" />
+      <input name="mentorName" ngModel required class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Experience Level</label>
-      <input formControlName="experienceLevel" class="form-control" />
+      <input name="experienceLevel" ngModel required class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Mode of Mentorship</label>
-      <select formControlName="modeOfMentorship" class="form-control">
+      <select name="modeOfMentorship" ngModel required class="form-control">
         <option value="">Select Mode</option>
         <option value="Online">Online</option>
         <option value="Offline">Offline</option>
