@@ -15,11 +15,12 @@ import { AuthGuard } from './components/authguard/auth.guard';
 
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
+import { ErrorComponent } from './components/error/error.component';
  
 const routes: Routes = [
 
-  { path: '', component: HomeComponent },
-
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {path: 'error', component: ErrorComponent},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
@@ -32,17 +33,8 @@ const routes: Routes = [
   {path: 'user/viewmentorshipprogram/:id',component: UserviewmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'admin/creatementorshipprogram',component:CreatementorshipprogramComponent,canActivate: [AuthGuard]},
   {path: 'admin/editmentorshipprogram',component: AdmineditmentorshipprogramComponent, canActivate: [AuthGuard]},
-  
-  // { path: 'transaction-form/:type/:accid', component: TransactionformComponent,canActivate: [AuthGuard] },
-
-  { path: 'adminnav', component: AdminnavComponent },
-  { path: 'usernav', component: UsernavComponent },
-
-  // {path:'editmentorshipprogram', component:AdmineditmentorshipprogramComponent},
-  // { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
-  // { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
-  // {path: 'creatementorshipprogram', component: CreatementorshipprogramComponent}
+
 ];
 
 

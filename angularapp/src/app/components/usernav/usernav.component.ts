@@ -25,8 +25,6 @@ export class UsernavComponent {
   navigate(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
     const selectedValue = selectElement.value;
-    if (selectedValue) {
-      this.router.navigate([selectedValue]);
-    }
+    this.router.navigate([selectedValue]);
   }
 }
