@@ -4,7 +4,6 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { UserviewmentorshipprogramComponent } from './components/userviewmentorshipprogram/userviewmentorshipprogram.component';
-import { UserappliedmentorshipapplicationComponent } from './components/userappliedmentorshipapplication/userappliedmentorshipapplication.component';
 import { MentorshipapplicationformComponent } from './components/mentorshipapplicationform/mentorshipapplicationform.component';
 import { AdmineditmentorshipprogramComponent } from './components/admineditmentorshipprogram/admineditmentorshipprogram.component';
 
@@ -22,6 +21,7 @@ import { AdminviewfeedbackComponent } from './components/adminviewfeedback/admin
 import { RequestedmentorshipapplicationComponent } from './components/requestedmentorshipapplication/requestedmentorshipapplication.component';
 import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
 import { MentorshipapplicationlistComponent } from './components/mentorshipapplicationlist/mentorshipapplicationlist.component';
+import { UserappliedmentorshipprogramComponent } from './components/userappliedmentorshipprogram/userappliedmentorshipprogram.component';
 
  
 const routes: Routes = [
@@ -34,12 +34,12 @@ const routes: Routes = [
   {path: 'admin', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'user', component:HomeComponent, canActivate: [AuthGuard]},
   {path: 'user/addFeedback', component: UseraddfeedbackComponent, canActivate: [AuthGuard]},
-  {path: 'user/appliedmentorshipapplication',component:UserappliedmentorshipapplicationComponent, canActivate: [AuthGuard]},
+  {path: 'user/appliedmentorshipapplication',component:UserappliedmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'user/viewFeedback', component: UserviewfeedbackComponent, canActivate: [AuthGuard]},
   {path: 'user/viewmentorshipprogram', component: UserviewmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewmentorshipprogram', component: ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'user/viewmentorshipprogram/:id',component: UserviewmentorshipprogramComponent, canActivate: [AuthGuard]},
-  {path: '/user/mentorshipapplicationform', component: MentorshipapplicationformComponent, canActivate: [AuthGuard]},
+  {path: 'user/mentorshipapplicationform', component: MentorshipapplicationformComponent, canActivate: [AuthGuard]},
   {path: 'admin/creatementorshipprogram',component:CreatementorshipprogramComponent,canActivate: [AuthGuard]},
   {path: 'admin/editmentorshipprogram',component: AdmineditmentorshipprogramComponent, canActivate: [AuthGuard]},
 
@@ -54,7 +54,7 @@ const routes: Routes = [
   {path:'admin/editmentorshipprogram/:id', component:AdmineditmentorshipprogramComponent},
   // { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   // { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
-  { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
+  // { path: 'user/mentorshipapplicationform', component: MentorshipapplicationformComponent},
   {path:'mentorshipapplicationlist',component:MentorshipapplicationlistComponent}
   // {path: 'creatementorshipprogram', component: CreatementorshipprogramComponent}
 

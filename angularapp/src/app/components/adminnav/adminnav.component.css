@@ -46,8 +46,9 @@
     background-color: #8b0000 !important; /* Dark red */
     padding: 12px 25px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  }
+  }}
   
+
   /* Navbar Brand */
   .navbar-brand {
     font-size: 1.8rem;

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Mentorships</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <app-usernav></app-usernav>
+    <div class="container">
+        <h1>Applied Mentorships</h1>
+        <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            class="search-box"
+            placeholder="Search by Program Name"
+        />
+    </div>
+
+    <table class="mentorship-table">
+        <!-- Table Head -->
+        <thead>
+            <tr>
+                <th>Program Name</th>
+                <th>Mentor Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <!-- Table Body -->
+        <tbody>
+            <tr *ngIf="filteredMentorships.length === 0">
+                <td colspan="4" class="no-records">Oops! No records found</td>
+            </tr>
+            <tr *ngFor="let mentorship of filteredMentorships">
+                <td>{{ mentorship.programName }}</td>
+                <td>{{ mentorship.mentorName }}</td>
+                <td>{{ mentorship.startDate }}</td>
+                <td>{{ mentorship.endDate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
