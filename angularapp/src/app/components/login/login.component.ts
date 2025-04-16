@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
       {
         this.router.navigate([`/usernav`]);
       }
-      // console.log(this.role);
-      // if(this.role=="Admin")
-      // this.router.navigate([`/admin`]);
-      // else
-      // this.router.navigate(['/user']);
+      console.log(this.role);
+      if(this.role=="Admin")
+      this.router.navigate([`/admin`]);
+      else
+      this.router.navigate(['/user']);
       Swal.fire({
         title: 'Success!',
         text: 'Login Successful!',
