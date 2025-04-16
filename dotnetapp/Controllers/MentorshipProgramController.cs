@@ -23,7 +23,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+      //  [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<MentorshipProgram>>> GetAllMentorshipPrograms()
         {
             try
@@ -56,7 +56,9 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPost]
+
         // [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult> AddMentorshipProgram([FromBody] MentorshipProgram mentorshipProgram)
         {
             try
