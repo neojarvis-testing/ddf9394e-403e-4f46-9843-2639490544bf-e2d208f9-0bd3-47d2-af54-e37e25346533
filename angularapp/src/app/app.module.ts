@@ -16,7 +16,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { RequestedmentorshipapplicationComponent } from './components/requestedmentorshipapplication/requestedmentorshipapplication.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
-import { UserappliedmentorshipapplicationComponent } from './components/userappliedmentorshipapplication/userappliedmentorshipapplication.component';
 import { UsernavComponent } from './components/usernav/usernav.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UserviewmentorshipprogramComponent } from './components/userviewmentorshipprogram/userviewmentorshipprogram.component';
@@ -26,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { UserappliedmentorshipprogramComponent } from './components/userappliedmentorshipprogram/userappliedmentorshipprogram.component';
 
 
 @NgModule({
@@ -43,15 +43,12 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     RegistrationComponent,
     RequestedmentorshipapplicationComponent,
     UseraddfeedbackComponent,
-    UserappliedmentorshipapplicationComponent,
     UsernavComponent,
     UserviewfeedbackComponent,
     UserviewmentorshipprogramComponent,
     ViewmentorshipprogramComponent,
     CreatementorshipprogramComponent,
-    
-
- 
+    UserappliedmentorshipprogramComponent,
   ],
   imports: [
     BrowserModule,
