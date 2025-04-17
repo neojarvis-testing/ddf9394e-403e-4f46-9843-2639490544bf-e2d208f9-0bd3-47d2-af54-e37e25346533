@@ -1,30 +1,31 @@
 <div>
+  <button type="button" (click)="goBack()">Back</button>
 
-<button type="button" >Back</button>
+  <div *ngFor="let program of programs">
+    <p>Program Name: {{ program.ProgramName }} ({{ programApplicationMap[program.ProgramName]?.length || 0 }} Applicants)</p>
 
-<p>Program Name: {{programApplicationMap.ProgramName}}({{programApplicationMap.length}} Applicants)</p>
-
-<table>
-    <thead>
+    <table *ngIf="programApplicationMap[program.ProgramName]?.length > 0">
+      <thead>
         <tr>
-            <th>Username</th>
-            <th>Reason for Applying</th>
-            <th>Career Goals</th>
-            <th>Application Date</th>
-            <th>Portfolio Link</th>
-            <th>Status</th>
+          <th>Username</th>
+          <th>Reason for Applying</th>
+          <th>Career Goals</th>
+          <th>Application Date</th>
+          <th>Portfolio Link</th>
+          <th>Status</th>
         </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let u of programApplicationMap" >
-            <td>{{u.UserName}}</td>
-            <td>{{u.ReasonForApplying}}</td>
-            <td>{{u.CareerGoals}}</td>
-            <td>{{u.ApplicationDate}}</td>
-            <td>{{u.PortfolioLink}}</td>
-            <td>{{u.ApplicationStatus}}</td>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of programApplicationMap[program.ProgramName]">
+          <td>{{ u.user.Username }}</td>
+          <td>{{ u.ReasonForApplying }}</td>
+          <td>{{ u.CareerGoals }}</td>
+          <td>{{ u.ApplicationDate }}</td>
+          <td><a [href]="u.PortfolioLink" target="_blank">Portfolio</a></td>
+          <td>{{ u.ApplicationStatus }}</td>
         </tr>
-    </tbody>
-</table>
-
+      </tbody>
+    </table>
+    <p *ngIf="programApplicationMap[program.ProgramName]?.length === 0">No Applicants</p>
+  </div>
 </div>
