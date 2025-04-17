@@ -117,13 +117,41 @@ export class AdminviewfeedbackComponent implements OnInit {
             this.feedbacks = data;
         });
   }
-  getUsername(userId: number): string 
-  {
+
+
+  submitFeedback(): void {
+    if (!this.feedbackText.trim()) {
+      this.showValidation = true;
+      return;
+    }
+    const userId = Number(localStorage.getItem('userId'));
+    const feedback: Feedback = {
+      UserId: userId,
+      FeedbackText: this.feedbackText,
+      Date: new Date()
+    };
+
+      this.feedbackService.sendFeedback(feedback,{}).subscribe({
+
+      next: () => {
+        this.showPopup = true;
+        this.feedbackText = '';
+        this.showValidation = false;
+        this.loadFeedback(); // Refresh the feedback list
+      },
+      error: (err) => {
+        console.error('Error submitting feedback:', err);
+      }
+    });
+
+//   getUsername(userId: number): string 
+//   {
  
-    const user = this.users.find(u => u.UserId === userId);
-    console.log("gagan = "+this.users)
-    return user ? user.Username : '';
-  }
+//     const user = this.users.find(u => u.UserId === userId);
+//     console.log("gagan = "+this.users)
+//     return user ? user.Username : '';
+
+//   }
   getUserDetails(userId: number): User | undefined 
   {
     return this.users.find(u => u.UserId === userId);

@@ -16,6 +16,7 @@ import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogr
 import { MentorshipapplicationlistComponent } from './components/mentorshipapplicationlist/mentorshipapplicationlist.component';
 import { UserappliedmentorshipprogramComponent } from './components/userappliedmentorshipprogram/userappliedmentorshipprogram.component';
 
+
 const routes: Routes = [
 
   {path: '', component: HomeComponent },
@@ -38,7 +39,6 @@ const routes: Routes = [
   {path: 'admin/mentorshipapplicationlist',component:MentorshipapplicationlistComponent, canActivate:[AuthGuard]},
   {path: 'admin/requestedmentorshipapplication', component:RequestedmentorshipapplicationComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewmentorshipprogram', component:ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
-
 
 ];
 
