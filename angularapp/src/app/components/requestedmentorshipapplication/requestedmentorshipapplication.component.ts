@@ -158,6 +158,6 @@ export class RequestedmentorshipapplicationComponent implements OnInit {
   }
   viewAllDetails() {
     // Implement navigation to detailed view if needed
-    this.router.navigate([`/mentorshipapplicationlist`])
+    this.router.navigate([`admin/mentorshipapplicationlist`])
   }
 }
