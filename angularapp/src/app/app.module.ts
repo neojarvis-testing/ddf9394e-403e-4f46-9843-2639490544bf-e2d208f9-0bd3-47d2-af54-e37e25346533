@@ -49,10 +49,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     UserviewmentorshipprogramComponent,
     ViewmentorshipprogramComponent,
     CreatementorshipprogramComponent,
-    
-
- 
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule, 

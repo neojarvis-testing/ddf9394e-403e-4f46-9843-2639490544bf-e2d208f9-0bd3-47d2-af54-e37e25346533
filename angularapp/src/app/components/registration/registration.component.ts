@@ -29,7 +29,6 @@ export class RegistrationComponent implements OnInit {
   }
  
   register(){
-  
     this.authService.register(this.newUser).subscribe((res)=>{
       console.log(res);
       this.router.navigate(["/login"]);
@@ -53,15 +52,11 @@ export class RegistrationComponent implements OnInit {
         showConfirmButton: false
       });
     });
- 
   }
 
   matchSecretKey():boolean
   {
-   
     return (this.SECRETKEY === this.inputSecretKey);
   }
-
- 
 }
 

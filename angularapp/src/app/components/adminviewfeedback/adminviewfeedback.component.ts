@@ -46,7 +46,6 @@ export class AdminviewfeedbackComponent implements OnInit {
       Date: new Date()
     };
 
-    // this.feedbackService.sendFeedback(feedback).subscribe({
       this.feedbackService.sendFeedback(feedback,{}).subscribe({
 
       next: () => {

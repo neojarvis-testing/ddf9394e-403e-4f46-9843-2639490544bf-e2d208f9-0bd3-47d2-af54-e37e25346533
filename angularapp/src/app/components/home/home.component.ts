@@ -1,4 +1,3 @@
-
 // import { Component, OnInit } from '@angular/core';
  
 // @Component({
@@ -16,7 +15,6 @@
 // }
 
 import { Component, OnInit } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { AuthService } from 'src/app/services/auth.service';
  
 @Component({
@@ -27,7 +25,7 @@ import { AuthService } from 'src/app/services/auth.service';
  
 export class HomeComponent implements OnInit {
   myIndex = 0;
-  constructor(private authService:AuthService,) { }
+  constructor(private authService:AuthService) { }
  
   ngOnInit(): void {
     // this.carousel();
@@ -56,4 +54,3 @@ export class HomeComponent implements OnInit {
   // }
 
 }
-
