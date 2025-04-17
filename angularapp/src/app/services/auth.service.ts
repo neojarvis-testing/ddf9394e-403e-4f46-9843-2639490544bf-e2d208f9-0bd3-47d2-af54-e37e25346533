@@ -11,7 +11,7 @@ export class AuthService {
 
 
 
-  public apiUrl:string="https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
+  public apiUrl:string="https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
 
 
  
@@ -27,6 +27,11 @@ export class AuthService {
    
     return this.http.post(`${this.apiUrl}/api/login`,login);
   }
+  
+  getAllUsers(): Observable<User[]> {
+   return this.http.get<User[]>(`${this.apiUrl}/api/users`);
+   }
+  
  
   isRole()
   {

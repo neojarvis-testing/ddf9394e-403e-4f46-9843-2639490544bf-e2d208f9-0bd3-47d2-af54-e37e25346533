@@ -22,6 +22,8 @@ import { AdminviewfeedbackComponent } from './components/adminviewfeedback/admin
 import { RequestedmentorshipapplicationComponent } from './components/requestedmentorshipapplication/requestedmentorshipapplication.component';
 import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
 import { MentorshipapplicationlistComponent } from './components/mentorshipapplicationlist/mentorshipapplicationlist.component';
+import { AdminnavComponent } from './components/adminnav/adminnav.component';
+import { UsernavComponent } from './components/usernav/usernav.component';
 
  
 const routes: Routes = [
@@ -39,9 +41,10 @@ const routes: Routes = [
   {path: 'user/viewmentorshipprogram', component: UserviewmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewmentorshipprogram', component: ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'user/viewmentorshipprogram/:id',component: UserviewmentorshipprogramComponent, canActivate: [AuthGuard]},
-  {path: '/user/mentorshipapplicationform', component: MentorshipapplicationformComponent, canActivate: [AuthGuard]},
+  {path: 'user/mentorshipapplicationform', component: MentorshipapplicationformComponent, canActivate: [AuthGuard]},
   {path: 'admin/creatementorshipprogram',component:CreatementorshipprogramComponent,canActivate: [AuthGuard]},
   {path: 'admin/editmentorshipprogram',component: AdmineditmentorshipprogramComponent, canActivate: [AuthGuard]},
+  {path:'admin/requestedmentorshipapplication',component:RequestedmentorshipapplicationComponent,canActivate: [AuthGuard]},
 
 
 
