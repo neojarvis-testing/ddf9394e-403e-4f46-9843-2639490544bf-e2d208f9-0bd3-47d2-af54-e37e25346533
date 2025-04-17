@@ -45,10 +45,8 @@ const routes: Routes = [
   {path: 'admin/creatementorshipprogram',component:CreatementorshipprogramComponent,canActivate: [AuthGuard]},
   {path: 'admin/editmentorshipprogram',component: AdmineditmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewFeedback', component: AdminviewfeedbackComponent},
-  
-
-
-
+  {path: 'admin/mentorshipapplicationlist',component:MentorshipapplicationlistComponent, canActivate:[AuthGuard]},
+  {path: 'admin/requestedmentorshipapplication', component:RequestedmentorshipapplicationComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewmentorshipprogram', component:ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
 
   
@@ -60,7 +58,7 @@ const routes: Routes = [
   // { path: 'userviewmentorshipprogram', component: UserviewmentorshipprogramComponent },
   // { path: 'userappliedmentorshipapplication', component: UserappliedmentorshipapplicationComponent},
   { path: 'mentorshipapplicationform', component: MentorshipapplicationformComponent},
-  {path:'mentorshipapplicationlist',component:MentorshipapplicationlistComponent}
+  {path:'admin/mentorshipapplicationlist',component:MentorshipapplicationlistComponent, canActivate: [AuthGuard]},
   // {path: 'creatementorshipprogram', component: CreatementorshipprogramComponent}
 
 ];
