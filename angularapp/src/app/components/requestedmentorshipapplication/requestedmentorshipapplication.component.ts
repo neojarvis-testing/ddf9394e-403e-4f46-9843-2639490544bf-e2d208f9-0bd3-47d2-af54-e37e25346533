@@ -142,10 +142,21 @@ export class RequestedmentorshipapplicationComponent implements OnInit {
     this.showProfileImagePopup = false;
     this.selectedProfileImage = null;
   }
- 
-  /** View full details of an application **/
-  viewAllDetails(): void {
-    this.router.navigate([`/mentorshipapplicationlist`])
+
+
+  onStatusChange(newStatus: string): void {
+    this.statusFilter = newStatus;
+    this.filterData();
+  }
+
+  onSearchChange(searchText: string): void {
+    this.searchTerm = searchText;
+    this.filterData();
+  }
+  viewAllDetails() {
+    // Implement navigation to detailed view if needed
+    this.router.navigate([`/admin/mentorshipapplicationlist`])
+
   }
  
   closeModal(): void {

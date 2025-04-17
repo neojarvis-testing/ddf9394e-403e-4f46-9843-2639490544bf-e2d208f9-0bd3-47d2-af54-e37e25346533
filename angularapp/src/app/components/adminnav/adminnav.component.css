@@ -17,7 +17,8 @@
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ffcccb !important; /* Light red hover effect */
+  color: #ffcccb !important;
+  /* Light red hover effect */
 }
 
 .dropdown-menu {
@@ -32,22 +33,25 @@
 }
 
 .dropdown-item:hover {
-  background-color: #b22222 !important; /* Slightly lighter red */
+  background-color: #b22222 !important;
+  /* Slightly lighter red */
 }
 
 .btn-outline-warning {
-  border-color: #ffd700; /* Gold color for outline */
+  border-color: #ffd700;
+  /* Gold color for outline */
   color: #ffd700;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Navbar Styles */
+
   .navbar {
-    background-color: #8b0000 !important; /* Dark red */
+    background-color: #8b0000 !important;
+    /* Dark red */
     padding: 12px 25px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   }
-  
+
   /* Navbar Brand */
   .navbar-brand {
     font-size: 1.8rem;
@@ -55,11 +59,12 @@
     color: white !important;
     transition: color 0.3s ease-in-out;
   }
-  
+
   .navbar-brand:hover {
-    color: #ffd700 !important; /* Gold */
+    color: #ffd700 !important;
+    /* Gold */
   }
-  
+
   /* Navbar Links */
   .navbar-nav .nav-link {
     color: #ffffff !important;
@@ -67,49 +72,52 @@
     padding: 10px 15px;
     transition: all 0.3s ease-in-out;
   }
-  
+
   .navbar-nav .nav-link:hover {
-    color: #ffcccb !important; /* Light red */
+    color: #ffcccb !important;
+    /* Light red */
     transform: scale(1.05);
   }
-  
+
   /* Dropdown Menu */
   .dropdown-menu {
     background-color: #8b0000;
     border: none;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   }
-  
+
   .dropdown-item {
     color: white !important;
     transition: background-color 0.3s ease-in-out;
   }
-  
+
   .dropdown-item:hover {
-    background-color: #b22222 !important; /* Slightly lighter red */
+    background-color: #b22222 !important;
+    /* Slightly lighter red */
   }
-  
+
   /* Button Styling */
   .btn-outline-warning {
-    border-color: #ffd700; /* Gold */
+    border-color: #ffd700;
+    /* Gold */
     color: #ffd700;
     padding: 8px 16px;
     font-size: 1rem;
     transition: all 0.3s ease-in-out;
   }
-  
+
   .btn-outline-warning:hover {
     background-color: #ffd700;
     color: #8b0000;
     transform: scale(1.1);
   }
-  
+
   /* Welcome Text */
   .navbar-nav span.nav-link {
     font-weight: bold;
     color: #ffcccb;
   }
-  
+
 
   .content p {
     font-size: 16px;
@@ -117,12 +125,14 @@
     max-width: 800px;
     margin: auto;
   }
-  
 
-  
+}
 
 
-   /* .navbar {
+
+
+
+  /* .navbar {
 
     background-color: #8b0000 !important;
   
@@ -197,4 +207,3 @@
     color: #000;
   
   } */
-
