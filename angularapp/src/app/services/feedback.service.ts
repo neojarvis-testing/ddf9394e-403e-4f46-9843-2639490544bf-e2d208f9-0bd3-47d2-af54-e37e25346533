@@ -30,6 +30,7 @@ export class FeedbackService {
   sendFeedback(feedback: Feedback, options: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(`${this.apiUrl}api/Feedback`, feedback, { headers, ...options });
+    responseType: 'text' as 'json'
     }
 
 
@@ -47,7 +48,8 @@ export class FeedbackService {
 
   deleteFeedback(feedbackId: number):Observable<void>{
     return this.http.delete<void>(`${this.apiUrl}api/Feedback/${feedbackId}`,{
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
+      responseType: 'text' as 'json'
     });
   }
 }

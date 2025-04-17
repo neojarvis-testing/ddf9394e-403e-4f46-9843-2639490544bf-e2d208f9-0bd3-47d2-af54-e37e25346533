@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applied Mentorships</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="./userappliedmentorshipprogram.component.css">
 </head>
 <body>
     <app-usernav></app-usernav>
@@ -14,7 +14,7 @@
             type="text"
             [(ngModel)]="searchTerm"
             class="search-box"
-            placeholder="Search by Program Name"
+            placeholder="Search by S. No"
         />
     </div>
 
@@ -22,24 +22,45 @@
         <!-- Table Head -->
         <thead>
             <tr>
+                <th>S. No</th>
                 <th>Program Name</th>
-                <th>Mentor Name</th>
-                <th>Start Date</th>
-                <th>End Date</th>
+                <th>Profile Image</th>
+                <th>Application Date</th>
+                <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <!-- Table Body -->
         <tbody>
             <tr *ngIf="filteredMentorships.length === 0">
-                <td colspan="4" class="no-records">Oops! No records found</td>
+                <td colspan="6" class="no-records">Oops! No records found</td>
             </tr>
             <tr *ngFor="let mentorship of filteredMentorships">
+                <td>{{ mentorship.serialNo }}</td>
                 <td>{{ mentorship.programName }}</td>
-                <td>{{ mentorship.mentorName }}</td>
-                <td>{{ mentorship.startDate }}</td>
-                <td>{{ mentorship.endDate }}</td>
+                <td>
+                    <button (click)="viewImage(mentorship.profileImage)">View Image</button>
+                </td>
+                <td>{{ mentorship.applicationDate }}</td>
+                <td>{{ mentorship.status }}</td>
+                <td>
+                    <button (click)="confirmDelete(mentorship.applicationId)">Delete</button>
+                </td>
             </tr>
         </tbody>
     </table>
+
+    <div *ngIf="imageToShow" class="modal">
+        <img [src]="imageToShow" alt="Profile Image">
+        <button (click)="closeImage()">Close</button>
+    </div>
+
+    <div *ngIf="showModal" class="confirmation-modal">
+        <div class="modal-content">
+            <p>Are you sure you want to delete?</p>
+            <button class="btn-delete" (click)="deleteApplication()">Yes, Delete</button>
+            <button class="btn-cancel" (click)="cancelDelete()">Cancel</button>
+        </div>
+    </div>
 </body>
 </html>

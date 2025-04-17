@@ -26,38 +26,39 @@ export class MentorshipService {
   }
 
   deleteMentorshipProgram(mentorshipProgramId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}api/mentorship-program/${mentorshipProgramId}`, {
+    return this.http.delete<void>(`${this.apiUrl}mentorship-program/${mentorshipProgramId}`, {
       headers: this.headers,
     });
   }
 
   getMentorshipProgramById(id: number): Observable<MentorshipProgram> {
-    return this.http.get<MentorshipProgram>(`${this.apiUrl}api/mentorship-program/${id}`, {
+    return this.http.get<MentorshipProgram>(`${this.apiUrl}mentorship-program/${id}`, {
       headers: this.headers,
     });
   }
 
   addMentorshipProgram(requestObject: MentorshipProgram): Observable<MentorshipProgram> {
-    return this.http.post<MentorshipProgram>(`${this.apiUrl}api/mentorship-program`, requestObject, {
+    return this.http.post<MentorshipProgram>(`${this.apiUrl}mentorship-program`, requestObject, {
       headers: this.headers,
     });
   }
 
   updateMentorshipProgram(id: number, requestObject: MentorshipProgram): Observable<MentorshipProgram> {
-    return this.http.put<MentorshipProgram>(`${this.apiUrl}api/mentorship-program/${id}`, requestObject, {
+    return this.http.put<MentorshipProgram>(`${this.apiUrl}mentorship-program/${id}`, requestObject, {
       headers: this.headers,
     });
   }
 
   getAppliedMentorshipPrograms(userId: number): Observable<MentorshipApplication[]> {
-    return this.http.get<MentorshipApplication[]>(`${this.apiUrl}api/mentorship-application/user/${userId}`, {
+    return this.http.get<MentorshipApplication[]>(`${this.apiUrl}mentorship-application/user/${userId}`, {
       headers: this.headers,
     });
   }
 
   deleteMentorshipApplication(mentorshipApplicationId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}api/mentorship-application/${mentorshipApplicationId}`, {
+    return this.http.delete<void>(`${this.apiUrl}mentorship-application/${mentorshipApplicationId}`, {
       headers: this.headers,
+      responseType: 'text' as 'json'
     });
   }
 
@@ -68,14 +69,14 @@ export class MentorshipService {
   }
 
   getAllMentorshipApplications(): Observable<MentorshipApplication[]> {
-    return this.http.get<MentorshipApplication[]>(`${this.apiUrl}api/mentorship-application`, {
+    return this.http.get<MentorshipApplication[]>(`${this.apiUrl}mentorship-application`, {
       headers: this.headers,
     });
   }
 
   updateApplicationStatus(id: number, mentorshipApplication: MentorshipApplication): Observable<MentorshipApplication> {
     return this.http.put<MentorshipApplication>(
-      `${this.apiUrl}api/mentorship-application/${id}`,
+      `${this.apiUrl}mentorship-application/${id}`,
       mentorshipApplication,
       { headers: this.headers }
     );
