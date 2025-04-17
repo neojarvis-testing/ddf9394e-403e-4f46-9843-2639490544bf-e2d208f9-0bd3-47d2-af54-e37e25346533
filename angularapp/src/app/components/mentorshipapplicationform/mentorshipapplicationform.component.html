@@ -1,7 +1,6 @@
 <h1>Mentorship Application Form</h1>
 
 <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
-
   <label>Reason for Applying:</label>
   <input formControlName="reason" required />
 
@@ -16,5 +15,4 @@
 
   <button type="submit">Submit</button>
   <button type="button" (click)="goBack()">Back</button>
-
 </form>

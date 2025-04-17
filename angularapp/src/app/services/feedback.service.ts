@@ -9,7 +9,15 @@ import { Feedback } from '../models/feedback.model';
 export class FeedbackService {
 
 
-  public apiUrl = 'https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+
+//   public apiUrl = 'https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+
+
+  public apiUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+
+  //public apiUrl = 'https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+
+
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +38,7 @@ export class FeedbackService {
   sendFeedback(feedback: Feedback, options: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(`${this.apiUrl}api/Feedback`, feedback, { headers, ...options });
+    responseType: 'text' as 'json'
     }
 
 
@@ -47,7 +56,8 @@ export class FeedbackService {
 
   deleteFeedback(feedbackId: number):Observable<void>{
     return this.http.delete<void>(`${this.apiUrl}api/Feedback/${feedbackId}`,{
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
+      responseType: 'text' as 'json'
     });
   }
 }

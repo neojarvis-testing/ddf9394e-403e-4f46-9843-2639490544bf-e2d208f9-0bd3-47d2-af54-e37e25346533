@@ -1,25 +1,56 @@
+
 <!-- <app-navbar></app-navbar>
 <div class="landing-page">
+
+<!-- <div class="body-tag">
  
-    <main class="content">
-   
-     <h2>Mentorship Program Application</h2>
-   
-     <p>
-   
-      The Mentorship Program Application system allows users to apply for mentorship, view registered details,
-   
-      and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and
-   
-      includes routing, services, and modular components.
-   
-     </p>
-   
-    </main>
-   
+  <div *ngIf="!isLoggedIn()">
+    <app-navbar></app-navbar>
+    <div class="content-b">
+      <h1 style="text-align: center;">Mentorship Program Application</h1>
+      <p class="pTag" style="text-align: center;">
+          The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
+      </p>
+    </div>
+ 
+  </div>
+  <div *ngIf="isAdmin()">
+    <app-adminnav></app-adminnav>
+    <h1 style="text-align: center;">Mentorship Program Application</h1>
+    <p style="text-align: center;">
+      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
+  </p>
+  </div>
+  <div *ngIf="isUser()">
+    <app-usernav></app-usernav>
+    <h1 style="text-align: center;">Mentorship Program Application</h1>
+    <p style="text-align: center;">
+      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
+  </p>
+  </div>
+ 
 </div> -->
 
 <div class="body-tag">
+
+
+
+
+
+
+
+<!-- <div class="body-tag">
+  <div *ngIf="!isLoggedIn()">
+    <app-navbar></app-navbar>
+    <section class="hero-section">
+      <div>
+        <h1>Welcome to the Mentorship Program</h1>
+        <p>Build your dream career with our expert mentors</p>
+        <a href="#signup" class="btn btn-primary btn-lg">Get Started</a>
+
+<!-- Orginal-->
+<!-- <div class="body-tag">
+
   
     <div *ngIf="!isLoggedIn()">
       <app-navbar></app-navbar>
@@ -27,23 +58,70 @@
         <h1 style="text-align: center;">Mentorship Program Application</h1>
         <p class="pTag" style="text-align: center;">
             The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
-        </p>
+        </p> -->
+
       </div>
-    
-    </div>
-    <div *ngIf="isAdmin()">
-      <app-adminnav></app-adminnav>
-      <h1 style="text-align: center;">Mentorship Program Application</h1>
-      <p style="text-align: center;">
-        The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
+    </section>
+    <section id="about" class="container">
+      <h2>About Us</h2>
+      <p>Our mentorship program connects you with industry experts to help you achieve your career goals.</p>
+    </section>
+    <section id="features" class="container">
+      <h2>Features</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://framerusercontent.com/images/64hfUGNuxUfqHugBD4UTWJGrQ.png" class="card-img-top" alt="Feature 1">
+            <div class="card-body">
+              <h5 class="card-title">Personalized Mentorship</h5>
+              <p class="card-text">Get one-on-one guidance from experienced mentors.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://framerusercontent.com/images/QGxBUwxWWJySVV2vTWyW4jfW9uU.png" class="card-img-top" alt="Feature 2">
+            <div class="card-body">
+              <h5 class="card-title">Career Development</h5>
+              <p class="card-text">Receive career advice and support to help you succeed.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://framerusercontent.com/images/uJqvV3bLnzuLOhsetdj9RllsisU.png" class="card-img-top" alt="Feature 3">
+            <div class="card-body">
+              <h5 class="card-title">Networking Opportunities</h5>
+              <p class="card-text">Connect with professionals and expand your network.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="container">
+      <h2>Contact Us</h2>
+      <p>If you have any questions, feel free to reach out to us at <a href="mailto:info@mentorshipprogram.com">info@mentorshipprogram.com</a>.</p>
+    </section>
+    <footer class="bg-light text-center py-4">
+      <p>&copy; 2025 Mentorship Program. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <div *ngIf="isAdmin()">
+    <app-adminnav></app-adminnav>
+    <h1 style="text-align: center;">Mentorship Program Application</h1>
+    <p style="text-align: center;">
+      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
     </p>
-    </div>
-    <div *ngIf="isUser()">
-      <app-usernav></app-usernav>
-      <h1 style="text-align: center;">Mentorship Program Application</h1>
-      <p style="text-align: center;">
-        The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
+  </div>
+
+  <div *ngIf="isUser()">
+    <app-usernav></app-usernav>
+    <h1 style="text-align: center;">Mentorship Program Application</h1>
+    <p style="text-align: center;">
+      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
     </p>
+
     </div>
     
     
@@ -55,3 +133,87 @@
     </div> -->
     
   </div>  
+
+  </div>
+</div> -->
+
+
+
+
+
+
+<!-- Original End -->
+
+
+<div class="body-tag">
+  <div *ngIf="!isLoggedIn()">
+    <app-navbar></app-navbar>
+    <section class="hero-section">
+      <div>
+        <h1>Welcome to the Mentorship Program</h1>
+        <p>Build your dream career with our expert mentors</p>
+        <a href="#signup" class="btn btn-primary btn-lg">Get Started</a>
+      </div>
+    </section>
+    <section id="about" class="container">
+      <h2>About Us</h2>
+      <p>Our mentorship program connects you with industry experts to help you achieve your career goals.</p>
+    </section>
+    <section id="features" class="container">
+      <h2>Features</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://framerusercontent.com/images/64hfUGNuxUfqHugBD4UTWJGrQ.png" class="card-img-top" alt="Feature 1">
+            <div class="card-body">
+              <h5 class="card-title">Personalized Mentorship</h5>
+              <p class="card-text">Get one-on-one guidance from experienced mentors.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://framerusercontent.com/images/QGxBUwxWWJySVV2vTWyW4jfW9uU.png" class="card-img-top" alt="Feature 2">
+            <div class="card-body">
+              <h5 class="card-title">Career Development</h5>
+              <p class="card-text">Receive career advice and support to help you succeed.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://framerusercontent.com/images/uJqvV3bLnzuLOhsetdj9RllsisU.png" class="card-img-top" alt="Feature 3">
+            <div class="card-body">
+              <h5 class="card-title">Networking Opportunities</h5>
+              <p class="card-text">Connect with professionals and expand your network.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="container">
+      <h2>Contact Us</h2>
+      <p>If you have any questions, feel free to reach out to us at <a href="mailto:info@mentorshipprogram.com">info@mentorshipprogram.com</a>.</p>
+    </section>
+    <footer class="bg-light text-center py-4">
+      <p>&copy; 2025 Mentorship Program. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <div *ngIf="isAdmin()">
+    <app-adminnav></app-adminnav>
+    <h1 style="text-align: center;">Mentorship Program Application</h1>
+    <p style="text-align: center;">
+      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
+    </p>
+  </div>
+
+  <div *ngIf="isUser()">
+    <app-usernav></app-usernav>
+    <h1 style="text-align: center;">Mentorship Program Application</h1>
+    <p style="text-align: center;">
+      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
+    </p>
+  </div>
+</div>
+

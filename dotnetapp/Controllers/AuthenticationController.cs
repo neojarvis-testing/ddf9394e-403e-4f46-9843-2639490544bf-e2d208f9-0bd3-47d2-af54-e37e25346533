@@ -48,5 +48,17 @@ namespace dotnetapp.Controllers
             Console.WriteLine(responseMessage);
             return BadRequest(new{message = responseMessage});
         }
+        
+[HttpGet("users")]
+ public async Task<IActionResult> GetAllUsers()
+ {
+ var users = await _authService.GetAllUsers();
+if (users == null || !users.Any())
+ {
+ return NotFound(new { message = "No users found." });
+ }
+return Ok(users);
+}
+
     }
 }

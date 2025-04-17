@@ -11,6 +11,12 @@
         <option value="viewFeedback">My Feedbacks</option>
       </select>
     </li>
-    <li><button class="logout-btn" (click)="confirmLogout()">Logout</button></li>
+
+    <li class="nav-item">
+      <span class="nav-link">Welcome, {{ userName }} (Admin)</span>
+     </li>
+     <li class="nav-item">
+      <button class="btn btn-outline-warning" (click)="showLogoutAlert()">Logout</button>
+     </li>
   </ul>
 </nav>
