@@ -1,3 +1,5 @@
+<app-usernav></app-usernav>
+
 <h1>Mentorship Application Form</h1>
 
 <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
@@ -10,9 +12,9 @@
   <label>Profile Image:</label>
   <input type="file" (change)="onFileChange($event)" />
 
-  <label>Portfolio Link:</label>
-  <input formControlName="portfolio" required />
+  <label>Portfolio Link (Optional):</label>
+  <input formControlName="portfolio" />
 
   <button type="submit">Submit</button>
-  <button type="button" (click)="goBack()">Back</button>
+  <button type="button" [routerLink]="['/user/viewmentorshipprogram']">Back</button>
 </form>

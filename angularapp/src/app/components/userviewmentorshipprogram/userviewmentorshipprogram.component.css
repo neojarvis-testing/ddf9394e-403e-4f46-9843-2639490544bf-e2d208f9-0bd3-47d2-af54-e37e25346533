@@ -3,53 +3,78 @@
   font-family: Arial, sans-serif;
 }
 
-h1, h2 {
+h2 {
   text-align: center;
   color: blue;
   margin-bottom: 20px;
 }
 
-.no-records {
-  text-align: center;
-  font-size: 18px;
-  color: red;
-  font-style: italic;
-}
-
 input[type="text"] {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   box-sizing: border-box;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+.no-records {
+  text-align: center;
+  font-size: 20px;
+  color: red;
+  font-style: italic;
+  margin-top: 20px;
 }
 
-th, td {
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three cards per row */
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
   border: 1px solid #ccc;
-  padding: 8px;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  color: blue;
   text-align: center;
 }
 
-th {
-  background-color: blue;
-  color: white;
+.card p {
+  margin: 5px 0;
 }
 
 button {
-  padding: 6px 12px;
+  padding: 10px;
   border: none;
   background-color: #007bff;
   color: white;
   cursor: pointer;
   border-radius: 4px;
+  margin-top: 10px;
+  width: 100%;
 }
 
 button:disabled {
   background-color: gray;
   cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr); /* Two cards per row on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card-container {
+    grid-template-columns: 1fr; /* One card per row on small screens */
+  }
 }

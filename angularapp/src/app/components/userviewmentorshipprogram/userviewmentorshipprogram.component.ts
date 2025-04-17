@@ -15,24 +15,6 @@ export class UserviewmentorshipprogramComponent implements OnInit {
 
   constructor(private mentorshipService: MentorshipService, private router: Router) {}
 
-  // ngOnInit(): void {
-  //   this.fetchMentorshipPrograms();
-  // }
-
-  // fetchMentorshipPrograms(): void {
-  //   this.mentorshipService.getAllMentorshipPrograms().subscribe(
-  //     (programs: any[]) => {
-  //       console.log('Fetched programs:', programs); // Log API response
-  //       this.mentorshipPrograms = programs;
-  //       this.filteredPrograms = programs;
-  //       this.noRecordsFound = programs.length === 0;
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching programs:', error); // Log errors
-  //     }
-  //   );
-  // }
-
   filterPrograms() {
     this.filteredPrograms = this.mentorshipPrograms.filter((program) =>
       program.ProgramName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
@@ -41,28 +23,15 @@ export class UserviewmentorshipprogramComponent implements OnInit {
     this.noRecordsFound = this.filteredPrograms.length === 0;
   }
 
-  // apply(program: any): void {
-  //   program.applied = true;
-  //   this.router.navigate(['user/mentorshipapplicationform'], { state: { program } });
-  // }
-
   apply(program: any): void {
     program.applied = true;
    
     // Save applied program in local storage
     localStorage.setItem(`applied_${program.ProgramName}`, 'true');
    
-    this.router.navigate(['user/viewmentorshipprogram'], { state: { program } });
+    this.router.navigate(['user/mentorshipapplicationform'], { state: { program } });
   }
    
-  // Restore applied state on load
-  // ngOnInit(): void {
-  //   this.fetchMentorshipPrograms();
-  //   this.mentorshipPrograms.forEach(program => {
-  //     program.applied = localStorage.getItem(`applied_${program.ProgramName}`) === 'true';
-  //   });
-  // }
-
   ngOnInit(): void {
     this.fetchMentorshipPrograms();
   }
