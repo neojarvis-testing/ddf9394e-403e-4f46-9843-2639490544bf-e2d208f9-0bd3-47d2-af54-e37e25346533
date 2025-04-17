@@ -51,10 +51,10 @@ export class UserappliedmentorshipprogramComponent implements OnInit {
 
   get filteredMentorships(): any[] {
     return this.mentorships.filter(m =>
-      m.serialNo.toString().includes(this.searchTerm.toLowerCase())
+      m.programName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
-
+  
   viewImage(imageUrl: string): void {
     this.imageToShow = imageUrl;
   }

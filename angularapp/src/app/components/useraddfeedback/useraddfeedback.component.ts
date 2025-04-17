@@ -113,20 +113,42 @@ export class UseraddfeedbackComponent implements OnInit {
     this.feedback.Date = new Date();
   }
 
-  addFeedback() {
-    if (!this.feedback.FeedbackText.trim()) {
-      this.errorMessage = '*Feedback is required';
-      return;
-    }
+  // addFeedback() {
+  //   if (!this.feedback.FeedbackText.trim()) {
+  //     this.errorMessage = '*Feedback is required';
+  //     return;
+  //   }
 
-    this.feedbackService.sendFeedback(this.feedback, {responseType: 'text'}).subscribe(
-      () => {
-        alert('Feedback successfully added!');
-        this.router.navigate(['/user/addFeedback']); // Redirect to the same component
-      },
-      (error: HttpErrorResponse) => {
-        console.error('Error adding feedback:', error);
-      }
-    );
+  //   this.feedbackService.sendFeedback(this.feedback, {responseType: 'text'}).subscribe(
+  //     () => {
+  //       alert('Feedback successfully added!');
+  //       this.router.navigate(['/user/addFeedback']); // Redirect to the same component
+  //     },
+  //     (error: HttpErrorResponse) => {
+  //       console.error('Error adding feedback:', error);
+  //     }
+  //   );
+  // }
+
+  addFeedback() {
+  if (!this.feedback.FeedbackText.trim()) {
+    this.errorMessage = '*Feedback is required';
+    return;
   }
+
+  this.feedbackService.sendFeedback(this.feedback, { responseType: 'text' }).subscribe(
+    () => {
+      alert('Feedback successfully added!');
+      this.router.navigate(['/user/viewFeedback']).then(() => {
+        setTimeout(() => {
+          this.router.navigate(['/user/addFeedback']);
+        }, 100);
+      });
+    },
+    (error: HttpErrorResponse) => {
+      console.error('Error adding feedback:', error);
+    }
+  );
+}
+
 }
