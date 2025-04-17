@@ -143,16 +143,6 @@ export class RequestedmentorshipapplicationComponent implements OnInit {
     this.selectedProfileImage = null;
   }
 
-
-  onStatusChange(newStatus: string): void {
-    this.statusFilter = newStatus;
-    this.filterData();
-  }
-
-  onSearchChange(searchText: string): void {
-    this.searchTerm = searchText;
-    this.filterData();
-  }
   viewAllDetails() {
     // Implement navigation to detailed view if needed
     this.router.navigate([`/admin/mentorshipapplicationlist`])

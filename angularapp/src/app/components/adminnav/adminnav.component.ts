@@ -20,6 +20,13 @@ export class AdminnavComponent implements OnInit {
 
   }
 
+  onDropdownChange(event: any): void {
+    const selectedValue = event.target.value;
+    if (selectedValue) {
+      this.router.navigate([`/admin/${selectedValue}`]);
+    }
+  }
+
   showLogoutAlert() {
     Swal.fire({
       title: 'Are you sure?',
