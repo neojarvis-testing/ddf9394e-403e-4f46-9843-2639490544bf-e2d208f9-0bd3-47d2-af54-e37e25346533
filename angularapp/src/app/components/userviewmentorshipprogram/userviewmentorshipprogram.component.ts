@@ -52,7 +52,7 @@ export class UserviewmentorshipprogramComponent implements OnInit {
     // Save applied program in local storage
     localStorage.setItem(`applied_${program.ProgramName}`, 'true');
    
-    this.router.navigate(['user/apply/:programId'], { state: { program } });
+    this.router.navigate(['user/viewmentorshipprogram'], { state: { program } });
   }
    
   // Restore applied state on load

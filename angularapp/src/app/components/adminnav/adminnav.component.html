@@ -3,16 +3,12 @@
   <div class="collapse navbar-collapse justify-content-end">
    <ul class="navbar-nav">
     <li class="nav-item dropdown">
-     <a class="nav-link dropdown-toggle" href="#" id="mentorDropdown" role="button" data-toggle="dropdown">
-      Mentorship Program
-     </a>
-     <div class="dropdown-menu">
-
-          <a class="dropdown-item" routerLink="/admin/creatementorshipprogram">Add Mentorship Program</a>
-          <a class="dropdown-item" routerLink="/admin/viewmentorshipprogram">View Mentorship Program</a>
-
- 
-         </div>
+         <li class="dropdown" role="button">
+          <select (change)="onDropdownChange($event)">
+            <option value="" disabled selected>Mentorship Program</option>
+            <option value="creatementorshipprogram">Add Mentorship Program</option>
+            <option value="viewmentorshipprogram">View Mentorship Program</option>
+          </select>
         </li>
         <li class="nav-item">
 

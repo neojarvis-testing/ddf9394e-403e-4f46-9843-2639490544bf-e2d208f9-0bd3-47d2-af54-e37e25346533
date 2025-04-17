@@ -1,3 +1,5 @@
+<app-adminnav></app-adminnav>
+
 <div>
   <button type="button" (click)="goBack()">Back</button>
 
@@ -17,7 +19,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let u of programApplicationMap[program.ProgramName]">
-          <td>{{ u.user.Username }}</td>
+          <td>{{ u.UserId }}</td>
           <td>{{ u.ReasonForApplying }}</td>
           <td>{{ u.CareerGoals }}</td>
           <td>{{ u.ApplicationDate }}</td>

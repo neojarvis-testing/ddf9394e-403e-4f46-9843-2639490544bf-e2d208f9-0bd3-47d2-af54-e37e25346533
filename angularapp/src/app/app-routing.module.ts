@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'admin', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'user', component:HomeComponent, canActivate: [AuthGuard]},
   {path: 'user/addFeedback', component: UseraddfeedbackComponent, canActivate: [AuthGuard]},
-  {path: 'user/appliedmentorshipapplication',component:UserappliedmentorshipapplicationComponent, canActivate: [AuthGuard]},
+  {path: 'user/appliedmentorshipapplication',component:UserappliedmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'user/viewFeedback', component: UserviewfeedbackComponent, canActivate: [AuthGuard]},
   {path: 'user/viewmentorshipprogram', component: UserviewmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewmentorshipprogram', component: ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
