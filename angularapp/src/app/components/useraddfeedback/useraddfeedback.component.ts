@@ -110,6 +110,7 @@ export class UseraddfeedbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.feedback.UserId = +localStorage.getItem('userId');
+    //this.feedback.username = localStorage.getItem('username');
     this.feedback.Date = new Date();
   }
 

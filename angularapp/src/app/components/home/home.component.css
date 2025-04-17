@@ -1,35 +1,108 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+/* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 nav {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
 }
 
 .title {
-    text-align: center;
-    margin-top: 20px;
-    color: #333;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
 }
 
 .description {
-    text-align: center;
-    margin: 20px 0;
+  text-align: center;
+  margin: 20px 0;
 }
 
 .roles {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+} */
+
+
+/* .hero-section {
+  background: url('https://framerusercontent.com/images/kCeKN2l2KX0tIQDaoTZ2CX8w5Ns.png') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  color: rgb(10, 10, 10);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.hero-section p {
+  font-size: 1.5rem;
+}
+.card {
+  margin: 20px 0;
+} */
+
+
+
+
+
+
+
+.hero-section {
+  background: url('https://framerusercontent.com/images/kCeKN2l2KX0tIQDaoTZ2CX8w5Ns.png') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.hero-section p {
+  font-size: 1.5rem;
+}
+.card {
+  margin: 20px 0;
+}
+
+
+
+
+/* .hero-section {
+  background: url('https://example.com/new-hero-image.png') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.hero-section p {
+  font-size: 1.5rem;
+}
+.card {
+  margin: 20px 0;
+} */
