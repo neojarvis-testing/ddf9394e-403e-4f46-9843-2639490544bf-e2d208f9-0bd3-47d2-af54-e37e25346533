@@ -44,9 +44,7 @@
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.btn-outline-warning:hover {
 
-  /* Navbar Styles */
   .navbar {
     background-color: #8b0000 !important;
     /* Dark red */

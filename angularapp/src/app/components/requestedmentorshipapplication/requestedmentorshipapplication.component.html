@@ -1,7 +1,11 @@
 <div class="container">
   <h1>Mentorship Applications for Approval</h1>
+
+  
   <div class="search-filter">
-    <input type="text" placeholder="Search by Career Goals..." [(ngModel)]="searchTerm" (input)="searchApplications()" />
+    <input type="text" placeholder="Search by Career Goals..." [(ngModel)]="searchTerm"
+      (input)="searchApplications()" />
+
     <div class="status-filter">
       <label for="status-filter">Filter by Status:</label>
       <select id="status-filter" [(ngModel)]="statusFilter" (change)="onStatusChange($event.target.value)">
@@ -12,6 +16,8 @@
       </select>
     </div>
   </div>
+
+  <!-- Applications Table -->
   <table>
     <thead>
       <tr>
@@ -26,12 +32,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngIf="paginatedApplications.length === 0">
+      <tr *ngIf="combinedApplications.length === 0">
         <td colspan="8" class="no-records">No records found</td>
       </tr>
-      <tr *ngFor="let application of paginatedApplications; let i = index">
-        <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
-        <td>{{ application.UserId }}</td>
+
+      <tr *ngFor="let application of combinedApplications; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ application.Username }}</td>
         <td>{{ application.ReasonForApplying }}</td>
         <td>{{ application.CareerGoals }}</td>
         <td>{{ application.ApplicationDate | date }}</td>
@@ -39,33 +46,38 @@
         <td>{{ application.ApplicationStatus }}</td>
         <td>
           <div class="button-container">
-            <button (click)="approveApplication(application)" [disabled]="application.ApplicationStatus !== 'Pending'" class="btn-success">Approve</button>
-            <button (click)="rejectApplication(application)" [disabled]="application.ApplicationStatus !== 'Pending'" class="btn-danger">Reject</button>
+            <!-- Toggle Status Button -->
+            <button (click)="toggleApplicationStatus(application)" class="btn-toggle">
+              {{ application.ApplicationStatus === 'Approved' ? 'Reject' : 'Approve' }}
+            </button>
+
+            <!-- View Profile Image -->
             <button (click)="viewProfileImage(application)" class="btn-info">View Profile Image</button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
-  <button (click)="viewAllDetails()">View All Details</button>
- 
 
-<!-- Profile Image Popup -->
-<div *ngIf="showProfileImagePopup" class="popup">
-  <span class="close" (click)="closeProfileImagePopup()">&times;</span>
-  <img [src]="selectedProfileImage" alt="Profile Image" />
-</div>
+  <button (click)="viewAllDetails()" class="btn-details">View All Details</button>
 
-<!-- Modal for additional details -->
-<div class="modal" *ngIf="selectedApplication">
-  <div class="modal-content">
-    <span class="close-btn" (click)="closeModal()">&times;</span>
-    <h3>Application Details</h3>
-    <p><strong>Username:</strong> {{ selectedApplication.username }}</p>
-    <p><strong>Reason for Applying:</strong> {{ selectedApplication.reason }}</p>
-    <p><strong>Career Goals:</strong> {{ selectedApplication.careerGoals }}</p>
-    <p><strong>Application Date:</strong> {{ selectedApplication.applicationDate | date }}</p>
-    <p><strong>Portfolio Link:</strong> <a [href]="selectedApplication.portfolioLink" target="_blank">View Portfolio</a></p>
-    <!-- Add other details as needed -->
+  <!-- Profile Image Popup -->
+  <div *ngIf="showProfileImagePopup" class="popup">
+    <span class="close" (click)="closeProfileImagePopup()">&times;</span>
+    <img [src]="selectedProfileImage" alt="Profile Image" />
+  </div>
+
+  <!-- Modal for Application Details -->
+  <div class="modal" *ngIf="selectedApplication">
+    <div class="modal-content">
+      <span class="close-btn" (click)="closeModal()">&times;</span>
+      <h3>Application Details</h3>
+      <p><strong>Username:</strong> {{ selectedApplication.UserId }}</p>
+      <p><strong>Reason for Applying:</strong> {{ selectedApplication.ReasonForApplying }}</p>
+      <p><strong>Career Goals:</strong> {{ selectedApplication.CareerGoals }}</p>
+      <p><strong>Application Date:</strong> {{ selectedApplication.ApplicationDate | date }}</p>
+      <p><strong>Portfolio Link:</strong> <a [href]="selectedApplication.PortfolioLink" target="_blank">View
+          Portfolio</a></p>
+    </div>
   </div>
 </div>
