@@ -40,6 +40,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet("{mentorshipProgramId}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult<MentorshipProgram>> GetMentorshipProgramById(int mentorshipProgramId)
         {
             try
@@ -58,11 +59,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPost]
-
-
         [Authorize(Roles = "Admin")]
-
-
         public async Task<ActionResult> AddMentorshipProgram([FromBody] MentorshipProgram mentorshipProgram)
         {
             try
@@ -81,6 +78,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPut("{mentorshipProgramId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateMentorshipProgram(int mentorshipProgramId, [FromBody] MentorshipProgram mentorshipProgram)
         {
             try
@@ -99,6 +97,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpDelete("{mentorshipProgramId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteMentorshipProgram(int mentorshipProgramId)
         {
             try
