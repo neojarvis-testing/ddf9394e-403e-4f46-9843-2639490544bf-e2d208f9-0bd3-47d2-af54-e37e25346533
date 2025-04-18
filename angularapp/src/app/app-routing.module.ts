@@ -15,6 +15,7 @@ import { RequestedmentorshipapplicationComponent } from './components/requestedm
 import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
 import { MentorshipapplicationlistComponent } from './components/mentorshipapplicationlist/mentorshipapplicationlist.component';
 import { UserappliedmentorshipprogramComponent } from './components/userappliedmentorshipprogram/userappliedmentorshipprogram.component';
+import { UserwishlistcomponentComponent } from './components/userwishlistcomponent/userwishlistcomponent.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,7 @@ const routes: Routes = [
   {path: 'admin/mentorshipapplicationlist',component:MentorshipapplicationlistComponent, canActivate:[AuthGuard]},
   {path: 'admin/requestedmentorshipapplication', component:RequestedmentorshipapplicationComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewmentorshipprogram', component:ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
-
+  {path: 'user/wishlist', component: UserwishlistcomponentComponent}
 ];
 
 @NgModule({

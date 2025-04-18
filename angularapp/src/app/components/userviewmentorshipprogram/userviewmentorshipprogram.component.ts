@@ -12,6 +12,9 @@ export class UserviewmentorshipprogramComponent implements OnInit {
   mentorshipPrograms: any[] = [];
   filteredPrograms: any[] = [];
   noRecordsFound: boolean = false;
+  currentPage: number = 1;
+  itemsPerPage: number = 6;
+  showSearch: boolean = false;
 
   constructor(private mentorshipService: MentorshipService, private router: Router) {}
 
@@ -29,6 +32,13 @@ export class UserviewmentorshipprogramComponent implements OnInit {
       program.applied = true;
       localStorage.setItem(`applied_${program.ProgramName}`, 'true');
     }
+  }
+
+  addToWishlist(program: any): void {
+    let wishlist = localStorage.getItem('wishlist');
+    let wishlistPrograms = wishlist ? JSON.parse(wishlist) : [];
+    wishlistPrograms.push(program);
+    localStorage.setItem('wishlist', JSON.stringify(wishlistPrograms));
   }
 
   ngOnInit(): void {
@@ -51,4 +61,32 @@ export class UserviewmentorshipprogramComponent implements OnInit {
       }
     );
   }
+
+  paginatedPrograms(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.filteredPrograms.slice(startIndex, endIndex);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredPrograms.length / this.itemsPerPage);
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  toggleSearch(): void {
+    this.showSearch = !this.showSearch;
+  }
 }
+
+

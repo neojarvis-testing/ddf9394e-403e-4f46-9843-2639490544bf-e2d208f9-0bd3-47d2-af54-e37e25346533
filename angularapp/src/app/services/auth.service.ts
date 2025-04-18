@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { Observable } from 'rxjs';
 import { Login } from '../models/login.model';
- 
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -86,4 +86,5 @@ export class AuthService {
     localStorage.removeItem('userId');
     localStorage.removeItem('Token');
   }
+
 }
