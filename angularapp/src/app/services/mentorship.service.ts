@@ -14,7 +14,7 @@ export class MentorshipService {
   private apiUrl = 'https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
 
 
-  //private apiUrl = 'https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+  private apiUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
 
 
 //  private apiUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
@@ -23,7 +23,11 @@ export class MentorshipService {
 
 
 
-    private getAuthHeaders(): HttpHeaders {
+  // private authToken = `Bearer ${localStorage.getItem('authToken')}`;
+  // private headers = new HttpHeaders({
+  //   Authorization: this.authToken,
+  // });
+  private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`
@@ -34,7 +38,8 @@ export class MentorshipService {
 
   getAllMentorshipPrograms(): Observable<MentorshipProgram[]> {
     return this.http.get<MentorshipProgram[]>(`${this.apiUrl}api/mentorship-program`, {
-      headers: this.getAuthHeaders()
+      // headers: this.headers,
+     headers: this.getAuthHeaders()
     });
   }
 
@@ -77,7 +82,8 @@ export class MentorshipService {
 
   addMentorshipApplication(data: MentorshipApplication): Observable<MentorshipApplication> {
     return this.http.post<MentorshipApplication>(`${this.apiUrl}api/mentorship-application`, data, {
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
+      responseType: 'text' as 'json'
     });
   }
 
@@ -91,7 +97,8 @@ export class MentorshipService {
     return this.http.put<MentorshipApplication>(
       `${this.apiUrl}api/mentorship-application/${id}`,
       mentorshipApplication,
-      { headers: this.getAuthHeaders() }
+      { headers: this.getAuthHeaders(),
+        responseType: 'text' as 'json' }
     );
   }
   

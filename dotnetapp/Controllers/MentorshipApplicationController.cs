@@ -9,7 +9,7 @@ namespace dotnetapp.Controllers
 {
     [ApiController]
     [Route("api/")]
-    // [AllowAnonymous]
+    //[AllowAnonymous]
     public class MentorshipApplicationController : ControllerBase
     {
         private readonly MentorshipApplicationService _mentorshipApplicationService;
