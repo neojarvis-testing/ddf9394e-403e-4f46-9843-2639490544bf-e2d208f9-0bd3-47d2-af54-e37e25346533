@@ -34,11 +34,13 @@ export class UserviewmentorshipprogramComponent implements OnInit {
     }
   }
 
+
   addToWishlist(program: any): void {
     let wishlist = localStorage.getItem('wishlist');
     let wishlistPrograms = wishlist ? JSON.parse(wishlist) : [];
     wishlistPrograms.push(program);
     localStorage.setItem('wishlist', JSON.stringify(wishlistPrograms));
+
   }
 
   ngOnInit(): void {

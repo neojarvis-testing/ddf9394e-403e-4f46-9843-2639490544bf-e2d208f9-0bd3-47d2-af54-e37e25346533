@@ -1,9 +1,10 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Feedback } from 'src/app/models/feedback.model';
 import { User } from 'src/app/models/user.model';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { AuthService } from 'src/app/services/auth.service';
- 
+
 @Component({
  selector: 'app-adminviewfeedback',
  templateUrl: './adminviewfeedback.component.html',
@@ -21,12 +22,12 @@ export class AdminviewfeedbackComponent implements OnInit {
   private feedbackService: FeedbackService,
   private authService: AuthService
  ) {}
- 
+
  ngOnInit(): void {
   this.userName = localStorage.getItem('userName') || '';
   this.loadFeedbacks();
  }
- 
+
  loadFeedbacks(): void {
   this.authService.getAllUsers().subscribe(users => {
    this.users = users;
@@ -35,12 +36,12 @@ export class AdminviewfeedbackComponent implements OnInit {
    });
   });
  }
- 
+
  getUsername(userId: number): string {
   const user = this.users.find(u => u.UserId === userId);
   return user ? user.Username : '';
  }
- 
+
  getUserDetails(userId: number): User | undefined {
   return this.users.find(u => u.UserId === userId);
  }
