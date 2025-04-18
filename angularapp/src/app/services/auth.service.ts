@@ -13,12 +13,12 @@ import { Router } from '@angular/router';
 export class AuthService {
  
  
-  public apiUrl:string="https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
+  // public apiUrl:string="https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
  
   //public apiUrl:string="https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
  
  
-  //public apiUrl:string='https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+  public apiUrl:string='https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
  
  
   //  public apiUrl:string="https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
