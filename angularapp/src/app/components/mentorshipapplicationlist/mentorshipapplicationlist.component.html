@@ -31,6 +31,7 @@
     <p *ngIf="programApplicationMap[program.ProgramName]?.length === 0">No Applicants</p>
   </div>
 </div> -->
+
 <app-adminnav></app-adminnav>
 
 <div>
@@ -38,6 +39,7 @@
 
   <div *ngFor="let program of programs">
     <p>Program Name: {{ program.ProgramName }} ({{ programApplicationMap[program.ProgramName]?.length || 0 }} Applicants)</p>
+
 
     <table *ngIf="programApplicationMap[program.ProgramName]?.length > 0">
       <thead>

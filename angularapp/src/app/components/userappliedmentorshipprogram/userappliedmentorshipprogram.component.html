@@ -1,4 +1,4 @@
-    <app-usernav></app-usernav>
+<app-usernav></app-usernav>
     <div class="container">
         <h1>Applied Mentorships</h1>
         <input
@@ -8,7 +8,7 @@
             placeholder="Search by ProgramName..."
         />
     </div>
-
+ 
     <table class="mentorship-table">
         <!-- Table Head -->
         <thead>
@@ -40,12 +40,12 @@
             </tr>
         </tbody>
     </table>
-
+ 
     <div *ngIf="imageToShow" class="modal">
         <img [src]="imageToShow" alt="Profile Image">
         <button (click)="closeImage()">Close</button>
     </div>
-
+ 
     <div *ngIf="showModal" class="confirmation-modal">
         <div class="modal-content">
             <p>Are you sure you want to delete?</p>
@@ -53,4 +53,3 @@
             <button class="btn-cancel" (click)="cancelDelete()">Cancel</button>
         </div>
     </div>
-

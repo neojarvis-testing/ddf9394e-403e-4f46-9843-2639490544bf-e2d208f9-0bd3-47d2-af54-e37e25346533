@@ -1,24 +1,8 @@
-<!-- <h1>Mentorship Application Form</h1>
 
-<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
-  <label>Reason for Applying:</label>
-  <input formControlName="reason" required />
-
-  <label>Career Goal:</label>
-  <input formControlName="goal" required />
-
-  <label>Profile Image:</label>
-  <input type="file" (change)="onFileChange($event)" />
-
-  <label>Portfolio Link:</label>
-  <input formControlName="portfolio" required />
-
-  <button type="submit">Submit</button>
-  <button type="button" (click)="goBack()">Back</button>
-</form> -->
+<app-usernav></app-usernav>
 <h1>Mentorship Application Form</h1>
-
 <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+
   <div>
     <label for="reason">Reason for Applying:</label>
     <input id="reason" formControlName="reason" required />
@@ -56,3 +40,5 @@
     <button type="button" (click)="goBack()">Back</button>
   </div>
 </form>
+ 
+ 

@@ -22,10 +22,9 @@ import { UserviewmentorshipprogramComponent } from './components/userviewmentors
 import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';;
 import { HttpClientModule } from '@angular/common/http';
-
-
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UserappliedmentorshipprogramComponent } from './components/userappliedmentorshipprogram/userappliedmentorshipprogram.component';
+import { UserwishlistcomponentComponent } from './components/userwishlistcomponent/userwishlistcomponent.component';
 
 
 @NgModule({
@@ -49,6 +48,7 @@ import { UserappliedmentorshipprogramComponent } from './components/userappliedm
     ViewmentorshipprogramComponent,
     CreatementorshipprogramComponent,
     UserappliedmentorshipprogramComponent,
+    UserwishlistcomponentComponent,
   ],
   
   imports: [
@@ -56,7 +56,8 @@ import { UserappliedmentorshipprogramComponent } from './components/userappliedm
     AppRoutingModule, 
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
  
   providers: [],

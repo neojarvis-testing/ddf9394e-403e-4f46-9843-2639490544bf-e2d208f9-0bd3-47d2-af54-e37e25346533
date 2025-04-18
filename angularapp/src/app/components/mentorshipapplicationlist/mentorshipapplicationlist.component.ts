@@ -52,6 +52,7 @@
 //     this.router.navigate([`admin/requestedmentorshipapplication`]);
 //   }
 // }
+
 import { Component, OnInit } from '@angular/core';
 import { MentorshipApplication } from 'src/app/models/mentorshipapplication.model';
 import { MentorshipService } from 'src/app/services/mentorship.service';
@@ -66,25 +67,27 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./mentorshipapplicationlist.component.css']
 })
 export class MentorshipapplicationlistComponent implements OnInit {
-
+ 
   applications: MentorshipApplication[] = [];
   programs: MentorshipProgram[] = [];
   users: User[] = [];
   programApplicationMap: { [key: string]: any[] } = {};
 
+
   constructor(private mentService: MentorshipService, private router: Router, private authService: AuthService) { }
+
 
   ngOnInit(): void {
     this.loadApplicationsAndPrograms();
   }
-
+ 
   loadApplicationsAndPrograms(): void {
     this.authService.getAllUsers().subscribe((users) => {
       this.users = users;
 
+
       this.mentService.getAllMentorshipApplications().subscribe((applications) => {
         this.applications = applications;
-
         this.mentService.getAllMentorshipPrograms().subscribe((programs) => {
           this.programs = programs;
           this.groupApplicationsByProgram();
@@ -92,7 +95,7 @@ export class MentorshipapplicationlistComponent implements OnInit {
       });
     });
   }
-
+ 
   groupApplicationsByProgram(): void {
     this.programApplicationMap = {};
     this.programs.forEach(program => {
@@ -106,11 +109,15 @@ export class MentorshipapplicationlistComponent implements OnInit {
           };
         });
 
+
       this.programApplicationMap[program.ProgramName] = filteredApps;
     });
   }
+
 
   goBack() {
     this.router.navigate([`admin/requestedmentorshipapplication`]);
   }
 }
+ 
+ 

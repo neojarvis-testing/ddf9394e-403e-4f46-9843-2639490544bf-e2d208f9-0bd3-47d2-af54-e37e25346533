@@ -1,4 +1,53 @@
 
+<app-adminnav></app-adminnav>
+<div class="container mt-5">
+ <h1 class="text-center text-primary mb-4">Feedback Details</h1>
+ <div *ngIf="feedbacks.length === 0" class="alert alert-warning text-center">
+  No data found
+ </div>
+ <div *ngIf="feedbacks.length > 0">
+  <div class="table-responsive">
+   <table class="table table-bordered table-hover">
+    <thead class="table-secondary">
+     <tr>
+      <th>#</th>
+      <th>Username</th>
+      <th>Feedback</th>
+      <th>Date</th>
+      <th>Action</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let feedback of feedbacks; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ getUsername(feedback.UserId) }}</td>
+      <td>{{ feedback.FeedbackText }}</td>
+      <td>{{ feedback.Date | date:'yyyy-MM-dd' }}</td>
+      <td>
+       <button class="btn btn-outline-primary btn-sm" (click)="showProfile(feedback)">Show Profile</button>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+ <!-- Modal for User Profile -->
+ <div class="modal show d-block" *ngIf="selectedUser" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+   <div class="modal-content shadow-lg">
+    <div class="modal-header bg-primary text-white">
+     <h5 class="modal-title">User Profile</h5>
+     <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeProfile()"></button>
+    </div>
+    <div class="modal-body">
+     <p><strong>Username:</strong> {{ selectedUser.Username }}</p>
+     <p *ngIf="selectedUser.Email"><strong>Email:</strong> {{ selectedUser.Email }}</p>
+     <p *ngIf="selectedUser.MobileNumber"><strong>Mobile Number:</strong> {{ selectedUser.MobileNumber }}</p>
+    </div>
+    <div class="modal-footer">
+     <button type="button" class="btn btn-secondary" (click)="closeProfile()">Close</button>
+
+
 <!-- <app-adminnav></app-adminnav>
 <div class="container mt-5">
 
@@ -105,9 +154,14 @@
 
       </div>
 
-    </div>
 
+    </div>
+   </div>
   </div>
+
+ </div>
+</div>
+
 
 </div> -->
 <app-adminnav></app-adminnav>
@@ -162,6 +216,7 @@
   </div>
  </div>
 </div>
+
 
 
 
