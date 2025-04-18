@@ -3,27 +3,28 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Observable } from 'rxjs';
 import { Login } from '../models/login.model';
+import { Router } from '@angular/router';
  
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-
-//   public apiUrl:string="https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
-
-  //public apiUrl:string="https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
-
-
-  public apiUrl:string='https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
-
-
-//   public apiUrl:string="https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
-
-
-
  
-  constructor(private http:HttpClient) { }
+ 
+  public apiUrl:string="https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
+ 
+  //public apiUrl:string="https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
+ 
+ 
+  //public apiUrl:string='https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+ 
+ 
+  //  public apiUrl:string="https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
+ 
+ 
+ 
+ 
+  constructor(private http:HttpClient, private router:Router) { }
  
   register(user:User):Observable<any>
   {
@@ -35,15 +36,17 @@ export class AuthService {
    
     return this.http.post(`${this.apiUrl}/api/login`,login);
   }
-  
+ 
+ 
+ 
   getAllUsers(): Observable<User[]> {
    return this.http.get<User[]>(`${this.apiUrl}/api/users`);
    }
-  
+ 
  
   isRole()
   {
-    const token=localStorage.getItem("Token").split('.');
+    const token=localStorage.getItem("token").split('.');
     let payload=JSON.parse(atob(token[1]));
     localStorage.setItem('userRole',payload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
     localStorage.setItem('userName',payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']);
@@ -51,7 +54,7 @@ export class AuthService {
   }
   isRoles():string
   {
-    const token=localStorage.getItem("Token").split('.');
+    const token=localStorage.getItem("token").split('.');
     let payload=JSON.parse(atob(token[1]));
     localStorage.setItem('userRole',payload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
     localStorage.setItem('userName',payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']);
@@ -80,10 +83,12 @@ export class AuthService {
  
   logout()
   {
-    
+   
     localStorage.removeItem('userRole');
     localStorage.removeItem('userName');
     localStorage.removeItem('userId');
-    localStorage.removeItem('Token');
+    localStorage.removeItem('token');
   }
 }
+ 
+ 
