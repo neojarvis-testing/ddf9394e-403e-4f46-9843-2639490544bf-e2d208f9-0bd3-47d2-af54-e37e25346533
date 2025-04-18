@@ -99,8 +99,6 @@ public async Task<IEnumerable<User>> GetAllUsers()
  {
  return await _context.Users.ToListAsync();
  }
-
-        
         private string GenerateToken(IEnumerable<Claim> claims)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

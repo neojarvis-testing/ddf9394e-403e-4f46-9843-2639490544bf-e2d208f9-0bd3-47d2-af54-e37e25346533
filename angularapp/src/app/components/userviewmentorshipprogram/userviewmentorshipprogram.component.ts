@@ -23,20 +23,18 @@ export class UserviewmentorshipprogramComponent implements OnInit {
     this.noRecordsFound = this.filteredPrograms.length === 0;
   }
 
-  apply(program: any): void {
-    program.applied = true;
-   
-    // Save applied program in local storage
-    localStorage.setItem(`applied_${program.ProgramName}`, 'true');
-   
-    this.router.navigate(['user/mentorshipapplicationform'], { state: { program } });
+  apply(program: any, id: number): void {
+    if (!program.applied) {
+      this.router.navigate([`user/mentorshipapplicationform/${id}`], { state: { program } });
+      program.applied = true;
+      localStorage.setItem(`applied_${program.ProgramName}`, 'true');
+    }
   }
-   
+
   ngOnInit(): void {
     this.fetchMentorshipPrograms();
   }
-   
-  // Modify fetchMentorshipPrograms to ensure applied programs are restored
+
   fetchMentorshipPrograms(): void {
     this.mentorshipService.getAllMentorshipPrograms().subscribe(
       (programs: any[]) => {
@@ -44,7 +42,7 @@ export class UserviewmentorshipprogramComponent implements OnInit {
           program.applied = localStorage.getItem(`applied_${program.ProgramName}`) === 'true';
           return program;
         });
-        this.filteredPrograms = [...this.mentorshipPrograms]; // Ensure filtering works
+        this.filteredPrograms = [...this.mentorshipPrograms];
         this.noRecordsFound = this.filteredPrograms.length === 0;
       },
       (error) => {

@@ -63,6 +63,7 @@ export class MentorshipService {
   getAppliedMentorshipPrograms(userId: number): Observable<MentorshipApplication[]> {
     return this.http.get<MentorshipApplication[]>(`${this.apiUrl}api/mentorship-application/user/${userId}`, {
       headers: this.headers,
+      responseType: 'text' as 'json'
     });
   }
 
@@ -76,12 +77,14 @@ export class MentorshipService {
   addMentorshipApplication(data: MentorshipApplication): Observable<MentorshipApplication> {
     return this.http.post<MentorshipApplication>(`${this.apiUrl}api/mentorship-application`, data, {
       headers: this.headers,
+      responseType: 'text' as 'json'
     });
   }
 
   getAllMentorshipApplications(): Observable<MentorshipApplication[]> {
     return this.http.get<MentorshipApplication[]>(`${this.apiUrl}api/mentorship-application`, {
       headers: this.headers,
+      
     });
   }
 
@@ -89,7 +92,10 @@ export class MentorshipService {
     return this.http.put<MentorshipApplication>(
       `${this.apiUrl}api/mentorship-application/${id}`,
       mentorshipApplication,
-      { headers: this.headers }
+      { headers: this.headers,
+        responseType: 'text' as 'json'}
+      
+      
     );
   }
   

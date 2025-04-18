@@ -1,3 +1,24 @@
+<!-- <app-usernav></app-usernav>
+<div class="container">
+  <h2>Available Mentorship Programs</h2>
+  <input [(ngModel)]="searchTerm" (input)="filterPrograms()" placeholder="Search by Program or Mentor Name" />
+  
+  <div class="card-container">
+    <div class="card" *ngFor="let program of filteredPrograms; let i = index">
+      <h3>{{ program.ProgramName }}</h3>
+      <p><strong>Field:</strong> {{ program.FieldOfMentorship }}</p>
+      <p><strong>Mentor:</strong> {{ program.MentorName }}</p>
+      <p><strong>Experience:</strong> {{ program.ExperienceLevel }}</p>
+      <p><strong>Mode:</strong> {{ program.ModeOfMentorship }}</p>
+      <p><strong>Description:</strong> {{ program.Description }}</p>
+      <button [disabled]="program.applied" (click)="apply(program,program.MentorshipProgramId)">
+        {{ program.applied ? 'Applied' : 'Apply' }}
+      </button>
+    </div>
+    <p *ngIf="filteredPrograms.length === 0" class="no-records">Oops! No records found</p>
+  </div>
+</div> -->
+
 <app-usernav></app-usernav>
 <div class="container">
   <h2>Available Mentorship Programs</h2>
@@ -11,7 +32,7 @@
       <p><strong>Experience:</strong> {{ program.ExperienceLevel }}</p>
       <p><strong>Mode:</strong> {{ program.ModeOfMentorship }}</p>
       <p><strong>Description:</strong> {{ program.Description }}</p>
-      <button [disabled]="program.applied" (click)="apply(program)">
+      <button [disabled]="program.applied" (click)="apply(program, program.MentorshipProgramId)">
         {{ program.applied ? 'Applied' : 'Apply' }}
       </button>
     </div>
