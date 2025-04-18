@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
- 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdmineditmentorshipprogramComponent } from './components/admineditmentorshipprogram/admineditmentorshipprogram.component';
@@ -48,7 +48,7 @@ import { UserappliedmentorshipprogramComponent } from './components/userappliedm
     UserviewmentorshipprogramComponent,
     ViewmentorshipprogramComponent,
     CreatementorshipprogramComponent,
-    UserappliedmentorshipprogramComponent,
+    UserappliedmentorshipprogramComponent
   ],
   
   imports: [

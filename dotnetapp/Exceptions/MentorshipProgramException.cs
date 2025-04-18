@@ -8,15 +8,7 @@ using dotnetapp.Data;
 namespace dotnetapp.Exceptions
 {
     public class MentorshipProgramException : Exception
-    {
-        public MentorshipProgramException() : base() 
-        {
-
-        }
-        
-        public MentorshipProgramException(string message) : base(message)
-        {
-
-        }
+    {   
+        public MentorshipProgramException(string message) : base(message) {}
     }
 }

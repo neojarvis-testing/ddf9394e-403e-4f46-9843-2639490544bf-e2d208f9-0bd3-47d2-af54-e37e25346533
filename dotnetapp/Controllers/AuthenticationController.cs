@@ -29,7 +29,7 @@ namespace dotnetapp.Controllers
             {
                 return Ok(new { token = responseMessage});
             }
-            return Unauthorized(new{message = responseMessage});
+            return Unauthorized(responseMessage);
         }
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] User model)
@@ -46,19 +46,18 @@ namespace dotnetapp.Controllers
                 return Ok(new {message = responseMessage});
             }
             Console.WriteLine(responseMessage);
-            return BadRequest(new{message = responseMessage});
+            return BadRequest(responseMessage);
         }
         
-[HttpGet("users")]
- public async Task<IActionResult> GetAllUsers()
- {
- var users = await _authService.GetAllUsers();
-if (users == null || !users.Any())
- {
- return NotFound(new { message = "No users found." });
- }
-return Ok(users);
-}
-
+        [HttpGet("users")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _authService.GetAllUsers();
+            if (users == null || !users.Any())
+            {
+                return NotFound(new { message = "No users found." });
+            }
+            return Ok(users);
+        }
     }
 }
