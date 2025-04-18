@@ -1,4 +1,4 @@
-<app-adminnav></app-adminnav>
+<!-- <app-adminnav></app-adminnav>
 
 <div>
   <button type="button" (click)="goBack()">Back</button>
@@ -30,4 +30,38 @@
     </table>
     <p *ngIf="programApplicationMap[program.ProgramName]?.length === 0">No Applicants</p>
   </div>
+</div> -->
+<app-adminnav></app-adminnav>
+
+<div>
+  <button type="button" (click)="goBack()">Back</button>
+
+  <div *ngFor="let program of programs">
+    <p>Program Name: {{ program.ProgramName }} ({{ programApplicationMap[program.ProgramName]?.length || 0 }} Applicants)</p>
+
+    <table *ngIf="programApplicationMap[program.ProgramName]?.length > 0">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Reason for Applying</th>
+          <th>Career Goals</th>
+          <th>Application Date</th>
+          <th>Portfolio Link</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of programApplicationMap[program.ProgramName]">
+          <td>{{ u.Username }}</td>
+          <td>{{ u.ReasonForApplying }}</td>
+          <td>{{ u.CareerGoals }}</td>
+          <td>{{ u.ApplicationDate }}</td>
+          <td><a [href]="u.PortfolioLink" target="_blank">Portfolio</a></td>
+          <td>{{ u.ApplicationStatus }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="programApplicationMap[program.ProgramName]?.length === 0">No Applicants</p>
+  </div>
 </div>
+

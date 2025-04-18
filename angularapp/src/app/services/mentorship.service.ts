@@ -14,7 +14,7 @@ export class MentorshipService {
 //   private apiUrl = 'https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/api/';
 
 
-  private apiUrl = 'https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+  private apiUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
 
 
 //  private apiUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
@@ -76,6 +76,7 @@ export class MentorshipService {
   addMentorshipApplication(data: MentorshipApplication): Observable<MentorshipApplication> {
     return this.http.post<MentorshipApplication>(`${this.apiUrl}api/mentorship-application`, data, {
       headers: this.headers,
+      responseType: 'text' as 'json'
     });
   }
 
@@ -89,7 +90,8 @@ export class MentorshipService {
     return this.http.put<MentorshipApplication>(
       `${this.apiUrl}api/mentorship-application/${id}`,
       mentorshipApplication,
-      { headers: this.headers }
+      { headers: this.headers,
+        responseType: 'text' as 'json' }
     );
   }
   
