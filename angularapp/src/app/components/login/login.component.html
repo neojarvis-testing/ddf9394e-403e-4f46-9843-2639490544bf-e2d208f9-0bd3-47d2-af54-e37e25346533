@@ -1,22 +1,29 @@
 <app-navbar></app-navbar>
-    <form (ngSubmit)="addlogin()" #loginForm="ngForm">
-        <h1>Login</h1>
-        <div>
-            <label>Email :</label>
-            <input type="email" name="Email" [(ngModel)]="userLogin.Email" #email="ngModel" required email >
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
-                <small *ngIf="email.errors?.required">Email is required.</small>
-                <small *ngIf="email.errors?.email">Invalid email address.</small>
+<div class="container">
+    <div class="login-popup">
+        <form (ngSubmit)="addlogin()" #loginForm="ngForm">
+            <h1>Login</h1>
+            <div>
+                <label>Email</label>
+                <input type="email" name="Email" [(ngModel)]="userLogin.Email" #email="ngModel" required email placeholder="Email">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                    <small *ngIf="email.errors?.required">Email is required.</small>
+                    <small *ngIf="email.errors?.email">Invalid email address.</small>
+                </div>
             </div>
-        </div>
-        <div>
-            <label>Password :</label>
-            <input type="password" name="Password" [(ngModel)]="userLogin.Password" #password="ngModel" required>
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
-                <small *ngIf="password.errors?.required">Password is required.</small>
+            <div>
+                <label>Password</label>
+                <input type="password" name="Password" [(ngModel)]="userLogin.Password" #password="ngModel" required placeholder="Password">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+                    <small *ngIf="password.errors?.required">Password is required.</small>
+                </div>
             </div>
-        </div>
-        <br>
-        <button type="submit" [disabled]="loginForm.invalid">Login</button>
-    </form>
+            <br>
+            <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        </form>
 
+        <div>
+            
+        </div>
+    </div>
+</div>

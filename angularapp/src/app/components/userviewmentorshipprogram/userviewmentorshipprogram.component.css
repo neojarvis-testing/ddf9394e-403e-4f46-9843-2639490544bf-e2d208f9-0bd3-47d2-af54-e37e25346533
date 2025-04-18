@@ -1,55 +1,119 @@
-.container {
-  padding: 20px;
+/* General Styles */
+body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F9FAFB;
 }
 
-h1, h2 {
-  text-align: center;
-  color: blue;
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #2E4374;
   margin-bottom: 20px;
+  font-size: 24px;
 }
 
-.no-records {
-  text-align: center;
-  font-size: 18px;
-  color: red;
-  font-style: italic;
-}
-
+/* Search Input */
 input[type="text"] {
-  margin-bottom: 10px;
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+  width: 100%; /* Half the width of the table */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #4B527E;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #2E4374;
+  display: block; /* Ensures it is positioned properly */
+  margin-left: auto;
+  margin-right: auto;
 }
 
+input[type="text"]::placeholder {
+  color: #7C81AD;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #7C81AD;
+}
+
+/* Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
-th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
+thead {
+  background-color: #2E4374;
+  color: white;
+}
+
+thead th {
+  text-align: left;
+  padding: 12px;
+  font-size: 14px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #E5E7EB;
+}
+
+tbody td {
+  padding: 10px;
+  font-size: 14px;
+  color: #4B527E;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #F4F4F4;
+}
+
+tbody tr:hover {
+  background-color: #E5C3A6;
+}
+
+tbody td[colspan] {
   text-align: center;
+  font-style: italic;
+  color: #7C81AD;
 }
 
-th {
-  background-color: blue;
-  color: white;
-}
-
+/* Button Styles */
 button {
-  padding: 6px 12px;
-  border: none;
-  background-color: #007bff;
+  padding: 8px 12px;
+  background-color: #7C81AD;
   color: white;
-  cursor: pointer;
+  border: none;
   border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:disabled {
-  background-color: gray;
+  background-color: #4B527E;
   cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #4B527E;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+
+  input[type="text"] {
+    width: 100%; /* Make search bar full-width on smaller devices */
+  }
 }

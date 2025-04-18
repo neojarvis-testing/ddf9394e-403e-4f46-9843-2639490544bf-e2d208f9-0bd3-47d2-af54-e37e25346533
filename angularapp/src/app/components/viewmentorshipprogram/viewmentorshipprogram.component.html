@@ -1,4 +1,4 @@
-<app-adminnav></app-adminnav>
+<!-- <app-adminnav></app-adminnav>
 
 <h1>Mentorship Program Listings</h1>
 
@@ -37,12 +37,60 @@
   </tbody>
 </table>
 
-<!-- Confirmation Modal -->
 <div id="confirmationModal" class="modal" *ngIf="showModal">
   <div class="modal-content">
     <span class="close" (click)="closeConfirmationModal()">&times;</span>
     <p>Are you sure you want to delete?</p>
     <button (click)="confirmDelete()">Yes</button>
     <button (click)="closeConfirmationModal()">No</button>
+  </div>
+</div> -->
+
+
+
+<app-adminnav></app-adminnav>
+
+<div class="container">
+  <div class="header">
+    <h1>Mentorship Program Listings</h1>
+    <input type="text" [(ngModel)]="searchProgram" placeholder="Search by Program Name or Mentor Name" (input)="search()" />
+  </div>
+
+  <div class="cards-container">
+    <div *ngFor="let prog of paginatedPrograms; let i = index" class="card">
+      <h3>{{currentPage * itemsPerPage + i + 1}}. {{prog.ProgramName}}</h3>
+      <p><strong>Field of Mentorship:</strong> {{prog.FieldOfMentorship}}</p>
+      <p><strong>Duration (in Months):</strong> {{prog.DurationInMonths}}</p>
+      <p><strong>Mentor Name:</strong> {{prog.MentorName}}</p>
+      <p><strong>Experience Level:</strong> {{prog.ExperienceLevel}}</p>
+      <p><strong>Mode of Mentorship:</strong> {{prog.ModeOfMentorship}}</p>
+      <p><strong>Description:</strong> {{prog.Description}}</p>
+      <div class="actions">
+        <button type="button" id="edit-button" (click)="editProgram(prog.MentorshipProgramId)">Edit</button>
+        <button type="button" id="delete-button" (click)="openConfirmationModal(prog.MentorshipProgramId)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 0">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button *ngFor="let page of pages" (click)="goToPage(page)" [class.active]="currentPage === page" class="page-number">
+      {{page + 1}}
+    </button>
+    <button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div id="confirmationModal" class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <span class="close" (click)="closeConfirmationModal()">&times;</span>
+      <p>Are you sure you want to delete?</p>
+      <button (click)="confirmDelete()">Yes</button>
+      <button (click)="closeConfirmationModal()">No</button>
+    </div>
   </div>
 </div>

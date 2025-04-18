@@ -1,4 +1,4 @@
-.error-handler-container { 
+ .error-handler-container { 
 
     display: flex; 
 
@@ -22,7 +22,7 @@
 
  .logo { 
 
-max-width: 250px; /* Increased the max-width for a larger logo */ 
+max-width: 250px; 
 
  margin-bottom: 20px; 
 
@@ -98,7 +98,6 @@ font-size: 36px;
 
   
 
- /* Animations */ 
 
 @keyframes fadeIn { 
 
@@ -136,4 +135,5 @@ to {
 
  } 
 
- }  
+ }   
+

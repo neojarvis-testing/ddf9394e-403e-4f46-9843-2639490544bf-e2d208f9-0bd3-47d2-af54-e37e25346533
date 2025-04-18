@@ -1,4 +1,4 @@
-h1 {
+/* h1 {
     text-align: center;
     margin: 20px 0;
     font-size: 28px;
@@ -52,7 +52,7 @@ button:hover {
 }
 
 .popup-content {
-    background-color: #f5f5dc; /* Cream white color */
+    background-color: #f5f5dc;
     padding: 30px;
     border-radius: 8px;
     min-width: 300px;
@@ -71,4 +71,170 @@ button:hover {
 
 .btn-danger:hover {
     background-color: darkred;
-}
+} */
+
+
+
+
+
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F9FAFB;
+  }
+  
+  /* Container Styling */
+  .container1 {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #2E4374;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  /* Table Styling */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .table .thead {
+    background-color: #2E4374;
+    color: white;
+  }
+  
+  .table th,
+  .table td {
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #F4F4F4;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #E5C3A6;
+  }
+  
+  /* Empty Records Styling */
+  .text-center {
+    font-size: 18px;
+    color: #7C81AD;
+    margin-top: 20px;
+  }
+  
+  /* Button Styling */
+  .btn-custom-delete {
+    background-color: #D32F2F;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-custom-delete:hover {
+    background-color: #B71C1C;
+    transform: scale(1.05);
+  }
+  
+  .btn-custom-delete:active {
+    transform: scale(0.95);
+  }
+  
+  /* Blur Background */
+  .blur-background {
+    filter: blur(4px);
+    pointer-events: none;
+  }
+  
+  /* Delete Confirmation Modal */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 400px;
+  }
+  
+  .popup-content .modal-body {
+    font-size: 18px;
+    color: #4B527E;
+    margin-bottom: 20px;
+  }
+  
+  .popup-content .modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .popup-content .btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .popup-content .btn-danger {
+    background-color: #D32F2F;
+    color: white;
+  }
+  
+  .popup-content .btn-danger:hover {
+    background-color: #B71C1C;
+  }
+  
+  .popup-content .btn-cancel {
+    background-color: #4B527E;
+    color: white;
+  }
+  
+  .popup-content .btn-cancel:hover {
+    background-color: #2E4374;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 24px;
+    }
+  
+    .table th, .table td {
+      font-size: 14px;
+    }
+  
+    .popup-content {
+      width: 90%;
+    }
+  }

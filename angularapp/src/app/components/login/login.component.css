@@ -1,81 +1,71 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align items to the top */
-  height: 100vh;
-  background-color: #fafafa;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
   font-family: Arial, sans-serif;
-  margin: 0; /* Ensure there's no default margin */
-  padding-top: 60px; /* Adjust padding to account for the navbar height */
 }
- 
-.navbar {
-  width: 100%;
-  height: 60px; /* Adjust height as needed */
-  background-color: #333;
-  color: white;
+
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
+  height: calc(100% - 60px);
+  margin-top: 60px;
+  width: 600px;
 }
- 
-form {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  padding: 20px;
-  width: 400px; /* Set width for rectangular shape */
-  height: auto; /* Allow height to adjust based on content */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center the content inside the form */
-  margin-top: 20px; /* Add margin to separate from navbar */
-  margin:auto;
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
-  justify-content:left;
+
+.login-popup {
+  background: rgba(255, 255, 255, 0.1); 
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 10px; 
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 400px; 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
- 
+
 h1 {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
-  font-size: 30px; /* Adjusted font size */
+  font-size: 30px;
   font-weight: bold;
 }
- 
-.form-group {
-  margin-bottom: 15px; /* Adjust margin for spacing */
-  width: 100%; /* Ensure divs take full width */
-}
- 
+
 label {
   display: block;
-  font-size: 14px; /* Adjusted font size */
-  color: #8e8e8e;
-  margin-bottom: 5px; /* Adjust margin for spacing */
+  font-size: 14px;
+  color: #333; 
+  margin-bottom: 5px;
   text-align: left;
 }
- 
+
 input[type="email"],
-input[type="password"],
-select {
-  width: 350px;
-  padding: 10px; /* Adjust padding for spacing */
+input[type="password"] {
+  width: 100%; 
+  padding: 10px; 
   border: 1px solid #dbdbdb;
   border-radius: 4px;
   background: #fafafa;
-  font-size: 14px; /* Adjusted font size */
+  font-size: 14px; 
   box-sizing: border-box;
-  justify-content: center;
+  margin-bottom: 5px; /* Match margin-bottom with registration form */
 }
- 
+
+input::placeholder {
+  color: #bbb;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
 button {
   width: 100%;
-  padding: 10px; /* Adjust padding for spacing */
+  padding: 10px; 
   background-color: #0095f6;
   border: none;
   border-radius: 4px;
@@ -83,81 +73,33 @@ button {
   font-size: 14px;
   cursor: pointer;
 }
- 
+
 button:hover {
   background-color: #007bb5;
 }
- 
-/* Media query for smaller screens */
-@media (max-width: 600px) {
-  form {
-    width: 90%; /* Full width on small screens */
-    height: auto; /* Allow height to adjust */
-    padding: 15px;
-  }
- 
-  h3 {
-    font-size: 18px;
-  }
- 
-  label {
-    font-size: 12px;
-  }
- 
-  input[type="text"],
-  input[type="password"],
-  select,
-  button {
-    font-size: 12px;
-    padding: 15px;
-  }
+
+button:disabled {
+  border: 1px solid #dbdbdb; 
+  background-color: #f0f0f0;
+  color: #8e8e8e;
 }
 
-.container {
-  margin-top: 5rem; /* Adjust this value to ensure it clears the navbar */
-  background: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.background-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(4px); /* Adjust the blur level as needed */
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.login-popup {
-  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  margin-top: 50px;
-}
 .error-message {
-color: red; /* Sets the text color to red */
-font-size: 15px; /* Adjusts the font size */
-margin-top: 5px; /* Adds some space above the error message */
-text-align: left;
+  color: red; 
+  font-size: 12px; 
+  margin-top: 2px; 
 }
 
+@media (max-width: 600px) {
+  .login-popup {
+      width: 90%; 
+      padding: 15px;
+  }
 
+  input[type="email"],
+  input[type="password"],
+  button {
+      font-size: 12px;
+      padding: 15px;
+  }
+}
