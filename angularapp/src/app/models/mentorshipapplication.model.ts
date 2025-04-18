@@ -1,3 +1,6 @@
+import { MentorshipProgram } from "./mentorshipprogram.model";
+import { User } from "./user.model";
+
 export interface MentorshipApplication
 {
     MentorshipApplicationId?: number;
@@ -9,4 +12,6 @@ export interface MentorshipApplication
     PortfolioLink?: string;
     ApplicationStatus: string;
     ApplicationDate: string;
+    User? : User;
+    MentorshipProgram?:MentorshipProgram;
 }

@@ -27,7 +27,7 @@
         <td>{{ program.ModeOfMentorship }}</td>
         <td>{{ program.Description }}</td>
         <td>
-          <button [disabled]="program.applied" (click)="apply(program)">{{ program.applied ? 'Applied' : 'Apply' }}</button>
+          <button [disabled]="program.applied" (click)="apply(program,program.MentorshipProgramId)">{{ program.applied ? 'Applied' : 'Apply' }}</button>
         </td>
       </tr>
     </tbody>

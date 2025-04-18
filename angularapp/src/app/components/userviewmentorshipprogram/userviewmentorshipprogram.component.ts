@@ -46,13 +46,13 @@ export class UserviewmentorshipprogramComponent implements OnInit {
   //   this.router.navigate(['user/mentorshipapplicationform'], { state: { program } });
   // }
 
-  apply(program: any): void {
+  apply(program: any,id:number): void {
     program.applied = true;
    
     // Save applied program in local storage
     localStorage.setItem(`applied_${program.ProgramName}`, 'true');
    
-    this.router.navigate(['user/viewmentorshipprogram'], { state: { program } });
+    this.router.navigate([`user/mentorshipapplicationform/${id}`], { state: { program } });
   }
    
   // Restore applied state on load
