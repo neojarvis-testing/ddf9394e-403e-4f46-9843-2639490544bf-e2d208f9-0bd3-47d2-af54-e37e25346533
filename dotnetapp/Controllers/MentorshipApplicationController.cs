@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using dotnetapp.Models;
 using dotnetapp.Services;
 using Microsoft.AspNetCore.Authorization;
+
 namespace dotnetapp.Controllers
 {
     [ApiController]
@@ -18,6 +19,7 @@ namespace dotnetapp.Controllers
             _mentorshipApplicationService = mentorshipApplicationService;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("mentorship-application")]
         public async Task<ActionResult<IEnumerable<MentorshipApplication>>> GetAllMentorshipApplications()
         {
@@ -32,6 +34,7 @@ namespace dotnetapp.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("mentorship-application/user/{userId}")]
         public async Task<ActionResult<IEnumerable<MentorshipApplication>>> GetMentorshipApplicationByUserId(int userId)
         {
@@ -50,6 +53,7 @@ namespace dotnetapp.Controllers
             }
         }
 
+        [Authorize(Roles = "User")]
         [HttpPost("mentorship-application")]
         public async Task<ActionResult> AddMentorshipApplication([FromBody] MentorshipApplication mentorshipApplication)
         {
@@ -66,6 +70,7 @@ namespace dotnetapp.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin, User")]
         [HttpPut("mentorship-application/{mentorshipApplicationId}")]
         public async Task<ActionResult> UpdateMentorshipApplication(int mentorshipApplicationId, [FromBody] MentorshipApplication mentorshipApplication)
         {
@@ -82,6 +87,7 @@ namespace dotnetapp.Controllers
             }
         }
 
+        [Authorize(Roles = "User")]
         [HttpDelete("mentorship-application/{mentorshipApplicationId}")]
         public async Task<ActionResult> DeleteMentorshipApplication(int mentorshipApplicationId)
         {

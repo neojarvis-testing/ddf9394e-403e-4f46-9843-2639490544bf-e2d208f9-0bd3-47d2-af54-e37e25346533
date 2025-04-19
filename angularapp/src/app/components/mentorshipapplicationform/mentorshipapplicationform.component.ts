@@ -195,8 +195,13 @@ updateProgramStatus(programId: number): void {
 
  
   goBack(): void {
+    const applied = localStorage.getItem(`applied_${this.programId}`);
+    if (!applied) {
+      localStorage.setItem(`applied_${this.programId}`, 'false');
+    }
     this.router.navigate(['/user/viewmentorshipprogram']);
   }
+  
  
   showErrorPopup(message: string): void {
     Swal.fire({

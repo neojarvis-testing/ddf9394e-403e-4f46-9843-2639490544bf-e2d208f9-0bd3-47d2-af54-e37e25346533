@@ -51,7 +51,9 @@ export class UserviewmentorshipprogramComponent implements OnInit {
     this.mentorshipService.getAllMentorshipPrograms().subscribe(
       (programs: any[]) => {
         this.mentorshipPrograms = programs.map(program => {
-          program.applied = localStorage.getItem(`applied_${program.ProgramName}`) === 'true';
+          const appliedStatus = localStorage.getItem(`applied_${program.MentorshipProgramId}`);
+          program.applied = appliedStatus === 'true';
+          program.canApply = appliedStatus !== 'true';
           return program;
         });
         this.filteredPrograms = [...this.mentorshipPrograms];
@@ -63,6 +65,7 @@ export class UserviewmentorshipprogramComponent implements OnInit {
       }
     );
   }
+  
 
   paginatedPrograms(): any[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
