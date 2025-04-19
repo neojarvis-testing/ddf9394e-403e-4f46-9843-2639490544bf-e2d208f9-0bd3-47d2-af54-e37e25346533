@@ -19,7 +19,7 @@ import { UserappliedmentorshipprogramComponent } from './components/userappliedm
 
 const routes: Routes = [
 
-  {path: '', component: HomeComponent },
+  {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'home', component: HomeComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegistrationComponent },

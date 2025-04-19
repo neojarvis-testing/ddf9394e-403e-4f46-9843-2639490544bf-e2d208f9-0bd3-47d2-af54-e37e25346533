@@ -28,19 +28,19 @@ export class AuthService {
  
   register(user:User):Observable<any>
   {
-    return this.http.post<any>(`${this.apiUrl}/api/register`,user);
+    return this.http.post<any>(`${this.apiUrl}api/register`,user);
   }
  
   login(login:Login):Observable<any>
   {
    
-    return this.http.post(`${this.apiUrl}/api/login`,login);
+    return this.http.post(`${this.apiUrl}api/login`,login);
   }
  
  
  
   getAllUsers(): Observable<User[]> {
-   return this.http.get<User[]>(`${this.apiUrl}/api/users`);
+   return this.http.get<User[]>(`${this.apiUrl}api/users`);
    }
  
  

@@ -172,32 +172,50 @@ export class RequestedmentorshipapplicationComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUsersAndApplications();
-  }
+}
 
-  loadUsersAndApplications(): void {
+loadUsersAndApplications(): void {
+    // Show loading alert before fetching data
+    Swal.fire({
+        title: 'Loading Data...',
+        text: 'Fetching users and applications, please wait.',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading(); // ✅ Activate loading spinner
+        }
+    });
+
     this.userService.getAllUsers().subscribe(
-      (usersData: User[]) => {
-        this.users = usersData;
+        (usersData: User[]) => {
+            this.users = usersData;
 
-        this.mentorshipService.getAllMentorshipApplications().subscribe(
-          (applicationData: MentorshipApplication[]) => {
-            this.applications = applicationData;
+            this.mentorshipService.getAllMentorshipApplications().subscribe(
+                (applicationData: MentorshipApplication[]) => {
+                    this.applications = applicationData;
 
-            // Combine username with application for display
-            this.combinedApplications = this.applications.map(app => {
-              const matchedUser = this.users.find(user => user.UserId === app.UserId);
-              return {
-                ...app,
-                Username: matchedUser ? matchedUser.Username : 'Unknown User'
-              };
-            });
-          },
-          (error) => console.error('Error fetching applications:', error)
-        );
-      },
-      (error) => console.error('Error fetching users:', error)
+                    // Combine username with application for display
+                    this.combinedApplications = this.applications.map(app => {
+                        const matchedUser = this.users.find(user => user.UserId === app.UserId);
+                        return {
+                            ...app,
+                            Username: matchedUser ? matchedUser.Username : 'Unknown User'
+                        };
+                    });
+
+                    Swal.close(); // ✅ Close loading alert after successful data retrieval
+                },
+                (error) => {
+                    Swal.fire('Error', 'Failed to load applications', 'error');
+                    console.error('Error fetching applications:', error);
+                }
+            );
+        },
+        (error) => {
+            Swal.fire('Error', 'Failed to load users', 'error');
+            console.error('Error fetching users:', error);
+        }
     );
-  }
+}
 
   toggleApplicationStatus(application: MentorshipApplication, status: string): void {
     application.ApplicationStatus = status;

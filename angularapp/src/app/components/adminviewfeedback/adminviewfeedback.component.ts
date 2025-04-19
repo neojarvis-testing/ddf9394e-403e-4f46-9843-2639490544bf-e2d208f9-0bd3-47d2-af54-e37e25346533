@@ -74,6 +74,7 @@ import { Feedback } from 'src/app/models/feedback.model';
 import { User } from 'src/app/models/user.model';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
  selector: 'app-adminviewfeedback',
@@ -99,13 +100,34 @@ export class AdminviewfeedbackComponent implements OnInit {
  }
 
  loadFeedbacks(): void {
-  this.authService.getAllUsers().subscribe(users => {
-   this.users = users;
-   this.feedbackService.getFeedbacks().subscribe(data => {
-    this.feedbacks = data;
-   });
-  });
- }
+    // Show loading alert before fetching data
+    Swal.fire({
+      title: 'Loading Feedbacks...',
+      html: '<i class="fas fa-sync fa-hourglass-half fa-3x"></i>',
+      text: 'Please wait while we fetch data.',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading(); // Activate loading spinner
+      }
+    });
+  
+    this.authService.getAllUsers().subscribe(users => {
+      this.users = users;
+  
+      this.feedbackService.getFeedbacks().subscribe(data => {
+        this.feedbacks = data;
+        
+        // Close the loading alert after data is loaded
+        Swal.close();
+      }, error => {
+        Swal.fire('Error', 'Failed to load feedbacks', 'error');
+      });
+  
+    }, error => {
+      Swal.fire('Error', 'Failed to load users', 'error');
+    });
+  }
+  
 
  getUsername(userId: number): string {
   const user = this.users.find(u => u.UserId === userId);
