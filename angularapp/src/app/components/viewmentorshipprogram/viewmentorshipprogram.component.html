@@ -1,53 +1,3 @@
-<!-- <app-adminnav></app-adminnav>
-
-<h1>Mentorship Program Listings</h1>
-
-<input type="text" [(ngModel)]="searchProgram" placeholder="Search by Program Name or Mentor Name" (input)="search()" />
-
-<table>
-  <thead>
-    <tr>
-      <th>Sr. No</th>
-      <th>Program Name</th>
-      <th>Field of Mentorship</th>
-      <th>Duration (in Months)</th>
-      <th>Mentor Name</th>
-      <th>Experience Level</th>
-      <th>Mode of Mentorship</th>
-      <th>Description</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let prog of filterPrograms; let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{prog.ProgramName}}</td>
-      <td>{{prog.FieldOfMentorship}}</td>
-      <td>{{prog.DurationInMonths}}</td>
-      <td>{{prog.MentorName}}</td>
-      <td>{{prog.ExperienceLevel}}</td>
-      <td>{{prog.ModeOfMentorship}}</td>
-      <td>{{prog.Description}}</td>
-      <td>
-        <button type="button" id="edit-button" (click)="editProgram(prog.MentorshipProgramId)">Edit</button>
-        <button type="button" id="delete-button" (click)="openConfirmationModal(prog.MentorshipProgramId)">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<div id="confirmationModal" class="modal" *ngIf="showModal">
-  <div class="modal-content">
-    <span class="close" (click)="closeConfirmationModal()">&times;</span>
-    <p>Are you sure you want to delete?</p>
-    <button (click)="confirmDelete()">Yes</button>
-    <button (click)="closeConfirmationModal()">No</button>
-  </div>
-</div> -->
-
-
-
 <app-adminnav></app-adminnav>
 
 <div class="container">
@@ -66,25 +16,24 @@
       <p><strong>Mode of Mentorship:</strong> {{prog.ModeOfMentorship}}</p>
       <p><strong>Description:</strong> {{prog.Description}}</p>
       <div class="actions">
-        <button type="button" id="edit-button" (click)="editProgram(prog.MentorshipProgramId)">Edit</button>
-        <button type="button" id="delete-button" (click)="openConfirmationModal(prog.MentorshipProgramId)">Delete</button>
+        <button id="edit-button" (click)="editProgram(prog.MentorshipProgramId)">Edit</button>
+        <button id="delete-button" (click)="openConfirmationModal(prog.MentorshipProgramId)">Delete</button>
       </div>
     </div>
   </div>
 
   <div class="pagination">
-    <button (click)="previousPage()" [disabled]="currentPage === 0">
-      <i class="fas fa-chevron-left"></i>
+    <button (click)="previousPage()" [disabled]="currentPage === 0" class="pagination-button">
+      <i class="fas fa-chevron-left"></i> Previous
     </button>
     <button *ngFor="let page of pages" (click)="goToPage(page)" [class.active]="currentPage === page" class="page-number">
       {{page + 1}}
     </button>
-    <button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">
-      <i class="fas fa-chevron-right"></i>
+    <button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1" class="pagination-button">
+      Next <i class="fas fa-chevron-right"></i>
     </button>
   </div>
 
-  <!-- Confirmation Modal -->
   <div id="confirmationModal" class="modal" *ngIf="showModal">
     <div class="modal-content">
       <span class="close" (click)="closeConfirmationModal()">&times;</span>

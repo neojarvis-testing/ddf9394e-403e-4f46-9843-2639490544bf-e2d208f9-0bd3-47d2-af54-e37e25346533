@@ -1,222 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Page</title>
-  <style>
-    body,
-    html {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: url('/assets/images/collage1.jpg') no-repeat center center fixed;
-      background-size: cover;
-      overflow: hidden;
-    }
-
-    .background-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(50, 50, 50, 0.3));
-      z-index: 0;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    app-navbar {
-      position: relative;
-      z-index: 2;
-    }
-
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start; /* Align form below navbar */
-      margin-top: 50px; /* Add spacing from the navbar */
-      position: relative;
-      z-index: 1;
-    }
-
-    .registration-popup {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      padding: 30px;
-      width: 600px;
-      animation: slideFade 1.5s ease-out; /* Form animation */
-    }
-
-    @keyframes slideFade {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    form>div {
-      display: flex;
-      flex-direction: column;
-    }
-
-    form>div.full-width {
-      grid-column: span 2;
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      grid-column: span 2;
-    }
-
-    label {
-      font-size: 14px;
-      color: #333;
-      margin-bottom: 5px;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background: #fff;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
-
-    input::placeholder {
-      color: #999;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      background-color: #3a6073;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #2c4c5d;
-    }
-
-    button:disabled {
-      background-color: #999;
-      cursor: not-allowed;
-    }
-
-    .error-message {
-      color: #ff4d4d;
-      font-size: 12px;
-      margin-top: 2px;
-    }
-
-    .password-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .password-input {
-      padding-right: 40px;
-    }
-
-    .toggle-password {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: transparent;
-      border: none;
-      color: #3a6073;
-      cursor: pointer;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Navbar -->
-  <app-navbar></app-navbar>
-
-  <!-- Blurred Background Overlay -->
-  <div class="background-overlay"></div>
-
-  <!-- Registration Form Container -->
-  <div class="container">
+<app-navbar></app-navbar>
+<div class="container">
     <div class="registration-popup">
-      <h1>Register</h1>
-      <form>
-        <!-- Username Field -->
-        <div>
-          <label>Username</label>
-          <input type="text" placeholder="UserName" required />
-        </div>
-        <!-- Email Field -->
-        <div>
-          <label>Email</label>
-          <input type="email" placeholder="Email" required />
-        </div>
-        <!-- Password Field -->
-        <div>
-          <label>Password</label>
-          <div class="password-container">
-            <input type="password" placeholder="Password" class="password-input" required />
-            <button type="button" class="toggle-password">
-              <i class="fa fa-eye"></i>
-            </button>
-          </div>
-        </div>
-        <!-- Confirm Password Field -->
-        <div>
-          <label>Confirm Password</label>
-          <input type="password" placeholder="Confirm Password" required />
-        </div>
-        <!-- Mobile Number Field -->
-        <div>
-          <label>Mobile Number</label>
-          <input type="tel" placeholder="Mobile Number" required />
-        </div>
-        <!-- Role Dropdown -->
-        <div>
-          <label>Role</label>
-          <select required>
-            <option value="" hidden selected disabled>Select a Role</option>
-            <option value="Admin">Admin</option>
-            <option value="User">User</option>
-          </select>
-        </div>
-        <!-- Submit Button -->
-        <div class="full-width">
-          <button type="submit">Register</button>
-        </div>
-      </form>
+        <h1 class="h1">Registration</h1>
+        <form class="mx-1 mx-md-4" #registerform="ngForm" (ngSubmit)="register()">
+                <div>
+                    <label>Username:</label>
+                    <input type="text" placeholder="UserName" name="userName" id="userName"
+                        [(ngModel)]="newUser.Username" class="form-control" #un="ngModel" required pattern="^[a-zA-Z0-9]*$">
+                    <div class="error-message" *ngIf="un.errors?.required && (un.touched || un.dirty)">
+                        <p class="text-danger">*Username is required</p>
+                    </div>
+                    <div class="error-message" *ngIf="un.errors?.pattern">
+                        <p class="text-danger">*Enter Valid UserName</p>
+                    </div>
+                </div>
+            <div>
+                <label>Email:</label>
+                <input type="text" placeholder="Email" name="email" id="email" [(ngModel)]="newUser.Email"
+                    class="form-control" #em="ngModel" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                <div class="error-message" *ngIf="em.errors?.required && (em.touched || em.dirty)">
+                    <p class="text-danger">*Email is required</p>
+                </div>
+                <div class="error-message" *ngIf="em.errors?.pattern">
+                    <p class="text-danger">*Please enter a valid email address</p>
+                </div>
+            </div>
+            <div>
+                <label>Password</label>
+                <div class="password-container" style="position: relative;">
+                  <input 
+                    [type]="showPassword ? 'text' : 'password'" 
+                    placeholder="Password" 
+                    name="password" 
+                    id="password"
+                    [(ngModel)]="newUser.Password" 
+                    class="form-control password-input" 
+                    #pass="ngModel" 
+                    required
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                    style="padding-right: 40px;">
+                  <button 
+                    type="button" 
+                    class="toggle-password" 
+                    (click)="showPassword = !showPassword" 
+                    id="eye"
+                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer;">
+                    <i [class]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                  </button>
+                </div>
+                <div class="error-message" *ngIf="pass.errors?.required && (pass.touched || pass.dirty)">
+                  <small>*Password is required</small>
+                </div>
+              
+                <div class="error-message" *ngIf="pass.errors?.pattern">
+                  <small>*Password should have Atleast One LowerCase, One UpperCase, One Digit, One Special Character, Minimum length of 8 characters</small>
+                </div>
+              
+              </div>
+            <div>
+                <label>Confirm Password:</label>
+                <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword"
+                    [(ngModel)]="confirmPassword" class="form-control" #cpass="ngModel" required>
+                <div class="error-message" *ngIf="cpass.errors?.required && (cpass.touched || cpass.dirty)">
+                    <p class="text-danger">*Confirm Password is required</p>
+                </div>
+                <div class="error-message" *ngIf="confirmPassword!==pass.value">
+                    <p class="text-danger">*Password does not match!</p>
+                </div>
+            </div>
+            <div>
+                <label>Mobile Number:</label>
+                <input type="tel" placeholder="Mobile Number" name="mobileNumber" id="mobileNumber"
+                    [(ngModel)]="newUser.MobileNumber" class="form-control" #mn="ngModel" minlength="10" maxlength="10"
+                    required>
+                <div class="error-message" *ngIf="mn.errors?.required && (mn.touched || mn.dirty)">
+                    <p class="text-danger">*Mobile Number is required</p>
+                </div>
+                <div class="error-message" *ngIf="mn.errors?.minlength || mn.errors?.maxlength">
+                    <p class="text-danger">*Mobile Number should have 10 digits</p>
+                </div>
+            </div>
+            <div>
+                <label>Role:</label>
+                <select name="role" id="role" [(ngModel)]="newUser.UserRole" #ur="ngModel" class="form-control">
+                    <option value="" hidden selected disabled>Select a Role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                </select>
+                <div class="error-message" *ngIf="ur.errors?.required && (ur.touched || ur.dirty)">
+                    <p class="text-danger">*Role is required</p>
+                </div>
+            </div>
+            <div *ngIf="newUser.UserRole==='Admin'">
+                <label>Admin Secret Key:</label>
+                <input type="password" placeholder="Enter Admin Secret Key" name="secretKey" id="secretKey"
+                    [(ngModel)]="inputSecretKey" class="form-control" #sc="ngModel" minlength="15" maxlength="15"
+                    required>
+                <div class="error-message" *ngIf="sc.errors?.required && (sc.touched || sc.dirty)">
+                    <p class="text-danger">*Secret Key For Admin Registration is required</p>
+                </div>
+                <div class="error-message" *ngIf="sc.errors?.minlength || sc.errors?.maxlength">
+                    <p class="text-danger">*Secret Key should have 15 characters</p>
+                </div>
+                <div class="error-message" *ngIf="!matchSecretKey()">
+                    <p class="text-danger">*Secret Key doesn't match</p>
+                </div>
+ 
+            </div>
+            <div>
+                <div class="form-group" *ngIf="registerform.invalid">
+                    <button class="form-control btn btn-default" disabled>Register</button>
+                </div>
+                <div class="form-group" *ngIf="!registerform.invalid">
+                    <button class="form-control btn btn-success">Register</button>
+                </div>
+                <div class="error-message" *ngIf="checkUserExists && registerform.submitted">
+                    <p class="text-danger">*{{err}}</p>
+                </div>
+            </div>
+        </form>
     </div>
-  </div>
-</body>
-
-</html>
+</div>

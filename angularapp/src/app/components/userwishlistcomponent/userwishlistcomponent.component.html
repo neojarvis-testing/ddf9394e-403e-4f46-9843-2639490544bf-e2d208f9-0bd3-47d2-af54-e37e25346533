@@ -1,0 +1,19 @@
+<app-usernav></app-usernav>
+<div class="container">
+  <h2>My Wishlist</h2>
+  <div class="card-container">
+    <div class="card" *ngFor="let program of wishlistPrograms">
+      <h3>{{ program.ProgramName }}</h3>
+      <p><strong>Field:</strong> {{ program.FieldOfMentorship }}</p>
+      <p><strong>Mentor:</strong> {{ program.MentorName }}</p>
+      <p><strong>Experience:</strong> {{ program.ExperienceLevel }}</p>
+      <p><strong>Mode:</strong> {{ program.ModeOfMentorship }}</p>
+      <p><strong>Description:</strong> {{ program.Description }}</p>
+      <button (click)="apply(program, program.MentorshipProgramId)">Apply</button>
+    </div>
+    <p *ngIf="wishlistPrograms.length === 0" class="no-records">Your wishlist is empty</p>
+  </div>
+</div>
+
+
+

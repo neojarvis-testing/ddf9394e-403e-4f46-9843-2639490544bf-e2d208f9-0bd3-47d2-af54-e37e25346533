@@ -15,17 +15,15 @@ import { RequestedmentorshipapplicationComponent } from './components/requestedm
 import { ViewmentorshipprogramComponent } from './components/viewmentorshipprogram/viewmentorshipprogram.component';
 import { MentorshipapplicationlistComponent } from './components/mentorshipapplicationlist/mentorshipapplicationlist.component';
 import { UserappliedmentorshipprogramComponent } from './components/userappliedmentorshipprogram/userappliedmentorshipprogram.component';
-import { ErrorComponent } from './components/error/error.component';
-
-
+ 
+ 
 const routes: Routes = [
-
+ 
   {path: '', component: HomeComponent },
   {path: 'home', component: HomeComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegistrationComponent },
-  {path:'error', component:ErrorComponent},
-
+ 
   {path: 'admin', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'user', component:HomeComponent, canActivate: [AuthGuard]},
   {path: 'user/addFeedback', component: UseraddfeedbackComponent, canActivate: [AuthGuard]},
@@ -34,19 +32,20 @@ const routes: Routes = [
   {path: 'user/viewmentorshipprogram', component: UserviewmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewmentorshipprogram', component: ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'user/viewmentorshipprogram/:id',component: UserviewmentorshipprogramComponent, canActivate: [AuthGuard]},
-  {path: 'user/mentorshipapplicationform', component: MentorshipapplicationformComponent, canActivate: [AuthGuard]},
+  {path: 'user/mentorshipapplicationform/:id', component: MentorshipapplicationformComponent, canActivate: [AuthGuard]},
   {path: 'admin/creatementorshipprogram',component:CreatementorshipprogramComponent,canActivate: [AuthGuard]},
-  {path: 'admin/editmentorshipprogram',component: AdmineditmentorshipprogramComponent, canActivate: [AuthGuard]},
+  {path: 'admin/editmentorshipprogram/:id',component: AdmineditmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewFeedback', component: AdminviewfeedbackComponent},
   {path: 'admin/mentorshipapplicationlist',component:MentorshipapplicationlistComponent, canActivate:[AuthGuard]},
   {path: 'admin/requestedmentorshipapplication', component:RequestedmentorshipapplicationComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewmentorshipprogram', component:ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
-  {path:'admin/editmentorshipprogram/:id', component:AdmineditmentorshipprogramComponent, canActivate: [AuthGuard]}
-
+  {path: 'adminviewFeedback',component:AdminviewfeedbackComponent,canActivate: [AuthGuard]}
+ 
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+ 

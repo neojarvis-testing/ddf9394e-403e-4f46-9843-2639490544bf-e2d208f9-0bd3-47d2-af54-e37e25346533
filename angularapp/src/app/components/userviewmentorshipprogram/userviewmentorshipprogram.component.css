@@ -1,9 +1,9 @@
-/* General Styles */
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #F9FAFB;
+  background-color: #F0ECE2;
 }
 
 .container {
@@ -15,82 +15,118 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  color: #2E4374;
+.form-title {
+  color: #325C70ff;
+  text-align: center;
   margin-bottom: 20px;
-  font-size: 24px;
 }
 
-/* Search Input */
-input[type="text"] {
-  width: 100%; /* Half the width of the table */
-  padding: 10px;
+
+.search-container {
+  display: flex;
+  align-items: center;
   margin-bottom: 20px;
-  border: 2px solid #4B527E;
+}
+
+.search-field {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #325C70ff;
   border-radius: 4px;
   font-size: 14px;
-  color: #2E4374;
-  display: block; /* Ensures it is positioned properly */
-  margin-left: auto;
-  margin-right: auto;
+  color: #273255ff;
 }
 
-input[type="text"]::placeholder {
-  color: #7C81AD;
+.search-field::placeholder {
+  color: #5C8A93ff;
 }
 
-input[type="text"]:focus {
+.search-field:focus {
   outline: none;
-  border-color: #7C81AD;
+  border-color: #1D4A60ff;
 }
 
-/* Table Styles */
-table {
-  width: 100%;
-  border-collapse: collapse;
+.search-icon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #5C8A93ff;
+  padding: 20px;
+  width: calc(33.333% - 20px);
+  box-sizing: border-box;
+  position: relative;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 300px; 
+}
+
+.card-content {
+  padding-bottom: 60px; 
+}
+
+.apply-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 90%; 
+  background-color: #325C70ff;
+  color: #F0ECE2;
+  padding: 15px 0; 
+  border: none;
+  border-radius: 8px; 
+  font-size: 16px; 
+  font-weight: bold; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  transform: translate(-50%);
+}
+
+.apply-button:hover {
+  background-color: #1D4A60ff;
+}
+
+.apply-button:disabled {
+  background-color: #5C8A93ff;
+  cursor: not-allowed;
+}
+
+.wishlist-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #5C8A93ff;
+  transition: color 0.3s ease;
+}
+
+.wishlist-icon:hover {
+  color: #1D4A60ff;
+}
+
+
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 20px;
 }
 
-thead {
-  background-color: #2E4374;
-  color: white;
-}
-
-thead th {
-  text-align: left;
-  padding: 12px;
-  font-size: 14px;
-}
-
-tbody tr {
-  border-bottom: 1px solid #E5E7EB;
-}
-
-tbody td {
-  padding: 10px;
-  font-size: 14px;
-  color: #4B527E;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #F4F4F4;
-}
-
-tbody tr:hover {
-  background-color: #E5C3A6;
-}
-
-tbody td[colspan] {
-  text-align: center;
-  font-style: italic;
-  color: #7C81AD;
-}
-
-/* Button Styles */
-button {
+.pagination-controls button {
   padding: 8px 12px;
-  background-color: #7C81AD;
-  color: white;
+  background-color: #325C70ff;
+  color: #F0ECE2;
   border: none;
   border-radius: 4px;
   font-size: 14px;
@@ -98,22 +134,33 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:disabled {
-  background-color: #4B527E;
+.pagination-controls button:disabled {
+  background-color: #5C8A93ff;
   cursor: not-allowed;
 }
 
-button:hover:not(:disabled) {
-  background-color: #4B527E;
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #1D4A60ff;
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-  table {
-    font-size: 12px;
-  }
 
-  input[type="text"] {
-    width: 100%; /* Make search bar full-width on smaller devices */
-  }
+.no-records {
+  text-align: center;
+  margin-top: 20px;
+  color: #5C8A93ff;
+}
+
+
+.wishlist-link {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #325C70ff;
+  text-decoration: none;
+}
+
+.wishlist-link:hover {
+  color: #1D4A60ff;
+  text-decoration: underline;
 }

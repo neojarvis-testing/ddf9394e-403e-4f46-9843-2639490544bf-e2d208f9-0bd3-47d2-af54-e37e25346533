@@ -152,7 +152,7 @@ export class ViewmentorshipprogramComponent implements OnInit {
   }
 
   editProgram(id: number): void {
-    this.router.navigate([`admin/editmentorshipprogram/${id}`]);
+    this.router.navigate([`/admin/editmentorshipprogram/${id}`]);
   }
 
   openConfirmationModal(id: number): void {

@@ -25,19 +25,22 @@
     </form>
   </div>
 </div> -->
-
 <app-usernav></app-usernav>
 
 <div class="container">
   <div class="feedback-box">
-    <h3>Add Feedback</h3>
+    <h3 class="feedback-title">Add Feedback</h3>
     <form>
-      <label>You can write your feedback here:<span style="color:red">*</span></label><br>
-      <textarea placeholder="Feedback" name="feedback" [(ngModel)]="feedback.FeedbackText"></textarea><br>
-      <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
-      <button type="button" (click)="addFeedback()">Submit</button>
+      <label class="feedback-label">You can write your feedback here:<span class="required">*</span></label><br>
+      <textarea 
+        class="feedback-textarea" 
+        placeholder="Feedback" 
+        name="feedback" 
+        [(ngModel)]="feedback.FeedbackText">
+      </textarea><br>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      <button type="button" class="btn-submit" (click)="addFeedback()">Submit</button>
     </form>
   </div>
 </div>
-
 

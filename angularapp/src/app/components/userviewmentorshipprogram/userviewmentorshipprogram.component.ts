@@ -12,26 +12,11 @@ export class UserviewmentorshipprogramComponent implements OnInit {
   mentorshipPrograms: any[] = [];
   filteredPrograms: any[] = [];
   noRecordsFound: boolean = false;
+  currentPage: number = 1;
+  itemsPerPage: number = 6;
+  showSearch: boolean = false;
 
   constructor(private mentorshipService: MentorshipService, private router: Router) {}
-
-  // ngOnInit(): void {
-  //   this.fetchMentorshipPrograms();
-  // }
-
-  // fetchMentorshipPrograms(): void {
-  //   this.mentorshipService.getAllMentorshipPrograms().subscribe(
-  //     (programs: any[]) => {
-  //       console.log('Fetched programs:', programs); // Log API response
-  //       this.mentorshipPrograms = programs;
-  //       this.filteredPrograms = programs;
-  //       this.noRecordsFound = programs.length === 0;
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching programs:', error); // Log errors
-  //     }
-  //   );
-  // }
 
   filterPrograms() {
     this.filteredPrograms = this.mentorshipPrograms.filter((program) =>
@@ -41,41 +26,37 @@ export class UserviewmentorshipprogramComponent implements OnInit {
     this.noRecordsFound = this.filteredPrograms.length === 0;
   }
 
-  // apply(program: any): void {
-  //   program.applied = true;
-  //   this.router.navigate(['user/mentorshipapplicationform'], { state: { program } });
-  // }
-
-  apply(program: any): void {
-    program.applied = true;
-   
-    // Save applied program in local storage
-    localStorage.setItem(`applied_${program.ProgramName}`, 'true');
-   
-    this.router.navigate(['user/viewmentorshipprogram'], { state: { program } });
+  apply(program: any, id: number): void {
+    if (!program.applied) {
+      this.router.navigate([`user/mentorshipapplicationform/${id}`], { state: { program } });
+      program.applied = true;
+      localStorage.setItem(`applied_${program.ProgramName}`, 'true');
+    }
   }
-   
-  // Restore applied state on load
-  // ngOnInit(): void {
-  //   this.fetchMentorshipPrograms();
-  //   this.mentorshipPrograms.forEach(program => {
-  //     program.applied = localStorage.getItem(`applied_${program.ProgramName}`) === 'true';
-  //   });
-  // }
+
+
+  addToWishlist(program: any): void {
+    let wishlist = localStorage.getItem('wishlist');
+    let wishlistPrograms = wishlist ? JSON.parse(wishlist) : [];
+    wishlistPrograms.push(program);
+    localStorage.setItem('wishlist', JSON.stringify(wishlistPrograms));
+
+  }
 
   ngOnInit(): void {
     this.fetchMentorshipPrograms();
   }
-   
-  // Modify fetchMentorshipPrograms to ensure applied programs are restored
+
   fetchMentorshipPrograms(): void {
     this.mentorshipService.getAllMentorshipPrograms().subscribe(
       (programs: any[]) => {
         this.mentorshipPrograms = programs.map(program => {
-          program.applied = localStorage.getItem(`applied_${program.ProgramName}`) === 'true';
+          const appliedStatus = localStorage.getItem(`applied_${program.MentorshipProgramId}`);
+          program.applied = appliedStatus === 'true';
+          program.canApply = appliedStatus !== 'true';
           return program;
         });
-        this.filteredPrograms = [...this.mentorshipPrograms]; // Ensure filtering works
+        this.filteredPrograms = [...this.mentorshipPrograms];
         this.noRecordsFound = this.filteredPrograms.length === 0;
       },
       (error) => {
@@ -84,4 +65,33 @@ export class UserviewmentorshipprogramComponent implements OnInit {
       }
     );
   }
+  
+
+  paginatedPrograms(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.filteredPrograms.slice(startIndex, endIndex);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredPrograms.length / this.itemsPerPage);
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  toggleSearch(): void {
+    this.showSearch = !this.showSearch;
+  }
 }
+
+
