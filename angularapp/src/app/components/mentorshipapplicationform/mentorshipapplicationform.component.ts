@@ -144,7 +144,7 @@ export class MentorshipapplicationformComponent implements OnInit {
         }).then((result) => {
           if (result.isConfirmed) {
             localStorage.setItem(`applied_${this.programId}`, 'true');
-            this.updateProgramStatus(this.programId); 
+            // this.updateProgramStatus(this.programId); 
             this.router.navigate(['/user/viewmentorshipprogram']);
           }
         });
@@ -157,41 +157,41 @@ export class MentorshipapplicationformComponent implements OnInit {
   
  
   
-updateProgramStatus(programId: number): void {
-    const program = this.filteredPrograms.find(p => p.MentorshipProgramId === programId);
-    if (program) {
-    program.applied = true;
+// updateProgramStatus(programId: number): void {
+//     const program = this.filteredPrograms.find(p => p.MentorshipProgramId === programId);
+//     if (program) {
+//     program.applied = true;
 
-    }
+//     }
  
-    this.application.UserId = this.userId;
-    this.application.MentorshipProgramId = this.programId;
-    this.application.ReasonForApplying = this.applicationForm.get('reason')?.value;
-    this.application.CareerGoals = this.applicationForm.get('goal')?.value;
-    this.application.ProfileImage = this.applicationForm.get('image')?.value;
-    this.application.PortfolioLink = this.applicationForm.get('portfolio')?.value;
+//     this.application.UserId = this.userId;
+//     this.application.MentorshipProgramId = this.programId;
+//     this.application.ReasonForApplying = this.applicationForm.get('reason')?.value;
+//     this.application.CareerGoals = this.applicationForm.get('goal')?.value;
+//     this.application.ProfileImage = this.applicationForm.get('image')?.value;
+//     this.application.PortfolioLink = this.applicationForm.get('portfolio')?.value;
  
-    console.log('Form submitted', this.application);
-    this.mentorshipService.addMentorshipApplication(this.application).subscribe(
-      (data) => {
-        Swal.fire({
-          title: 'Successfully Submitted!',
-          text: 'Your application has been submitted successfully.',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            localStorage.setItem(`applied_${this.programId}`, 'true');
-            this.router.navigate(['/user/viewmentorshipprogram']);
-          }
-        });
-      },
-      (error) => {
-        console.error('Error submitting application', error);
-        this.showErrorPopup('An error occurred while submitting the application.');
-      }
-    );
-  }
+//     console.log('Form submitted', this.application);
+//     this.mentorshipService.addMentorshipApplication(this.application).subscribe(
+//       (data) => {
+//         Swal.fire({
+//           title: 'Successfully Submitted!',
+//           text: 'Your application has been submitted successfully.',
+//           icon: 'success',
+//           confirmButtonText: 'OK'
+//         }).then((result) => {
+//           if (result.isConfirmed) {
+//             localStorage.setItem(`applied_${this.programId}`, 'true');
+//             this.router.navigate(['/user/viewmentorshipprogram']);
+//           }
+//         });
+//       },
+//       (error) => {
+//         console.error('Error submitting application', error);
+//         this.showErrorPopup('An error occurred while submitting the application.');
+//       }
+//     );
+//   }
 
  
   goBack(): void {

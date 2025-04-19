@@ -46,7 +46,8 @@ export class MentorshipService {
  
   addMentorshipProgram(requestObject: MentorshipProgram): Observable<MentorshipProgram> {
     return this.http.post<MentorshipProgram>(`${this.apiUrl}api/mentorship-program`, requestObject, {
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
+      responseType: 'text' as 'json'
     });
   }
  

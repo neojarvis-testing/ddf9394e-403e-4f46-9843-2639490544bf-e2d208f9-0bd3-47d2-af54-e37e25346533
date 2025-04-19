@@ -45,7 +45,12 @@
 
     <div class="form-group">
       <label>Experience Level *</label>
-      <input name="experienceLevel" ngModel class="form-control" required />
+      <select name="experienceLevel" ngModel class="form-control" required>
+        <option value="">Select Experience Level</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Experienced">Experienced</option>
+      </select>
       <div *ngIf="form.submitted || form.controls.experienceLevel?.touched">
         <small class="text-danger" *ngIf="form.controls.experienceLevel?.errors?.required">Experience Level is required.</small>
       </div>

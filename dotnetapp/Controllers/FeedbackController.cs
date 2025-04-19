@@ -20,8 +20,8 @@ namespace dotnetapp.Controllers
             _feedbackService = feedbackService;
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<Feedback>>> GetAllFeedbacks()
         {
             try
@@ -35,8 +35,8 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin, User")]
         [HttpGet("user/{userId}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult<IEnumerable<Feedback>>> GetFeedbacksByUserId(int userId)
         {
             try
@@ -51,6 +51,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPost]
+        // [Authorize(Roles = "User")]
         public async Task<ActionResult> AddFeedback([FromBody] Feedback feedback)
         {
             try
@@ -67,8 +68,8 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [Authorize(Roles = "User")]
         [HttpDelete("{feedbackId}")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> DeleteFeedback(int feedbackId)
         {
             try
