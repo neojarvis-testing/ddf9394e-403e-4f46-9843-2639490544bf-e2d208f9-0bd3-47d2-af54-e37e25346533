@@ -1,57 +1,55 @@
-.navbar {
+.custom-navbar {
+  background-color: #000; /* Black background */
+  padding: 10px 20px; /* Reduced padding for a smaller height */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    background: linear-gradient(to right, #b24526, #5e2a1c);
-   
-    color: gold;
-   
-    padding: 15px 30px;
-   
-    display: flex;
-   
-    justify-content: space-between;
-   
-    align-items: center;
-   
-    border-radius: 8px;
-   
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-   
-   }
-   
-   
-   
-   .title {
-   
-    margin: 0;
-   
-    font-size: 20px;
-   
-    font-weight: bold;
-   
-    letter-spacing: 1px;
-   
-   }
-   
-   
-   
-   .nav-links a {
-   
-    color: white;
-   
-    text-decoration: none;
-   
-    margin-left: 20px;
-   
-    font-weight: bold;
-   
-   }
-   
-   
-   
-   .nav-links a:hover,
-   
-   .active-link {
-   
-    text-decoration: underline;
-   
-   }
+.custom-navbar .navbar-brand {
+  font-size: 18px; /* Smaller font size */
+  font-weight: bold;
+  color: #fff; /* White text */
+}
+
+.custom-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28155, 155, 155, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.custom-navbar .nav-link {
+  color: #fff; /* White text */
+  text-decoration: none;
+  font-size: 14px; /* Smaller font size */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+  color: #ccc; /* Light gray on hover */
+}
+
+.custom-navbar .btn-light {
+  background-color: #fff; /* White button */
+  color: #000; /* Black text */
+  border: 1px solid #ccc;
+  font-size: 12px; /* Smaller button size */
+  padding: 5px 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-navbar .btn-light:hover {
+  background-color: #ccc; /* Gray background on hover */
+  color: #000;
+}
+
+.custom-navbar .btn-outline-light {
+  color: #fff; /* White text */
+  border: 1px solid #fff; /* White border */
+  font-size: 12px; /* Smaller button size */
+  padding: 5px 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-navbar .btn-outline-light:hover {
+  background-color: #fff; /* White background on hover */
+  color: #000; /* Black text on hover */
+}

@@ -1,151 +1,4 @@
-<!-- <h1>Feedback Details</h1>
-<div *ngIf="feedbacks.length === 0">
-  <p>No data found</p>
-</div>
-<div *ngIf="feedbacks.length > 0">
-  <table class="feedback-table">
-    <thead>
-      <tr>
-        <th>User ID</th>
-        <th>Feedback</th>
-        <th>Date</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let feedback of feedbacks">
-        <td>{{ feedback.UserId }}</td>
-        <td>{{ feedback.FeedbackText }}</td>
-        <td>{{ feedback.Date | date:'medium' }}</td>
-        <td><button (click)="showProfile(feedback)">Show Profile</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="modal" *ngIf="selectedUser">
-  <div class="modal-content">
-    <h3>User Profile</h3>
-    <p><strong>User ID:</strong> {{ selectedUser.UserId }}</p>
-    <p><strong>Feedback:</strong> {{ selectedUser.FeedbackText }}</p>
-    <p><strong>Date:</strong> {{ selectedUser.Date | date:'medium' }}</p>
-    <p *ngIf="selectedUser.username"><strong>Username:</strong> {{ selectedUser.username }}</p>
-    <p *ngIf="selectedUser.email"><strong>Email:</strong> {{ selectedUser.email }}</p>
-    <p *ngIf="selectedUser.role"><strong>Role:</strong> {{ selectedUser.role }}</p>
-    <button (click)="closeProfile()">Close</button>
-  </div>
-</div> -->
-
-
- <!-- <div class="container mt-5">
-
-  <h1 class="text-center text-primary mb-4">Feedback Details</h1>
- 
- 
- 
-  <div *ngIf="feedbacks.length === 0" class="alert alert-warning text-center">
- 
-   No data found
- 
-  </div>
- 
- 
- 
-  <div *ngIf="feedbacks.length > 0">
- 
-   <div class="table-responsive">
- 
-    <table class="table table-bordered table-hover">
- 
-     <thead class="table-secondary">
- 
-      <tr>
- 
-       <th>User ID</th>
- 
-       <th>Feedback</th>
- 
-       <th>Date</th>
- 
-       <th>Action</th>
- 
-      </tr>
- 
-     </thead>
- 
-     <tbody>
- 
-      <tr *ngFor="let feedback of feedbacks">
- 
-       <td>{{ feedback.UserId }}</td>
- 
-       <td>{{ feedback.FeedbackText }}</td>
- 
-       <td>{{ feedback.Date | date:'medium' }}</td>
- 
-       <td>
- 
-        <button class="btn btn-outline-primary btn-sm" (click)="showProfile(feedback)">Show Profile</button>
- 
-       </td>
- 
-      </tr>
- 
-     </tbody>
- 
-    </table>
- 
-   </div>
- 
-  </div>
- 
- 
- 
-  
- 
-  <div class="modal show d-block" *ngIf="selectedUser" tabindex="-1" role="dialog">
- 
-   <div class="modal-dialog modal-dialog-centered" role="document">
- 
-    <div class="modal-content shadow-lg">
- 
-     <div class="modal-header bg-primary text-white">
- 
-      <h5 class="modal-title">User Profile</h5>
- 
-      <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeProfile()"></button>
- 
-     </div>
- 
-     <div class="modal-body">
- 
-      <p><strong>User ID:</strong> {{ selectedUser.UserId }}</p>
- 
-      <p><strong>Feedback:</strong> {{ selectedUser.FeedbackText }}</p>
- 
-      <p><strong>Date:</strong> {{ selectedUser.Date | date:'medium' }}</p>
- 
-      <p *ngIf="selectedUser.username"><strong>Username:</strong> {{ selectedUser.username }}</p>
- 
-      <p *ngIf="selectedUser.email"><strong>Email:</strong> {{ selectedUser.email }}</p>
- 
-      <p *ngIf="selectedUser.role"><strong>Role:</strong> {{ selectedUser.role }}</p>
- 
-     </div>
- 
-     <div class="modal-footer">
- 
-      <button type="button" class="btn btn-secondary" (click)="closeProfile()">Close</button>
- 
-     </div>
- 
-    </div>
- 
-   </div>
- 
-  </div>
- 
-</div>  -->
+<!-- 
 <app-adminnav></app-adminnav>
 <div class="container mt-5">
 
@@ -215,7 +68,7 @@
 
 
 
-  <!-- Modal -->
+
 
   <div class="modal show d-block" *ngIf="selectedUser" tabindex="-1" role="dialog">
 
@@ -257,4 +110,64 @@
 
   </div>
 
+</div> -->
+
+
+
+<app-adminnav></app-adminnav>
+<div class="container mt-5 text-white">
+  <h1 class="text-center mb-4">Feedback Details</h1>
+
+  <div *ngIf="feedbacks.length === 0" class="alert alert-warning text-center">
+    No data found
+  </div>
+
+  <div *ngIf="feedbacks.length > 0">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover text-white">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Feedback</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let feedback of feedbacks; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ feedback.username }}</td>
+            <td>{{ feedback.FeedbackText }}</td>
+            <td>{{ feedback.Date | date:'yyyy-MM-dd' }}</td>
+            <td>
+              <button class="btn btn-outline-light btn-sm" (click)="showProfile(feedback)">Show Profile</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal show d-block" *ngIf="selectedUser" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content shadow-lg text-dark">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title">User Profile</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeProfile()"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Username:</strong> {{ selectedUser.username }}</p>
+          <p><strong>Feedback:</strong> {{ selectedUser.FeedbackText }}</p>
+          <p><strong>Date:</strong> {{ selectedUser.Date | date:'yyyy-MM-dd' }}</p>
+          <p *ngIf="selectedUser.email"><strong>Email:</strong> {{ selectedUser.email }}</p>
+          <p *ngIf="selectedUser.role"><strong>Role:</strong> {{ selectedUser.role }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeProfile()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

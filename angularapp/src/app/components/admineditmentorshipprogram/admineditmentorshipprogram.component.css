@@ -1,0 +1,54 @@
+.container {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .form-control, .form-select {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+  }
+  
+  .form-control:focus, .form-select:focus {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  }
+  
+  label {
+    color: #ffffff;
+  }
+  
+  .btn-animated {
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .btn-animated::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.75s ease-in-out;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+  }
+  
+  .btn-animated:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .btn-animated:hover {
+    background-color: #ffffff;
+    color: #000000;
+  }

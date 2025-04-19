@@ -1,22 +1,185 @@
-<app-navbar></app-navbar>
-    <form (ngSubmit)="addlogin()" #loginForm="ngForm">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('/assets/images/collage1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(50, 50, 50, 0.3));
+      z-index: 0;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    app-navbar {
+      position: relative;
+      z-index: 2;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 80px; /* Spacing from the navbar */
+      height: calc(100% - 80px); /* Adjust height for the navbar */
+      position: relative;
+      z-index: 1;
+    }
+
+    .login-popup {
+      background: #fff; /* Solid white background */
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      width: 400px;
+      animation: slideFade 1.5s ease-out; /* Smooth animation */
+    }
+
+    @keyframes slideFade {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fafafa;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    input::placeholder {
+      color: #bbb;
+    }
+
+    input.ng-invalid.ng-touched {
+      border-color: red;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background-color: #0095f6;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #007bb5;
+    }
+
+    button:disabled {
+      border: 1px solid #dbdbdb;
+      background-color: #f0f0f0;
+      color: #8e8e8e;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .login-popup {
+        width: 90%;
+        padding: 15px;
+      }
+
+      input[type="email"],
+      input[type="password"],
+      button {
+        font-size: 12px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <app-navbar></app-navbar>
+
+  <!-- Blurred Background Overlay -->
+  <div class="background-overlay"></div>
+
+  <!-- Login Form Container -->
+  <div class="container">
+    <div class="login-popup">
+      <form (ngSubmit)="addlogin()" #loginForm="ngForm">
         <h1>Login</h1>
+        <!-- Email Field -->
         <div>
-            <label>Email :</label>
-            <input type="email" name="Email" [(ngModel)]="userLogin.Email" #email="ngModel" required email >
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
-                <small *ngIf="email.errors?.required">Email is required.</small>
-                <small *ngIf="email.errors?.email">Invalid email address.</small>
-            </div>
+          <label>Email</label>
+          <input type="email" name="Email" [(ngModel)]="userLogin.Email" #email="ngModel" required email placeholder="Email">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+            <small *ngIf="email.errors?.required">Email is required.</small>
+            <small *ngIf="email.errors?.email">Invalid email address.</small>
+          </div>
         </div>
+        <!-- Password Field -->
         <div>
-            <label>Password :</label>
-            <input type="password" name="Password" [(ngModel)]="userLogin.Password" #password="ngModel" required>
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
-                <small *ngIf="password.errors?.required">Password is required.</small>
-            </div>
+          <label>Password</label>
+          <input type="password" name="Password" [(ngModel)]="userLogin.Password" #password="ngModel" required placeholder="Password">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+            <small *ngIf="password.errors?.required">Password is required.</small>
+          </div>
         </div>
         <br>
+        <!-- Submit Button -->
         <button type="submit" [disabled]="loginForm.invalid">Login</button>
-    </form>
+      </form>
+    </div>
+  </div>
+</body>
 
+</html>

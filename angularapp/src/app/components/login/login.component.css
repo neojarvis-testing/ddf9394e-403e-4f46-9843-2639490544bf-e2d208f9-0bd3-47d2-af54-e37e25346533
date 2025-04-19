@@ -1,163 +1,135 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align items to the top */
-  height: 100vh;
-  background-color: #fafafa;
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
-  margin: 0; /* Ensure there's no default margin */
-  padding-top: 60px; /* Adjust padding to account for the navbar height */
+  background: url('/assets/images/collage1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
 }
- 
-.navbar {
-  width: 100%;
-  height: 60px; /* Adjust height as needed */
-  background-color: #333;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.background-overlay {
   position: fixed;
   top: 0;
   left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(50, 50, 50, 0.3));
+  z-index: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
- 
-form {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  padding: 20px;
-  width: 400px; /* Set width for rectangular shape */
-  height: auto; /* Allow height to adjust based on content */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+
+app-navbar {
+  position: relative;
+  z-index: 2;
+}
+
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Center the content inside the form */
-  margin-top: 20px; /* Add margin to separate from navbar */
-  margin:auto;
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
-  justify-content:left;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 80px; /* Space from the navbar */
+  height: calc(100% - 80px); /* Adjust height for navbar */
+  position: relative;
+  z-index: 1;
 }
- 
+
+.login-popup {
+  background: #fff; /* Solid white background */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  width: 400px;
+  animation: slideFade 1.5s ease-out; /* Smooth slide and fade animation */
+}
+
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 h1 {
   text-align: center;
   color: #333;
-  margin-bottom: 20px;
-  font-size: 30px; /* Adjusted font size */
+  font-size: 32px;
   font-weight: bold;
+  margin-bottom: 20px;
 }
- 
-.form-group {
-  margin-bottom: 15px; /* Adjust margin for spacing */
-  width: 100%; /* Ensure divs take full width */
-}
- 
+
 label {
   display: block;
-  font-size: 14px; /* Adjusted font size */
-  color: #8e8e8e;
-  margin-bottom: 5px; /* Adjust margin for spacing */
-  text-align: left;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
 }
- 
+
 input[type="email"],
-input[type="password"],
-select {
-  width: 350px;
-  padding: 10px; /* Adjust padding for spacing */
-  border: 1px solid #dbdbdb;
-  border-radius: 4px;
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   background: #fafafa;
-  font-size: 14px; /* Adjusted font size */
+  font-size: 14px;
   box-sizing: border-box;
-  justify-content: center;
+  margin-bottom: 10px;
 }
- 
+
+input::placeholder {
+  color: #bbb;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
 button {
   width: 100%;
-  padding: 10px; /* Adjust padding for spacing */
-  background-color: #0095f6;
+  padding: 12px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  background-color: #007bff; /* Blue color for the button */
   color: white;
   font-size: 14px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
- 
+
 button:hover {
-  background-color: #007bb5;
+  background-color: #0056b3; /* Darker blue on hover */
 }
- 
-/* Media query for smaller screens */
+
+button:disabled {
+  border: 1px solid #dbdbdb;
+  background-color: #f0f0f0;
+  color: #8e8e8e;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
 @media (max-width: 600px) {
-  form {
-    width: 90%; /* Full width on small screens */
-    height: auto; /* Allow height to adjust */
+  .login-popup {
+    width: 90%;
     padding: 15px;
   }
- 
-  h3 {
-    font-size: 18px;
-  }
- 
-  label {
-    font-size: 12px;
-  }
- 
-  input[type="text"],
+
+  input[type="email"],
   input[type="password"],
-  select,
   button {
     font-size: 12px;
     padding: 15px;
   }
-}
-
-.container {
-  margin-top: 5rem; /* Adjust this value to ensure it clears the navbar */
-  background: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.background-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(4px); /* Adjust the blur level as needed */
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.login-popup {
-  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  margin-top: 50px;
-}
-.error-message {
-color: red; /* Sets the text color to red */
-font-size: 15px; /* Adjusts the font size */
-margin-top: 5px; /* Adds some space above the error message */
-text-align: left;
 }
 
 

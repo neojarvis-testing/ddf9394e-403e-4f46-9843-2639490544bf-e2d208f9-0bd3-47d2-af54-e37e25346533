@@ -15,10 +15,12 @@ export class AuthService {
   //public apiUrl:string="https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
 
 
-  public apiUrl:string='https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+ // public apiUrl:string='https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
 
 
 //   public apiUrl:string="https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
+   public apiUrl: "https://ide-cecbebeeefadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
+
 
 
 
@@ -27,17 +29,17 @@ export class AuthService {
  
   register(user:User):Observable<any>
   {
-    return this.http.post<any>(`${this.apiUrl}/api/register`,user);
+    return this.http.post<any>(`${this.apiUrl}api/register`,user);
   }
  
   login(login:Login):Observable<any>
   {
    
-    return this.http.post(`${this.apiUrl}/api/login`,login);
+    return this.http.post(`${this.apiUrl}api/login`,login);
   }
   
   getAllUsers(): Observable<User[]> {
-   return this.http.get<User[]>(`${this.apiUrl}/api/users`);
+   return this.http.get<User[]>(`${this.apiUrl}api/users`);
    }
   
  

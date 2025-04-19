@@ -14,12 +14,13 @@ export class MentorshipService {
 //   private apiUrl = 'https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/api/';
 
 
-  private apiUrl = 'https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+  //private apiUrl = 'https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
 
 
 //  private apiUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
 
   //private apiUrl = 'https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+    public apiUrl: "https://ide-cecbebeeefadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
 
 
 
