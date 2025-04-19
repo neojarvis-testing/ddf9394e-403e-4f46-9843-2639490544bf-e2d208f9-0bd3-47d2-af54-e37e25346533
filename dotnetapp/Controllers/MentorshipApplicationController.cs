@@ -34,7 +34,7 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("mentorship-application/user/{userId}")]
         public async Task<ActionResult<IEnumerable<MentorshipApplication>>> GetMentorshipApplicationByUserId(int userId)
         {
@@ -87,7 +87,7 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "User")]
         [HttpDelete("mentorship-application/{mentorshipApplicationId}")]
         public async Task<ActionResult> DeleteMentorshipApplication(int mentorshipApplicationId)
         {

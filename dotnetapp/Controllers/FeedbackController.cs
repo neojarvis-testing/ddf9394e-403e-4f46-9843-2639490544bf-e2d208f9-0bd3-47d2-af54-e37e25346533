@@ -20,7 +20,7 @@ namespace dotnetapp.Controllers
             _feedbackService = feedbackService;
         }
 
-        [Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Feedback>>> GetAllFeedbacks()
         {
@@ -50,7 +50,6 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [Authorize(Roles = "User")]
         [HttpPost]
         public async Task<ActionResult> AddFeedback([FromBody] Feedback feedback)
         {

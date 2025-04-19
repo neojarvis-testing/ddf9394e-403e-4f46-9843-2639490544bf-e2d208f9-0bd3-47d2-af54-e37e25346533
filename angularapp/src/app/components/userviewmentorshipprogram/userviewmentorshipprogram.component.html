@@ -16,13 +16,14 @@
       <p><strong>Experience:</strong> {{ program.ExperienceLevel }}</p>
       <p><strong>Mode:</strong> {{ program.ModeOfMentorship }}</p>
       <p><strong>Description:</strong> {{ program.Description }}</p>
-      <button [disabled]="program.applied" (click)="apply(program, program.MentorshipProgramId)">
+      <button [disabled]="!program.canApply" (click)="apply(program, program.MentorshipProgramId)">
         {{ program.applied ? 'Applied' : 'Apply' }}
       </button>
       <span class="wishlist-icon" (click)="addToWishlist(program)">❤️</span>
     </div>
     <p *ngIf="filteredPrograms.length === 0" class="no-records">Oops! No records found</p>
   </div>
+  
   
   <div class="pagination-controls">
     <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
