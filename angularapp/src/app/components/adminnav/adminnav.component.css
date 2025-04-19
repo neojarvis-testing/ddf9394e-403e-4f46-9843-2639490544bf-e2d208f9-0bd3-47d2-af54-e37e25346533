@@ -1,160 +1,102 @@
-  /* .navbar {
-
-    background-color: #8b0000 !important;
-  
-  }
-  
-  
-  
-  .navbar-brand {
-  
-    font-weight: bold;
-  
-    font-size: 24px;
-  
-    color: yellow !important;
-  
-  }
-  
-  
-  
-  .nav-item .nav-link {
-  
-    color: white !important;
-  
-  }
-  
-  
-  
-  .dropdown-menu {
-  
-    background-color: #8b0000;
-  
-    border: none;
-  
-  }
-  
-  
-  
-  .dropdown-item {
-  
-    color: white;
-  
-  }
-  
-  
-  
-  .dropdown-item:hover {
-  
-    background-color: #a52a2a;
-  
-  }
-  
-  
-  
-  .logout-btn {
-  
-    background-color: transparent;
-  
-    border: 1px solid #ffc107;
-  
-    color: #ffc107;
-  
-    margin-left: 10px;
-  
-  }
-  
-  
-  
-  .logout-btn:hover {
-  
-    background-color: #ffc107;
-  
-    color: #000;
-  
-  } */
-
-  /* Navbar Styles */
-
-
-
-
-
-
-
-
-
-/* Navbar Styles */
 .navbar {
-  background-color: #2E4374;
-  padding: 10px 20px;
+  background-color: #272829 !important; /* Dark slate gray */
+  padding: 5px 10px; /* Reduced padding for shorter height */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center; /* Align items in a single line */
+  justify-content: space-between; /* Spread out items evenly */
+  height: auto;
 }
 
 .navbar-brand {
-  color: #E5C3A6 !important;
-  font-size: 18px;
+  font-size: 1rem; /* Uniform font size */
   font-weight: bold;
+  color: #FFF6E0 !important; /* Warm pastel yellow */
+  margin-right: 20px; /* Add spacing from the nav links */
+}
+
+.btn.btn-outline-light.dropdown-toggle {
+  border: none;
+  box-shadow: none;
+}
+
+
+.navbar-nav {
+  display: flex;
+  align-items: center; /* Center align nav links vertically */
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any default padding */
+  list-style: none; /* Remove bullet points */
+  gap: 20px; /* Equal spacing between nav links */
 }
 
 .navbar-nav .nav-link {
-  color: #E5C3A6 !important;
-  font-size: 14px;
-  margin: 0 10px;
-  transition: color 0.3s ease;
+  color: #D8D9DA !important; /* Soft light gray */
+  font-size: 1rem; /* Uniform font size */
+  padding: 5px 10px; /* Reduced padding for compact design */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease-in-out;
 }
 
-.navbar-nav .nav-link:hover {
-  color: #7C81AD !important;
+.nav-link:hover {
+  color: #61677A !important; /* Muted blue-gray on hover */
+}
+/* .navbar-nav  */
+
+.dropdown-menu {
+  background-color: #272829; /* Dark slate gray */
+  border: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.navbar-nav .btn {
-  font-size: 14px;
-  border: 1px solid #E5C3A6;
-  color: #E5C3A6;
-  background-color: transparent;
-  transition: background-color 0.3s ease, color 0.3s ease;
+.mentorship-program-btn {
+  background: none; /* Remove background */
+  border: none; /* Remove border */
+  color: #FFF6E0; /* Match the dropdown button text color */
+  font-size: 1rem; /* Uniform font size */
+  padding: 5px 10px; /* Adjust padding for compact design */
+  cursor: pointer; /* Add pointer cursor for better UX */
+  transition: color 0.3s ease-in-out;
 }
 
-.navbar-nav .btn:hover {
-  background-color: #E5C3A6;
-  color: #2E4374;
+.mentorship-program-btn:hover {
+  color: #61677A; /* Muted blue-gray on hover */
 }
 
-/* Dropdown Styles */
-.dropdown {
-  position: relative;
-  display: inline-block;
+.dropdown-item {
+  color: #FFF6E0 !important; /* Warm pastel yellow */
+  transition: background-color 0.3s ease-in-out;
+  font-size: 1rem; /* Uniform font size */
 }
 
-.dropdown select {
-  background-color: #4B527E;
-  color: #E5C3A6;
-  font-size: 14px;
-  border: 1px solid #7C81AD;
-  padding: 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  appearance: none; /* Removes default dropdown styling */
-  transition: background-color 0.3s ease, color 0.3s ease;
+.dropdown-item:hover {
+  background-color: #61677A !important; /* Muted blue-gray on hover */
 }
 
-.dropdown:hover select {
-  background-color: #7C81AD;
-  color: #2E4374;
+.btn-outline-warning {
+  border-color: #D8D9DA; /* Soft light gray */
+  color: #D8D9DA; /* Soft light gray */
+  padding: 5px 10px; /* Reduced padding for compact design */
+  font-size: 1rem; /* Uniform font size */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  margin-left: 20px; /* Add spacing to separate from other elements */
 }
 
-.dropdown select option {
-  background-color: #E5C3A6;
-  color: #2E4374;
+.btn-outline-warning:hover {
+  background-color: #D8D9DA; /* Soft light gray */
+  color: #272829; /* Dark slate gray */
 }
 
-/* Dropdown Menu Hover */
-.dropdown:hover::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: #4B527E;
-  border-radius: 4px;
+.navbar-nav span.nav-link {
+  font-weight: bold;
+  color: #FFF6E0; /* Warm pastel yellow */
+  font-size: 1rem; /* Uniform font size */
+}
+
+.content p {
+  font-size: 1rem; /* Uniform font size */
+  line-height: 1.6;
+  max-width: 800px;
+  margin: auto;
+  color: #D8D9DA; /* Soft light gray */
 }
