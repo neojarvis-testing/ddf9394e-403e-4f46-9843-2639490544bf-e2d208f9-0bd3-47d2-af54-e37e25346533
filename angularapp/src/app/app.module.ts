@@ -25,8 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UserappliedmentorshipprogramComponent } from './components/userappliedmentorshipprogram/userappliedmentorshipprogram.component';
 import { UserwishlistcomponentComponent } from './components/userwishlistcomponent/userwishlistcomponent.component';
-
-
+import { AgGridModule } from 'ag-grid-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +56,7 @@ import { UserwishlistcomponentComponent } from './components/userwishlistcompone
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
+    AgGridModule
   ],
  
   providers: [],

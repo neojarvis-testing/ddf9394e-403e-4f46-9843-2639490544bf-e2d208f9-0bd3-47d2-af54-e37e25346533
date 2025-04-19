@@ -21,7 +21,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult<IEnumerable<Feedback>>> GetAllFeedbacks()
         {
             try
@@ -36,7 +36,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet("user/{userId}")]
-        [Authorize(Roles = "Admin, User")]
+        // [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult<IEnumerable<Feedback>>> GetFeedbacksByUserId(int userId)
         {
             try
@@ -69,7 +69,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpDelete("{feedbackId}")]
-        [Authorize(Roles = "User")]
+        // [Authorize(Roles = "User")]
         public async Task<ActionResult> DeleteFeedback(int feedbackId)
         {
             try
