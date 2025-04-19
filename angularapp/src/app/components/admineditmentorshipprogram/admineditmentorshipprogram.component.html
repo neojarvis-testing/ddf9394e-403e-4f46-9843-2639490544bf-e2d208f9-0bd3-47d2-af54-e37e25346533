@@ -37,8 +37,13 @@
       </div>
   
       <div>
-        <label>Experience Level<span class="text-danger">*</span></label>
-        <input type="text" name="experienceLevel" [(ngModel)]="program.ExperienceLevel" required />
+          <label>Experience Level<span class="text-danger">*</span></label>
+          <select name="experienceLevel" ngModel class="form-control" required>
+            <option value="">Select Experience Level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Experienced">Experienced</option>
+          </select>
         <div *ngIf="editForm.submitted && !program.ExperienceLevel">Experience Level is required.</div>
       </div>
   
@@ -47,6 +52,7 @@
         <select name="modeOfMentorship" [(ngModel)]="program.ModeOfMentorship" required>
           <option value="online">Online</option>
           <option value="offline">Offline</option>
+          <option value="hybrid">Hybrid</option>
         </select>
         <div *ngIf="editForm.submitted && !program.ModeOfMentorship">Mode of Mentorship is required.</div>
       </div>
