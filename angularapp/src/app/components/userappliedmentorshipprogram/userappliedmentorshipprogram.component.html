@@ -1,50 +1,44 @@
 <app-usernav></app-usernav>
 <div class="container">
     <h1 class="page-title">Applied Mentorships</h1>
-    <input
-        type="text"
-        [(ngModel)]="searchTerm"
-        class="search-box"
-        placeholder="Search by ProgramName..."
-    />
-</div>
+    
+    <input type="text" [(ngModel)]="searchTerm" class="search-box" placeholder="Search by ProgramName..." />
 
-<table class="mentorship-table">
-    <!-- Table Head -->
-    <thead>
-        <tr>
-            <th>S. No</th>
-            <th>Program Name</th>
-            <th>Profile Image</th>
-            <th>Application Date</th>
-            <th>Status</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <!-- Table Body -->
-    <tbody>
-        <tr *ngIf="filteredMentorships.length === 0">
-            <td colspan="6" class="no-records">Oops! No records found</td>
-        </tr>
-        <tr *ngFor="let mentorship of filteredMentorships">
-            <td>{{ mentorship.serialNo }}</td>
-            <td>{{ mentorship.programName }}</td>
-            <td>
-                <button class="btn-view-image" (click)="viewImage(mentorship.profileImage)">View Image</button>
-            </td>
-            <td>{{ mentorship.applicationDate }}</td>
-            <td>{{ mentorship.status }}</td>
-            <td>
-                <button 
-                    class="btn-delete-action"
-                    (click)="confirmDelete(mentorship.applicationId)" 
-                    [disabled]="mentorship.status.trim().toLowerCase() === 'approved'">
-                    Delete
-                </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+    <table class="mentorship-table">
+        <!-- Table Head -->
+        <thead>
+            <tr>
+                <th>S. No</th>
+                <th>Program Name</th>
+                <th>Profile Image</th>
+                <th>Application Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <!-- Table Body -->
+        <tbody>
+            <tr *ngIf="filteredMentorships.length === 0">
+                <td colspan="6" class="no-records">Oops! No records found</td>
+            </tr>
+            <tr *ngFor="let mentorship of filteredMentorships">
+                <td>{{ mentorship.serialNo }}</td>
+                <td>{{ mentorship.programName }}</td>
+                <td>
+                    <button class="btn-view-image" (click)="viewImage(mentorship.profileImage)">View Image</button>
+                </td>
+                <td>{{ mentorship.applicationDate }}</td>
+                <td>{{ mentorship.status }}</td>
+                <td>
+                    <button class="btn-delete-action" (click)="confirmDelete(mentorship.applicationId)"
+                        [disabled]="mentorship.status.trim().toLowerCase() === 'approved'">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <div *ngIf="imageToShow" class="modal">
     <div class="modal-content">

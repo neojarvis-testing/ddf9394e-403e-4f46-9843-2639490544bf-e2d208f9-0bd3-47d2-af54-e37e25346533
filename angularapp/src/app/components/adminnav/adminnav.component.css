@@ -1,10 +1,19 @@
+/* General Navbar Styles */
 .navbar {
   background-color: #325C70ff !important;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.navbar-header {
+  text-align: left;
+  padding: 10px 0 0 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #F0ECE2; /* Match header color with the brand */
 }
 
 .navbar-brand {
@@ -14,6 +23,31 @@
   margin-right: 20px;
 }
 
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px; /* Space between header and content */
+}
+
+/* Left-aligned items */
+.navbar-left {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Right-aligned items */
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Navbar Navigation Items */
 .navbar-nav {
   display: flex;
   align-items: center;
@@ -34,39 +68,46 @@
   color: #ACDBDF !important;
 }
 
-#dropdown {
-  color:#F0ECE2!important;
-  border: 1px solid #F0ECE2;
-  background-color:  #325C70ff;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-#dropdown:hover {
-  background-color:  #ACDBDF !important;
-  color: #325C70ff !important;
-  border: 1px solid  #ACDBDF;
-}
-
 .navbar-nav span.nav-link {
   color: #F0ECE2 !important;
   font-weight: bold;
   font-size: 1rem;
 }
 
+/* Dropdown Styling */
+#dropdown {
+  background-color: #325C70ff;
+  color: #F0ECE2;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#dropdown:hover {
+  background-color: #325C70ff;
+  color: #ACDBDF;
+}
+
+/* Logout Button */
 .btn-outline-warning {
-  color: #273255ff !important;
-  border-color: #273255ff !important;
-  transition: all 0.3s ease-in-out;
+  color: #F0ECE2 !important;
+  border: 1px solid #F0ECE2;
+  background-color: #325C70ff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .btn-outline-warning:hover {
-  background-color: #325C70ff !important;
-  color: #F0ECE2 !important;
+  background-color: #ACDBDF !important;
+  color: #325C70ff !important;
+  border: 1px solid #ACDBDF;
 }
 
+/* Media Query for Responsive Design */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;

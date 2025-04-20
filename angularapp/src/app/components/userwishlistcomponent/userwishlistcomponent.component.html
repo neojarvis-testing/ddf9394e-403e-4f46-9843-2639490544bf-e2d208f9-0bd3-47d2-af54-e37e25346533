@@ -9,11 +9,8 @@
       <p><strong>Experience:</strong> {{ program.ExperienceLevel }}</p>
       <p><strong>Mode:</strong> {{ program.ModeOfMentorship }}</p>
       <p><strong>Description:</strong> {{ program.Description }}</p>
-      <button (click)="apply(program, program.MentorshipProgramId)">Apply</button>
+      <button id="apply-button" (click)="apply(program, program.MentorshipProgramId)">Apply</button>
     </div>
     <p *ngIf="wishlistPrograms.length === 0" class="no-records">Your wishlist is empty</p>
   </div>
 </div>
-
-
-

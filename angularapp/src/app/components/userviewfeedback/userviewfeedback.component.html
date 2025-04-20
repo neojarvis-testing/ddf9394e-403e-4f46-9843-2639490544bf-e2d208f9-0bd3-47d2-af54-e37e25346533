@@ -1,65 +1,18 @@
-<!-- <app-usernav></app-usernav>
-
-<div class="container1">
-  <div class="container mt-5" [ngClass]="{'blur-background': isPopUpOpen}">
-    <h1 style="text-align: center; margin: 10px; font-family: 'Gilroy-Bold', sans-serif;">My Feedback</h1>
-    <hr>
-    <div class="row mb-3">
-      <table class="table" *ngIf="feedbacks.length > 0; else noRecords">
-        <thead style="font-family: 'Gilroy-Medium', sans-serif;" class="thead">
-          <tr class="text-center bg-common text-white">
-            <th>S.No</th>
-            <th>Feedback</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody class="text-center bg-table" style="font-family: 'Gilroy-Regular', sans-serif;">
-          <tr *ngFor="let feedback of feedbacks; let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{feedback.FeedbackText}}</td>
-            <td>
-              <button id="delete" class="btn-custom-delete" (click)="openDeletePopUp(feedback.FeedbackId)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <ng-template #noRecords>
-        <div class="text-center" style="font-family: 'Gilroy-Regular', sans-serif;">
-          Oops! No records Found
-        </div>
-      </ng-template>
-    </div>
-  </div>
-</div>
-
-
-<div *ngIf="isPopUpOpen" class="popup">
-  <div class="popup-content">
-    <div class="modal-body">
-      Are you sure you want to delete?
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-danger" (click)="deleteFeedback()">Yes, Delete</button>
-      <button type="button" class="btn btn-danger" (click)="closeDeletePopUp()">Cancel</button>
-    </div>
-  </div>
-</div> -->
-
 <app-usernav></app-usernav>
 
-<div class="container1">
-  <div class="container mt-5" [ngClass]="{'blur-background': isPopUpOpen}">
+<div class="container">
+  <div  [ngClass]="{'blur-background': isPopUpOpen}">
     <h1 class="feedback-title">My Feedback</h1>
-    <div class="row mb-3">
-      <table class="table" *ngIf="feedbacks.length > 0; else noRecords">
-        <thead class="table-header">
-          <tr class="text-center">
+    <div>
+      <table class="mentorship-table" *ngIf="feedbacks.length > 0; else noRecords">
+        <thead>
+          <tr>
             <th>S.No</th>
             <th>Feedback</th>
             <th>Action</th>
           </tr>
         </thead>
-        <tbody class="table-body">
+        <tbody>
           <tr *ngFor="let feedback of feedbacks; let i = index" class="table-row">
             <td>{{i + 1}}</td>
             <td>{{feedback.FeedbackText}}</td>

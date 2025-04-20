@@ -16,9 +16,10 @@ body {
 }
 
 h1 {
+  font-size: 36px;
+  font-weight: bold;
   color: #325C70ff;
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .search-filter {
@@ -93,7 +94,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-  background-color: #ACDBDF;
+  background-color:#e9e4d5;
 }
 
 .no-records {
@@ -135,12 +136,19 @@ button:active {
 }
 
 .btn-info {
-  background-color: #F0ECE2;
-  color: #273255ff;
+  background-color: transparent;
+  color: #273255ff; 
+  border: 1px solid #273255ff; 
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out; 
 }
 
 .btn-info:hover {
-  background-color: #ACDBDF;
+  background-color: #325C70ff; 
+  color: #FFFFFF; 
+  border-color:#325C70ff; 
 }
 
 .btn-approve {
@@ -179,20 +187,29 @@ button:active {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #FFFFFF;
-  padding: 20px;
+  padding: 10px;
   border: 2px solid #325C70ff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 10;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
 }
 
 .popup .close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   font-size: 18px;
   color: #1D4A60ff;
   cursor: pointer;
+}
+
+.popup img {
+  width: 50%; /* Ensure the image takes up the full width */
+  height: auto;
+  border-radius: 8px;
 }
 
 .modal {
@@ -210,18 +227,22 @@ button:active {
 
 .modal-content {
   background: #FFFFFF;
-  padding: 20px;
+  padding: 10px;
   border: 2px solid #ACDBDF;
   border-radius: 8px;
-  width: 500px;
-  max-width: 90%;
+  width: 50%; /* Adjusted width for bigger popup */
+  /* max-width: 90%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .modal-content .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 18px;
+  top: 5px;
+  right: 5px;
+  font-size: 14px;
   color: #1D4A60ff;
   cursor: pointer;
 }
@@ -234,4 +255,18 @@ button:active {
 .modal-content a {
   color: #325C70ff;
   text-decoration: underline;
+}
+
+.modal-content img {
+  width: 50%; /* Ensure the image takes up the full width */
+  height: auto;
+  border-radius: 8px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  color: #FFFFFF;
 }
