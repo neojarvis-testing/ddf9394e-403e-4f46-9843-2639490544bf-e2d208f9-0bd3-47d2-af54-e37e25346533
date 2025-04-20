@@ -39,7 +39,8 @@ const routes: Routes = [
   {path: 'admin/mentorshipapplicationlist',component:MentorshipapplicationlistComponent, canActivate:[AuthGuard]},
   {path: 'admin/requestedmentorshipapplication', component:RequestedmentorshipapplicationComponent, canActivate: [AuthGuard]},
   {path: 'admin/viewmentorshipprogram', component:ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
-  {path: 'adminviewFeedback',component:AdminviewfeedbackComponent,canActivate: [AuthGuard]}
+  {path: 'adminviewFeedback',component:AdminviewfeedbackComponent,canActivate: [AuthGuard]},
+  {path:'admin/editmentorshipprogram/:id',component:AdmineditmentorshipprogramComponent}
 
 ];
 
