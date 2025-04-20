@@ -1,57 +1,55 @@
-.navbar {
-
-    background: linear-gradient(to right, #b24526, #5e2a1c);
+.custom-navbar {
+    background-color: #325C70; /* Primary color */
+    padding: 10px 20px; /* Reduced padding for a smaller height */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
    
-    color: gold;
-   
-    padding: 15px 30px;
-   
-    display: flex;
-   
-    justify-content: space-between;
-   
-    align-items: center;
-   
-    border-radius: 8px;
-   
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-   
-   }
-   
-   
-   
-   .title {
-   
-    margin: 0;
-   
-    font-size: 20px;
-   
+  .custom-navbar .navbar-brand {
+    font-size: 18px; /* Smaller font size */
     font-weight: bold;
+    color: #fff; /* White text */
+  }
    
-    letter-spacing: 1px;
+  .custom-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28155, 155, 155, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
    
-   }
-   
-   
-   
-   .nav-links a {
-   
-    color: white;
-   
+  .custom-navbar .nav-link {
+    color: #fff; /* White text */
     text-decoration: none;
+    font-size: 14px; /* Smaller font size */
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
    
-    margin-left: 20px;
+  .custom-navbar .nav-link:hover,
+  .custom-navbar .nav-link.active {
+    color: #5C8A93; /* Secondary color on hover */
+  }
    
-    font-weight: bold;
+  .custom-navbar .btn-light {
+    background-color: #5C8A93; /* Secondary color */
+    color: #fff; /* White text */
+    border: 1px solid #ccc;
+    font-size: 12px; /* Smaller button size */
+    padding: 5px 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
    
-   }
+  .custom-navbar .btn-light:hover {
+    background-color: #273255; /* Tertiary color on hover */
+    color: #fff;
+  }
    
+  .custom-navbar .btn-outline-light {
+    color: #fff; /* White text */
+    border: 1px solid #fff; /* White border */
+    font-size: 12px; /* Smaller button size */
+    padding: 5px 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
    
-   
-   .nav-links a:hover,
-   
-   .active-link {
-   
-    text-decoration: underline;
-   
-   }
+  .custom-navbar .btn-outline-light:hover {
+    background-color: #2D1B49; /* Quaternary color on hover */
+    color: #fff; /* White text on hover */
+  }

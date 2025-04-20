@@ -1,22 +1,25 @@
 <app-navbar></app-navbar>
-    <form (ngSubmit)="addlogin()" #loginForm="ngForm">
-        <h1>Login</h1>
-        <div>
-            <label>Email :</label>
-            <input type="email" name="Email" [(ngModel)]="userLogin.Email" #email="ngModel" required email >
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
-                <small *ngIf="email.errors?.required">Email is required.</small>
-                <small *ngIf="email.errors?.email">Invalid email address.</small>
-            </div>
-        </div>
-        <div>
-            <label>Password :</label>
-            <input type="password" name="Password" [(ngModel)]="userLogin.Password" #password="ngModel" required>
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
-                <small *ngIf="password.errors?.required">Password is required.</small>
-            </div>
-        </div>
-        <br>
-        <button type="submit" [disabled]="loginForm.invalid">Login</button>
-    </form>
-
+<video autoplay muted loop id="bgVideo">
+    <source src="/assets/videos/abstract-minimalistic-colored-wave-background-SBV-347739488-preview.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+<form (ngSubmit)="addlogin()" #loginForm="ngForm">
+<h1>Login</h1>
+<div>
+<label>Email :</label>
+<input type="email" name="Email" [(ngModel)]="userLogin.Email" #email="ngModel" required email >
+<div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+<small *ngIf="email.errors?.required">Email is required.</small>
+<small *ngIf="email.errors?.email">Invalid email address.</small>
+</div>
+</div>
+<div>
+<label>Password :</label>
+<input type="password" name="Password" [(ngModel)]="userLogin.Password" #password="ngModel" required>
+<div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+<small *ngIf="password.errors?.required">Password is required.</small>
+</div>
+</div>
+<br>
+<button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>

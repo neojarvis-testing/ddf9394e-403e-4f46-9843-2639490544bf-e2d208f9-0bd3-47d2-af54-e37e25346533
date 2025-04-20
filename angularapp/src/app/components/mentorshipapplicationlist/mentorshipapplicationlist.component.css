@@ -1,68 +1,98 @@
-/* General styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f9;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Program container */
-  div {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Program name */
-  p {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  /* Table styles */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* No applicants message */
-  p:last-child {
-    color: #888;
-    font-style: italic;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #5C8A93ff;
+}
+
+button {
+  background-color: #1D4A60ff;
+  color: #F0ECE2;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #273255ff;
+  color: #F0ECE2;
+}
+
+div {
+  margin: 20px;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #325C70ff;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #1D4A60ff;
+  color: #F0ECE2;
+}
+
+thead th {
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+tbody tr {
+  border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #F0ECE2;
+}
+
+tbody tr:hover {
+  background-color: #5C8A93ff;
+  color: #F0ECE2;
+}
+
+tbody td {
+  padding: 10px;
+  font-size: 14px;
+  color: #273255ff;
+  text-align: center;
+}
+
+a {
+  color: #1D4A60ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #325C70ff;
+  text-decoration: underline;
+}
+
+.no-applicants {
+  text-align: center;
+  color: #ACDBDF;
+  font-size: 14px;
+  margin-top: 10px;
+}
