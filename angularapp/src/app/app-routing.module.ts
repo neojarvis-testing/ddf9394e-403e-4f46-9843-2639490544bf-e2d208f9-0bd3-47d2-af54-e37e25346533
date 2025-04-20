@@ -17,15 +17,15 @@ import { MentorshipapplicationlistComponent } from './components/mentorshipappli
 import { UserappliedmentorshipprogramComponent } from './components/userappliedmentorshipprogram/userappliedmentorshipprogram.component';
 import { UserwishlistcomponentComponent } from './components/userwishlistcomponent/userwishlistcomponent.component';
 import { ErrorComponent } from './components/error/error.component';
- 
- 
+
+
 const routes: Routes = [
  
   {path: '', component: HomeComponent },
   {path: 'home', component: HomeComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegistrationComponent },
- 
+
   {path: 'admin', component: HomeComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }},
   {path: 'user', component:HomeComponent, canActivate: [AuthGuard], data: { roles: ['User'] }},
   {path: 'user/addFeedback', component: UseraddfeedbackComponent, canActivate: [AuthGuard]},
@@ -41,8 +41,9 @@ const routes: Routes = [
   {path: 'admin/viewFeedback', component: AdminviewfeedbackComponent},
   {path: 'admin/mentorshipapplicationlist',component:MentorshipapplicationlistComponent, canActivate:[AuthGuard]},
   {path: 'admin/requestedmentorshipapplication', component:RequestedmentorshipapplicationComponent, canActivate: [AuthGuard]},
-  {path: 'admin/viewmentorshipprogram', component:ViewmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'user/wishlist', component: UserwishlistcomponentComponent},
+  // {path:'**', component:ErrorComponent}
+  // {path: 'user/wishlist', component: UserwishlistcomponentComponent},
   {path:'**', component:ErrorComponent}
 ];
  

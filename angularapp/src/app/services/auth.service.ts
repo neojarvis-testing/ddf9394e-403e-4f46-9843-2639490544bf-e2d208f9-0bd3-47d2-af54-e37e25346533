@@ -6,26 +6,15 @@ import { Login } from '../models/login.model';
 import { Observable } from 'rxjs';
 
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
  
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
  
- 
-  // public apiUrl:string="https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
- 
-  public apiUrl:string="https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
- 
- 
-  //public apiUrl:string='https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
- 
- 
-  //  public apiUrl:string="https://ide-aceeabeedebaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/";
- 
- 
- 
- 
+  private apiUrl = environment.apiUrl;
+  
   constructor(private http:HttpClient, private router:Router) { }
  
   register(user:User):Observable<any>

@@ -3,17 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MentorshipProgram } from '../models/mentorshipprogram.model';
 import { MentorshipApplication } from '../models/mentorshipapplication.model';
+import { environment } from 'src/environments/environment';
  
 @Injectable({
   providedIn: 'root',
 })
 export class MentorshipService {
- 
-  //private apiUrl = 'https://ide-aeeaedafcfecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
-
-//  private apiUrl = 'https://ide-febfccefedaadecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
- 
-  private apiUrl = 'https://ide-cdedfabbeefdaaecdbdfcfafebbbfeedfbddafee.premiumproject.examly.io/proxy/8080/';
+  
+  private apiUrl = environment.apiUrl;
+  
 
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');

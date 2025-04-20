@@ -1,119 +1,124 @@
 <div class="navbar">
-    <div class="logo">SkillPilot</div>
-    <div class="nav-links" id="nav-links">
-      <a href="/">Home</a>
-      <a href="/register">Register</a>
-      <a href="/login">Login</a>
+  <div class="logo">SkillPilot</div>
+  <div class="nav-links" id="nav-links">
+    <a href="/">Home</a>
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+  </div>
+  <div class="hamburger" id="hamburger-btn">&#9776;</div>
+</div>
+ 
+<video autoplay muted loop id="bgVideo">
+  <source src="/assets/videos/abstract-minimalistic-colored-wave-background-SBV-347739488-preview.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+ 
+<div class="form-container">
+  <form (ngSubmit)="register()" #registrationForm="ngForm" class="auth-form">
+    <h2>Create Your Account</h2>
+ 
+    <div class="input-group">
+      <input
+        type="text"
+        name="username"
+        [(ngModel)]="newUser.Username"
+        placeholder="Username"
+        required
+        #username="ngModel" />
+      <div *ngIf="username.invalid && username.touched" class="error">Username is required</div>
     </div>
-    <div class="hamburger" id="hamburger-btn">&#9776;</div>
-  </div>
-   
-  <video autoplay muted loop id="bgVideo">
-    <source src="/assets/videos/abstract-minimalistic-colored-wave-background-SBV-347739488-preview.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-   
-  <div class="form-container">
-    <form (ngSubmit)="register()" #registrationForm="ngForm" class="auth-form">
-      <h2>Create Your Account</h2>
-   
+ 
+    <div class="input-group">
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="newUser.Email"
+        placeholder="Email"
+        required
+        #email="ngModel" />
+      <div *ngIf="email.invalid && email.touched" class="error">Email is required</div>
+    </div>
+ 
+    <div class="input-group password-group">
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="newUser.Password"
+        placeholder="Password"
+        required
+        [type]="showPassword ? 'text' : 'password'"
+        #password="ngModel" />
+      <i
+        class="toggle-password-icon"
+        [class.fas]="showPassword"
+        [class.fa-eye-slash]="showPassword"
+        [class.fa-eye]="!showPassword"
+        (click)="showPassword = !showPassword">
+      </i>
+      <div *ngIf="password.invalid && password.touched" class="error">Password is required</div>
+    </div>
+ 
+    <div class="input-group">
+      <input
+        type="password"
+        name="confirmPassword"
+        [(ngModel)]="confirmPassword"
+        placeholder="Confirm Password"
+        required
+        #confirmPasswordField="ngModel" />
+      <div *ngIf="confirmPasswordField.invalid && confirmPasswordField.touched" class="error">Confirm Password is required</div>
+      <div *ngIf="confirmPassword !== newUser.Password && confirmPasswordField.touched" class="error">Passwords must match</div>
+    </div>
+ 
+    <div class="input-group">
+      <input
+        type="text"
+        name="mobile"
+        [(ngModel)]="newUser.MobileNumber"
+        placeholder="Mobile Number"
+        required
+        #mobile="ngModel" />
+      <div *ngIf="mobile.invalid && mobile.touched" class="error">Mobile number is required</div>
+    </div>
+ 
+    <div class="input-group">
+      <select
+        name="role"
+        id="role-select"
+        [(ngModel)]="selectedRole"
+        (change)="inputSecretKey = ''"
+        required
+        #role="ngModel">
+        <option value="" disabled selected style="color: white;">Select Role</option>
+        <option value="User" style="color: black;">User</option>
+        <option value="Admin" style="color: black;">Admin</option>
+      </select>
+      <div *ngIf="role.invalid && role.touched" class="error">Role is required</div>
+    </div>
+ 
+    <div *ngIf="selectedRole === 'Admin'">
       <div class="input-group">
         <input
           type="text"
-          name="username"
-          [(ngModel)]="newUser.Username"
-          placeholder="Username"
+          name="adminKey"
+          id="admin-key"
+          placeholder="Enter Admin Key"
           required
-          #username="ngModel"/>
-        <div *ngIf="username.invalid && username.touched" class="error">Username is required</div>
+          [(ngModel)]="inputSecretKey"
+          [ngClass]="{'error': !matchSecretKey()}" />
+        <div *ngIf="!matchSecretKey()" class="error">Incorrect Admin Key</div>
       </div>
-   
-      <div class="input-group">
-        <input
-          type="email"
-          name="email"
-          [(ngModel)]="newUser.Email"
-          placeholder="Email"
-          required
-          #email="ngModel"/>
-        <div *ngIf="email.invalid && email.touched" class="error">Email is required</div>
-      </div>
-   
-      <div class="input-group">
-        <input
-          type="password"
-          name="password"
-          [(ngModel)]="newUser.Password"
-          placeholder="Password"
-          required
-          [type]="showPassword ? 'text' : 'password'"
-          #password="ngModel"/>
-        <div *ngIf="password.invalid && password.touched" class="error">Password is required</div>
-        <button type="button" (click)="showPassword = !showPassword">
-          {{ showPassword ? 'Hide' : 'Show' }} Password
-        </button>
-      </div>
-   
-      <div class="input-group">
-        <input
-          type="password"
-          name="confirmPassword"
-          [(ngModel)]="confirmPassword"
-          placeholder="Confirm Password"
-          required
-          #confirmPasswordField="ngModel"/>
-        <div *ngIf="confirmPasswordField.invalid && confirmPasswordField.touched" class="error">Confirm Password is required</div>
-        <div *ngIf="confirmPassword !== newUser.Password && confirmPasswordField.touched" class="error">Passwords must match</div>
-      </div>
-   
-      <div class="input-group">
-        <input
-          type="text"
-          name="mobile"
-          [(ngModel)]="newUser.MobileNumber"
-          placeholder="Mobile Number"
-          required
-          #mobile="ngModel"/>
-        <div *ngIf="mobile.invalid && mobile.touched" class="error">Mobile number is required</div>
-      </div>
-   
-      <div class="input-group">
-        <select
-          name="role"
-          id="role-select"
-          [(ngModel)]="selectedRole"
-          (change)="inputSecretKey = ''"
-          required
-          #role="ngModel">
-          <option value="" disabled selected style="color: white;">Select Role</option>
-          <option value="User" style="color: black;">User</option>
-          <option value="Admin" style="color: black;">Admin</option>
-        </select>
-        <div *ngIf="role.invalid && role.touched" class="error">Role is required</div>
-      </div>
-   
-      <div *ngIf="selectedRole === 'Admin'">
-        <div class="input-group">
-          <input
-            type="text"
-            name="adminKey"
-            id="admin-key"
-            placeholder="Enter Admin Key"
-            required
-            [(ngModel)]="inputSecretKey"
-            [ngClass]="{'error': !matchSecretKey()}"/>
-          <div *ngIf="!matchSecretKey()" class="error">Incorrect Admin Key</div>
-        </div>
-      </div>
-   
-      <button type="submit" class="btn" [disabled]="registrationForm.invalid">Register</button>
-    </form>
-  </div>
-   
-  <script>
-    const hamburger = document.getElementById('hamburger-btn');
-    const navLinks = document.getElementById('nav-links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  </script>
+    </div>
+ 
+    <button type="submit" class="btn" [disabled]="registrationForm.invalid">Register</button>
+  </form>
+</div>
+ 
+<script>
+  const hamburger = document.getElementById('hamburger-btn');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+ 
