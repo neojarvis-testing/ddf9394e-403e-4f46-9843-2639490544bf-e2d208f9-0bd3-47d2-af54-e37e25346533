@@ -8,4 +8,5 @@ export interface MentorshipProgram
     MentorName: string;
     ExperienceLevel: string;
     ModeOfMentorship: string;
+    applied?: boolean;
 }

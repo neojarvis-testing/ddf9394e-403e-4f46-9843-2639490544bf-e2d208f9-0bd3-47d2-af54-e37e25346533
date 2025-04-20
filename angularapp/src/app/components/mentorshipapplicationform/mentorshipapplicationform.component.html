@@ -1,18 +1,44 @@
+
+<app-usernav></app-usernav>
 <h1>Mentorship Application Form</h1>
-
 <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
-  <label>Reason for Applying:</label>
-  <input formControlName="reason" required />
 
-  <label>Career Goal:</label>
-  <input formControlName="goal" required />
+  <div>
+    <label for="reason">Reason for Applying:</label>
+    <input id="reason" formControlName="reason" required />
+    <div *ngIf="applicationForm.get('reason')?.invalid && applicationForm.get('reason')?.touched">
+      <small class="text-danger">Reason for applying is required.</small>
+    </div>
+  </div>
 
-  <label>Profile Image:</label>
-  <input type="file" (change)="onFileChange($event)" />
+  <div>
+    <label for="goal">Career Goal:</label>
+    <input id="goal" formControlName="goal" required />
+    <div *ngIf="applicationForm.get('goal')?.invalid && applicationForm.get('goal')?.touched">
+      <small class="text-danger">Career goal is required.</small>
+    </div>
+  </div>
 
-  <label>Portfolio Link:</label>
-  <input formControlName="portfolio" required />
+  <div>
+    <label for="image">Profile Image:</label>
+    <input id="image" type="file" (change)="onFileChange($event)" />
+    <div *ngIf="fileError">
+      <small class="text-danger">{{ fileError }}</small>
+    </div>
+  </div>
 
-  <button type="submit">Submit</button>
-  <button type="button" (click)="goBack()">Back</button>
+  <div>
+    <label for="portfolio">Portfolio Link:</label>
+    <input id="portfolio" formControlName="portfolio" required />
+    <div *ngIf="applicationForm.get('portfolio')?.invalid && applicationForm.get('portfolio')?.touched">
+      <small class="text-danger">Portfolio link is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <button type="submit">Submit</button>
+    <button type="button" (click)="goBack()">Back</button>
+  </div>
 </form>
+ 
+ 

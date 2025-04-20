@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -9,7 +10,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
- 
+  
+  selectedRole: string = '';
+  form: FormGroup;
+
+  
   newUser:User={
     Email:"",
     Password:"",
@@ -59,4 +64,5 @@ export class RegistrationComponent implements OnInit {
     return (this.SECRETKEY === this.inputSecretKey);
   }
 }
+
 

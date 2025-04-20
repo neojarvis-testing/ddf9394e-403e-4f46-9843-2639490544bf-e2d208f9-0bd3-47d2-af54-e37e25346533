@@ -1,95 +1,261 @@
+ <!-- <!DOCTYPE html>
 
-
-
-<div class="home-page">
-  
-    <div *ngIf="isLoading" class="loader-container">
-      <div class="loader">
-        <div class="box1"></div>
-        <div class="box2"></div>
-        <div class="box3"></div>
-      </div>
-    </div>
-  
-    
-    <div *ngIf="!isLoading">
-      
-      <div *ngIf="!isLoggedIn()">
-        <app-navbar></app-navbar>
-      </div>
-      <div *ngIf="isAdmin()">
-        <app-adminnav></app-adminnav>
-      </div>
-      <div *ngIf="isUser()">
-        <app-usernav></app-usernav>
-      </div>
-  
-      
-      <section class="hero-section position-relative d-flex align-items-center justify-content-center">
-        <div class="hero-collage-background"></div>
-        <div class="overlay"></div>
-        <div class="hero-content text-center text-white">
-          <h1 class="display-4 fw-bold">Build Your Dream Career</h1>
-          <p class="lead mb-4">Join our mentorship program and connect with top professionals</p>
-          <a routerLink="/register" class="btn btn-lg btn-light px-4 me-2 btn-animated">Get Started</a>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillPilot</title>
+   
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <h2 class="logo"><a href="#">SkillPilot</a></h2>
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" id="hamburger-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </label>
+        <ul class="links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <div class="buttons">
+          <a href="/login" class="signin">Sign In</a>
+          <a href="/register" class="signup">Sign Up</a>
         </div>
-      </section>
-  
-      
-      <section id="about" class="section bg-light text-center">
-        <div class="container">
-          <h2 class="mb-4">About Us</h2>
-          <p>
-            We connect aspiring professionals with expert mentors to help grow your skills, network, and career.
-            The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
-          </p>
+      </nav>
+    </header>
+    <section id="home" class="hero-section">
+      <div class="hero">
+        <h2>Mentorship Application Program</h2>
+        <p>
+          Join us in the exciting world of programming and turn your ideas into
+          reality. Unlock the world of endless possibilities - learn to code and
+          shape the digital future with us.
+        </p>
+        <div class="buttons">
+          <a href="/register" class="join">Join Now</a>
+          <a href="#about" class="learn">Learn More</a>
         </div>
-      </section>
-  
-      
-      <section id="features" class="section text-center">
-        <div class="container">
-          <h2 class="mb-5">Features</h2>
-          <div class="row">
-            <div class="col-md-4 mb-4">
-              <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                  <h5 class="card-title">1-on-1 Mentorship</h5>
-                  <p class="card-text">Work closely with experienced mentors to guide your journey.</p>
-                </div>
+      </div>
+      <div class="img">
+        <img src="/assets/images/Untitled design.png" alt="hero image" />
+      </div>
+    </section>
+    <section id="about" class="section bg-light text-center">
+      <div class="container">
+        <h2 class="mb-4">About Us</h2>
+        <p>We connect aspiring professionals with expert mentors to help grow your skills, network, and career.</p>
+      </div>
+    </section>
+    <section id="features" class="section text-center">
+      <div class="container">
+        <h2 class="mb-5">Features</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">1-on-1 Mentorship</h5>
+                <p class="card-text">Work closely with experienced mentors to guide your journey.</p>
               </div>
             </div>
-            <div class="col-md-4 mb-4">
-              <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                  <h5 class="card-title">Career Growth</h5>
-                  <p class="card-text">Set your career goals and achieve them with tailored guidance.</p>
-                </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Career Growth</h5>
+                <p class="card-text">Set your career goals and achieve them with tailored guidance.</p>
               </div>
             </div>
-            <div class="col-md-4 mb-4">
-              <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                  <h5 class="card-title">Community Access</h5>
-                  <p class="card-text">Be a part of a community that grows and learns together.</p>
-                </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Community Access</h5>
+                <p class="card-text">Be a part of a community that grows and learns together.</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
-  
-      
-      <section id="contact" class="section bg-light text-center">
-        <div class="container">
-          <h2>Contact Us</h2>
-          <p>Email us at <a href="mailto:info@mentorshipprogram.com">info@mentorshipprogram.com</a> for questions and support.</p>
-        </div>
-      </section>
-  
-      
-      <footer class="footer text-center py-4 bg-white border-top">
-        <p class="mb-0">&copy; 2025 Mentorship Program. All rights reserved.</p>
-      </footer>
+      </div>
+    </section>
+    <section id="contact" class="section bg-light text-center">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>Email us at <a href="mailto:info@mentorshipprogram.com">info@mentorshipprogram.com</a> for questions and support.</p>
+      </div>
+    </section>
+    <footer class="footer text-center py-4 bg-white border-top">
+      <p class="mb-0">&copy; 2025 Mentorship Program. All rights reserved.</p>
+    </footer>
+
+    <div *ngIf="isAdmin()">
+      <app-adminnav></app-adminnav>
+      <div class="container mt-5">
+        <h1 class="text-center text-primary">Admin Dashboard</h1>
+        <p class="text-center">Welcome, Admin! Manage applications, users, and program details.</p>
+      </div>
     </div>
-  </div> 
+
+    <div *ngIf="isUser()">
+      <app-usernav></app-usernav>
+      <div class="container mt-5">
+        <h1 class="text-center text-primary">User Dashboard</h1>
+        <p class="text-center">Welcome to your personalized dashboard! Start your mentorship journey now.</p>
+      </div>
+    </div>
+  </body>
+</html>
+ -->
+
+
+
+<!-- <div *ngIf="isLoading" class="loader-container">
+  <div class="loader"></div>
+</div>
+
+<div *ngIf="!isLoading" class="main-container">
+  <div class="video-background">
+    <video autoplay muted loop id="bg-video">
+      <source src="assets/background.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay">
+      <h1>Welcome to <span class="brand">SkillPilot</span></h1>
+      <p>Your pathway to mentorship and skill development</p>
+
+      <div class="button-container" *ngIf="!isLoggedIn()">
+        <a routerLink="/register" class="button">Join as Mentee</a>
+        <a routerLink="/register" class="button">Join as Mentor</a>
+      </div>
+
+      <div class="button-container" *ngIf="isLoggedIn()">
+        <a routerLink="/dashboard" class="button">Go to Dashboard</a>
+      </div>
+
+      <div class="role-message" *ngIf="isAdmin()">Logged in as <strong>Admin</strong></div>
+      <div class="role-message" *ngIf="isUser()">Logged in as <strong>User</strong></div>
+    </div>
+  </div>
+
+  <div class="features-section">
+    <div class="feature-card">
+      <h2>Personalized Mentorship</h2>
+      <p>Connect with mentors tailored to your career goals and learning path.</p>
+    </div>
+    <div class="feature-card">
+      <h2>Progress Tracking</h2>
+      <p>Track your growth, milestones, and skill development journey.</p>
+    </div>
+    <div class="feature-card">
+      <h2>Role-Based Dashboards</h2>
+      <p>Different dashboards for Admins, Mentors, and Mentees for a personalized experience.</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 SkillPilot. All rights reserved.</p>
+  </footer>
+</div>
+
+
+<style>
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: white;
+  }
+  .loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #4a90e2;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.2s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SkillPilot | Home</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">SkillPilot</div>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+      </div>
+      <div class="hamburger" id="hamburger-btn">&#9776;</div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-text">
+        <h2>Welcome to SkillPilot</h2>
+        <p>Empowering Mentor-Mentee Connections for Skill Development</p>
+        <div class="buttons">
+          <a href="/register" class="btn">Get Started</a>
+          <a href="#features" class="btn">Explore</a>
+        </div>
+      </div>
+      <img src="/assets/images/Untitled design.png" alt="Illustration of mentorship and learning"/>
+    </div>
+
+    <div class="section" id="about">
+      <h3>About SkillPilot</h3>
+      <p>
+        SkillPilot is a dynamic mentorship platform connecting mentees with experienced mentors across various domains.
+        Our aim is to foster learning, growth, and skill development through meaningful mentor-mentee interactions.
+      </p>
+    </div>
+
+    <div class="section" id="features">
+      <h3>Features</h3>
+      <div class="card-container">
+        <div class="card">Role-Based Access (Admin/User)</div>
+        <div class="card">Secure Login & Registration</div>
+        <div class="card">Personalized Dashboards</div>
+        <div class="card">Interactive Learning Paths</div>
+      </div>
+    </div>
+
+    <div class="section" id="contact">
+      <h3>Contact Us</h3>
+      <p>Email: support@skillpilot.com | Phone: +123 456 7890</p>
+    </div>
+
+    <!-- Angular conditionally rendered content -->
+    <div *ngIf="isAdmin()">
+      <app-adminnav></app-adminnav>
+    </div>
+    <div *ngIf="isUser()">
+      <app-usernav></app-usernav>
+    </div>
+
+    <script>
+      const menuToggle = document.getElementById('hamburger-btn');
+      const navLinks = document.getElementById('nav-links');
+
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>

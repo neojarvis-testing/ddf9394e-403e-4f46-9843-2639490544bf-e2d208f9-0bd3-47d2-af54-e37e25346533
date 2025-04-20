@@ -1,523 +1,397 @@
+
+<app-navbar></app-navbar>
+
 <!-- 
+<div class="navbar">
+  <div class="logo">SkillPilot</div>
+  <div class="nav-links" id="nav-links">
+    <a href="/">Home</a>
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+  </div>
+  <div class="hamburger" id="hamburger-btn">&#9776;</div>
+</div>
+
+<video autoplay muted loop id="bgVideo">
+  <source src="/assets/videos/abstract-minimalistic-colored-wave-background-SBV-347739488-preview.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<div class="form-container">
+  <form (ngSubmit)="register()" #registrationForm="ngForm" class="auth-form">
+    <h2>Create Your Account</h2>
+
+    <div class="input-group">
+      <input 
+        type="text" 
+        name="username" 
+        [(ngModel)]="newUser.Username" 
+        placeholder="Username" 
+        required 
+        #username="ngModel"/>
+      <div *ngIf="username.invalid && username.touched" class="error">Username is required</div>
+    </div>
+
+    <div class="input-group">
+      <input 
+        type="email" 
+        name="email" 
+        [(ngModel)]="newUser.Email" 
+        placeholder="Email" 
+        required 
+        #email="ngModel"/>
+      <div *ngIf="email.invalid && email.touched" class="error">Email is required</div>
+    </div>
+
+    <div class="input-group">
+      <input 
+        type="password" 
+        name="password" 
+        [(ngModel)]="newUser.Password" 
+        placeholder="Password" 
+        required 
+        [type]="showPassword ? 'text' : 'password'" 
+        #password="ngModel"/>
+      <div *ngIf="password.invalid && password.touched" class="error">Password is required</div>
+      <button type="button" (click)="showPassword = !showPassword">
+        {{ showPassword ? 'Hide' : 'Show' }} Password
+      </button>
+    </div>
+
+    <div class="input-group">
+      <input 
+        type="password" 
+        name="confirmPassword" 
+        [(ngModel)]="confirmPassword" 
+        placeholder="Confirm Password" 
+        required 
+        #confirmPasswordField="ngModel"/>
+      <div *ngIf="confirmPasswordField.invalid && confirmPasswordField.touched" class="error">Confirm Password is required</div>
+      <div *ngIf="confirmPassword !== newUser.Password && confirmPasswordField.touched" class="error">Passwords must match</div>
+    </div>
+
+    <div class="input-group">
+      <input 
+        type="text" 
+        name="mobile" 
+        [(ngModel)]="newUser.MobileNumber" 
+        placeholder="Mobile Number" 
+        required 
+        #mobile="ngModel"/>
+      <div *ngIf="mobile.invalid && mobile.touched" class="error">Mobile number is required</div>
+    </div>
+
+    <div class="input-group">
+      <select 
+        name="role" 
+        id="role-select" 
+        [(ngModel)]="selectedRole" 
+        (change)="inputSecretKey = ''" 
+        required 
+        #role="ngModel">
+        <option value="" disabled selected style="color: white;">Select Role</option>
+        <option value="User" style="color: black;">User</option>
+        <option value="Admin" style="color: black;">Admin</option>
+      </select>
+      <div *ngIf="role.invalid && role.touched" class="error">Role is required</div>
+    </div>
+
+    <div *ngIf="selectedRole === 'Admin'">
+      <div class="input-group">
+        <input 
+          type="text" 
+          name="adminKey" 
+          id="admin-key" 
+          placeholder="Enter Admin Key" 
+          required 
+          [(ngModel)]="inputSecretKey" 
+          [ngClass]="{'error': !matchSecretKey()}"/>
+        <div *ngIf="!matchSecretKey()" class="error">Incorrect Admin Key</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn" [disabled]="registrationForm.invalid">Register</button>
+  </form>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger-btn');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script> -->
+
+
+<div class="navbar">
+  <div class="logo">SkillPilot</div>
+  <div class="nav-links" id="nav-links">
+    <a href="/">Home</a>
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+  </div>
+  <div class="hamburger" id="hamburger-btn">&#9776;</div>
+</div>
+
+<video autoplay muted loop id="bgVideo">
+  <source src="/assets/videos/abstract-minimalistic-colored-wave-background-SBV-347739488-preview.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<div class="form-container">
+  <form (ngSubmit)="register()" #registrationForm="ngForm" class="auth-form">
+    <h2>Create Your Account</h2>
+
+    <div class="input-group">
+      <input
+        type="text"
+        name="username"
+        [(ngModel)]="newUser.Username"
+        placeholder="Username"
+        required
+        #username="ngModel" />
+      <div *ngIf="username.invalid && username.touched" class="error">Username is required</div>
+    </div>
+
+    <div class="input-group">
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="newUser.Email"
+        placeholder="Email"
+        required
+        #email="ngModel" />
+      <div *ngIf="email.invalid && email.touched" class="error">Email is required</div>
+    </div>
+
+    <div class="input-group password-group">
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="newUser.Password"
+        placeholder="Password"
+        required
+        [type]="showPassword ? 'text' : 'password'"
+        #password="ngModel" />
+      <i
+        class="toggle-password-icon"
+        [class.fas]="showPassword"
+        [class.fa-eye-slash]="showPassword"
+        [class.fa-eye]="!showPassword"
+        (click)="showPassword = !showPassword">
+      </i>
+      <div *ngIf="password.invalid && password.touched" class="error">Password is required</div>
+    </div>
+
+    <div class="input-group">
+      <input
+        type="password"
+        name="confirmPassword"
+        [(ngModel)]="confirmPassword"
+        placeholder="Confirm Password"
+        required
+        #confirmPasswordField="ngModel" />
+      <div *ngIf="confirmPasswordField.invalid && confirmPasswordField.touched" class="error">Confirm Password is required</div>
+      <div *ngIf="confirmPassword !== newUser.Password && confirmPasswordField.touched" class="error">Passwords must match</div>
+    </div>
+
+    <div class="input-group">
+      <input
+        type="text"
+        name="mobile"
+        [(ngModel)]="newUser.MobileNumber"
+        placeholder="Mobile Number"
+        required
+        #mobile="ngModel" />
+      <div *ngIf="mobile.invalid && mobile.touched" class="error">Mobile number is required</div>
+    </div>
+
+    <div class="input-group">
+      <select
+        name="role"
+        id="role-select"
+        [(ngModel)]="selectedRole"
+        (change)="inputSecretKey = ''"
+        required
+        #role="ngModel">
+        <option value="" disabled selected style="color: white;">Select Role</option>
+        <option value="User" style="color: black;">User</option>
+        <option value="Admin" style="color: black;">Admin</option>
+      </select>
+      <div *ngIf="role.invalid && role.touched" class="error">Role is required</div>
+    </div>
+
+    <div *ngIf="selectedRole === 'Admin'">
+      <div class="input-group">
+        <input
+          type="text"
+          name="adminKey"
+          id="admin-key"
+          placeholder="Enter Admin Key"
+          required
+          [(ngModel)]="inputSecretKey"
+          [ngClass]="{'error': !matchSecretKey()}" />
+        <div *ngIf="!matchSecretKey()" class="error">Incorrect Admin Key</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn" [disabled]="registrationForm.invalid">Register</button>
+  </form>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger-btn');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
 
 
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Page</title>
-  <style>
-    body,
-    html {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: url('/assets/images/collage1.jpg') no-repeat center center fixed;
-      background-size: cover;
-      overflow: hidden;
-    }
 
-    .background-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(50, 50, 50, 0.3));
-      z-index: 0;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
 
-    app-navbar {
-      position: relative;
-      z-index: 2;
-    }
 
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start; 
-      margin-top: 50px; 
-      position: relative;
-      z-index: 1;
-    }
 
-    .registration-popup {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      padding: 30px;
-      width: 600px;
-      animation: slideFade 1.5s ease-out; 
-    }
 
-    @keyframes slideFade {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
 
-    form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
 
-    form>div {
-      display: flex;
-      flex-direction: column;
-    }
 
-    form>div.full-width {
-      grid-column: span 2;
-    }
 
-    h1 {
-      text-align: center;
-      color: #333;
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      grid-column: span 2;
-    }
 
-    label {
-      font-size: 14px;
-      color: #333;
-      margin-bottom: 5px;
-    }
 
-    input,
-    select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background: #fff;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
 
-    input::placeholder {
-      color: #999;
-    }
 
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      background-color: #3a6073;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
 
-    button:hover {
-      background-color: #2c4c5d;
-    }
 
-    button:disabled {
-      background-color: #999;
-      cursor: not-allowed;
-    }
 
-    .error-message {
-      color: #ff4d4d;
-      font-size: 12px;
-      margin-top: 2px;
-    }
 
-    .password-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
 
-    .password-input {
-      padding-right: 40px;
-    }
 
-    .toggle-password {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: transparent;
-      border: none;
-      color: #3a6073;
-      cursor: pointer;
-    }
 
-    footer {
-      background-color: #333333;
-      border-top: 1px solid #555555;
-      color: #bbbbbb;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
 
-    footer p {
-      margin: 0;
-    }
-  </style>
-</head>
 
-<body>
+
+
+
+
+
+
+
+
+<!-- 
+<form class="auth-form" #form="ngForm" (ngSubmit)="register()" novalidate>
+  <h2>Create Your Account</h2>
+
+  <input
+    type="text"
+    name="username"
+    placeholder="Username"
+    [(ngModel)]="newUser.Username"
+    #username="ngModel"
+    required
+  />
+  <div *ngIf="username.touched && username.invalid" class="error">Username is required.</div>
+
+  <input
+    type="email"
+    name="email"
+    placeholder="Email"
+    [(ngModel)]="newUser.Email"
+    #email="ngModel"
+    required
+    email
+  />
+  <div *ngIf="email.touched && email.invalid" class="error">
+    <div *ngIf="email.errors?.['required']">Email is required.</div>
+    <div *ngIf="email.errors?.['email']">Enter a valid email.</div>
+  </div>
+
+  <input
+    type="password"
+    name="password"
+    placeholder="Password"
+    [(ngModel)]="newUser.Password"
+    #password="ngModel"
+    required
+    minlength="6"
+  />
+  <div *ngIf="password.touched && password.invalid" class="error">
+    <div *ngIf="password.errors?.['required']">Password is required.</div>
+    <div *ngIf="password.errors?.['minlength']">Minimum 6 characters required.</div>
+  </div>
+
+  <input
+    type="password"
+    name="confirmPassword"
+    placeholder="Confirm Password"
+    [(ngModel)]="confirmPassword"
+    #confirmPasswordField="ngModel"
+    required
+  />
+  <div *ngIf="confirmPasswordField.touched && confirmPasswordField.invalid" class="error">
+    Confirm Password is required.
+  </div>
+
+  <input
+    type="text"
+    name="mobile"
+    placeholder="Mobile Number"
+    [(ngModel)]="newUser.MobileNumber"
+    #mobile="ngModel"
+    required
+    pattern="^[0-9]{10}$"
+  />
+  <div *ngIf="mobile.touched && mobile.invalid" class="error">
+    <div *ngIf="mobile.errors?.['required']">Mobile number is required.</div>
+    <div *ngIf="mobile.errors?.['pattern']">Enter a valid 10-digit number.</div>
+  </div>
+
+  <select
+    name="role"
+    id="role-select"
+    [(ngModel)]="selectedRole"
+    (change)="newUser.UserRole = selectedRole"
+    #role="ngModel"
+    required
+  >
+    <option value="" disabled selected>Select Role</option>
+    <option value="User">User</option>
+    <option value="Admin">Admin</option>
+  </select>
+  <div *ngIf="role.touched && role.invalid" class="error">Please select a role.</div>
+
   
-  <app-navbar></app-navbar>
+  <div *ngIf="selectedRole === 'Admin'">
+    <input
+      type="text"
+      name="adminKey"
+      id="admin-key"
+      placeholder="Enter Admin Key"
+      required
+      [(ngModel)]="adminKey"
+      #adminKeyField="ngModel"
+    />
+    <div *ngIf="adminKeyField.touched && adminKeyField.invalid" class="error">
+      Admin Key is required.
+    </div>
 
-  <div class="background-overlay"></div>
-
-  
-  <div class="container">
-    <div class="registration-popup">
-      <h1>Register</h1>
-      <form>
-        
-        <div>
-          <label>Username</label>
-          <input type="text" placeholder="UserName" required />
-        </div>
-       
-        <div>
-          <label>Email</label>
-          <input type="email" placeholder="Email" required />
-        </div>
-        
-        <div>
-          <label>Password</label>
-          <div class="password-container">
-            <input type="password" placeholder="Password" class="password-input" required />
-            <button type="button" class="toggle-password">
-              <i class="fa fa-eye"></i>
-            </button>
-          </div>
-        </div>
-        
-        <div>
-          <label>Confirm Password</label>
-          <input type="password" placeholder="Confirm Password" required />
-        </div>
-        
-        <div>
-          <label>Mobile Number</label>
-          <input type="tel" placeholder="Mobile Number" required />
-        </div>
-       
-        <div>
-          <label>Role</label>
-          <select required>
-            <option value="" hidden selected disabled>Select a Role</option>
-            <option value="Admin">Admin</option>
-            <option value="User">User</option>
-          </select>
-        </div>
-        
-        <div class="full-width">
-          <button type="submit">Register</button>
-        </div>
-      </form>
+    <input
+      type="password"
+      name="securityKey"
+      class="security-key"
+      [(ngModel)]="inputSecretKey"
+      placeholder="Enter Security Key"
+      required
+      #securityKey="ngModel"
+    />
+    <div *ngIf="securityKey.touched && securityKey.invalid" class="error">
+      Security Key is required.
     </div>
   </div>
 
- 
-  <footer>
-    <p>&copy; 2025 Mentorship Program. All rights reserved.</p>
-  </footer>
-</body>
-
-</html> -->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Page</title>
-  <style>
-    body,
-    html {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: url('/assets/images/collage1.jpg') no-repeat center center fixed;
-      background-size: cover;
-      overflow: hidden;
-    }
-
-    .background-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(50, 50, 50, 0.3));
-      z-index: 0;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    app-navbar {
-      position: relative;
-      z-index: 2;
-    }
-
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      margin-top: 50px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .registration-popup {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      padding: 30px;
-      width: 600px;
-      animation: slideFade 1.5s ease-out;
-    }
-
-    @keyframes slideFade {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    form>div {
-      display: flex;
-      flex-direction: column;
-    }
-
-    form>div.full-width {
-      grid-column: span 2;
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      grid-column: span 2;
-    }
-
-    label {
-      font-size: 14px;
-      color: #333;
-      margin-bottom: 5px;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background: #fff;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
-
-    input::placeholder {
-      color: #999;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      background-color: #3a6073;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #2c4c5d;
-    }
-
-    button:disabled {
-      background-color: #999;
-      cursor: not-allowed;
-    }
-
-    .error-message {
-      color: #ff4d4d;
-      font-size: 12px;
-      margin-top: 2px;
-    }
-
-    .password-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .password-input {
-      padding-right: 40px;
-    }
-
-    .toggle-password {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: transparent;
-      border: none;
-      color: #3a6073;
-      cursor: pointer;
-    }
-
-    footer {
-      background-color: #333333;
-      border-top: 1px solid #555555;
-      color: #bbbbbb;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
-
-    footer p {
-      margin: 0;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Navbar -->
-  <app-navbar></app-navbar>
-
-  <!-- Blurred Background Overlay -->
-  <div class="background-overlay"></div>
-
-  <!-- Registration Form Container -->
-  <div class="container">
-    <div class="registration-popup">
-      <h1>Register</h1>
-      <form id="registrationForm">
-        <!-- Username Field -->
-        <div>
-          <label>Username</label>
-          <input type="text" placeholder="UserName" required />
-        </div>
-        <!-- Email Field -->
-        <div>
-          <label>Email</label>
-          <input type="email" placeholder="Email" required />
-        </div>
-        <!-- Password Field -->
-        <div>
-          <label>Password</label>
-          <div class="password-container">
-            <input type="password" placeholder="Password" class="password-input" id="password" required />
-            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">
-              <i class="fa fa-eye" id="passwordIcon"></i>
-            </button>
-          </div>
-        </div>
-        <!-- Confirm Password Field -->
-        <div>
-          <label>Confirm Password</label>
-          <div class="password-container">
-            <input type="password" placeholder="Confirm Password" class="password-input" id="confirmPassword" required />
-            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">
-              <i class="fa fa-eye" id="confirmPasswordIcon"></i>
-            </button>
-          </div>
-        </div>
-        <!-- Mobile Number Field -->
-        <div>
-          <label>Mobile Number</label>
-          <input type="tel" placeholder="Mobile Number" required />
-        </div>
-        <!-- Role Dropdown -->
-        <div>
-          <label>Role</label>
-          <select id="role" onchange="toggleSecurityKeyInput()" required>
-            <option value="" hidden selected disabled>Select a Role</option>
-            <option value="Admin">Admin</option>
-            <option value="User">User</option>
-          </select>
-        </div>
-        <!-- Security Key Field -->
-        <div id="securityKeyContainer" class="hidden">
-          <label>Security Key</label>
-          <input type="password" placeholder="Security Key" />
-        </div>
-        <!-- Submit Button -->
-        <div class="full-width">
-          <button type="submit">Register</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Footer Section -->
-  <footer>
-    <p>&copy; 2025 Mentorship Program. All rights reserved.</p>
-  </footer>
-
-  <script>
-    function togglePasswordVisibility(inputId) {
-      const input = document.getElementById(inputId);
-      const icon = document.querySelector(`#${inputId}Icon`);
-      if (input.type === "password") {
-        input.type = "text";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
-      } else {
-        input.type = "password";
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
-      }
-    }
-
-    function toggleSecurityKeyInput() {
-      const role = document.getElementById("role").value;
-      const securityKeyContainer = document.getElementById("securityKeyContainer");
-      if (role === "Admin") {
-        securityKeyContainer.classList.remove("hidden");
-      } else {
-        securityKeyContainer.classList.add("hidden");
-      }
-    }
-  </script>
-</body>
-
-</html>
+  <button type="submit" class="btn" [disabled]="form.invalid">Register</button>
+</form>
+ -->

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dotnetapp.Controllers
 {
@@ -18,7 +19,9 @@ namespace dotnetapp.Controllers
         {
             _feedbackService = feedbackService;
         }
+
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<Feedback>>> GetAllFeedbacks()
         {
             try
@@ -33,6 +36,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet("user/{userId}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult<IEnumerable<Feedback>>> GetFeedbacksByUserId(int userId)
         {
             try
@@ -47,6 +51,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPost]
+        // [Authorize(Roles = "User")]
         public async Task<ActionResult> AddFeedback([FromBody] Feedback feedback)
         {
             try
@@ -64,6 +69,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpDelete("{feedbackId}")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> DeleteFeedback(int feedbackId)
         {
             try

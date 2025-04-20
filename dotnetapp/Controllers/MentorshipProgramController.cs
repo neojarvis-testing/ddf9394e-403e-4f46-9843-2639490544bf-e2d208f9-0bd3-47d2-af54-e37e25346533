@@ -12,7 +12,7 @@ namespace dotnetapp.Controllers
 {
     [ApiController]
     [Route("api/mentorship-program")]
-    [AllowAnonymous]
+    // [AllowAnonymous]
     public class MentorshipProgramController : ControllerBase
     {
         private readonly MentorshipProgramService _mentorshipProgramService;
@@ -23,9 +23,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet]
-
-        // [Authorize(Roles = "Admin, User")]
-
+        [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult<IEnumerable<MentorshipProgram>>> GetAllMentorshipPrograms()
         {
             try
@@ -40,6 +38,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet("{mentorshipProgramId}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult<MentorshipProgram>> GetMentorshipProgramById(int mentorshipProgramId)
         {
             try
@@ -58,11 +57,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPost]
-
-
-        // [Authorize(Roles = "Admin")]
-
-
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddMentorshipProgram([FromBody] MentorshipProgram mentorshipProgram)
         {
             try
@@ -81,6 +76,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPut("{mentorshipProgramId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateMentorshipProgram(int mentorshipProgramId, [FromBody] MentorshipProgram mentorshipProgram)
         {
             try
@@ -99,6 +95,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpDelete("{mentorshipProgramId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteMentorshipProgram(int mentorshipProgramId)
         {
             try
