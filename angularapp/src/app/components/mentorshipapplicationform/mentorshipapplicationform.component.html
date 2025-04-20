@@ -1,25 +1,8 @@
-<!-- <h1>Mentorship Application Form</h1>
+<app-usernav></app-usernav>
+<h1 class="form-title">Mentorship Application Form</h1>
+<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()" class="form-container">
 
-<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
-  <label>Reason for Applying:</label>
-  <input formControlName="reason" required />
-
-  <label>Career Goal:</label>
-  <input formControlName="goal" required />
-
-  <label>Profile Image:</label>
-  <input type="file" (change)="onFileChange($event)" />
-
-  <label>Portfolio Link:</label>
-  <input formControlName="portfolio" required />
-
-  <button type="submit">Submit</button>
-  <button type="button" (click)="goBack()">Back</button>
-</form> -->
-<h1>Mentorship Application Form</h1>
-
-<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
-  <div>
+  <div class="form-group">
     <label for="reason">Reason for Applying:</label>
     <input id="reason" formControlName="reason" required />
     <div *ngIf="applicationForm.get('reason')?.invalid && applicationForm.get('reason')?.touched">
@@ -27,7 +10,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="goal">Career Goal:</label>
     <input id="goal" formControlName="goal" required />
     <div *ngIf="applicationForm.get('goal')?.invalid && applicationForm.get('goal')?.touched">
@@ -35,15 +18,15 @@
     </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="image">Profile Image:</label>
     <input id="image" type="file" (change)="onFileChange($event)" />
-    <div *ngIf="fileError">
+    <div *ngIf="fileError ">
       <small class="text-danger">{{ fileError }}</small>
     </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="portfolio">Portfolio Link:</label>
     <input id="portfolio" formControlName="portfolio" required />
     <div *ngIf="applicationForm.get('portfolio')?.invalid && applicationForm.get('portfolio')?.touched">
@@ -51,8 +34,8 @@
     </div>
   </div>
 
-  <div>
-    <button type="submit">Submit</button>
-    <button type="button" (click)="goBack()">Back</button>
+  <div class="button-group">
+    <button type="submit" class="btn-submit">Submit</button>
+    <button type="button" class="btn-back" (click)="goBack()">Back</button>
   </div>
 </form>

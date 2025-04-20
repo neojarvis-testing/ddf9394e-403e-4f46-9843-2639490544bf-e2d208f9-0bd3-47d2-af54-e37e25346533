@@ -1,219 +1,74 @@
-
-<!-- <app-navbar></app-navbar>
-<div class="landing-page">
-
-<div class="body-tag">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SkillPilot | Home</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">SkillPilot</div>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+      </div>
+      <div class="hamburger" id="hamburger-btn">&#9776;</div>
+    </div>
  
-  <div *ngIf="!isLoggedIn()">
-    <app-navbar></app-navbar>
-    <div class="content-b">
-      <h1 style="text-align: center;">Mentorship Program Application</h1>
-      <p class="pTag" style="text-align: center;">
-          The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
+    <div class="hero">
+      <div class="hero-text">
+        <h2>Welcome to SkillPilot</h2>
+        <p>Empowering Mentor-Mentee Connections for Skill Development</p>
+        <div class="buttons">
+          <a href="/register" class="btn">Get Started</a>
+          <a href="#features" class="btn">Explore</a>
+        </div>
+      </div>
+      <img src="/assets/images/Untitled design.png" alt="Illustration of mentorship and learning"/>
+    </div>
+ 
+    <div class="section" id="about">
+      <h3>About SkillPilot</h3>
+      <p>
+        SkillPilot is a dynamic mentorship platform connecting mentees with experienced mentors across various domains.
+        Our aim is to foster learning, growth, and skill development through meaningful mentor-mentee interactions.
       </p>
     </div>
  
-  </div>
-  <div *ngIf="isAdmin()">
-    <app-adminnav></app-adminnav>
-    <h1 style="text-align: center;">Mentorship Program Application</h1>
-    <p style="text-align: center;">
-      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
-  </p>
-  </div>
-  <div *ngIf="isUser()">
-    <app-usernav></app-usernav>
-    <h1 style="text-align: center;">Mentorship Program Application</h1>
-    <p style="text-align: center;">
-      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
-  </p>
-  </div>
- 
-</div> 
-
-<div class="body-tag">
-
-
-
-
-
-
-
-<!-- <div class="body-tag">
-  <div *ngIf="!isLoggedIn()">
-    <app-navbar></app-navbar>
-    <section class="hero-section">
-      <div>
-        <h1>Welcome to the Mentorship Program</h1>
-        <p>Build your dream career with our expert mentors</p>
-        <a href="#signup" class="btn btn-primary btn-lg">Get Started</a>
-
-<!-- Orginal-->
-<!-- <div class="body-tag">
-
-  
-    <div *ngIf="!isLoggedIn()">
-      <app-navbar></app-navbar>
-      <div class="content-b">
-        <h1 style="text-align: center;">Mentorship Program Application</h1>
-        <p class="pTag" style="text-align: center;">
-            The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
-        </p> 
-
+    <div class="section" id="features">
+      <h3>Features</h3>
+      <div class="card-container">
+        <div class="card">Role-Based Access (Admin/User)</div>
+        <div class="card">Secure Login & Registration</div>
+        <div class="card">Personalized Dashboards</div>
+        <div class="card">Interactive Learning Paths</div>
       </div>
-    </section>
-    <section id="about" class="container">
-      <h2>About Us</h2>
-      <p>Our mentorship program connects you with industry experts to help you achieve your career goals.</p>
-    </section>
-    <section id="features" class="container">
-      <h2>Features</h2>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://framerusercontent.com/images/64hfUGNuxUfqHugBD4UTWJGrQ.png" class="card-img-top" alt="Feature 1">
-            <div class="card-body">
-              <h5 class="card-title">Personalized Mentorship</h5>
-              <p class="card-text">Get one-on-one guidance from experienced mentors.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://framerusercontent.com/images/QGxBUwxWWJySVV2vTWyW4jfW9uU.png" class="card-img-top" alt="Feature 2">
-            <div class="card-body">
-              <h5 class="card-title">Career Development</h5>
-              <p class="card-text">Receive career advice and support to help you succeed.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://framerusercontent.com/images/uJqvV3bLnzuLOhsetdj9RllsisU.png" class="card-img-top" alt="Feature 3">
-            <div class="card-body">
-              <h5 class="card-title">Networking Opportunities</h5>
-              <p class="card-text">Connect with professionals and expand your network.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="contact" class="container">
-      <h2>Contact Us</h2>
-      <p>If you have any questions, feel free to reach out to us at <a href="mailto:info@mentorshipprogram.com">info@mentorshipprogram.com</a>.</p>
-    </section>
-    <footer class="bg-light text-center py-4">
-      <p>&copy; 2025 Mentorship Program. All rights reserved.</p>
-    </footer>
-  </div>
-
-  <div *ngIf="isAdmin()">
-    <app-adminnav></app-adminnav>
-    <h1 style="text-align: center;">Mentorship Program Application</h1>
-    <p style="text-align: center;">
-      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
-    </p>
-  </div>
-
-  <div *ngIf="isUser()">
-    <app-usernav></app-usernav>
-    <h1 style="text-align: center;">Mentorship Program Application</h1>
-    <p style="text-align: center;">
-      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
-    </p>
-
     </div>
-    
-    
-    
-    <div class="w3-content w3-section" style="max-width:500px">
-      <img class="mySlides" src="assets/6 Key Factors in Choosing the Right Transaction Banking Partner (1).png" style="width:100%">
-      <img class="mySlides" src="assets/6 Key Factors in Choosing the Right Transaction Banking Partner.png" style="width:100%">
-      <img class="mySlides" src="assets/Unlocking the Potential of Instant Payments in Europe _ iGTB Blog.png" style="width:100%">
-    </div> 
-    
-  </div>  
-
-  </div>
-</div> -->
-
-
-
-
-
-
-<!-- Original End -->
-
-
-<div class="body-tag">
-  <div *ngIf="!isLoggedIn()">
-    <app-navbar></app-navbar>
-    <section class="hero-section">
-      <div>
-        <h1>Welcome to the Mentorship Program</h1>
-        <p>Build your dream career with our expert mentors</p>
-        <a href="#signup" class="btn btn-primary btn-lg">Get Started</a>
-      </div>
-    </section>
-    <section id="about" class="container">
-      <h2>About Us</h2>
-      <p>Our mentorship program connects you with industry experts to help you achieve your career goals.</p>
-    </section>
-    <section id="features" class="container">
-      <h2>Features</h2>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://framerusercontent.com/images/64hfUGNuxUfqHugBD4UTWJGrQ.png" class="card-img-top" alt="Feature 1">
-            <div class="card-body">
-              <h5 class="card-title">Personalized Mentorship</h5>
-              <p class="card-text">Get one-on-one guidance from experienced mentors.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://framerusercontent.com/images/QGxBUwxWWJySVV2vTWyW4jfW9uU.png" class="card-img-top" alt="Feature 2">
-            <div class="card-body">
-              <h5 class="card-title">Career Development</h5>
-              <p class="card-text">Receive career advice and support to help you succeed.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://framerusercontent.com/images/uJqvV3bLnzuLOhsetdj9RllsisU.png" class="card-img-top" alt="Feature 3">
-            <div class="card-body">
-              <h5 class="card-title">Networking Opportunities</h5>
-              <p class="card-text">Connect with professionals and expand your network.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="contact" class="container">
-      <h2>Contact Us</h2>
-      <p>If you have any questions, feel free to reach out to us at <a href="mailto:info@mentorshipprogram.com">info@mentorshipprogram.com</a>.</p>
-    </section>
-    <footer class="bg-light text-center py-4">
-      <p>&copy; 2025 Mentorship Program. All rights reserved.</p>
-    </footer>
-  </div>
-
-  <div *ngIf="isAdmin()">
-    <app-adminnav></app-adminnav>
-    <h1 style="text-align: center;">Mentorship Program Application</h1>
-    <p style="text-align: center;">
-      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
-    </p>
-  </div>
-
-  <div *ngIf="isUser()">
-    <app-usernav></app-usernav>
-    <h1 style="text-align: center;">Mentorship Program Application</h1>
-    <p style="text-align: center;">
-      The Mentorship Program Application system allows users to apply for mentorship, view registered details, and manage their profiles. It supports multiple user roles such as Admin and User. Users can register, login, and access their personalized dashboards. The SPA is built using Angular and includes routing, services, and modular components.
-    </p>
-  </div>
-</div>
-
+ 
+    <div class="section" id="contact">
+      <h3>Contact Us</h3>
+      <p>Email: support@skillpilot.com | Phone: +123 456 7890</p>
+    </div>
+ 
+    <!-- Angular conditionally rendered content -->
+    <div *ngIf="isAdmin()">
+      <app-adminnav></app-adminnav>
+    </div>
+    <div *ngIf="isUser()">
+      <app-usernav></app-usernav>
+    </div>
+ 
+    <script>
+      const menuToggle = document.getElementById('hamburger-btn');
+      const navLinks = document.getElementById('nav-links');
+ 
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>

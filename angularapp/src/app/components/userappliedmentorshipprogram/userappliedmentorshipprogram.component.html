@@ -1,13 +1,8 @@
-    <app-usernav></app-usernav>
-    <div class="container">
-        <h1>Applied Mentorships</h1>
-        <input
-            type="text"
-            [(ngModel)]="searchTerm"
-            class="search-box"
-            placeholder="Search by ProgramName..."
-        />
-    </div>
+<app-usernav></app-usernav>
+<div class="container">
+    <h1 class="page-title">Applied Mentorships</h1>
+    
+    <input type="text" [(ngModel)]="searchTerm" class="search-box" placeholder="Search by ProgramName..." />
 
     <table class="mentorship-table">
         <!-- Table Head -->
@@ -30,27 +25,32 @@
                 <td>{{ mentorship.serialNo }}</td>
                 <td>{{ mentorship.programName }}</td>
                 <td>
-                    <button (click)="viewImage(mentorship.profileImage)">View Image</button>
+                    <button class="btn-view-image" (click)="viewImage(mentorship.profileImage)">View Image</button>
                 </td>
                 <td>{{ mentorship.applicationDate }}</td>
                 <td>{{ mentorship.status }}</td>
                 <td>
-                    <button (click)="confirmDelete(mentorship.applicationId)">Delete</button>
+                    <button class="btn-delete-action" (click)="confirmDelete(mentorship.applicationId)"
+                        [disabled]="mentorship.status.trim().toLowerCase() === 'approved'">
+                        Delete
+                    </button>
                 </td>
             </tr>
         </tbody>
     </table>
+</div>
 
-    <div *ngIf="imageToShow" class="modal">
-        <img [src]="imageToShow" alt="Profile Image">
-        <button (click)="closeImage()">Close</button>
+<div *ngIf="imageToShow" class="modal">
+    <div class="modal-content">
+        <img [src]="imageToShow" alt="Profile Image" class="modal-image">
+        <button class="btn-close-modal" (click)="closeImage()">Close</button>
     </div>
+</div>
 
-    <div *ngIf="showModal" class="confirmation-modal">
-        <div class="modal-content">
-            <p>Are you sure you want to delete?</p>
-            <button class="btn-delete" (click)="deleteApplication()">Yes, Delete</button>
-            <button class="btn-cancel" (click)="cancelDelete()">Cancel</button>
-        </div>
+<div *ngIf="showModal" class="confirmation-modal">
+    <div class="modal-content">
+        <p>Are you sure you want to delete?</p>
+        <button class="btn-delete" (click)="deleteApplication()">Yes, Delete</button>
+        <button class="btn-cancel" (click)="cancelDelete()">Cancel</button>
     </div>
-
+</div>

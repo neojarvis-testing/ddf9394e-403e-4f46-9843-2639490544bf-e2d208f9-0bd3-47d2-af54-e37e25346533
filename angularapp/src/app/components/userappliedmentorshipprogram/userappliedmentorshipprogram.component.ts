@@ -54,7 +54,7 @@ export class UserappliedmentorshipprogramComponent implements OnInit {
       m.programName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
-  
+
   viewImage(imageUrl: string): void {
     this.imageToShow = imageUrl;
   }

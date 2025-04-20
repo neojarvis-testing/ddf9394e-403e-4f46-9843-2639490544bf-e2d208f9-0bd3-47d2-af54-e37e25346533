@@ -1,35 +1,37 @@
 <app-usernav></app-usernav>
 <div class="container">
   <h2>Available Mentorship Programs</h2>
-  <input [(ngModel)]="searchTerm" (input)="filterPrograms()" placeholder="Search by Program or Mentor Name" />
 
-  <table>
-    <thead>
-      <tr>
-        <th>Program Name</th>
-        <th>Field</th>
-        <th>Mentor</th>
-        <th>Experience</th>
-        <th>Mode</th>
-        <th>Description</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngIf="filteredPrograms.length === 0">
-        <td colspan="7">Oops! No records found</td>
-      </tr>
-      <tr *ngFor="let program of filteredPrograms; let i = index">
-        <td>{{ program.ProgramName }}</td>
-        <td>{{ program.FieldOfMentorship }}</td>
-        <td>{{ program.MentorName }}</td>
-        <td>{{ program.ExperienceLevel }}</td>
-        <td>{{ program.ModeOfMentorship }}</td>
-        <td>{{ program.Description }}</td>
-        <td>
-          <button [disabled]="program.applied" (click)="apply(program,program.MentorshipProgramId)">{{ program.applied ? 'Applied' : 'Apply' }}</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>  
+  <input type="checkbox" id="toggle" style="display: none;">
+  <div class="search-container">
+    <input id="searchInput" class="search-field" placeholder="Search by Program or Mentor Name" [(ngModel)]="searchTerm"
+      (input)="filterPrograms()" />
+    <label for="toggle" class="search-icon">🔍</label>
+  </div>
+
+  <div class="card-container">
+    <div class="card" *ngFor="let program of paginatedPrograms(); let i = index">
+      <h3>{{ program.ProgramName }}</h3>
+      <p><strong>Field:</strong> {{ program.FieldOfMentorship }}</p>
+      <p><strong>Mentor:</strong> {{ program.MentorName }}</p>
+      <p><strong>Experience:</strong> {{ program.ExperienceLevel }}</p>
+      <p><strong>Mode:</strong> {{ program.ModeOfMentorship }}</p>
+      <p><strong>Description:</strong> {{ program.Description }}</p>
+      <button class="apply-button " [disabled]="!program.canApply"
+        (click)="apply(program, program.MentorshipProgramId)">
+        {{ program.applied ? 'Applied' : 'Apply' }}
+      </button>
+      <span class="wishlist-icon" (click)="addToWishlist(program)">❤️</span>
+    </div>
+    <p *ngIf="filteredPrograms.length === 0" class="no-records">Oops! No records found</p>
+  </div>
+
+
+  <div class="pagination-controls">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>
+<a routerLink="/wishlist">Go to Wishlist</a>
+

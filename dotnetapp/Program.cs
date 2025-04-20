@@ -132,14 +132,13 @@ builder.Services.AddControllers();
  
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
- 
- 
+
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 builder.Services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
  
- 
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -147,9 +146,11 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+
  
     var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]);
  
+
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -161,7 +162,7 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
 });
- 
+
 // Add CORS
 builder.Services.AddCors(options =>
 {

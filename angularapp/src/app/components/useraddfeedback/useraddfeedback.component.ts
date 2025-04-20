@@ -91,6 +91,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Feedback } from 'src/app/models/feedback.model';
 import { FeedbackService } from 'src/app/services/feedback.service';
+import  Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-useraddfeedback',
@@ -139,7 +140,13 @@ export class UseraddfeedbackComponent implements OnInit {
 
   this.feedbackService.sendFeedback(this.feedback, { responseType: 'text' }).subscribe(
     () => {
-      alert('Feedback successfully added!');
+      Swal.fire({
+        title: 'Success!',
+        text: 'Feedback Submitted Successfully!',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false
+      });
       this.router.navigate(['/user/viewFeedback']).then(() => {
         setTimeout(() => {
           this.router.navigate(['/user/addFeedback']);

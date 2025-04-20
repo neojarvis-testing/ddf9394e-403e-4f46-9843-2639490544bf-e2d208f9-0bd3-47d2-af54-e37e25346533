@@ -16,7 +16,10 @@ export class MentorshipapplicationformComponent implements OnInit {
   date = new Date();
   applicationForm: FormGroup;
   fileError: string = '';
- 
+
+  programs: any[] = [];
+  filteredPrograms: any[] = [];
+
   application: MentorshipApplication = {
     UserId: 0,
     MentorshipProgramId: 0,
@@ -99,6 +102,7 @@ export class MentorshipapplicationformComponent implements OnInit {
    }
    
    
+
  
   onSubmit(): void {
     if (this.applicationForm.invalid || this.fileError) {
@@ -107,16 +111,16 @@ export class MentorshipapplicationformComponent implements OnInit {
         this.showErrorPopup(this.fileError);
       }
       return;
+
     }
- 
+  
     this.application.UserId = this.userId;
     this.application.MentorshipProgramId = this.programId;
     this.application.ReasonForApplying = this.applicationForm.get('reason')?.value;
     this.application.CareerGoals = this.applicationForm.get('goal')?.value;
     this.application.ProfileImage = this.applicationForm.get('image')?.value;
     this.application.PortfolioLink = this.applicationForm.get('portfolio')?.value;
- 
-    console.log('Form submitted', this.application);
+  
     this.mentorshipService.addMentorshipApplication(this.application).subscribe(
       (data) => {
         Swal.fire({
@@ -127,20 +131,28 @@ export class MentorshipapplicationformComponent implements OnInit {
         }).then((result) => {
           if (result.isConfirmed) {
             localStorage.setItem(`applied_${this.programId}`, 'true');
+            // this.updateProgramStatus(this.programId); 
             this.router.navigate(['/user/viewmentorshipprogram']);
           }
         });
       },
       (error) => {
         console.error('Error submitting application', error);
-        this.showErrorPopup('An error occurred while submitting the application.');
       }
     );
   }
+  
+ 
+  
  
   goBack(): void {
+    const applied = localStorage.getItem(`applied_${this.programId}`);
+    if (!applied) {
+      localStorage.setItem(`applied_${this.programId}`, 'false');
+    }
     this.router.navigate(['/user/viewmentorshipprogram']);
   }
+  
  
   showErrorPopup(message: string): void {
     Swal.fire({
@@ -151,3 +163,5 @@ export class MentorshipapplicationformComponent implements OnInit {
     });
   }
 }
+
+

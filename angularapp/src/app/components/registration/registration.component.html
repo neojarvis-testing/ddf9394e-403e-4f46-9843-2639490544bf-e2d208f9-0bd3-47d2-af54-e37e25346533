@@ -1,106 +1,124 @@
-<app-navbar></app-navbar>
-<div class="container">
-    <div class="registration-popup">
-        <h1 class="h1">Registration</h1>
-        <form class="mx-1 mx-md-4" #registerform="ngForm" (ngSubmit)="register()">
-            <div>
-                <label>Username:</label>
-                <input type="text" placeholder="UserName" name="userName" id="userName"
-                    [(ngModel)]="newUser.Username" class="form-control" #un="ngModel" required pattern="^[a-zA-Z0-9]*$">
-                <div class="error-message" *ngIf="un.errors?.required && (un.touched || un.dirty)">
-                    <p class="text-danger">*Username is required</p>
-                </div>
-                <div class="error-message" *ngIf="un.errors?.pattern">
-                    <p class="text-danger">*Enter Valid UserName</p>
-                </div>
-            </div>
-            <div>
-                <label>Email:</label>
-                <input type="text" placeholder="Email" name="email" id="email" [(ngModel)]="newUser.Email"
-                    class="form-control" #em="ngModel" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
-                <div class="error-message" *ngIf="em.errors?.required && (em.touched || em.dirty)">
-                    <p class="text-danger">*Email is required</p>
-                </div>
-                <div class="error-message" *ngIf="em.errors?.pattern">
-                    <p class="text-danger">*Please enter a valid email address</p>
-                </div>
-            </div>
-            <div class="input-container">
-                <label>Password:</label>
-                <input [type]="showPassword ? 'text' : 'password'" placeholder="Password" name="password" id="password"
-                    [(ngModel)]="newUser.Password" class="form-control" #pass="ngModel" required
-                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
-                <button type="button" class="btn btn-secondary eye-button" (click)="showPassword = !showPassword">
-                    Show Password
-                </button>
-            </div>
-            <div class="error-message" *ngIf="pass.errors?.required && (pass.touched || pass.dirty)">
-                <p class="text-danger">*Password is required</p>
-            </div>
-            <div class="error-message" *ngIf="pass.errors?.pattern">
-                <p class="text-danger">*Password should have Atleast One LowerCase, One UpperCase, One Digit, One
-                    Special Character, Minimum length of 8 characters</p>
-            </div>
-            <div>
-                <label>Confirm Password:</label>
-                <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword"
-                    [(ngModel)]="confirmPassword" class="form-control" #cpass="ngModel" required>
-                <div class="error-message" *ngIf="cpass.errors?.required && (cpass.touched || cpass.dirty)">
-                    <p class="text-danger">*Confirm Password is required</p>
-                </div>
-                <div class="error-message" *ngIf="confirmPassword!==pass.value">
-                    <p class="text-danger">*Password does not match!</p>
-                </div>
-            </div>
-            <div>
-                <label>Mobile Number:</label>
-                <input type="tel" placeholder="Mobile Number" name="mobileNumber" id="mobileNumber"
-                    [(ngModel)]="newUser.MobileNumber" class="form-control" #mn="ngModel" required
-                    pattern="^[6-9][0-9]{9}$">
-                <div class="error-message" *ngIf="mn.errors?.required && (mn.touched || mn.dirty)">
-                    <p class="text-danger">*Mobile Number is required</p>
-                </div>
-                <div class="error-message" *ngIf="mn.errors?.pattern">
-                    <p class="text-danger">*Mobile Number should start with 6, 7, 8, or 9 and have 10 digits</p>
-                </div>
-            </div>
-            <div>
-                <label>Role:</label>
-                <select name="role" id="role" [(ngModel)]="newUser.UserRole" #ur="ngModel" class="form-control">
-                    <option value="" hidden selected disabled>Select a Role</option>
-                    <option value="Admin">Admin</option>
-                    <option value="User">User</option>
-                </select>
-                <div class="error-message" *ngIf="ur.errors?.required && (ur.touched || ur.dirty)">
-                    <p class="text-danger">*Role is required</p>
-                </div>
-            </div>
-            <div *ngIf="newUser.UserRole==='Admin'">
-                <label>Admin Secret Key:</label>
-                <input type="text" placeholder="Enter Admin Secret Key" name="secretKey" id="secretKey"
-                    [(ngModel)]="inputSecretKey" class="form-control" #sc="ngModel" minlength="15" maxlength="15"
-                    required>
-                <div class="error-message" *ngIf="sc.errors?.required && (sc.touched || sc.dirty)">
-                    <p class="text-danger">*Secret Key For Admin Registration is required</p>
-                </div>
-                <div class="error-message" *ngIf="sc.errors?.minlength || sc.errors?.maxlength">
-                    <p class="text-danger">*Secret Key should have 15 characters</p>
-                </div>
-                <div class="error-message" *ngIf="!matchSecretKey()">
-                    <p class="text-danger">*Secret Key doesn't match</p>
-                </div>
-            </div>
-            <div>
-                <div class="form-group" *ngIf="registerform.invalid">
-                    <button class="form-control btn btn-default" disabled>Register</button>
-                </div>
-                <div class="form-group" *ngIf="!registerform.invalid">
-                    <button class="form-control btn btn-success">Register</button>
-                </div>
-                <div class="error-message" *ngIf="checkUserExists && registerform.submitted">
-                    <p class="text-danger">*{{err}}</p>
-                </div>
-            </div>
-        </form>
-    </div>
+<div class="navbar">
+  <div class="logo">SkillPilot</div>
+  <div class="nav-links" id="nav-links">
+    <a href="/">Home</a>
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+  </div>
+  <div class="hamburger" id="hamburger-btn">&#9776;</div>
 </div>
+ 
+<video autoplay muted loop id="bgVideo">
+  <source src="/assets/videos/abstract-minimalistic-colored-wave-background-SBV-347739488-preview.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+ 
+<div class="form-container">
+  <form (ngSubmit)="register()" #registrationForm="ngForm" class="auth-form">
+    <h2>Create Your Account</h2>
+ 
+    <div class="input-group">
+      <input
+        type="text"
+        name="username"
+        [(ngModel)]="newUser.Username"
+        placeholder="Username"
+        required
+        #username="ngModel" />
+      <div *ngIf="username.invalid && username.touched" class="error">Username is required</div>
+    </div>
+ 
+    <div class="input-group">
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="newUser.Email"
+        placeholder="Email"
+        required
+        #email="ngModel" />
+      <div *ngIf="email.invalid && email.touched" class="error">Email is required</div>
+    </div>
+ 
+    <div class="input-group password-group">
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="newUser.Password"
+        placeholder="Password"
+        required
+        [type]="showPassword ? 'text' : 'password'"
+        #password="ngModel" />
+      <i
+        class="toggle-password-icon"
+        [class.fas]="showPassword"
+        [class.fa-eye-slash]="showPassword"
+        [class.fa-eye]="!showPassword"
+        (click)="showPassword = !showPassword">
+      </i>
+      <div *ngIf="password.invalid && password.touched" class="error">Password is required</div>
+    </div>
+ 
+    <div class="input-group">
+      <input
+        type="password"
+        name="confirmPassword"
+        [(ngModel)]="confirmPassword"
+        placeholder="Confirm Password"
+        required
+        #confirmPasswordField="ngModel" />
+      <div *ngIf="confirmPasswordField.invalid && confirmPasswordField.touched" class="error">Confirm Password is required</div>
+      <div *ngIf="confirmPassword !== newUser.Password && confirmPasswordField.touched" class="error">Passwords must match</div>
+    </div>
+ 
+    <div class="input-group">
+      <input
+        type="text"
+        name="mobile"
+        [(ngModel)]="newUser.MobileNumber"
+        placeholder="Mobile Number"
+        required
+        #mobile="ngModel" />
+      <div *ngIf="mobile.invalid && mobile.touched" class="error">Mobile number is required</div>
+    </div>
+ 
+    <div class="input-group">
+      <select
+        name="role"
+        id="role-select"
+        [(ngModel)]="selectedRole"
+        (change)="inputSecretKey = ''"
+        required
+        #role="ngModel">
+        <option value="" disabled selected style="color: white;">Select Role</option>
+        <option value="User" style="color: black;">User</option>
+        <option value="Admin" style="color: black;">Admin</option>
+      </select>
+      <div *ngIf="role.invalid && role.touched" class="error">Role is required</div>
+    </div>
+ 
+    <div *ngIf="selectedRole === 'Admin'">
+      <div class="input-group">
+        <input
+          type="text"
+          name="adminKey"
+          id="admin-key"
+          placeholder="Enter Admin Key"
+          required
+          [(ngModel)]="inputSecretKey"
+          [ngClass]="{'error': !matchSecretKey()}" />
+        <div *ngIf="!matchSecretKey()" class="error">Incorrect Admin Key</div>
+      </div>
+    </div>
+ 
+    <button type="submit" class="btn" [disabled]="registrationForm.invalid">Register</button>
+  </form>
+</div>
+ 
+<script>
+  const hamburger = document.getElementById('hamburger-btn');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+ 

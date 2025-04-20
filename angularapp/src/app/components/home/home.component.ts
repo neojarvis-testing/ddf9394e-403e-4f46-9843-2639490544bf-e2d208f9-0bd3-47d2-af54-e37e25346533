@@ -43,15 +43,5 @@ export class HomeComponent implements OnInit {
   {
     return this.authService.isUser();
   }
-  // carousel(): void {
-  //   const slides = document.getElementsByClassName("mySlides") as HTMLCollectionOf<HTMLElement>;
-  //   for (let i = 0; i < slides.length; i++) {
-  //     slides[i].style.display = "none";
-  //   }
-  //   this.myIndex++;
-  //   if (this.myIndex > slides.length) { this.myIndex = 1; }
-  //   slides[this.myIndex - 1].style.display = "block";
-  //   setTimeout(() => this.carousel(), 2000); // Change image every 2 seconds
-  // }
-
 }
+
