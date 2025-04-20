@@ -4,10 +4,11 @@
 
   <input type="checkbox" id="toggle" style="display: none;">
   <div class="search-container">
-    <input id="searchInput" class="search-field" placeholder="Search by Program or Mentor Name" [(ngModel)]="searchTerm" (input)="filterPrograms()" />
+    <input id="searchInput" class="search-field" placeholder="Search by Program or Mentor Name" [(ngModel)]="searchTerm"
+      (input)="filterPrograms()" />
     <label for="toggle" class="search-icon">🔍</label>
   </div>
-  
+
   <div class="card-container">
     <div class="card" *ngFor="let program of paginatedPrograms(); let i = index">
       <h3>{{ program.ProgramName }}</h3>
@@ -16,19 +17,23 @@
       <p><strong>Experience:</strong> {{ program.ExperienceLevel }}</p>
       <p><strong>Mode:</strong> {{ program.ModeOfMentorship }}</p>
       <p><strong>Description:</strong> {{ program.Description }}</p>
-      <button [disabled]="!program.canApply" (click)="apply(program, program.MentorshipProgramId)">
+      <button class="apply-button " [disabled]="!program.canApply"
+        (click)="apply(program, program.MentorshipProgramId)">
         {{ program.applied ? 'Applied' : 'Apply' }}
       </button>
       <span class="wishlist-icon" (click)="addToWishlist(program)">❤️</span>
     </div>
     <p *ngIf="filteredPrograms.length === 0" class="no-records">Oops! No records found</p>
   </div>
-  
-  
+
+
   <div class="pagination-controls">
     <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
     <span>Page {{ currentPage }} of {{ totalPages }}</span>
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
   </div>
 </div>
-<a routerLink="/wishlist">Go to Wishlist</a>
+
+<div class="wishlist">
+  <a routerLink="/wishlist">Go to Wishlist</a>
+</div>

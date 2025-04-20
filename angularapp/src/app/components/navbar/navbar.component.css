@@ -1,57 +1,81 @@
 .navbar {
-
-    background: linear-gradient(to right, #b24526, #5e2a1c);
-   
-    color: gold;
-   
+    background: linear-gradient(to right, #0C0C0C, #3D1F14); /* Night to Bistre */
+    color: #EDEDE3; /* Alabaster */
     padding: 15px 30px;
-   
     display: flex;
-   
     justify-content: space-between;
-   
     align-items: center;
-   
-    border-radius: 8px;
-   
+    border-radius: 15px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-   
-   }
-   
-   
-   
-   .title {
-   
+}
+
+.title {
     margin: 0;
-   
     font-size: 20px;
-   
     font-weight: bold;
-   
     letter-spacing: 1px;
-   
-   }
-   
-   
-   
-   .nav-links a {
-   
-    color: white;
-   
+    color: #EDEDE3; /* Alabaster */
+}
+
+.nav-links a {
     text-decoration: none;
-   
     margin-left: 20px;
-   
     font-weight: bold;
-   
-   }
-   
-   
-   
-   .nav-links a:hover,
-   
-   .active-link {
-   
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: all 0.3s ease; 
+    color: #EDEDE3; /* Alabaster */
+}
+
+.register-link {
+    color: #EDEDE3; /* Alabaster */
+    border: 1px solid #EDEDE3; /* Alabaster */
+    background: transparent;
+}
+
+.register-link:hover {
+    background: #9B5B36; /* Raw Umber */
+    color: #EDEDE3; /* Alabaster */
+}
+
+.login-link {
+    color: #EDEDE3; /* Alabaster */
+    background: #878C80; /* Battleship Gray */
+}
+
+.login-link:hover {
+    background: #3D1F14; /* Bistre */
+}
+
+.active-link {
     text-decoration: underline;
-   
-   }
+    color: #EDEDE3; /* Alabaster */
+}
+
+
+
+/* 
+:root {
+    --antiflash-white: #E3E6EDff;
+    --van-dyke: #392F27ff;
+    --white: #FEFEFEff;
+    --lavender-web: #DEEAFDff;
+    --taupe: #4E3D31ff;
+}
+
+.navbar {
+    background-color: var(--antiflash-white);
+    color: var(--van-dyke);
+}
+
+.title {
+    color: var(--taupe);
+}
+
+.nav-links a {
+    color: var(--lavender-web);
+}
+
+.nav-links a:hover {
+    color: var(--van-dyke);
+} */

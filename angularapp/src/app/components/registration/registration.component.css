@@ -1,108 +1,99 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-  }
-  
-  .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-  }
-  
-  .background-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: blur(4px); 
-  }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .registration-popup {
-    background: rgba(255, 255, 255, 5); 
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    padding: 2rem;
-    width: 400px; 
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 30px;
-    font-weight: bold;
-  }
-  
-  label {
-    display: block;
-    font-size: 14px;
-    color: #8e8e8e;
-    margin-bottom: 5px;
-    text-align: left;
-  }
-  
-  input[type="text"],
-  input[type="password"],
-  input[type="tel"],
-  select {
-    width: 100%; 
-    padding: 10px; 
-    border: 1px solid #dbdbdb;
-    border-radius: 4px;
-    background: #fafafa;
-    font-size: 14px; 
-    box-sizing: border-box;
-    margin-bottom: 10px; 
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px; 
-    background-color: #0095f6;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #007bb5;
-  }
-  
-  .error-message {
-    color: red; 
-    font-size: 12px; 
-    margin-top: 5px;
-  }
-  
-
-  @media (max-width: 600px) {
-    .registration-popup {
-        width: 90%; 
-        padding: 15px;
-    }
-  
-    input[type="text"],
-    input[type="password"],
-    input[type="tel"],
-    select,
-    button {
-        font-size: 12px;
-        padding: 15px;
-    }
-  }
-  
+/* Full-screen video background */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Send the video to the background */
+  filter: blur(8px); /* Apply blur effect */
+}
+ 
+/* Form container */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 20px;
+}
+ 
+/* Form styling */
+.auth-form {
+  background: rgba(255, 255, 255, 0.8); /* Solid white with slight transparency */
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #333; /* Dark text for contrast */
+}
+ 
+.auth-form h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #000;
+}
+ 
+.auth-form input,
+.auth-form select {
+  padding: 10px 15px;
+  border: 1px solid #00c6ff;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+ 
+.auth-form input::placeholder {
+  color: #666;
+}
+ 
+.auth-form button.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  background: #00c6ff;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+ 
+.auth-form button.btn:hover {
+  background: #00a3cc;
+}
+ 
+.auth-form .error {
+  color: #ff4d4d;
+  font-size: 0.875rem;
+}
+/* Style for the 'Show'/'Hide' button */
+.password-toggle-btn {
+  padding: 2px 5px; /* Smaller padding for reduced size */
+  font-size: 0.8rem; /* Smaller font size */
+  border: 1px solid #00c6ff;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 5px; /* Add some spacing above the button */
+}
+ 
+.password-toggle-btn:hover {
+  background: #00a3cc;
+  color: #fff; /* Change text color on hover for better contrast */
+}
+ 
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+}

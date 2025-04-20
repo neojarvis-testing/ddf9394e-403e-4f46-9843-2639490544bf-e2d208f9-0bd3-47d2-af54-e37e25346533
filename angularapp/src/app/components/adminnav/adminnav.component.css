@@ -1,206 +1,129 @@
+/* General Navbar Styles */
 .navbar {
-  background-color: #8b0000 !important;
-  padding: 10px 20px;
+  background-color: #325C70ff !important;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.navbar-header {
+  text-align: left;
+  padding: 10px 0 0 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #F0ECE2; /* Match header color with the brand */
 }
 
 .navbar-brand {
-  font-size: 1.5rem;
+  color: #F0ECE2 !important;
   font-weight: bold;
-  color: white !important;
+  font-size: 1.2rem;
+  margin-right: 20px;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px; /* Space between header and content */
+}
+
+/* Left-aligned items */
+.navbar-left {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Right-aligned items */
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Navbar Navigation Items */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .navbar-nav .nav-link {
-  color: #ffffff !important;
+  color: #F0ECE2 !important;
   font-size: 1rem;
+  text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ffcccb !important;
-  /* Light red hover effect */
+  color: #ACDBDF !important;
 }
 
-.dropdown-menu {
-  background-color: #8b0000;
+.navbar-nav span.nav-link {
+  color: #F0ECE2 !important;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Dropdown Styling */
+#dropdown {
+  background-color: #325C70ff;
+  color: #F0ECE2;
+  padding: 5px 10px;
   border: none;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown-item {
-  color: white !important;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.dropdown-item:hover {
-  background-color: #b22222 !important;
-  /* Slightly lighter red */
-}
-
-.btn-outline-warning {
-  border-color: #ffd700;
-  /* Gold color for outline */
-  color: #ffd700;
+  border-radius: 4px;
+  font-size: 1rem;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
+#dropdown:hover {
+  background-color: #325C70ff;
+  color: #ACDBDF;
+}
+
+/* Logout Button */
+.btn-outline-warning {
+  color: #F0ECE2 !important;
+  border: 1px solid #F0ECE2;
+  background-color: #325C70ff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn-outline-warning:hover {
+  background-color: #ACDBDF !important;
+  color: #325C70ff !important;
+  border: 1px solid #ACDBDF;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
   .navbar {
-    background-color: #8b0000 !important;
-    /* Dark red */
-    padding: 12px 25px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    padding: 10px;
   }
 
-  /* Navbar Brand */
   .navbar-brand {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white !important;
-    transition: color 0.3s ease-in-out;
+    margin-bottom: 10px;
   }
 
-  .navbar-brand:hover {
-    color: #ffd700 !important;
-    /* Gold */
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  /* Navbar Links */
   .navbar-nav .nav-link {
-    color: #ffffff !important;
-    font-size: 1rem;
-    padding: 10px 15px;
-    transition: all 0.3s ease-in-out;
+    padding: 5px 0;
   }
-
-  .navbar-nav .nav-link:hover {
-    color: #ffcccb !important;
-    /* Light red */
-    transform: scale(1.05);
-  }
-
-  /* Dropdown Menu */
-  .dropdown-menu {
-    background-color: #8b0000;
-    border: none;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  }
-
-  .dropdown-item {
-    color: white !important;
-    transition: background-color 0.3s ease-in-out;
-  }
-
-  .dropdown-item:hover {
-    background-color: #b22222 !important;
-    /* Slightly lighter red */
-  }
-
-  /* Button Styling */
-  .btn-outline-warning {
-    border-color: #ffd700;
-    /* Gold */
-    color: #ffd700;
-    padding: 8px 16px;
-    font-size: 1rem;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .btn-outline-warning:hover {
-    background-color: #ffd700;
-    color: #8b0000;
-    transform: scale(1.1);
-  }
-
-  /* Welcome Text */
-  .navbar-nav span.nav-link {
-    font-weight: bold;
-    color: #ffcccb;
-  }
-
-
-  .content p {
-    font-size: 16px;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: auto;
-  }
-
-
-
-
-
-
-  /* .navbar {
-
-    background-color: #8b0000 !important;
-  
-  }
-  
-  
-  
-  .navbar-brand {
-  
-    font-weight: bold;
-  
-    font-size: 24px;
-  
-    color: yellow !important;
-  
-  }
-  
-  
-  
-  .nav-item .nav-link {
-  
-    color: white !important;
-  
-  }
-  
-  
-  
-  .dropdown-menu {
-  
-    background-color: #8b0000;
-  
-    border: none;
-  
-  }
-  
-  
-  
-  .dropdown-item {
-  
-    color: white;
-  
-  }
-  
-  
-  
-  .dropdown-item:hover {
-  
-    background-color: #a52a2a;
-  
-  }
-  
-  
-  
-  .logout-btn {
-  
-    background-color: transparent;
-  
-    border: 1px solid #ffc107;
-  
-    color: #ffc107;
-  
-    margin-left: 10px;
-  
-  }
-  
-  
-  
-  .logout-btn:hover {
-  
-    background-color: #ffc107;
-  
-    color: #000;
-  
-  } */
+}

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MentorshipService } from 'src/app/services/mentorship.service';
 import { MentorshipProgram } from 'src/app/models/mentorshipprogram.model';
 import { ViewmentorshipprogramComponent } from '../viewmentorshipprogram/viewmentorshipprogram.component';
+import  Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-admineditmentorshipprogram',
@@ -41,7 +42,13 @@ export class AdmineditmentorshipprogramComponent implements OnInit {
         this.program.DurationInMonths && this.program.MentorName && this.program.ExperienceLevel &&
         this.program.ModeOfMentorship) {
       this.mentorshipService.updateMentorshipProgram(this.programId, this.program).subscribe(() => {
-        alert('Program updated successfully!');
+        Swal.fire({
+          title: 'Success!',
+          text: 'Program Updated Successfully!',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false
+        });
         this.router.navigate(['admin/viewmentorshipprogram']);
       });
     } else {
