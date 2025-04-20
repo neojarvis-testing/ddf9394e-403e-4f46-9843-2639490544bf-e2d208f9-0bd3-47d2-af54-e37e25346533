@@ -21,7 +21,14 @@ export class UserwishlistcomponentComponent implements OnInit {
   }
 
   apply(program: any, id: number): void {
-    this.router.navigate([`user/mentorshipapplicationform/${id}`], { state: { program } });
+    this.router.navigate([`user/mentorshipapplicationform/${id}`], { state: { program } }).then(() => {
+      this.removeFromWishlist(id);
+    });
+  }
+
+  removeFromWishlist(id: number): void {
+    this.wishlistPrograms = this.wishlistPrograms.filter(program => program.MentorshipProgramId !== id);
+    localStorage.setItem('wishlist', JSON.stringify(this.wishlistPrograms));
   }
 }
 

@@ -26,6 +26,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UserappliedmentorshipprogramComponent } from './components/userappliedmentorshipprogram/userappliedmentorshipprogram.component';
 import { UserwishlistcomponentComponent } from './components/userwishlistcomponent/userwishlistcomponent.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { AgGridModule } from 'ag-grid-angular';
   
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule, 
     HttpClientModule,
     FormsModule,

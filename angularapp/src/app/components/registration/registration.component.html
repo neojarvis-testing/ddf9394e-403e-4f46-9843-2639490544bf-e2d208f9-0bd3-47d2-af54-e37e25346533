@@ -3,17 +3,17 @@
     <div class="registration-popup">
         <h1 class="h1">Registration</h1>
         <form class="mx-1 mx-md-4" #registerform="ngForm" (ngSubmit)="register()">
-                <div>
-                    <label>Username:</label>
-                    <input type="text" placeholder="UserName" name="userName" id="userName"
-                        [(ngModel)]="newUser.Username" class="form-control" #un="ngModel" required pattern="^[a-zA-Z0-9]*$">
-                    <div class="error-message" *ngIf="un.errors?.required && (un.touched || un.dirty)">
-                        <p class="text-danger">*Username is required</p>
-                    </div>
-                    <div class="error-message" *ngIf="un.errors?.pattern">
-                        <p class="text-danger">*Enter Valid UserName</p>
-                    </div>
+            <div>
+                <label>Username:</label>
+                <input type="text" placeholder="UserName" name="userName" id="userName"
+                    [(ngModel)]="newUser.Username" class="form-control" #un="ngModel" required pattern="^[a-zA-Z0-9]*$">
+                <div class="error-message" *ngIf="un.errors?.required && (un.touched || un.dirty)">
+                    <p class="text-danger">*Username is required</p>
                 </div>
+                <div class="error-message" *ngIf="un.errors?.pattern">
+                    <p class="text-danger">*Enter Valid UserName</p>
+                </div>
+            </div>
             <div>
                 <label>Email:</label>
                 <input type="text" placeholder="Email" name="email" id="email" [(ngModel)]="newUser.Email"
@@ -30,16 +30,16 @@
                 <input [type]="showPassword ? 'text' : 'password'" placeholder="Password" name="password" id="password"
                     [(ngModel)]="newUser.Password" class="form-control" #pass="ngModel" required
                     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
-                <button type="button" class="btn btn-secondary eye-button" (click)="showPassword = !showPassword"> Show
-                    Password
+                <button type="button" class="btn btn-secondary eye-button" (click)="showPassword = !showPassword">
+                    Show Password
                 </button>
             </div>
             <div class="error-message" *ngIf="pass.errors?.required && (pass.touched || pass.dirty)">
                 <p class="text-danger">*Password is required</p>
             </div>
             <div class="error-message" *ngIf="pass.errors?.pattern">
-                <p class="text-danger">*Password should have Atleast One LowerCase,One UpperCase,One Digit,One Special
-                    Character,Minimum length of 8 characters</p>
+                <p class="text-danger">*Password should have Atleast One LowerCase, One UpperCase, One Digit, One
+                    Special Character, Minimum length of 8 characters</p>
             </div>
             <div>
                 <label>Confirm Password:</label>
@@ -55,13 +55,13 @@
             <div>
                 <label>Mobile Number:</label>
                 <input type="tel" placeholder="Mobile Number" name="mobileNumber" id="mobileNumber"
-                    [(ngModel)]="newUser.MobileNumber" class="form-control" #mn="ngModel" minlength="10" maxlength="10"
-                    required>
+                    [(ngModel)]="newUser.MobileNumber" class="form-control" #mn="ngModel" required
+                    pattern="^[6-9][0-9]{9}$">
                 <div class="error-message" *ngIf="mn.errors?.required && (mn.touched || mn.dirty)">
                     <p class="text-danger">*Mobile Number is required</p>
                 </div>
-                <div class="error-message" *ngIf="mn.errors?.minlength || mn.errors?.maxlength">
-                    <p class="text-danger">*Mobile Number should have 10 digits</p>
+                <div class="error-message" *ngIf="mn.errors?.pattern">
+                    <p class="text-danger">*Mobile Number should start with 6, 7, 8, or 9 and have 10 digits</p>
                 </div>
             </div>
             <div>
@@ -89,7 +89,6 @@
                 <div class="error-message" *ngIf="!matchSecretKey()">
                     <p class="text-danger">*Secret Key doesn't match</p>
                 </div>
- 
             </div>
             <div>
                 <div class="form-group" *ngIf="registerform.invalid">
