@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SkillPilot | Home</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+  </head>
+  <body>
+    <!-- Angular conditionally rendered content -->
+    <div *ngIf="isAdmin()">
+      <app-adminnav></app-adminnav>
+    </div>
+    <div *ngIf="isUser()">
+      <app-usernav></app-usernav>
+    </div>
+
+    <div class="hero">
+      <div class="hero-text">
+        <h2>Welcome to SkillPilot</h2>
+        <p>Empowering Mentor-Mentee Connections for Skill Development</p>
+        <div class="buttons">
+          <a href="/register" class="btn">Get Started</a>
+          <a href="#features" class="btn">Explore</a>
+        </div>
+      </div>
+      <img src="/assets/images/Untitled design.png" alt="Illustration of mentorship and learning"/>
+    </div>
+ 
+    <div class="section" id="about">
+      <h3>About SkillPilot</h3>
+      <p>
+        SkillPilot is a dynamic mentorship platform connecting mentees with experienced mentors across various domains.
+        Our aim is to foster learning, growth, and skill development through meaningful mentor-mentee interactions.
+      </p>
+    </div>
+ 
+    <div class="section" id="features">
+      <h3>Features</h3>
+      <div class="card-container">
+        <div class="card">Role-Based Access (Admin/User)</div>
+        <div class="card">Secure Login & Registration</div>
+        <div class="card">Personalized Dashboards</div>
+        <div class="card">Interactive Learning Paths</div>
+      </div>
+    </div>
+ 
+    <div class="section" id="contact">
+      <h3>Contact Us</h3>
+      <p>Email: support@skillpilot.com | Phone: +123 456 7890</p>
+    </div>
+ 
+    <script>
+      const menuToggle = document.getElementById('hamburger-btn');
+      const navLinks = document.getElementById('nav-links');
+ 
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>

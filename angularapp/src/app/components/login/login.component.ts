@@ -30,19 +30,11 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("token",res.token);
       this.authService.isRole();
       this.role = localStorage.getItem('userRole');
-      if(this.role ==="Admin")
-      {
-        this.router.navigate([`/adminnav`]);
-      }
-      else
-      {
-        this.router.navigate([`/usernav`]);
-      }
       console.log(this.role);
       if(this.role=="Admin")
-      this.router.navigate([`/admin`]);
+      this.router.navigate([`/admin/home`]);
       else
-      this.router.navigate(['/user']);
+      this.router.navigate(['/user/home']);
       Swal.fire({
         title: 'Success!',
         text: 'Login Successful!',

@@ -1,22 +1,23 @@
+<app-navbar></app-navbar>
 <div class="navbar">
   <div class="logo">SkillPilot</div>
   <div class="nav-links" id="nav-links">
-    <a href="/">Home</a>
+    <a href="/home">Home</a>
     <a href="/register">Register</a>
     <a href="/login">Login</a>
   </div>
   <div class="hamburger" id="hamburger-btn">&#9776;</div>
 </div>
- 
+
 <video autoplay muted loop id="bgVideo">
   <source src="/assets/videos/abstract-minimalistic-colored-wave-background-SBV-347739488-preview.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
- 
+
 <div class="form-container">
   <form (ngSubmit)="register()" #registrationForm="ngForm" class="auth-form">
     <h2>Create Your Account</h2>
- 
+
     <div class="input-group">
       <input
         type="text"
@@ -27,7 +28,7 @@
         #username="ngModel" />
       <div *ngIf="username.invalid && username.touched" class="error">Username is required</div>
     </div>
- 
+
     <div class="input-group">
       <input
         type="email"
@@ -38,7 +39,7 @@
         #email="ngModel" />
       <div *ngIf="email.invalid && email.touched" class="error">Email is required</div>
     </div>
- 
+
     <div class="input-group password-group">
       <input
         type="password"
@@ -57,7 +58,7 @@
       </i>
       <div *ngIf="password.invalid && password.touched" class="error">Password is required</div>
     </div>
- 
+
     <div class="input-group">
       <input
         type="password"
@@ -69,7 +70,7 @@
       <div *ngIf="confirmPasswordField.invalid && confirmPasswordField.touched" class="error">Confirm Password is required</div>
       <div *ngIf="confirmPassword !== newUser.Password && confirmPasswordField.touched" class="error">Passwords must match</div>
     </div>
- 
+
     <div class="input-group">
       <input
         type="text"
@@ -80,7 +81,7 @@
         #mobile="ngModel" />
       <div *ngIf="mobile.invalid && mobile.touched" class="error">Mobile number is required</div>
     </div>
- 
+
     <div class="input-group">
       <select
         name="role"
@@ -95,7 +96,7 @@
       </select>
       <div *ngIf="role.invalid && role.touched" class="error">Role is required</div>
     </div>
- 
+
     <div *ngIf="selectedRole === 'Admin'">
       <div class="input-group">
         <input
@@ -103,17 +104,17 @@
           name="adminKey"
           id="admin-key"
           placeholder="Enter Admin Key"
-          required
           [(ngModel)]="inputSecretKey"
           [ngClass]="{'error': !matchSecretKey()}" />
+          <div *ngIf="role.invalid && role.touched" class="error">Admin Key is required</div>
         <div *ngIf="!matchSecretKey()" class="error">Incorrect Admin Key</div>
       </div>
     </div>
- 
+
     <button type="submit" class="btn" [disabled]="registrationForm.invalid">Register</button>
   </form>
 </div>
- 
+
 <script>
   const hamburger = document.getElementById('hamburger-btn');
   const navLinks = document.getElementById('nav-links');
@@ -121,4 +122,3 @@
     navLinks.classList.toggle('active');
   });
 </script>
- 

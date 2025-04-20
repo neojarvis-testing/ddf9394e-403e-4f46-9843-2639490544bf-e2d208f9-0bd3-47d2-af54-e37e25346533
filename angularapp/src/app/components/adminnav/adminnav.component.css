@@ -7,30 +7,30 @@
   flex-direction: column;
   align-items: stretch;
 }
-
+ 
 .navbar-header {
   text-align: left;
   padding: 10px 0 0 10px;
   font-size: 18px;
   font-weight: bold;
-  color: #F0ECE2; /* Match header color with the brand */
+  color: #F0ECE2;
 }
-
+ 
 .navbar-brand {
   color: #F0ECE2 !important;
   font-weight: bold;
   font-size: 1.2rem;
   margin-right: 20px;
 }
-
+ 
 .navbar-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 10px; /* Space between header and content */
+  margin-top: 10px;
 }
-
+ 
 /* Left-aligned items */
 .navbar-left {
   display: flex;
@@ -38,7 +38,7 @@
   gap: 20px;
   align-items: center;
 }
-
+ 
 /* Right-aligned items */
 .navbar-right {
   display: flex;
@@ -46,7 +46,7 @@
   gap: 15px;
   align-items: center;
 }
-
+ 
 /* Navbar Navigation Items */
 .navbar-nav {
   display: flex;
@@ -56,24 +56,24 @@
   padding: 0;
   list-style: none;
 }
-
+ 
 .navbar-nav .nav-link {
   color: #F0ECE2 !important;
   font-size: 1rem;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-
+ 
 .navbar-nav .nav-link:hover {
   color: #ACDBDF !important;
 }
-
+ 
 .navbar-nav span.nav-link {
   color: #F0ECE2 !important;
   font-weight: bold;
   font-size: 1rem;
 }
-
+ 
 /* Dropdown Styling */
 #dropdown {
   background-color: #325C70ff;
@@ -84,12 +84,12 @@
   font-size: 1rem;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-
+ 
 #dropdown:hover {
   background-color: #325C70ff;
   color: #ACDBDF;
 }
-
+ 
 /* Logout Button */
 .btn-outline-warning {
   color: #F0ECE2 !important;
@@ -100,29 +100,29 @@
   font-size: 1rem;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-
+ 
 .btn-outline-warning:hover {
   background-color: #ACDBDF !important;
   color: #325C70ff !important;
   border: 1px solid #ACDBDF;
 }
-
+ 
 /* Media Query for Responsive Design */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     padding: 10px;
   }
-
+ 
   .navbar-brand {
     margin-bottom: 10px;
   }
-
+ 
   .navbar-nav {
     flex-direction: column;
     align-items: flex-start;
   }
-
+ 
   .navbar-nav .nav-link {
     padding: 5px 0;
   }

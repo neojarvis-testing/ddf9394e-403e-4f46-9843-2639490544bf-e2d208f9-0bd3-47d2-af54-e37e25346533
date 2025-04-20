@@ -27,6 +27,8 @@ import { UserappliedmentorshipprogramComponent } from './components/userappliedm
 import { UserwishlistcomponentComponent } from './components/userwishlistcomponent/userwishlistcomponent.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserhomeComponent } from './components/userhome/userhome.component';
+import { AdminhomeComponent } from './components/adminhome/adminhome.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +51,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CreatementorshipprogramComponent,
     UserappliedmentorshipprogramComponent,
     UserwishlistcomponentComponent,
+    UserhomeComponent,
+    AdminhomeComponent,
   ],
   
   imports: [

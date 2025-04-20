@@ -17,6 +17,10 @@ import { MentorshipapplicationlistComponent } from './components/mentorshipappli
 import { UserappliedmentorshipprogramComponent } from './components/userappliedmentorshipprogram/userappliedmentorshipprogram.component';
 import { UserwishlistcomponentComponent } from './components/userwishlistcomponent/userwishlistcomponent.component';
 import { ErrorComponent } from './components/error/error.component';
+import { AdminnavComponent } from './components/adminnav/adminnav.component';
+import { UsernavComponent } from './components/usernav/usernav.component';
+import { UserhomeComponent } from './components/userhome/userhome.component';
+import { AdminhomeComponent } from './components/adminhome/adminhome.component';
 
 
 const routes: Routes = [
@@ -26,8 +30,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegistrationComponent },
 
-  {path: 'admin', component: HomeComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }},
-  {path: 'user', component:HomeComponent, canActivate: [AuthGuard], data: { roles: ['User'] }},
+  {path: 'admin', component: AdminnavComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }},
+  {path: 'user', component: UsernavComponent, canActivate: [AuthGuard], data: { roles: ['User'] }},
+  {path: 'user/home', component: UserhomeComponent, canActivate: [AuthGuard], data: { roles: ['User'] }},
+  {path: 'admin/home', component: AdminhomeComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] }},
   {path: 'user/addFeedback', component: UseraddfeedbackComponent, canActivate: [AuthGuard]},
   {path: 'user/appliedmentorshipapplication',component:UserappliedmentorshipprogramComponent, canActivate: [AuthGuard]},
   {path: 'user/viewFeedback', component: UserviewfeedbackComponent, canActivate: [AuthGuard]},

@@ -7,17 +7,19 @@
   object-fit: cover;
   z-index: -1; /* Send the video to the background */
   filter: blur(8px); /* Apply blur effect */
+  background-color: #001f3f; /* Dark blue background */
 }
- 
+
 /* Form container */
 .form-container {
+  margin-top: 50px; 
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 90vh;
   padding: 20px;
 }
- 
+
 /* Form styling */
 .auth-form {
   background: rgba(255, 255, 255, 0.8); /* Solid white with slight transparency */
@@ -30,19 +32,19 @@
   flex-direction: column;
   color: #333; /* Dark text for contrast */
 }
- 
+
 /* Input group alignment */
 .input-group {
   position: relative;
   margin-bottom: 15px;
 }
- 
+
 .auth-form h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #000;
+  color: black; /* White color for the title */
 }
- 
+
 .auth-form input,
 .auth-form select {
   width: calc(100% - 40px); /* Full width input minus padding for icon */
@@ -52,11 +54,11 @@
   background: rgba(255, 255, 255, 0.9);
   color: #333;
 }
- 
+
 .auth-form input::placeholder {
   color: #666;
 }
- 
+
 .auth-form button.btn {
   padding: 10px;
   border: none;
@@ -66,22 +68,22 @@
   cursor: pointer;
   transition: background 0.3s ease;
 }
- 
+
 .auth-form button.btn:hover {
   background: #00a3cc;
 }
- 
+
 .auth-form .error {
   color: #ff4d4d;
   font-size: 0.875rem;
 }
- 
+
 /* Password group */
 .password-group {
   display: flex;
   align-items: center;
 }
- 
+
 .toggle-password-icon {
   position: absolute;
   right: 10px;
@@ -91,11 +93,11 @@
   color: #00c6ff;
   font-size: 1.2rem;
 }
- 
+
 .toggle-password-icon:hover {
   color: #00a3cc;
 }
- 
+
 /* Navbar */
 .navbar {
   position: fixed;
@@ -104,4 +106,63 @@
   width: 100%;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Custom Navbar */
+.custom-navbar {
+  background-color: #325C70; /* Primary color */
+  padding: 10px 20px; /* Reduced padding for a smaller height */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.custom-navbar .navbar-brand {
+  font-size: 18px; /* Smaller font size */
+  font-weight: bold;
+  color: #fff; /* White text for "skillpilot" */
+}
+
+.custom-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28155, 155, 155, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.custom-navbar .nav-link {
+  color: #fff; /* White text */
+  text-decoration: none;
+  font-size: 14px; /* Smaller font size */
+  font-weight: 500;
+  transition: color 0.3s ease;
+  border: 1px solid #fff; /* White border for box */
+  padding: 5px 10px; /* Padding for box */
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+  color: #5C8A93; /* Secondary color on hover */
+}
+
+.custom-navbar .btn-light {
+  background-color: #5C8A93; /* Secondary color */
+  color: #fff; /* White text */
+  border: 1px solid #ccc;
+  font-size: 12px; /* Smaller button size */
+  padding: 5px 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-navbar .btn-light:hover {
+  background-color: #273255; /* Tertiary color on hover */
+  color: #fff;
+}
+
+.custom-navbar .btn-outline-light {
+  color: #fff; /* White text */
+  border: 1px solid #fff; /* White border */
+  font-size: 12px; /* Smaller button size */
+  padding: 5px 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-navbar .btn-outline-light:hover {
+  background-color: #2D1B49; /* Quaternary color on hover */
+  color: #fff; /* White text on hover */
 }

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
- 
-@Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
 
+@Component({
+  selector: 'app-userhome',
+  templateUrl: './userhome.component.html',
+  styleUrls: ['./userhome.component.css']
 })
- 
-export class HomeComponent implements OnInit {
+export class UserhomeComponent implements OnInit {
+
   myIndex = 0;
   constructor(private authService:AuthService) { }
  
@@ -27,6 +26,5 @@ export class HomeComponent implements OnInit {
   {
     return this.authService.isUser();
   }
+
 }
-
-
